@@ -1,0 +1,26 @@
+p{
+    font-family: Roboto;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: rgb(95,95,95);
+
+}
+.textbody{
+    font-size: 18px;
+    width: 300px;
+    margin-left: 20px;
+    line-height: 20px;
+    color: antiquewhite;
+    background-color: rgb(277, 65,64);
+}
+
+.span_example{
+    font-family: Tahoma;
+    font-size: 16px;
+    color: 16px;
+    margin-left: 12px;
+
+}
+.span_example:hover{
+    text-decoration: underline;
+}
