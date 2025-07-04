@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Randomly Mating Populations</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="styles" href="style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<script src="controller.js"></script>
+<body>
+    <nav>
+        <ul style="display:flex; gap:10px; list-style:none; padding:0;">
+            <li><a href="#hardy-weinberg">Hardy-Weinberg</a></li>
+            <li><a href="#x-linked">X-linked</a></li>
+            <li><a href="#Different-InitialF">Initial Frequencies</a></li>
+            <li><a href="#two-loci">Two Loci</a></li>
+            <li><a href="#wahlund">Wahlund's Principle</a></li>
+        </ul>
+    </nav>
+
+            <p>We are now ready to consider populations with Mendelian inheritance and begin by inquiring into the frequencies of the different genotypes that comprise the population. In the last chapter, we were interested in the total number of individuals in the population and in different subpopulations (strains). In genetic studies, there is usually greater interest in the relative numbers of different genotypes, so it is convenient to express the numbers of different types as proportions of the total. As long as we use deterministic models, the total number in the population is not important, and we can deal as well with proportions. With stochastic models, the number in the population becomes important in determining the extent of random fluctuations and therefore must be taken into consideration.</p>
+
+            <h2>Gene Frequency and Genotype Frequency</h2>
+
+            <p>The number of genotypes in a population greatly exceeds the number of genes and soon becomes enormous. A diploid population with only two alleles at each of 100 loci would have \(3^{100}\) possible genotypes. Therefore, we effect a great simplification by writing formulae in terms of gene frequencies rather than genotype frequencies. This usually entails some loss of information, for knowledge of the gene frequencies is not sufficient to specify the genotype frequencies; but it is usually possible to do this to satisfactory approximation by introducing other information, such as the mating system and linkage relations.</p>
+
+            <p>Furthermore, in a sexually reproducing population, the genes are reassorted by the Mendelian shuffle that takes place every generation. The effects of such reassortment are largely transitory, being undone as fast as they are done. At the outset, we need formulas to specify the relation between gene frequencies and genotype frequencies. This will also serve to introduce the kind of notation that will be used throughout the book. We start with a single locus with only two alleles.</p>
+
+            <p>Consider a population of \(N\) diploid individuals, of which:</p>
+
+            \[
+            \begin{align}
+            &N_{11} \text{ are of genotype } A_1A_1 \\
+            &2N_{12} \text{ are of genotype } A_1A_2 \\
+            &N_{22} \text{ are of genotype } A_2A_2 \\
+            \end{align}
+            \]
+
+            <p>Where \(N_{11} + 2N_{12} + N_{22} = N\). It is sometimes convenient to distinguish, among \(A_1A_2\) heterozygotes, those that receive \(A_1\) from the mother and those that received it from the father. We can do this by designating the two numbers as \(N_{12}\) and \(N_{21}\). However, in most populations \(N_{12} = N_{21}\) and it is not necessary to make any distinction between them.</p>
+
+            <p>We designate the frequency or <strong>proportion</strong> of the three genotypes by \(P_{11}, 2P_{12}, P_{22}\) as follows:</p>
+
+            \[
+            \begin{align}
+            &A_1A_1 \text{ : } P_{11}= \frac{N_{11}}{N} \\
+            &A_1A_2 \text{ : } 2P_{12}= \frac{2N_{12}}{N} \\
+            &A_2A_2 \text{ : } P_{22}= \frac{N_{22}}{N} \\
+            \end{align}
+            \]
+
+            <p>From these genotype frequencies, we can write the frequencies of alleles \(A_1\) and \(A_2\), which are designated \(p_1\) and \(p_2\), as follows:</p>
+
+            \[
+            \begin{align}
+            p_1 = \frac{2N_{11}+ N_{12}}{2N} = P_{11} + \frac{1}{2} \cdot P_{12} \quad \text{and} \quad
+            p_2 = \frac{2N_{22}+N_{12}}{N} = \frac{1}{2} \cdot P_{12} + P_{22}
+            \end{align}
+            \]
+
+            <p>Dominance does not always allow us to establish a direct relation between genotypes and phenotypes. Under such circumstances, the allele frequency can be measured only if there is some knowledge about the way in which the genes are combined into genotypes in the population. The simplest assumption, and fortunately one that is often very closely approximated in many actual populations, is random mating.</p>
+
+    <main>
+        <section id="hardy-weinberg">
+
+            <h2>The Hardy-Weinberg Principle</h2>
+            
+            <p>With random mating, the relation between gene frequency and genotype frequency is greatly simplified. By random mating, we mean that the mating occurs without regard to the genotypes in question. In other words, the probability of choosing a particular genotype for a mate is equal to the relative frequency of that genotype in the population.</p>
+
+            <p>Notice that it is possible for a population to be at the same time in random mating proportion for some genes and not for others. In many respects, random mating among the different genotypes in the population is equivalent to random combination of the gametes produced by these individuals. Considering a single locus with two alleles, \(A_1\) and \(A_2\), which frequencies \(p_1\) and \(p_2\) and that \(p_1 + p_2 =1\).</p>
+
+            <p>Hence, the first generation after random mating begins, the proportions of the three genotypes \(A_1 A_1, A_1 A_2,\) and \(A_2 A_2\) will be \(p^2, 2p_1 p_2\) and \(p^2\). The principle says that given the gene frequencies and assuming random mating, the zygotic frequencies can be predicted. Also, the Hardy-Weinberg principle is a useful null hypothesis for frequencies out of the expected equilibrium.</p>
+
+            <p>The equilibrium is attained immediately after random mating begins, rather than gradually, is of great importance. This means that it is not necessary to inquire into the past history of a population; if mating was at random during the preceding generation, the principle holds. The only exception is the rather unusual case where the gene frequencies are different in the two sexes.</p>
+
+            \[
+            \large p_1^2 + 2p_1 p_2 + p_2^2 = (p_1 + p_2)^2
+            \]
+
+            <p>The random mating principle can be stated this way: the array of genotype frequencies in the zygotes is given by the square of the array of gene frequencies in the gametes.</p>
+
+            <p>Take the example of a rare condition such as the recessive disease, phenylketonuria, which results in mental deficiency is approximately 1 in 10,000. What is the proportion of the population are heterozygous carriers of this condition? Let \(A\) stand for the normal allele and \(a\) for the recessive allele and designate the frequencies as \(P_A\) and \(P_a\). The Hardy-Weinberg principle shows that \(p_a^2\) is 0.001, so \(p_a\) is the square root of this or 0.1. Since \(p_A\) and \(p_a\) must add up to 1, \(p_A\) is 0.99. Therefore, the frequency of heterozygotes in the population \((2p_A p_a)\) is \(2\cdot(0.99)\cdot(0.01) = 0.0198\).</p>
+
+            <p>This example illustrates the important fact that, when the recessive gene is rare, the number of heterozygous carriers of the gene is enormously larger than the number of individuals who carry the gene in the homozygous state. In this example, the carriers outnumber the affected in the ratio of 198 to 1. The majority of the sick children would not come from the sick parents but from heterozygous.</p>
+
+            <p>The Hardy-Weinberg principle is exactly true only in an infinitely large population in which mating is completely at random, but it is approximately correct for the great majority of genes in most cross-fertilizing species.</p>
+
+            <p>The principle departures are of two types:</p>
+            <ul>
+                <li>inbreeding</li>
+                <li>assortative mating</li>
+            </ul>
+
+            <p>An interesting exception to the stated principle is that the equilibrium frequencies are approached gradually rather than suddenly when the gene is sex-linked and the frequencies are different in the two sexes. Another is a population in which each individual can reproduce both asexually and sexually, as can many plants.</p>
+
+            <p>Let \(C\) be the proportion of progeny that are produced clonally or asexually and \(S\) the proportion sexually by random mating. Let \(P_1\) be the proportion of genotype \(AA\) at generation \(t\) and \(p\) be the frequency of gene \(A\). We assume that \(C\) is independent of the genotype of the individual. Notice that the genotype frequency \(P_t\) changes from generation to generation whereas the gene frequency \(p\) remains constant. In the following generation, the \(AA\) plants can be produced in two ways: (1) \(AA\) plants with frequency \(P_t\), reproducing clonally with probability \(C\) and yielding a fraction \(CP_t\) of the total progeny, and (2) plants that are homozygous or heterozygous for allele \(A\) mating at random with probability \(S\) and producing \(Sp^2 AA\) progeny. Thus, in the next generation, the frequency of \(AA\) genotypes will be:</p>
+
+            \[
+            \large P_{t+1} = CP_t + Sp^2
+            \]
+
+            <p>Rearranging and recalling that \(C + S = 1\),</p>
+
+            \[
+            \begin{align}
+            &P_{t+1} - p^2 = CP_t + Sp^2 - p^2 \\
+            &P_{t+1} - p^2 = CP_t - p^2 (1 - S) \\
+            &P_{t+1} - p^2 = C(P_t - p^2)
+            \end{align}
+            \]
+
+            <p>There is the same relation between \(P_t\) and \(P_{t-1}\) as \(P_{t+1}\) and \(P_t\),</p>
+
+            \[
+            \begin{align}
+            &P_{t} - p^2 = C(P_{t-1} - p^2) \\
+            &P_{t} - p^2 = C^2(P_{t-2} - p^2) \\
+            &P_{t} - p^2 = C^t(P_0 - p^2)
+            \end{align}
+            \]
+
+            <p>Where \(P_0\) is the initial frequency of the genotypes \(AA\). Unless \(C=1\) (exclusively clonal reproduction), the limit of \(C^t\) as \(t\) increases is 0, and \(P_t\) becomes closer to \(p^2\). Each genotype frequency approaches the Hardy-Weinberg value, but only gradually at a rate determined by \(C\). The smaller the fraction of asexual progeny, the more rapidly the random-mating proportions are approached.</p>
+
+            <div id="plot1" style="width:100%;max-width:700px;margin:auto;"></div>
+        </section>
+
+        <section id="x-linked">
+            <h2>X-linked Loci</h2>
+            <p>For alleles on the \(X\) chromosome, the genotype frequencies in the male are the same as the gene frequencies, since the male is haploid for this chromosome. The female frequencies, on the other hand, are the same as for diploid autosomal loci, since there are two \(X\) chromosomes.</p>
+
+            <p>This means that there will usually be a large difference in the frequency of an X-linked character in the two sexes. For example, a trait caused by a recessive gene, \(a\), with frequency \(p\) would simply have a frequency \(p\) in males but \(p^2\) in females. If the genes were rare, then frequency in males would be much greater than in females.</p>
+
+            <p>A classical example of a human X-linked trait is color blindness. One of the earliest and largest studies was by Waaler (1927). He found that in a group of 18,121 school children in Oslo, about 8% of the boys were color-blind, but only 0.4% of the girls.</p>
+
+            <p>We can estimate the expected number by the maximum-likelihood method. Let \(p\) be the relative frequency of the allele for color blindness and \(A, B, C,\) and \(D\) be the observed numbers of color-blind males (725), normal males (8324), color-blind females (40), and normal females (9032), respectively. Then, if \(m\) is the proportion of males and \(N\) is the total observed number \((N = A + B + C + D = 18,121)\), the probability of the observed results is:</p>
+
+            \[
+            \text{Prob} = K(mp)^A [m(1-m)]^B [(1-m)p^2]^C [(1-m)(1-p^2)]^D
+            \]
+
+            <p>Where \(K\) is a constant determined by \(A, B, C,\) and \(D\). Letting \(L = \log \text{Prob}\)</p>
+
+            \[
+            L = (A + B) \cdot \log m + (C + D) \cdot \log (1-m) + (A + 2C) \cdot \log p + (B + D) \cdot \log (1 - p) + D \cdot \log(1 + p)
+            \]
+
+            <p>Solving these equations,</p>
+
+            \[
+            m = \frac{A + B}{N} = \frac{9049}{18121}
+            \]
+
+            <p>Differentiating with respect to \(m\) and \(p\), and equating to zero, we obtain:</p>
+
+            \[
+            \frac{\partial L}{\partial m} = \frac{A + B}{m} - \frac{C + D}{1 - m} = 0
+            \]
+
+            <p>and</p>
+
+            \[
+            \frac{\partial L}{\partial p} = \frac{A + 2C}{p} - \frac{B + D}{1 - p} + \frac{D}{1 + p} = 0
+            \]
+
+            <p>Solving these equations, we have:</p>
+
+            \[
+            m = \frac{A + B}{N} = \frac{9049}{18121}
+            \]
+
+            <p>As expected, and</p>
+
+            \[
+            p = \frac{-B + \sqrt{B^2 + 4(A + 2C)(A + B + 2(C + D))}}{2(A + B + 2(C + D))}
+            \]
+
+            <p>The expected numbers in the four classes are \(Nmp\), \(Nm(1 - p)\), \(N(1 - m)p^2\), and \(N(1 - m)(1 - p^2)\).</p>
+
+        </section>
+        
+        <section id="xlinked-calculator" class="calculator">
+            <h1>X-linked Trait Calculator</h1>
+            <label for="affected-males">Affected Males (A):</label>
+            <input type="number" id="affected-males" value="725" aria-label="Affected Males" />
+            <label for="normal-males">Normal Males (B):</label>
+            <input type="number" id="normal-males" value="8324" aria-label="Normal Males" />
+            <label for="affected-females">Affected Females (C):</label>
+            <input type="number" id="affected-females" value="40" aria-label="Affected Females" />
+            <label for="normal-females">Normal Females (D):</label>
+            <input type="number" id="normal-females" value="9032" aria-label="Normal Females" />
+            <button id="calc-button" aria-label="Calculate allele frequency">Calculate Allele Frequency</button>
+
+            <p id="result"></p>
+        </section>
+
+        <section id="Different-InitialF">
+            <h2>Different Initial Gene Frequencies in the Two Sexes</h2>
+            <p>Usually the gene frequencies are the same in the two sexes, but under some unusual circumstances they may be different. One possibility is in animal or plant breeding where the original hybrids are made up of males of one strain and females of another. Another is in a natural population where most of the migrants are of one sex.</p>
+
+            <p>For an autosomal locus, the Hardy-Weinberg frequencies are attained, but after a delay of one generation. Consider a population in which the frequencies of the alleles \(A_1\) and \(A_2\) are \(p_1^*\) and \(p_2^{**}\) in females. If the gametes are combined at random, then in the next generation the frequency of gene \(A_1\) in both sexes is:</p>
+
+            \[
+            \begin{align}
+            &p_1 = p_1^* p_1^{**} + \frac{1}{2} p_1^* p_2^{**} + \frac{1}{2}p_1^{**} p_2^{*} \\
+            &p_1 = \frac{1}{2}(p_1^* + p_1^{**})
+            \end{align}
+            \]
+
+            <p>And in all following generations the genotypes are in the proportion \(p_1^2\), \(2p_1 p_2\), and \(p_2^2\). As expected, the gene frequency is the unweighted average of what it was originally in the two sexes.</p>
+
+            <p>With an X-linked locus, starting out with different allele frequencies in the two sexes, the situation is quite different. The equilibrium, instead of being attained in two generations as for an autosomal locus, is reached only gradually.</p>
+
+            <p>Consider a particular X-linked allele, \(A\), in a multiple-allelic series. Let the frequency of this allele in generation \(t\) be \(p_t^*\) in males and \(p_t^{**}\) in females. Since a male always gets his \(X\) chromosome from his mother, (1) the allele frequency in males will always be what it was in females a generation earlier. Likewise, (2) the frequency in females will be the average of the two sexes in the preceding generation, since each sex contributes one \(X\) chromosome. Finally, (3) the mean frequency of the gene will be the weighted average of that in the two sexes, attaching twice as much weight to the female frequency quantity must be a constant, since the mean frequency of the gene does not change. These statements may be stated mathematically as follows:</p>
+
+            <p>Male frequency = female frequency from previous generation</p>
+            \[
+            (1) \quad p_t^* = p_{t-1}^{**}
+            \]
+
+            <p>Female frequency = average of both sexes from previous generation</p>
+            \[
+            (2) \quad p_t^{**} = \frac{1}{2} p_{t-1}^{*} + \frac{1}{2} p_{t-1}^{**}
+            \]
+
+            <p>Mean population frequency stays constant</p>
+            \[
+            (3) \quad \bar p_t = \frac{1}{3} p_{t-1}^{*} + \frac{2}{3} p_{t}^{**} = \frac{1}{3} p_{t-1}^{*} + \frac{2}{3} p_{t-1}^{**} = \bar p_{t-1} = \bar p
+            \]
+
+            <p>Where \(\bar p\) is a constant throughout the process. From the third equation we have \(p_{t-1}^* = 3 \bar p - 2 p_{t-1}^{**}\). Substituting this into the second equation, after some algebraic rearrangement we obtain a relation between the gene frequency in the female sex from generation to generation:</p>
+
+            \[
+            p_t^{**} - \bar p = - \frac{1}{2}(p_{t-1}^{**} - \bar p)
+            \]
+
+            <p>Since the same relationship holds for \(p_{t-1}^{**}\) and \(p_{t-2}^{**}\),</p>
+
+            \[
+            \begin{align}
+            p_t^{**} - \bar p = \left[ - \frac{1}{2} \right]^2 (p_{t-2}^{**} - \bar p) \\
+            p_t^{**} - \bar p = \left[ - \frac{1}{2} \right]^3 (p_{t-3}^{**} - \bar p) \\
+            p_t^{**} - \bar p = \left[ - \frac{1}{2} \right]^t (p_{0}^{**} - \bar p)
+            \end{align}
+            \]
+
+            <p>Where \(p_0^{**}\) is the allele frequency in females in the initial generation. Notice that these formulae do not depend on equal numbers of males and females in the population.</p>
+
+            <p>Thus the approach to equilibrium is gradual. Since \((-1/2)^t\) (alternating convergence) approaches \(0\) as \(t\) becomes larger, the gene frequency must approach \(\bar p\) as a limit. In each successive generation the gene frequency in females is only half as far from the final value, \(\bar p\), as it was in the previous generation, but in the opposite direction. The population moves toward equilibrium in a zig-zag manner, like a series of damped vibrations.</p>
+
+            <div id="plot2" style="width:100%;max-width:700px;margin:auto;"></div>
+        </section>
+
+        <section id="two-loci">
+            <h2>Two Loci</h2>
+            <p>Previously we noted that Hardy-Weinberg relation was attained in a single generation, irrespective of the number of alleles. But it is possible for each of two loci to be in random-mating frequencies, yet for them not to be in equilibrium with each other. We shall see that, contrary to the situation with a single locus, the equilibrium relation between two or more loci is not attained immediately, but over a number of generations. We still assume that there is no selection.</p>
+
+            <p>Consider two linked loci, with the recombination frequency between them equal to \(c\). Unlinked loci can be regarded as a special case where \(c\) is \(\frac{1}{2}\). Assume that there are \(n\) alleles at the locus \(A\) and \(m\) at the locus \(B\).</p>
+
+            \[
+            \begin{array}{c|ccc}
+            A \text{ alleles} & A_1 & A_2 & A_i \\
+            \text{frequency} & p_1 & p_2 & p_i \\
+            B \text{ alleles} & B_1 & B_2 & B_k \\
+            \text{frequency} & q_1 & q_2 & q_k \\
+            \end{array}
+            \]
+
+            <p>Let \(P_t(A_i B_k)\) be the frequency of the chromosome \(A_i B_k\) among the gametes produced in generation \(t\). We want to inquire into the frequency of this chromosome in successive generations. For brevity, we shall designate \(P_t(A_i B_k)\) simply as \(P_t\).</p>
+
+            <p>The key idea here is that if two loci are not in equilibrium, then their <strong>haplotype frequencies</strong> are not equal to the product of their allele frequencies.</p>
+
+            \[
+            P_t(A_i B_k) \ne p_i \cdot q_k
+            \]
+
+            <p>And the deviation from equilibrium is measured as</p>
+
+            \[
+            D_t = P_t - p_i q_k
+            \]
+
+            <p>The gametes produced in generation \(t\) may be of two kinds; they may be the product of a recombination, with probability \(c\), or they may not have been involved in a recombination at the preceding meiosis, with probability \((1 - c)\). If no recombination has occurred, the probability of the \(A_i B_k\) chromosome is the same as it was in the preceding generation, which will be designated as \(P_{t-1}\). If a crossover has occurred, the \(A\) and \(B\) alleles in a gamete produced by the \(t\)th generation will have come from different gametes in the \(t - 1\)th generation; that is, one from the egg and one from the sperm that produced the individual whose gamete we are discussing. Since we are assuming random mating, the egg and sperm are independent, and therefore the \(A\) locus and the \(B\) locus are independent. Thus, in the gamete produced the \(t\)th generation, the probability of the \(A\) being \(A_i\) and \(B\) allele being \(B_k\) is simply the product of the two gene frequencies, \(p_i q_k\).</p>
+
+            \[
+            P_t = (1 - c)P_{t-1} + c p_i q_k
+            \]
+
+            <p>After substituting \(p_i q_k\) from both sides</p>
+
+            \[
+            \begin{align}
+            P_t - p_i q_k &= (1 - c) \cdot (P_{t-1} - p_i q_k) \\
+            P_t - p_i q_k &= (1 - c)^2 \cdot (P_{t-2} - p_i q_k) \\
+            P_t - p_i q_k &= (1 - c)^3 \cdot (P_{t-3} - p_i q_k) \\
+            P_t - p_i q_k &= (1 - c)^t \cdot (P_{0} - p_i q_k)
+            \end{align}
+            \]
+
+            <p>Where \(P_0\) is the initial value of the frequency of chromosome \(A_i B_k\).</p>
+
+            <p>This is an exponential decay model of the linkage disequilibrium over generations</p>
+
+            \[
+            D_t = (1 - c)^t D_0
+            \]
+
+            <p>Thus the frequency of the \(A_i B_k\) chromosome gets closer to the value \(p_i q_k\); each generation the departure from the final value is reduced by a fraction equal to the recombination value. For unlinked loci, the chromosome frequency goes halfway to the equilibrium value each generation.</p>
+
+            <div id="plotLD" style="width:100%;max-width:700px;margin:auto;"></div>
+
+            <p>The equilibrium value is approached only gradually, and theoretically is never attained. For comparison, it is convenient to speak of the time required to go halfway to the final value, in the same way that one speaks of the halflife or median life of a radioactive element.</p>
+
+            <p>The median equilibrium time is given by solving for \(t\) the equation</p>
+
+                \[
+                (1 - c)^t = \frac{1}{2}
+                \]
+
+            <p>Which leads to</p>
+
+                \[
+                t = \frac{\log \frac{1}{2}}{\log (1 - c)}
+                \]
+
+            <p>When \(c\) is small, \(\log_e (1 - c)\) is very close to \(-c\). So, using logs to the base \(e\), \(\log (1/2) = -0.693\) and \(t = 0.693/c\) approximately for small values of \(c\). For example, with independent gene loci \(c = 1/2\), the median time is 1 generation. When \(c = 0.1\), the approximation is satisfactory and \(t\) is \(0.693/0.1\), or about 7 generations. When \(c = 0.01\), the time is about 69 generations, and when \(c = 0.001\), about 693 generations.</p>
+
+            <p>We can summarize the main results of this section in two statements:</p>
+                <ul>
+                    <li>The approach to equilibrium between coupling and repulsion phases of the gametes (usually called gametic phase equilibrium or 'linkage' equilibrium) is gradual. The rate of approach depends on the rate of recombination between the two loci. For independent loci, it is 50% per generation.</li>
+                    <li>We can broaden the meaning of the Hardy-Weinberg principle by regarding chromosomes or gametes rather than single genes. With random mating, the frequency of any diploid genotype is given by the appropriate term in the expansion of the square of the array of gamete frequencies. These frequencies are attained immediately if the gamete frequencies are the same in both sexes.</li>
+                </ul>
+
+                \[
+                \begin{array}{c|ccc}
+                \text{Genotype} & \text{Gamete freq} & \text{Equilibrium} \\ \hline
+                A_i B_k| A_i B_k & P_{ik}^2 & p_i^2 p_k^2 \\
+                A_i B_k| A_j B_l & 2P_{ik}P_{jl} & 2p_i p_j q_k q_l \\
+                A_i B_l| A_j B_k & 2P_{il}P_{jk} & 2p_i p_j q_k q_l \\
+                \end{array}
+                \]
+
+                <p>Crossing over in the two sexes is not necessarily the same. The formula given earlier can easily be modified to take this into consideration where \(c_m\) and \(c_f\) stand for the recombination fraction in males and females.</p>
+
+                \[
+                \begin{align}
+                P_t &= \frac{1}{2} \left[ (1 - c_m)P_{t-1} + c_m p_i q_k \right] + \frac{1}{2} \left[ (1 - c_f) P_{t-1} + c_f p_i q_k \right] \\
+                P_t &= (1 - \bar c) P_{t-1} + \bar c p_i q_k
+                \end{align}
+                \]
+
+                <p>Where \(\bar c = \frac{1}{2} (c_m + c_f)\).</p>
+
+                <p>Therefore, when crossing over differs in males and females, it is sufficient to replace \(c\) in equations by the mean value in the two sexes. In Drosophila and Bombyx, where meiotic crossing over is restricted to one sex, the approach to equilibrium is just half as fast as it would be if it occurred at the homogametic rate in both sexes.</p>
+
+                <p>A population that has been mating at random for many generations, a strong association between traits is not due to linkage unless the amount of recombination between the responsible loci is very small. Such persisting associations as are found in natural populations are probably due to pleiotropy or to recent amalgamation of populations with incomplete mixing, that is, nonrandom mating.</p>
+
+            <div id="plotEquilibrium" style="width:100%;max-width:700px;margin:auto;"></div>
+        </section>
+
+        <section id="wahlund">
+            <h2>Subdivision of a Population: Wahlund's Principle</h2>
+            
+            <p>In nature or in domestic animals and plants, the population is often structured. One possibility is that it is divided into subpopulations or isolates, between which there is partial or complete isolation. In such strains, the gene frequencies may diverge, either because of different environments that favor different genotypes, or simply by chance if the subpopulations are small. We inquire into the effect of amalgamation of previously isolated subpopulations.</p>
+
+            <p>The key relationship is expressed in terms of the variance in gene frequencies among the subpopulations. The formula was discussed by Wahlund (1928) and is often called Wahlund's principle.</p>
+
+            <p>Imagine that there are \(k\) subpopulations, completely isolated from each other and of size \(n_1, n_2, \ldots, n_k\). Mating within each subpopulation is assumed to be at random. Let the frequency of allele \(A\) be \(p_1, p_2, \ldots, p_k\) in these subpopulations. Then the mean proportion of \(AA\) homozygotes in the whole population is:</p>
+
+            \[
+            \text{mean}(p^2) = \frac{n_1p_1^2 + n_2p_2^2 + \ldots + n_kp_k^2}{n_1 + n_2 + \ldots + n_k}
+            \]
+
+            <p>Now suppose that these populations are pooled into a single panmictic unit. The average frequency of the \(A\) allele is now (as before) \(\bar p\), the weighted average of the frequencies in the different populations. Then the proportion of \(AA\) homozygotes in the pooled population after one generation of random mating is \(\bar p^2\). The mean allele frequency across the populations is:</p>
+
+            \[
+            \bar p = \frac{n_1p_1 + n_2p_2 + \ldots + n_kp_k}{n_1 + n_2 + \ldots + n_k}
+            \]
+
+            <p>Recall that the variance is \(V_p = \text{mean}(p^2) - \bar p^2\). Hence:</p>
+
+            \[
+            \bar p^2 = \text{mean}(p^2) - V_p
+            \]
+
+            <p>Where \(V_p\) is the variance in the frequency of the gene \(A\) among the \(k\) sub-populations.</p>
+
+            <p>This explains why the proportion of individuals with recessive traits is reduced by migration between previously isolated populations. Since the variance is always positive, there will always be a decrease unless the gene frequency is identical in the subpopulations. The magnitude of the decrease will depend on the diversity of frequencies among the populations, as measured by the variance.</p>
+
+            <p>The previous discussion has referred to a situation where two or more populations are pooled, then mating occurs without regard to the origin of the individuals. The situation is somewhat different if the first matings are all between individuals from different populations. We shall consider two populations.</p>
+
+            <p>If \(p_1\) and \(p_2\) represent the frequency of the \(A\) gene in the two populations, the proportion of \(AA\) homozygotes in the \(F_1\) hybrids is \(p_1 p_2\). The gene frequency in the \(F_1\) is the mean of the two parent population frequencies, or \(\bar p = \frac{p_1 + p_2}{2}\). The variance in the two original populations (equally weighted) is:</p>
+
+            \[
+            V_p = \frac{1}{2}p_1^2 + \frac{1}{2}p_2^2 - \bar p^2 = \frac{1}{4}(p_1 - p_2)^2
+            \]
+
+            <p>Note that \(\bar p^2 - V_p = p_1 p_2\), which is the frequency of \(AA\) homozygotes in the \(F_1\) population.</p>
+
+            <p>For comparison, the proportion of \(AA\) homozygotes in the three populations is:</p>
+            <ol>
+                <li>Separate populations: \(\bar p^2 + V_p\)</li>
+                <li>\(F_1\) population: \(\bar p^2 - V_p\)</li>
+                <li>\(F_2\) and later: \(\bar p^2\)</li>
+            </ol>
+
+            <p>Hybridization between two populations causes an initial decrease in homozygosity, followed by a rise to a point halfway between. This argument does not consider linkage, the effect of which is to slow the approach to the final value.</p>
+
+            <p>Proportion of AA Homozygotes Across Population Types</p>
+
+            <div class="slider-container">
+                <label for="p1-slider">Adjust p1 value:</label>
+                <input type="range" id="p1-slider" min="0" max="1" step="0.01" value="0.2" oninput="updateHomozygosityPlot(this.value)"  aria-label="Adjust p1 value" />
+                <span id="p1-value">0.2</span>
+            </div>
+            <div id="proportionAA" style="width:100%;max-width:700px;margin:auto;"></div>
+        </section>
+
+        <section id="finite-pop">
+            <h2>Random-mating Proportion in a Finite Population</h2>
+                <p>The Hardy-Weinberg proportions are realized exactly only in an infinite population. For one thing, a finite population is subject to chance deviations from the expected proportions. There is also a systematic bias because of the discreteness of the possible numbers of different genotypes. The bias can become important if there are a number of individually very rare alleles. Consider a population of size \(N\).</p>
+
+                <p>Since we are considering diploid populations, there are \(2N\) genes per locus. Let \(p_i\) be the proportion of allele \(A_i\) in the population; hence there are \(2N \cdot p_i\) representatives of the \(A_i\) allele. Then we regard the zygotes as made up by combining these \(2N\) alleles at random pairs. The probability of drawing an \(A_i\) allele is \(\frac{2N \cdot p_i}{2N}\); after this is done, the probability of drawing another \(A_i\) allele from the remaining genes is \(\frac{2N \cdot p_i - 1}{2N - 1}\). Thus the expected proportion of \(A_iA_i\) individuals, given that there are exactly \(2N \cdot p_i\) \(A_i\) alleles is:</p>
+
+                \[
+                P(A_i, A_i) = \frac{2Np_i}{2N} \cdot \frac{2Np_i - 1}{2N - 1} = p_i^2 - p_i(1 - p_i)f
+                \]
+
+                <p>Where \(f = \frac{1}{2N - 1}\). Likewise, the expected proportion of \(A_iA_j\) heterozygotes is:</p>
+
+                \[
+                P(A_i, A_j) = \frac{2Np_i}{2N} \cdot \frac{2Np_j}{2N - 1} + \frac{2Np_j}{2N} \cdot \frac{2Np_i}{2N - 1} = 2p_i p_j(1 + f)
+                \]
+
+                <p>Thus the heterozygotes are increased by a fraction \(f = \frac{1}{2N - 1}\) and the homozygotes are correspondingly decreased, in comparison with the proportions in an infinite population with the same allele frequencies.</p>
+
+                <p>Heterozygosity is slightly elevated and homozygosity slightly reduced in a finite population - in contrast to what drift does over time (which reduces heterozygosity). This effect is purely due to sampling bias in genotype formation. The bias matters most for rare alleles. If \(p_i\) is small, the correction becomes relatively larger. For small \(N\), the correction becomes biologically significant.</p>
+
+            <div class="slider-container">
+                <label for="p-slider">Adjust allele frequency (p):</label>
+                <input type="range" id="p-slider" min="0.01" max="0.5" step="0.01" value="0.05" oninput="updateFinitePopulationPlot(this.value)" aria-label="Adjust allele frequency p"/>
+                <span id="p-value">0.05</span>
+            </div>
+            <div id="plotFinitePopulation" style="width:100%;max-width:700px;margin:auto;"></div>
+        </section>
+    </main>
+
+    <script src="simulation1.js"></script>
+    <script src="calculator_xlinked.js"></script>
+    <script src="plotly_theme.js"></script>
+
+</body>
+</html>

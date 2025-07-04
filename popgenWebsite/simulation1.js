@@ -288,7 +288,7 @@ function updateFinitePopulationPlot(p) {
         name: 'HW Heterozygote 2pq',
         line: {color: 'blue', dash: 'dash'}
     };
-
+    
     const layout = {
         title: `Deviation from Hardy-Weinberg in Finite Populations (p = ${p})`,
         xaxis: {title: 'Population Size (N)'},
