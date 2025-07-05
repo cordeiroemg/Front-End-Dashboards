@@ -1,0 +1,68 @@
+genpop-site/
+├── index.html                      ← Página inicial
+├── /sections/
+│   ├── popgen/                     ← Genética de Populações
+│   │   ├── index.html
+│   │   ├── CrowKimura
+│   │   │	 ├──Popgen1_PopGrow.html
+│   │   │	 ├──Popgen2_RandPop.html
+│   │   │	 ├──Popgen3.html
+│   │   │	 ├──Popgen4.html
+│   │   │	 ├──Popgen5.html
+│   │   │	 ├──Popgen6.html
+│   │   │	 ├──Popgen7.html
+│   │   │	 ├──Popgen8.html
+│   │   │	 ├──Popgen9.html	
+│   │   ├── calculator_xlinked.js
+│   │   ├── simulation/
+│   │   │   ├── simulation_core.js
+│   │   │   ├── hardyweinberg.js
+│   │   │   ├── wahlund.js
+│   │   │   ├── drift.js
+│   │   │   └── migration.js
+│   │   └── components/
+│   │       ├── calculator.html
+│   │       ├── tables.html
+│   │       └── plots.html
+│   ├── popecol/
+│   │   ├── index.html
+│   │   └── (simulações ecológicas de população)
+│   ├── irm/
+│   │   ├── index.html
+│   │   └── (Insect Resistance Management)
+│   ├── insectdynamic/
+│   │   ├── index.html
+│   │   └── (modelos populacionais de insetos)
+│   └── agriculture/
+│       ├── index.html
+│       └── (modelos agrícolas e integração)
+│
+├── /assets/
+│   ├── /css/
+│   │   ├── main.css                ← Base global (reset, fontes, paleta)
+│   │   ├── layout.css              ← Layout (grid/flex, responsividade)
+│   │   ├── theme.css               ← Cores e botões do site
+│   │   └── components/
+│   │       ├── calculator.css
+│   │       └── table.css
+│   ├── /js/
+│   │   ├── controller.js           ← Navegação e controle geral do site
+│   │   └── utils/
+│   │       └── plotly_theme.js
+│   └── /img/
+│       ├── logo.svg
+│       └── icons/
+│
+├── /components/
+│   └── shared/                     ← Componentes reutilizáveis globais
+│       ├── nav.html
+│       ├── footer.html
+│       └── legend.html
+│
+├── /data/
+│   └── popgen/
+│       ├── sample_data.json
+│       └── allele_freqs.csv
+│
+├── README.md
+└── LICENSE
