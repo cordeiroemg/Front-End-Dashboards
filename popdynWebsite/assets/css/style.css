@@ -11,6 +11,32 @@ main {
     padding: 1rem;
 }
 
+p {
+    text-align: justify;
+    line-height: 1.6;          /* altura da linha para legibilidade */
+    margin-bottom: 2.5rem;     /* espaçamento entre parágrafos */
+}
+
+h1, h2 {
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+ul, ol {
+    margin-bottom: 1.5rem;
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+.content p,
+.content ul,
+.content ol,
+.content h2 {
+    margin-bottom: 1.5rem;
+}
+
 /* Flexbox para a calculadora */
 .calculator {
     max-width: 600px;
@@ -202,3 +228,76 @@ tr:hover {
         padding: 0.75rem;
     }
 }
+
+
+    .pagination .page-link {
+    background-color: #f8f9fa;       /* mesmo fundo da navbar */
+    color: #212529;                  /* cor do texto da navbar padrão */
+    border: 1px solid #dee2e6;       /* borda suave igual à navbar */
+    border-radius: 0.375rem;
+    margin: 0 2px;
+    }
+
+    .pagination .page-link:hover {
+    background-color: #e2e6ea;       /* efeito hover suave */
+    color: #212529;
+    }
+
+    .pagination .page-item.active .page-link {
+    background-color: #424344;       /* cor primária do Bootstrap */
+    border-color: #1d2024;
+    color: white;
+    }
+
+    .sticky-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 1020; /* acima do conteúdo */
+    background-color: #fff; /* fundo para cobrir o que está atrás */
+}
+
+/* Cor das abas inativas */
+.nav-tabs .nav-link {
+    color: #495057;               /* cor de texto padrão */
+    background-color: #f8f9fa;    /* cor de fundo clara */
+    border: 1px solid transparent;
+    border-bottom: none;
+}
+
+/* Cor da aba ativa */
+.nav-tabs .nav-link.active {
+    color: #fff;
+    background-color: #2c3e50;    /* azul escuro */
+    border-color: #dee2e6 #dee2e6 #fff; /* laterais e "sumir" borda inferior */
+}
+
+/* Borda inferior da linha das tabs */
+.nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: #e9ecef;
+    border-color: #dee2e6 #dee2e6 #f8f9fa;
+}
+
+.carosel {
+    margin-bottom: 4rem ;
+    position: relative;
+}
+
+.carosel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+*, ::after, ::before{
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+

@@ -13,16 +13,55 @@
     </head>
     <script src="../../../popdynWebsite/js/controller.js"></script>
     <body>
-        <nav>
-            <ul style="display:flex; gap:10px; list-style:none; padding:0;">
-                <li><a href="#gene-genotype">Frequencies</a></li>
-                <li><a href="#hardy-weinberg">Hardy-Weinberg</a></li>
-                <li><a href="#x-linked">X-linked</a></li>
-                <li><a href="#Different-InitialF">Initial Frequencies</a></li>
-                <li><a href="#two-loci">Two Loci</a></li>
-                <li><a href="#wahlund">Wahlund's Principle</a></li>
+        <!-- Boostrapnav bar -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">PopGen</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                </li>
             </ul>
+            </div>
+        </div>
         </nav>
+
+        <!-- Personalized nav bar -->
+
+        <!-- Bootstrap tabs -->
+        <ul class="nav nav-tabs sticky-tabs shadow-sm">
+        <li class="nav-item">
+            <a class="nav-link active" href="#gene-genotype">Frequencies</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#hardy-weinberg">Hardy-Weinberg</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#x-linked">X-linked</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#two-loci">Two Loci</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#wahlund">Wahlund's Principle</a>
+        </li>
+        <li class="nav-item">
+            < class="nav-link" href="#finite-pop">Finite Pop</a>
+        </li>
+        </ul>
 
         <main>
             <section id="gene-genotype">
@@ -88,7 +127,7 @@
                 \large p_1^2 + 2p_1 p_2 + p_2^2 = (p_1 + p_2)^2
                 \]
 
-                <Take>The random mating principle can be stated this way: the array of genotype frequencies in the zygotes is given by the square of the array of gene frequencies in the gametes. 
+                <P>The random mating principle can be stated this way: the array of genotype frequencies in the zygotes is given by the square of the array of gene frequencies in the gametes. 
                     Take the example of a rare condition such as the recessive disease, phenylketonuria, which results in mental deficiency is approximately 1 in 10,000. What is the proportion of the population are heterozygous carriers of this condition? Let \(A\) stand for the normal allele and \(a\) for the recessive allele and designate the frequencies as \(P_A\) and \(P_a\). The Hardy-Weinberg principle shows that \(p_a^2\) is 0.001, so \(p_a\) is the square root of this or 0.1. Since \(p_A\) and \(p_a\) must add up to 1, \(p_A\) is 0.99. Therefore, the frequency of heterozygotes in the population \((2p_A p_a)\) is \(2\cdot(0.99)\cdot(0.01) = 0.0198\). 
                     This example illustrates the important fact that, when the recessive gene is rare, the number of heterozygous carriers of the gene is enormously larger than the number of individuals who carry the gene in the homozygous state. In this example, the carriers outnumber the affected in the ratio of 198 to 1. The majority of the sick children would not come from the sick parents but from heterozygous. 
                     The Hardy-Weinberg principle is exactly true only in an infinitely large population in which mating is completely at random, but it is approximately correct for the great majority of genes in most cross-fertilizing species. 
@@ -442,12 +481,29 @@
                     <span id="p-value">0.05</span>
                 </div>
                 <div id="plotFinitePopulation" style="width:100%;max-width:700px;margin:auto;"></div>
-            </section>
+            </section> 
+            <!-- pagination -->
+            <nav aria-label="...">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item"><a href="#" class="page-link">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active">
+                    <a class="page-link" href="#" aria-current="page">2</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+                </nav>
+                <!-- bootstrap footer -->
+                <div class="container"> <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"> <p class="col-md-4 mb-0 text-body-secondary">© 2025 Company, Inc</p> <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none" aria-label="Bootstrap"> <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use xlink:href="#bootstrap"></use></svg> </a> <ul class="nav col-md-4 justify-content-end"> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li> </ul> </footer> </div>
         </main>
 
             <script src="../simulation/simulation1.js"></script>
             <script src="./calculator_xlinked.js"></script>
             <script src="../../../popdynWebsite/js/utils/plotly_theme.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+
 
     </body>
 </html>
