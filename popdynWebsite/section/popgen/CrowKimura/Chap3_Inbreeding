@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomly Mating Populations</title>
+    <!-- Include MathJax -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heterozygosity Changes Over Generations</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .plot-container {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Randomly Mating Populations</h1>
+
+    <p>We are now ready to consider populations with Mendelian inheritance and begin by inquiring into the frequencies of the different genotypes that comprise the population. In the last chapter, we were interested in the total number of individuals in the population and in different subpopulations (strains). In genetic studies, there is usually greater interest in the relative numbers of different genotypes, so it is convenient to express the numbers of different types as proportions of the total. As long as we use deterministic models, the total number in the population is not important, and we can deal as well with proportions. With stochastic models, the number in the population becomes important in determining the extent of random fluctuations and therefore must be taken into consideration.</p>
+
+    <h2>2.1 Gene Frequency and Genotype Frequency</h2>
+
+    <p>The number of genotypes in a population greatly exceeds the number of genes and soon becomes enormous. A diploid population with only two alleles at each of 100 loci would have \(3^{100}\) possible genotypes. Therefore, we effect a great simplification by writing formulae in terms of gene frequencies rather than genotype frequencies. This usually entails some loss of information, for knowledge of the gene frequencies is not sufficient to specify the genotype frequencies; but it is usually possible to do this to satisfactory approximation by introducing other information, such as the mating system and linkage relations.</p>
+
+    <p>Furthermore, in a sexually reproducing population, the genes are reassorted by the Mendelian shuffle that takes place every generation. The effects of such reassortment are largely transitory, being undone as fast as they are done. At the outset, we need formulas to specify the relation between gene frequencies and genotype frequencies. This will also serve to introduce the kind of notation that will be used throughout the book. We start with a single locus with only two alleles.</p>
+
+    <p>Consider a population of \(N\) diploid individuals, of which:</p>
+
+    \[
+    \begin{align}
+    &N_{11} \text{ are of genotype } A_1A_1 \\
+    &2N_{12} \text{ are of genotype } A_1A_2 \\
+    &N_{22} \text{ are of genotype } A_2A_2 \\
+    \end{align}
+    \]
+
+    <p>Where \(N_{11} + 2N_{12} + N_{22} = N\). It is sometimes convenient to distinguish, among \(A_1A_2\) heterozygotes, those that receive \(A_1\) from the mother and those that received it from the father. We can do this by designating the two numbers as \(N_{12}\) and \(N_{21}\). However, in most populations \(N_{12} = N_{21}\) and it is not necessary to make any distinction between them.</p>
+
+    <p>We designate the frequency or <strong>proportion</strong> of the three genotypes by \(P_{11}, 2P_{12}, P_{22}\) as follows:</p>
+
+    \[
+    \begin{align}
+    &A_1A_1 \text{ : } P_{11}= \frac{N_{11}}{N} \\
+    &A_1A_2 \text{ : } 2P_{12}= \frac{2N_{12}}{N} \\
+    &A_2A_2 \text{ : } P_{22}= \frac{N_{22}}{N} \\
+    \end{align}
+    \]
+
+    <p>From these genotype frequencies, we can write the frequencies of alleles \(A_1\) and \(A_2\), which are designated \(p_1\) and \(p_2\), as follows:</p>
+
+    \[
+    \begin{align}
+    p_1 = \frac{2N_{11}+ N_{12}}{2N} = P_{11} + \frac{1}{2} \cdot P_{12} \quad \text{and} \quad
+    p_2 = \frac{2N_{22}+N_{12}}{N} = \frac{1}{2} \cdot P_{12} + P_{22}
+    \end{align}
+    \]
+
+    <p>Dominance does not always allow us to establish a direct relation between genotypes and phenotypes. Under such circumstances, the allele frequency can be measured only if there is some knowledge about the way in which the genes are combined into genotypes in the population. The simplest assumption, and fortunately one that is often very closely approximated in many actual populations, is random mating.</p>
+
+    <h2>2.2 The Hardy-Weinberg Principle</h2>
+
+    <p>With random mating, the relation between gene frequency and genotype frequency is greatly simplified. By random mating, we mean that the mating occurs without regard to the genotypes in question. In other words, the probability of choosing a particular genotype for a mate is equal to the relative frequency of that genotype in the population.</p>
+
+    <p>Notice that it is possible for a population to be at the same time in random mating proportion for some genes and not for others. In many respects, random mating among the different genotypes in the population is equivalent to random combination of the gametes produced by these individuals. Considering a single locus with two alleles, \(A_1\) and \(A_2\), which frequencies \(p_1\) and \(p_2\) and that \(p_1 + p_2 =1\).</p>
+
+    <p>Hence, the first generation after random mating begins, the proportions of the three genotypes \(A_1 A_1, A_1 A_2,\) and \(A_2 A_2\) will be \(p^2, 2p_1 p_2\) and \(p^2\). The principle says that given the gene frequencies and assuming random mating, the zygotic frequencies can be predicted. Also, the Hardy-Weinberg principle is a useful null hypothesis for frequencies out of the expected equilibrium.</p>
+
+    <p>The equilibrium is attained immediately after random mating begins, rather than gradually, is of great importance. This means that it is not necessary to inquire into the past history of a population; if mating was at random during the preceding generation, the principle holds. The only exception is the rather unusual case where the gene frequencies are different in the two sexes.</p>
+
+    \[
+    \large p_1^2 + 2p_1 p_2 + p_2^2 = (p_1 + p_2)^2
+    \]
+
+    <p>The random mating principle can be stated this way: the array of genotype frequencies in the zygotes is given by the square of the array of gene frequencies in the gametes.</p>
+
+    <p>Take the example of a rare condition such as the recessive disease, phenylketonuria, which results in mental deficiency is approximately 1 in 10,000. What is the proportion of the population are heterozygous carriers of this condition? Let \(A\) stand for the normal allele and \(a\) for the recessive allele and designate the frequencies as \(P_A\) and \(P_a\). The Hardy-Weinberg principle shows that \(p_a^2\) is 0.001, so \(p_a\) is the square root of this or 0.1. Since \(p_A\) and \(p_a\) must add up to 1, \(p_A\) is 0.99. Therefore, the frequency of heterozygotes in the population \((2p_A p_a)\) is \(2\cdot(0.99)\cdot(0.01) = 0.0198\).</p>
+
+    <p>This example illustrates the important fact that, when the recessive gene is rare, the number of heterozygous carriers of the gene is enormously larger than the number of individuals who carry the gene in the homozygous state. In this example, the carriers outnumber the affected in the ratio of 198 to 1. The majority of the sick children would not come from the sick parents but from heterozygous.</p>
+
+    <p>The Hardy-Weinberg principle is exactly true only in an infinitely large population in which mating is completely at random, but it is approximately correct for the great majority of genes in most cross-fertilizing species.</p>
+
+    <p>The principle departures are of two types:</p>
+    <ul>
+        <li>inbreeding</li>
+        <li>assortative mating</li>
+    </ul>
+
+    <p>An interesting exception to the stated principle is that the equilibrium frequencies are approached gradually rather than suddenly when the gene is sex-linked and the frequencies are different in the two sexes. Another is a population in which each individual can reproduce both asexually and sexually, as can many plants.</p>
+
+    <p>Let \(C\) be the proportion of progeny that are produced clonally or asexually and \(S\) the proportion sexually by random mating. Let \(P_1\) be the proportion of genotype \(AA\) at generation \(t\) and \(p\) be the frequency of gene \(A\). We assume that \(C\) is independent of the genotype of the individual. Notice that the genotype frequency \(P_t\) changes from generation to generation whereas the gene frequency \(p\) remains constant. In the following generation, the \(AA\) plants can be produced in two ways: (1) \(AA\) plants with frequency \(P_t\), reproducing clonally with probability \(C\) and yielding a fraction \(CP_t\) of the total progeny, and (2) plants that are homozygous or heterozygous for allele \(A\) mating at random with probability \(S\) and producing \(Sp^2 AA\) progeny. Thus, in the next generation, the frequency of \(AA\) genotypes will be:</p>
+
+    \[
+    \large P_{t+1} = CP_t + Sp^2
+    \]
+
+    <p>Rearranging and recalling that \(C + S = 1\),</p>
+
+    \[
+    \begin{align}
+    &P_{t+1} - p^2 = CP_t + Sp^2 - p^2 \\
+    &P_{t+1} - p^2 = CP_t - p^2 (1 - S) \\
+    &P_{t+1} - p^2 = C(P_t - p^2)
+    \end{align}
+    \]
+
+    <p>There is the same relation between \(P_t\) and \(P_{t-1}\) as \(P_{t+1}\) and \(P_t\),</p>
+
+    \[
+    \begin{align}
+    &P_{t} - p^2 = C(P_{t-1} - p^2) \\
+    &P_{t} - p^2 = C^2(P_{t-2} - p^2) \\
+    &P_{t} - p^2 = C^t(P_0 - p^2)
+    \end{align}
+    \]
+
+    <p>Where \(P_0\) is the initial frequency of the genotypes \(AA\). Unless \(C=1\) (exclusively clonal reproduction), the limit of \(C^t\) as \(t\) increases is 0, and \(P_t\) becomes closer to \(p^2\). Each genotype frequency approaches the Hardy-Weinberg value, but only gradually at a rate determined by \(C\). The smaller the fraction of asexual progeny, the more rapidly the random-mating proportions are approached.</p>
+</body>
+
+
+<body>
+    <h1>Heterozygosity Changes Over Generations</h1>
+
+    <div id="plotRelativeHeterozygosity" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
+    <div id="plotDecreaseHeterozygosity" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
+    <div id="plotRateOfChange" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
+    <div id="plotDeltaRate" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
+
+    <script>
+        // Number of generations
+        const generations = 10;
+
+        // Initialize arrays
+        const H_t = new Array(generations + 1).fill(0);
+        H_t[0] = 1.0;  // Initial heterozygosity H_0
+
+        // Fibonacci-based decrease in heterozygosity (brother-sister mating)
+        const fib = [1, 2];
+        for (let i = 2; i <= generations; i++) {
+            fib.push(fib[i - 1] + fib[i - 2]);
+        }
+
+        // Calculate H_t using Fibonacci numbers
+        for (let t = 1; t <= generations; t++) {
+            H_t[t] = fib[t] / Math.pow(2, t);
+        }
+
+        // Calculate relative heterozygosity P, decrease f, and rates of change
+        const P = H_t.map(ht => ht / H_t[0]);
+        const f = P.map(p => 1 - p);
+        const rate_change = H_t.slice(1).map((ht, i) => ht / H_t[i]);
+        const delta_rate = rate_change.map(rc => 1 - rc);
+
+        // Plotting using Plotly.js
+        function plotData(x, y, title, yaxisTitle, containerId) {
+            const trace = {
+                x: x,
+                y: y,
+                mode: 'lines+markers',
+                marker: {symbol: 'circle'},
+                name: title
+            };
+
+            const layout = {
+                title: title,
+                xaxis: {title: 'Generation'},
+                yaxis: {title: yaxisTitle},
+                margin: {t: 50, b: 50}
+            };
+
+            Plotly.newPlot(containerId, [trace], layout);
+        }
+
+        const generationsArray = Array.from({length: generations + 1}, (v, k) => k);
+
+        plotData(generationsArray, P, 'Relative Heterozygosity (P)', 'Relative Heterozygosity (P)', 'plotRelativeHeterozygosity');
+        plotData(generationsArray, f, 'Decrease in Heterozygosity (f)', 'Decrease in Heterozygosity (f)', 'plotDecreaseHeterozygosity');
+        plotData(generationsArray, [null, ...rate_change], 'Rate of Change (H_t / H_{t-1})', 'Rate of Change (H_t / H_{t-1})', 'plotRateOfChange');
+        plotData(generationsArray, [null, ...delta_rate], 'Delta Rate (1 - H_t / H_{t-1})', 'Delta Rate (1 - H_t / H_{t-1})', 'plotDeltaRate');
+    </script>
+</body>
+
+<body>
+    <h2>3.2 Wright's Inbreeding Coefficient, \(f\)</h2>
+
+    <p>Wright's (1922) original derivation of the inbreeding coefficient, \(f\), was through correlation analysis. An alternative approach using only probability rules has been developed by Haldane and Moshinsky (1939), Cotterman (1940), and Malécot (1948). They distinguish between two ways in which an individual can be homozygous for a given locus. The two homologous genes may be:</p>
+    <ol>
+        <li>Alike in state, that is to say, indistinguishable by any effect they produce (or perhaps, when molecular genetics has become sufficiently precise, alike in their nucleotide sequence).</li>
+        <li>Identical by descent, in that both are derived from the same gene in a common ancestor.</li>
+    </ol>
+
+    <p>We follow the notation of Cotterman in designating an individual whose two homologous genes are identical by descent as <em>autozygous</em>. If the two alleles are of independent origin (as far as known from our pedigree information), the individual is <em>allozygous</em>. The effect of inbreeding is to increase that part of the homozygous without being autozygous, if the two homologous genes are alike in state but not identical by descent. Conversely, an autozygous individual can be heterozygous for this locus if one of the two alleles has mutated since their common origin, although this is negligibly rare if only a small number of generations is being considered.</p>
+
+    <p>The inbreeding coefficient, \(f\), is defined as the probability that the individual is autozygous for the locus in question. Alternatively stated, it is the probability that a pair of alleles in the two gametes that unite to form the individual are identical by descent.</p>
+
+    <p>An individual with inbreeding coefficient \(f\) has a probability \(f\) that the two genes at a particular locus are identical and a probability \(1-f\) that they are not identical, and therefore independent. If they are independent, the frequencies of the genotypes will be given by the binomial formula. If they are identical, the frequencies of the gene pairs will be simply the frequencies of the alleles in the population. Thus, for two alleles, \(A_1\) and \(A_2\), with frequencies \(p_1\) and \(p_2 \: (p_1 + p_2 = 1)\), the genotype frequencies are:</p>
+
+    \[
+    \begin{array}{cc} \hline
+    & \text{Allozygous} & \text{Autozygous} \\ \hline
+    \text{Homogygous, } A_1A_1: & p_1^2(1-f) & p_1 f \\
+    \text{Homogygous, } A_1A_2: & 2p_1p_2(1-f) &   \\
+    \text{Homogygous, } A_2A_2: & p_2^2(1-f) & p_2f   \\
+    \text{Total} & 1-f & f   \\ \hline
+    \end{array}
+    \]
+
+    <p>Notice that when \(f = 0\) these formulas reduce to the usual Hardy-Weinberg proportion. When \(f=1\) the population is completely homozygous. Thus \(f\) ranges from 0 in a randomly mating population to 1 with complete homozygosity. How to compute \(f\) from a pedigree will be shown later.</p>
+
+    <p>Multiple alleles introduce no difficulty. The genotype frequencies are a natural extension of the results for two alleles. The frequencies are:</p>
+
+    \[
+    A_iA_i: p_i^2 (1-f) + p_i f
+    \]
+
+    <p>For homozygous genotypes, and:</p>
+
+    \[
+    A_iA_j: 2p_ip_j (1-f)
+    \]
+
+    <p>For heterozygous genotypes.</p>
+
+    <p>The expected proportion of heterozygous genotypes with inbreeding coefficient \(f\), \(H_f\), is given by:</p>
+
+    \[
+    H_f = \sum_{i \ne j} p_i p_j (1-f) = H_0 (1-f)
+    \]
+
+    <p>Given that:</p>
+
+    \[
+    f = \frac{H_0 - H_f}{H_0}
+    \]
+
+    <p>Where \(H_0\) is a constant equal to the proportion of heterozygotes expected with random mating \((f=0)\). The summation is over all combinations of values of \(i\) and \(j\) except when these are equal.</p>
+
+    <p>This proves the assertion made earlier that the inbreeding coefficient measures the fraction by which the heterozygosity has been reduced. We have written the formula as if, when \(f=0\), the population is in Hardy-Weinberg proportions. However, for any measured \(f\) (as determined, for example, from a pedigree), the heterozygosity, \(H\), is \(H_0(1-f)\), where \(H_0\) is whatever the heterozygosity would have been in the absence of the observed inbreeding. To be concrete, the inbreeding coefficient for the child of a cousin marriage is \(\frac{1}{16}\) (as we shall show later); therefore the child of such a marriage is \(\frac{15}{16}\) as heterozygous as if his parents had the same relationship as a random pair in this population.</p>
+
+    <p>There is a simple relationship between the correlation coefficient, \(r\), and the inbreeding coefficient, \(f\). If we assign numerical values to each allele, then the inbreeding coefficient, \(f\), is the correlation between these values in a pair of uniting gametes. In fact, Wright's original derivation of the inbreeding coefficient was through correlation methods.</p>
+
+    <p>The relationship between \(r\) and \(f\) can be shown in the following way. For convenience, we assign the value 1 to \(A_1\) and 0 to allele \(A_2\), though we would get the same result with any values. The calculations are shown below.</p>
+
+    <p>Since the sum of the genotype frequencies is equal to 1, the weighted sum and the mean of any are the same. For example, the sum (and mean) of egg value, \(X\), is \([p_2^2(1-f)+p_2f](0)+[p_1p_2(1-f)](1)+ [p_1p_2(1-f)](0)+[p_1^2(1-f)+p_1f](1)\), which after some algebraic simplification reduces to \(p_1\). The other calculations are given in the table, using the standard formula for calculation of \(r\).</p>
+
+    \[
+    \begin{array}{c c c c c c c c} \hline
+    \text{Egg} & \text{Sperm} & \text{Frequency} & X & Y & X^2 & Y^2 & XY\\  \hline
+    A_1 & A_2 & p_2^2(1-f)+p_2f & 0 & 0 & 0 & 0 & 0 \\
+    A_1 & A_2 & p_1p_2(1-f)& 1 & 0 & 1 & 0 & 0\\
+    A_2 & A_1 & p_2p_1(1-f) & 0 & 1 & 0 & 1 & 0\\
+    A_1 & A_1 & p_1^2(1-f)+p_1f & 1 & 1 & 1 & 1 & 1\\  \hline
+    \text{Sum or mean} & 1 & p_1 & p_1 & p_1 & p_1 & p_1 & p_1^2(1-f)+p_1f\\  \hline
+    \end{array}
+    \]
+
+    \[
+    \bar X = p_1 p_2(1 - f) + p_1^2 (1 - f) + p_1 f = p_1
+    \]
+
+    <p>Likewise, \(\hat Y = \text{mean}(X^2) = \text{mean}(Y^2) = p_1\)</p>
+
+    \[
+    \begin{align}
+    r_{xy} &= \frac{\bar{XY}-\bar X \bar Y}{\sqrt{(\text{mean}(X^2)- \bar X^2)(\text{mean}(Y^2)- \bar Y^2)}} \\
+    r_{xy} &= \frac{p_1^2(1-f)+p_1f-p_1^2}{p_1 - p_1^2} = f
+    \end{align}
+    \]
+
+    <p>Demonstration without restriction as to number of alleles and letting the contribution of the alleles differ. Furthermore, if the genic values are summed over \(k\) loci the covariance will be:</p>
+
+    \[
+    f \sum_k \sum_i p_{ik} a_{ik}^2
+    \]
+
+    <p>Where \(p_{ik}\) and \(a_{ik}\) are the frequency and value of the \(i\)th allele at the \(k\)th locus. This is \(f\) times the variance. Hence \(f\) is the expected value of the correlation between the genetic values of two uniting gametes, regardless of the number of loci and number of alleles under consideration.</p>
+
+    <p>The equivalence of \(r\) and \(f\) suggests an interpretation of the correlation coefficient. If a measurement can be thought of as being the sum of a number of elements, then the correlation coefficient is the measure of the fraction of these elements that are common to the two measurements, the other elements being chosen at random. This interpretation is useful in many branches of science. In quantitative genetics, the elements can obviously be interpreted as cumulative acting genes.</p>
+
+    \[
+    V_x = \sum_i p_i a_i^2
+    \]
+
+    <p>Since the variance of the egg value is the sum of the squares of the allele values, each weighted by its frequency. \(V_y\) is the same.</p>
+
+    \[
+    COV_{XY} = (1-f) \left[  \sum_i p_i^2 a_i^2 + \sum_{i \ne j }p_i p_j a_i a_j\right] + f \sum_i p_i a_i^2
+    \]
+
+    <p>But the quantity in brackets is equal to \(\left[\sum_i p_i a_i \right]^2\) which is equal to 0, because the sum of the deviations from the mean is 0. Therefore,</p>
+
+    \[
+    COV_{XY} = f \sum_i p_i a_i^2
+    \]
+
+    <p>The correlation coefficient, being the ratio of the covariance to the geometric mean of the two variances (which in this case are the same), is \(f\), as was to be shown:</p>
+
+    \[
+    r_{XY} = \frac{COV_{XY}}{V_x} = f
+    \]
+</body>
+</html>
