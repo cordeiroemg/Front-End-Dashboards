@@ -309,4 +309,170 @@
     r_{XY} = \frac{COV_{XY}}{V_x} = f
     \]
 </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbreeding and Genotype Frequencies</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .plot-container {
+            margin-bottom: 30px;
+        }
+    </style>
+<body>
+    <h1>Genotype Frequencies and Heterozygosity</h1>
+
+    <div id="plotGenotypeFrequencies" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
+    <div id="plotHeterozygosity" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
+    <div id="plotCorrelation" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
+
+    <script>
+        // Parameters
+        const p1 = 0.6;  // Frequency of allele A1
+        const p2 = 1 - p1;  // Frequency of allele A2
+        const f_values = Array.from({length: 100}, (v, k) => k / 100);  // Range of inbreeding coefficients
+
+        // Genotype frequencies under inbreeding
+        const AA = f_values.map(f => p1**2 * (1 - f) + p1 * f);
+        const Aa = f_values.map(f => 2 * p1 * p2 * (1 - f));
+        const aa = f_values.map(f => p2**2 * (1 - f) + p2 * f);
+
+        // Expected heterozygosity H_f = H0 * (1 - f)
+        const H0 = 2 * p1 * p2;
+        const H_f = f_values.map(f => H0 * (1 - f));
+
+        // Plot Genotype Frequencies
+        function plotGenotypeFrequencies() {
+            const traceAA = {
+                x: f_values,
+                y: AA,
+                mode: 'lines',
+                name: 'A1A1',
+                line: {color: 'blue'}
+            };
+
+            const traceAa = {
+                x: f_values,
+                y: Aa,
+                mode: 'lines',
+                name: 'A1A2',
+                line: {color: 'green'}
+            };
+
+            const traceaa = {
+                x: f_values,
+                y: aa,
+                mode: 'lines',
+                name: 'A2A2',
+                line: {color: 'red'}
+            };
+
+            const layout = {
+                title: 'Genotype Frequencies as a Function of Inbreeding Coefficient (f)',
+                xaxis: {title: 'Inbreeding Coefficient (f)'},
+                yaxis: {title: 'Genotype Frequency'},
+                margin: {t: 50, b: 50}
+            };
+
+            Plotly.newPlot('plotGenotypeFrequencies', [traceAA, traceAa, traceaa], layout);
+        }
+
+        // Plot Heterozygosity
+        function plotHeterozygosity() {
+            const traceH_f = {
+                x: f_values,
+                y: H_f,
+                mode: 'lines',
+                name: 'Heterozygosity (Hf)',
+                line: {color: 'purple'}
+            };
+
+            const traceH0 = {
+                x: [f_values[0], f_values[f_values.length - 1]],
+                y: [H0, H0],
+                mode: 'lines',
+                name: 'H0 (Random Mating)',
+                line: {color: 'gray', dash: 'dash'}
+            };
+
+            const layout = {
+                title: 'Expected Heterozygosity as a Function of Inbreeding Coefficient (f)',
+                xaxis: {title: 'Inbreeding Coefficient (f)'},
+                yaxis: {title: 'Heterozygosity'},
+                margin: {t: 50, b: 50}
+            };
+
+            Plotly.newPlot('plotHeterozygosity', [traceH_f, traceH0], layout);
+        }
+
+        // Parameters for correlation plot
+        const p1_corr = 0.7;
+        const p2_corr = 1 - p1_corr;
+        const r_values = f_values.map(f => {
+            const freq_A1A1 = p1_corr**2 * (1 - f) + p1_corr * f;
+            const freq_A1A2 = p1_corr * p2_corr * (1 - f);
+            const freq_A2A1 = p2_corr * p1_corr * (1 - f);
+            const freq_A2A2 = p2_corr**2 * (1 - f) + p2_corr * f;
+
+            const data = [
+                [0, 0, freq_A2A2],
+                [1, 0, freq_A1A2],
+                [0, 1, freq_A2A1],
+                [1, 1, freq_A1A1]
+            ];
+
+            const X = data.map(d => d[0]);
+            const Y = data.map(d => d[1]);
+            const freq = data.map(d => d[2]);
+
+            const EX = X.reduce((sum, xi, i) => sum + xi * freq[i], 0);
+            const EY = Y.reduce((sum, yi, i) => sum + yi * freq[i], 0);
+            const EXY = X.reduce((sum, xi, i) => sum + xi * Y[i] * freq[i], 0);
+            const EX2 = X.reduce((sum, xi, i) => sum + xi**2 * freq[i], 0);
+            const EY2 = Y.reduce((sum, yi, i) => sum + yi**2 * freq[i], 0);
+
+            const var_X = EX2 - EX**2;
+            const var_Y = EY2 - EY**2;
+            const cov_XY = EXY - EX * EY;
+
+            return var_X * var_Y > 0 ? cov_XY / Math.sqrt(var_X * var_Y) : 0;
+        });
+
+        // Plot Correlation
+        function plotCorrelation() {
+            const traceR = {
+                x: f_values,
+                y: r_values,
+                mode: 'lines',
+                name: 'Computed r (correlation)',
+                line: {color: 'blue'}
+            };
+
+            const traceIdentity = {
+                x: f_values,
+                y: f_values,
+                mode: 'lines',
+                name: 'Identity line (r = f)',
+                line: {color: 'black', dash: 'dash'}
+            };
+
+            const layout = {
+                title: 'Equivalence of Inbreeding Coefficient (f) and Correlation Coefficient (r)',
+                xaxis: {title: 'Inbreeding Coefficient (f)'},
+                yaxis: {title: 'Correlation Coefficient (r)'},
+                margin: {t: 50, b: 50}
+            };
+
+            Plotly.newPlot('plotCorrelation', [traceR, traceIdentity], layout);
+        }
+
+        // Initial plots
+        plotGenotypeFrequencies();
+        plotHeterozygosity();
+        plotCorrelation();
+    </script>
 </html>
