@@ -2,7 +2,7 @@ genpop-site/
 ├── index.html                      ← Página inicial
 ├── /sections/
 │   ├── popgen/                     ← Genética de Populações
-│   │   ├── index.html
+│   │   ├── indexpop.html
 │   │   ├── CrowKimura
 │   │   │	 ├──Popgen1_PopGrow.html
 │   │   │	 ├──Popgen2_RandPop.html
@@ -25,16 +25,16 @@ genpop-site/
 │   │       ├── tables.html
 │   │       └── plots.html
 │   ├── popecol/
-│   │   ├── index.html
+│   │   ├── indexeco.html
 │   │   └── (simulações ecológicas de população)
 │   ├── irm/
-│   │   ├── index.html
+│   │   ├── indexrm.html
 │   │   └── (Insect Resistance Management)
 │   ├── insectdynamic/
-│   │   ├── index.html
+│   │   ├── indexdyn.html
 │   │   └── (modelos populacionais de insetos)
 │   └── agriculture/
-│       ├── index.html
+│       ├── indexag.html
 │       └── (modelos agrícolas e integração)
 │
 ├── /assets/
