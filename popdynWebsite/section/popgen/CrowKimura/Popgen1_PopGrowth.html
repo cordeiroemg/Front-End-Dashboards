@@ -1271,31 +1271,37 @@
                 The intrinsic rate of increase \( r \) is closely related to the Malthusian parameter \( m \). \( m \) can also be seen as the realized growth rate. We shall use the latter for the actual rate of change in numbers of the population, or of a part of the population, and \( r \) for the value this would take in a situation where the growth rate is not regulated.
             </p>
 
-            <div id="population-comparison" style="width:100%;max-width:900px;margin:auto;"></div>
+            <div id="plot-pop-growth" style="width:100%;max-width:900px;margin:auto;"></div>
 
             <script>
-            // Parâmetros
-            const r = 0.015;        // taxa intrínseca de crescimento
-            const K = 12000;        // capacidade de suporte
-            const N0_PC = 1000;        // população inicial
-            const C0 = (K - N0_PC) / N0_PC;
+            // Parâmetros únicos
+            const rGrowth = 0.015;        // Taxa intrínseca de crescimento
+            const kCapacity = 12000;      // Capacidade de suporte
+            const n0Initial = 1000;       // População inicial
 
-            // Tempo (0 a 200 anos, 1000 pontos)
-            const t_PC = Array.from({ length: 1000 }, (_, i) => i * 200 / 999);
+            // Tempo: 1000 pontos entre 0 e 200
+            const timeRange = Array.from({ length: 1000 }, (_, i) => i * 200 / 999);
+
+            // Constante C0 para modelo logístico
+            const c0Logistic = (kCapacity - n0Initial) / n0Initial;
 
             // Modelo logístico
-            const N_t_logistic = t_PC.map(time => K / (1 + C0 * Math.exp(-r * time)));
+            const populationLogistic = timeRange.map(t => 
+                kCapacity / (1 + c0Logistic * Math.exp(-rGrowth * t))
+            );
 
             // Modelo exponencial (sem regulação)
-            const N_t_exponential = t_PC.map(time => N0_PC * Math.exp(r * time));
+            const populationExponential = timeRange.map(t => 
+                n0Initial * Math.exp(rGrowth * t)
+            );
 
-            // Curva de capacidade de suporte
-            const K_line = t_PC.map(() => K);
+            // Linha da capacidade de suporte
+            const lineCarryingCapacity = timeRange.map(() => kCapacity);
 
-            // Traços para o gráfico
+            // Gráficos
             const traceLogistic = {
-                x: t_PC,
-                y: N_t_logistic,
+                x: timeRange,
+                y: populationLogistic,
                 type: 'scatter',
                 mode: 'lines',
                 name: 'Logistic Growth (Regulated)',
@@ -1303,40 +1309,113 @@
             };
 
             const traceExponential = {
-                x: t_PC,
-                y: N_t_exponential,
+                x: timeRange,
+                y: populationExponential,
                 type: 'scatter',
                 mode: 'lines',
                 name: 'Exponential Growth (Unregulated)',
                 line: { color: 'blue', width: 2, dash: 'dash' }
             };
 
-            const traceK = {
-                x: t_PC,
-                y: K_line,
+            const traceCapacity = {
+                x: timeRange,
+                y: lineCarryingCapacity,
                 type: 'scatter',
                 mode: 'lines',
-                name: `Carrying Capacity (K = ${K})`,
+                name: `Carrying Capacity (K = ${kCapacity})`,
                 line: { color: 'gray', dash: 'dot' }
             };
 
-            // Layout
-            const layout_PC = {
+            // Layout do gráfico
+            const layoutGrowthComparison = {
                 title: 'Comparison of Logistic vs Exponential Population Growth',
                 xaxis: { title: 'Time (years)' },
                 yaxis: { title: 'Population Size' },
-                margin: { t_PC: 50 },
+                margin: { t: 50 },
                 legend: { orientation: 'h' }
             };
 
-            // Plot
-            Plotly.newPlot('population-comparison', [traceLogistic, traceExponential, traceK], layout);
+            // Renderização do gráfico
+            Plotly.newPlot('plot-pop-growth', [traceLogistic, traceExponential, traceCapacity], layoutGrowthComparison);
             </script>
 
             </section>
 
             <section id="UnregulatedGrowth">
             <h2>Unregulated Growth</h2>
+
+            <p>
+                Consider two strains, 1 and 2, with numbers \( n_1 \) and \( n_2 \) and intrinsic growth rates \( r_1 \) and \( r_2 \). These are the same as the Malthusian parameters when there is no restriction on continuous exponential growth. Let \( N \) be the total population number; \( N = n_1 + n_2 \). We shall designate by \( p_1 = \frac{n_1}{N} \) and \( p_2 = \frac{n_2}{N} \) the proportions of the two strains. If there is no regulation of the growth of either strain, the rates of increase are:
+            </p>
+
+            <p>
+                \[
+                \frac{dn_1}{dt}= r_1 n_1 \quad \text{and} \quad \frac{dn_2}{dt}= r_2 n_2
+                \]
+            </p>
+
+            <p>
+                The rate of increase of the total population is:
+            </p>
+
+            <p>
+                \[
+                \frac{dN}{dt}= r_1 n_1 + r_2 n_2 = \bar{r} N
+                \]
+            </p>
+
+            <p>
+                where \( \bar{r} \) is the mean of the \( r \)'s, weighted by the numbers in each population. To obtain the rate of change in the proportion of the two types, we write:
+            </p>
+
+            <p>
+                \[
+                \begin{aligned}
+                \frac{d \ln(p_1/p_2)}{dt} &= \frac{d \ln(n_1/n_2)}{dt} \\
+                &= \frac{d \ln(n_1)}{dt} - \frac{d \ln(n_2)}{dt} \\
+                &= \frac{1}{n_1} \frac{dn_1}{dt} - \frac{1}{n_2} \frac{dn_2}{dt} \\
+                &= r_1 - r_2
+                \end{aligned}
+                \]
+            </p>
+
+            <p>and also:</p>
+
+            <p>
+                \[
+                \begin{aligned}
+                \frac{d \ln(p_1/p_2)}{dt} &= \frac{d \ln(p_1)}{dt} - \frac{d \ln(1 - p_1)}{dt} \\
+                &= \frac{1}{p_1(1 - p_1)} \frac{dp_1}{dt}
+                \end{aligned}
+                \]
+            </p>
+
+            <p>Combining the two equations:</p>
+
+            <p>
+                \[
+                \frac{dp_1}{dt} = (r_1 - r_2) \cdot p_1(1 - p_1)
+                \]
+            </p>
+
+            <p>
+                Notice that if we let \( p_1 = \frac{N}{K} \) and \( r_1 - r_2 = r \), we obtain the logistic equation discussed earlier. Despite the fact that both strains are growing exponentially, the proportion of one type (the faster-growing one) is increasing according to the logistic equation. We can simplify a bit further by considering \( \bar{r} = p_1 r_1 + p_2 r_2 \).
+            </p>
+
+            <p>
+                \[
+                \frac{dp_1}{dt} = p_1 (r_1 - \bar{r})
+                \]
+            </p>
+
+            <p>
+                This form of the equation suggests the extension to more than two strains. When three or more strains are present, the same equation is correct for the rate of change of a particular strain, and \( \bar{r} \) is the weighted average of the rates of increase of all the strains.
+            </p>
+
+            <p>
+                In this model, the total population is increasing exponentially at any instant, although the rate of increase \( \bar{r} \) is changing continuously — unrealistic for any long period of time. We only discuss it here to make the point that the model can accurately describe the rate of change of the proportion of one type in a mixed population even when the numbers are changing according to quite a different rule.
+            </p>
+            
             </section> 
 
             <section id="LogisticRegulation">
