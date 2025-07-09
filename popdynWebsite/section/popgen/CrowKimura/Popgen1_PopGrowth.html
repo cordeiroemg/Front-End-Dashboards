@@ -42,31 +42,7 @@
             </div>
         </div>
         </nav>
-
-        <!-- Personalized nav bar -->
-
-        <!-- Bootstrap tabs -->
-        <ul class="nav nav-tabs sticky-tabs shadow-sm">
-        <li class="nav-item">
-            <a class="nav-link active" href="#gene-genotype">Frequencies</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#hardy-weinberg">Hardy-Weinberg</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#x-linked">X-linked</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#two-loci">Two Loci</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#wahlund">Wahlund's Principle</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#finite-pop">Finite Population</a>
-        </li>
-        </ul>
-
+        
         <main class="d-flex">
         <!-- Sidebar que rola com o conteúdo -->
         <nav class="flex-shrink-0 p-3 text-bg-dark" style="width: 250px;">
@@ -88,7 +64,7 @@
             <!-- Conteúdo Principal -->
             <section id="gene-genotype">
                 <h1>Models of Population Growth</h1>
- 
+
             </section>
             <section id="Discretepop">
 
@@ -136,11 +112,9 @@
                 \frac{\Delta N_t}{N_t} = s
                 \]</p>
 
-                <p>The proportion by which the population changes in one generation is given by \( s \).</p>
-
-                <p>If the population is composed of several kinds of individuals (many genotypes) with different fitnesses, then the whole population increases or decreases at the same rate as if all the individuals had the average fitness.</p>
-
-                <p>Consider that \( n_1, n_2, n_3, \ldots, n_k \) is the number of each of the \( k \) types in the population in generation \( t-1 \). Then, let \( w_1, w_2, w_3, \ldots, w_k \) be their respective fitnesses, and assume \( n_1 + n_2 + \ldots + n_k = N \).</p>
+                <If>The proportion by which the population changes in one generation is given by \( s \). 
+                    If the population is composed of several kinds of individuals (many genotypes) with different fitnesses, then the whole population increases or decreases at the same rate as if all the individuals had the average fitness. 
+                    Consider that \( n_1, n_2, n_3, \ldots, n_k \) is the number of each of the \( k \) types in the population in generation \( t-1 \). Then, let \( w_1, w_2, w_3, \ldots, w_k \) be their respective fitnesses, and assume \( n_1 + n_2 + \ldots + n_k = N \).</p>
 
                 <p>\[
                 \begin{align}
@@ -162,9 +136,8 @@
                 N_t = \bar{w} \cdot N_{t-1}
                 \]</p>
 
-                <p>The implications are simple: as the fitnesses of the different types are inherited, those with greater fitness will be represented in greater proportion in the next generation. Hence, \( \bar{w} \) is expected to change as the most fit individuals increase in proportion.</p>
-
-                <p><strong>To summarize:</strong> with a discrete generation model and variable fitnesses, the weighted arithmetic mean is appropriate for comparing contemporaneous differences, while the geometric mean is appropriate for averaging across generations.</p>
+                <p>The implications are simple: as the fitnesses of the different types are inherited, those with greater fitness will be represented in greater proportion in the next generation. Hence, \( \bar{w} \) is expected to change as the most fit individuals increase in proportion. 
+                <strong>To summarize:</strong> with a discrete generation model and variable fitnesses, the weighted arithmetic mean is appropriate for comparing contemporaneous differences, while the geometric mean is appropriate for averaging across generations.</p>
                 
                 <h3>Discrete, Nonoverlapping Generations</h3>
 
@@ -291,17 +264,11 @@
 
                 <p>
                 This can be measured in any convenient units such as hours, days, weeks, or years.
-                In any case, \( m \) is measured in the reciprocal of those same units (per hour, per day, etc.).
-                </p>
-
-                <p>
+                In any case, \( m \) is measured in the reciprocal of those same units (per hour, per day, etc.). 
                 In its strictest form, this model applies only to situations like bacterial growth in an unrestricted environment.
                 Each individual is equally likely to die or reproduce at any instant.
                 However, most populations do not grow or decline rapidly.
-                The age distribution is often near equilibrium, making the average birth and death rates nearly constant.
-                </p>
-
-                <p>
+                The age distribution is often near equilibrium, making the average birth and death rates nearly constant. 
                 We find that Equations 1.1 and 1.3 are correspondent in:
                 </p>
 
@@ -317,18 +284,12 @@
                 </p>
 
                 <p>
-                If the time unit is chosen so that \( m = \log_e w \), then continuous population changes,
-                when counted at time intervals corresponding to these units, match the numbers in the discrete population.
+                If the time unit is chosen so that \( m = \log_e w \), then continuous population changes, 
+                when counted at time intervals corresponding to these units, match the numbers in the discrete population. 
                 Measuring time in such units makes \( t \) effectively equivalent to the number of generations in a discrete model.
-                </p>
-
-                <p>
-                If \( w \) is nearly 1 (i.e., \( s \) is small), then \( \log_e(1 + s) \approx s \).
+                If \( w \) is nearly 1 (i.e., \( s \) is small), then \( \log_e(1 + s) \approx s \). 
                 Thus, for very slow changes, \( s \) and \( m \) are approximately equal.
-                </p>
-
-                <p>
-                Consider a discrete population that reproduces once each year, each parent giving rise to two progeny and dying immediately after.
+                Consider a discrete population that reproduces once each year, each parent giving rise to two progeny and dying immediately after. 
                 Thus, \( \bar{w} = 2 \), and the population doubles each year:
                 </p>
 
@@ -454,11 +415,7 @@
             We shall call <span>\( w \)</span> the <strong>fitness</strong> or the <em>Wrightian fitness</em>, after Sewall Wright. 
             R. A. Fisher designated <span>\( m \)</span> as the <em>Malthusian parameter</em>. 
             Although used here as measures of the absolute rate of increase, <span>\( w \)</span> and <span>\( m \)</span> are also used 
-            for the <em>relative rates</em> of different types.
-            </p>
-
-            <p>
-            Notice that if there are no births, we can rewrite the equation simply as:
+            for the <em>relative rates</em> of different types. Notice that if there are no births, we can rewrite the equation simply as:
             </p>
 
             <p>
@@ -546,15 +503,11 @@
             \]
         </p>
 
-        <p>Thus, in contrast to \( w \) in the discrete model, in the continuous model the appropriate average is the arithmetic mean of the \( m \)'s. This is reasonable, since if \( m = \log w \), then the arithmetic mean of \( m \) is the log of the geometric mean of \( w \).</p>
-
-        <p>If fitness is heritable, then the average value of \( m \) will change from generation to generation as the fitter types make a disproportionate contribution to future generations. This is another way of stating that natural selection will generally lead to an increase in the average fitness.</p>
-
-        <p>Intuitively, the amount by which the average fitness changes per unit time should relate to the variability in fitness among types. We'll show now that the rate of increase is given by the variance in fitness.</p>
-
-        <p>Assume there are \( k \) types with frequencies \( n_1, n_2, \dots, n_k \) and fitnesses \( m_1, m_2, \dots, m_k \) (Malthusian parameters), perfectly heritable, with no interbreeding. The same formulation applies to asexual clones or haploid loci.</p>
-
-        <p>We wish to compute how \( \bar{m} \) changes over time:</p>
+        <If>Thus, in contrast to \( w \) in the discrete model, in the continuous model the appropriate average is the arithmetic mean of the \( m \)'s. This is reasonable, since if \( m = \log w \), then the arithmetic mean of \( m \) is the log of the geometric mean of \( w \). 
+            If fitness is heritable, then the average value of \( m \) will change from generation to generation as the fitter types make a disproportionate contribution to future generations. This is another way of stating that natural selection will generally lead to an increase in the average fitness. 
+            Intuitively, the amount by which the average fitness changes per unit time should relate to the variability in fitness among types. We'll show now that the rate of increase is given by the variance in fitness. 
+            Assume there are \( k \) types with frequencies \( n_1, n_2, \dots, n_k \) and fitnesses \( m_1, m_2, \dots, m_k \) (Malthusian parameters), perfectly heritable, with no interbreeding. The same formulation applies to asexual clones or haploid loci. 
+            We wish to compute how \( \bar{m} \) changes over time:</p>
 
         <p>
             \[
@@ -574,11 +527,9 @@
             \]
         </p>
 
-        <p>Where \( V_m \) is the variance of the Malthusian fitness values \( m_i \). Therefore, the rate of change of average fitness is equal to the variance in fitness at that time.</p>
-
-        <p>In Mendelian populations with genetic mixing, the rate of change is determined by the heritable part of the variance — that is, the part associated with transmissible gene differences.</p>
-
-        <p><strong>Conclusion:</strong> The rate of change of mean fitness is equal to the variance in fitness.</p>
+        <In>Where \( V_m \) is the variance of the Malthusian fitness values \( m_i \). Therefore, the rate of change of average fitness is equal to the variance in fitness at that time. 
+            In Mendelian populations with genetic mixing, the rate of change is determined by the heritable part of the variance — that is, the part associated with transmissible gene differences. 
+            <strong>Conclusion:</strong> The rate of change of mean fitness is equal to the variance in fitness.</p>
 
         <div id="log-population" style="width: 100%; max-width: 900px; margin: auto;"></div>
         <div id="mean-fitness" style="width: 100%; max-width: 900px; margin: auto;"></div>
@@ -742,156 +693,115 @@
 
             <div id="population-table-container" style="overflow-x: auto; margin-top: 2rem;"></div>
 
-            <script>
-            const years1 = 26;
-            const ageClasses = 5;
-            const p = [0.8, 0.9, 0.9, 0.7, 0.0];
-            const b1 = [0.0, 0.3, 0.5, 0.5, 0.2];
-
-            // Inicializa a matriz da população com zeros
-            const pop = Array.from({ length: years1 }, () => Array(ageClasses).fill(0));
-            pop[0][0] = 10000; // Apenas idade 0 no tempo 0
-
-            const N_t = Array(years1).fill(0);
-            const growth_ratio = Array(years1).fill(null);
-
-            for (let t = 1; t < years1; t++) {
-            let births = 0;
-            for (let age = 0; age < ageClasses; age++) {
-                births += pop[t - 1][age] * b1[age];
-            }
-            pop[t][0] = births;
-
-            for (let age = 1; age < ageClasses; age++) {
-                pop[t][age] = pop[t - 1][age - 1] * p[age - 1];
-            }
-            }
-
-            for (let t = 0; t < years1; t++) {
-            N_t[t] = pop[t].reduce((a, b) => a + b1, 0);
-            if (t > 0) {
-                growth_ratio[t] = N_t[t] / N_t[t - 1];
-            }
-            }
-
-            const populationTable = [];
-            for (let t = 0; t < years1; t++) {
-            populationTable.push({
-                time: t,
-                age0: Math.round(pop[t][0]),
-                age1: Math.round(pop[t][1]),
-                age2: Math.round(pop[t][2]),
-                age3: Math.round(pop[t][3]),
-                age4: Math.round(pop[t][4]),
-                total: Math.round(N_t[t]),
-                ratio: t === 0 ? "–" : growth_ratio[t].toFixed(6)
-            });
-            }
-
-            const container = document.getElementById('population-table-container');
-            const table = document.createElement('table');
-            table.className = 'table table-striped table-bordered';
-            table.style.fontSize = '0.9rem';
-
-            // Cabeçalho
-            const thead = document.createElement('thead');
-            thead.innerHTML = `
-            <tr class="table-dark text-center">
-                <th>Time (t)</th>
-                <th>Age 0–1</th>
-                <th>Age 1–2</th>
-                <th>Age 2–3</th>
-                <th>Age 3–4</th>
-                <th>Age 4–5</th>
-                <th>Total N(t)</th>
-                <th>N(t)/N(t-1)</th>
-            </tr>
-            `;
-            table.appendChild(thead);
-
-            // Corpo da tabela
-            const tbody = document.createElement('tbody');
-            populationTable.forEach(row => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td class="text-center">${row.time}</td>
-                <td class="text-end">${row.age0}</td>
-                <td class="text-end">${row.age1}</td>
-                <td class="text-end">${row.age2}</td>
-                <td class="text-end">${row.age3}</td>
-                <td class="text-end">${row.age4}</td>
-                <td class="text-end fw-bold">${row.total}</td>
-                <td class="text-end">${row.ratio}</td>
-            `;
-            tbody.appendChild(tr);
-            });
-            table.appendChild(tbody);
-            container.appendChild(table);
-            </script>
-
-
             <!-- Containers para os gráficos -->
             <div id="plot-age-classes" style="width:100%; max-width:900px; margin:auto;"></div>
             <div id="plot-total-population" style="width:100%; max-width:900px; margin:auto;"></div>
             <div id="plot-growth-rate" style="width:100%; max-width:900px; margin:auto;"></div>
 
-            <script>
-            // Supondo que a variável `populationTable` já esteja definida como antes
-            const time = populationTable.map(row => row.time);
-            const age0 = populationTable.map(row => row.age0);
-            const age1 = populationTable.map(row => row.age1);
-            const age2 = populationTable.map(row => row.age2);
-            const age3 = populationTable.map(row => row.age3);
-            const age4 = populationTable.map(row => row.age4);
-            const totalN = populationTable.map(row => row.total);
-            const growthRatio = populationTable.map(row => row.ratio === "–" ? null : parseFloat(row.ratio));
 
-            // Plot 1: Age Classes
-            const ageTraces = [
-                { y: age0, name: "Age 0–1", marker: {symbol: "circle"} },
-                { y: age1, name: "Age 1–2", marker: {symbol: "circle"} },
-                { y: age2, name: "Age 2–3", marker: {symbol: "circle"} },
-                { y: age3, name: "Age 3–4", marker: {symbol: "circle"} },
-                { y: age4, name: "Age 4–5", marker: {symbol: "circle"} }
-            ].map((trace, i) => ({
+            <script>
+            fetch('../../../data/age_structured_population.json')
+            .then(response => response.json())
+            .then(populationTable => {
+                // === Gerar Tabela ===
+                const container = document.getElementById('population-table-container');
+                const table = document.createElement('table');
+                table.className = 'table table-striped table-bordered';
+                table.style.fontSize = '0.9rem';
+
+                // Cabeçalho da Tabela
+                const thead = document.createElement('thead');
+                thead.innerHTML = `
+                <tr class="table-dark text-center">
+                    <th>Time (t)</th>
+                    <th>Age 0–1</th>
+                    <th>Age 1–2</th>
+                    <th>Age 2–3</th>
+                    <th>Age 3–4</th>
+                    <th>Age 4–5</th>
+                    <th>Total N(t)</th>
+                    <th>N(t)/N(t-1)</th>
+                </tr>`;
+                table.appendChild(thead);
+
+                // Corpo da Tabela
+                const tbody = document.createElement('tbody');
+                populationTable.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="text-center">${row.time}</td>
+                    <td class="text-end">${row.age0}</td>
+                    <td class="text-end">${row.age1}</td>
+                    <td class="text-end">${row.age2}</td>
+                    <td class="text-end">${row.age3}</td>
+                    <td class="text-end">${row.age4}</td>
+                    <td class="text-end fw-bold">${row.total}</td>
+                    <td class="text-end">${row.ratio}</td>`;
+                tbody.appendChild(tr);
+                });
+                table.appendChild(tbody);
+                container.appendChild(table);
+
+                // === Preparar dados para gráficos ===
+                const time = populationTable.map(row => row.time);
+                const age0 = populationTable.map(row => row.age0);
+                const age1 = populationTable.map(row => row.age1);
+                const age2 = populationTable.map(row => row.age2);
+                const age3 = populationTable.map(row => row.age3);
+                const age4 = populationTable.map(row => row.age4);
+                const totalN = populationTable.map(row => row.total);
+                const growthRatio = populationTable.map(row => row.ratio === "–" ? null : parseFloat(row.ratio));
+
+                // === Gráfico 1: Faixas Etárias ===
+                const ageTraces = [
+                { y: age0, name: "Age 0–1" },
+                { y: age1, name: "Age 1–2" },
+                { y: age2, name: "Age 2–3" },
+                { y: age3, name: "Age 3–4" },
+                { y: age4, name: "Age 4–5" }
+                ].map(trace => ({
                 x: time,
                 y: trace.y,
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: trace.name
-            }));
+                }));
 
-            Plotly.newPlot('plot-age-classes', ageTraces, {
+                Plotly.newPlot('plot-age-classes', ageTraces, {
                 title: 'Population Growth by Age Classes',
                 xaxis: { title: 'Time' },
                 yaxis: { title: 'Population Size' },
                 legend: { orientation: 'h' }
-            });
+                });
 
-            // Plot 2: Total Population
-            Plotly.newPlot('plot-total-population', [{
+                // === Gráfico 2: População Total ===
+                Plotly.newPlot('plot-total-population', [{
                 x: time,
                 y: totalN,
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Total Population'
-            }], {
+                }], {
                 title: 'Total Population Growth',
                 xaxis: { title: 'Time' },
                 yaxis: { title: 'Nₜ' }
-            });
+                });
 
-            // Plot 3: Growth Rate
-            Plotly.newPlot('plot-growth-rate', [{
+                // === Gráfico 3: Taxa de Crescimento ===
+                Plotly.newPlot('plot-growth-rate', [{
                 x: time,
                 y: growthRatio,
                 type: 'scatter',
                 mode: 'lines+markers',
                 name: 'Nₜ / Nₜ₋₁'
-            }], {
+                }], {
                 title: 'Rate of Growth',
                 xaxis: { title: 'Time' },
                 yaxis: { title: 'Nₜ / Nₜ₋₁' }
+                });
+            })
+            .catch(error => {
+                console.error("Erro ao carregar dados de população estruturada:", error);
             });
             </script>
 
@@ -900,15 +810,9 @@
                 <p>
                 The methods of the previous section are specifically adapted to organisms such as annually reproducing plants, where reproduction is seasonal but individuals may live through several seasons.
                 In many other organisms, ranging from short-lived insects to humans, births and deaths occur continuously. 
-                When the population is large, individual events blend into a continuous process of population change.
-                </p>
-
-                <p>
+                When the population is large, individual events blend into a continuous process of population change. 
                 Mathematically, this is viewed as the limit of the previous discrete models as age intervals become infinitesimally small. 
-                The foundational equations were developed by Lotka and Fisher, and we follow Fisher’s approach using time in years.
-                </p>
-
-                <p>
+                The foundational equations were developed by Lotka and Fisher, and we follow Fisher's approach using time in years.
                 Let \( l(x) \) be the probability of survival from birth to age \( x \), and let \( b(x)dx \) be the probability of reproducing in the age interval \( x \) to \( x + dx \). 
                 Then the probability of surviving to age \( x \) and reproducing in \( dx \) is \( l(x)b(x)dx \). 
                 The expected number of offspring during a lifetime is:
@@ -922,16 +826,10 @@
 
                 <p>
                 If we replace \( A \) with \( \infty \) (since \( b(x) = 0 \) for \( x > A \)), the integral remains valid. 
-                If the result is greater than 1, the population grows; if less than 1, it declines.
-                </p>
-
-                <p>
+                If the result is greater than 1, the population grows; if less than 1, it declines. 
                 As shown earlier, a population with fixed age-specific rates will approach a stable age distribution, with constant growth rate.
                 In the continuous case, we represent this growth as \( e^m \), where \( m \) is the Malthusian parameter.
-                </p>
-
-                <p>
-                Individuals of age \( x \) at time \( t \) were born \( x \) years ago at time \( t - x \). 
+                Individuals of age \( x \) at time \( t \) were born \( x \) years ago at time \( t - x \).
                 Let \( B(t)dt \) be the number of births at time \( t \). 
                 Then the birth rate at time \( t - x \) was \( B(t - x) \). 
                 A fraction \( l(x) \) of those born then survive to age \( x \), and of those, a fraction \( b(x)dx \) will give birth now.
@@ -965,10 +863,7 @@
                 </p>
 
                 <p>
-                This equation can be solved for \( m \), given known \( l(x) \) and \( b(x) \). In practice, these are often based on discrete age classes.
-                </p>
-
-                <p>
+                This equation can be solved for \( m \), given known \( l(x) \) and \( b(x) \). In practice, these are often based on discrete age classes. 
                 Once age-distribution stability is achieved, the same growth expressions apply as before:
                 </p>
 
@@ -1043,11 +938,9 @@
             <section id="FisherMeasure">
             <h2>Fisher's Measure of Reproductive Value</h2>
 
-            <p>Fisher also asked a genetically relevant question: To what extent does an individual of age \( x \) contribute to the ancestry of future generations?</p>
-
-            <p>In order to answer this, he defines the quantity \( v(x) \), the reproductive value at age \( x \). Obviously, the reproductive value is 0 for an individual who is past the reproductive age. It is clearly lower at birth than a few years later, since a person of age 10, say, has a better chance of surviving to reproduce than a child at birth. Furthermore, reproduction would begin sooner and, in a growing population, this would increase the total contribution to future years by an earlier start. The value might be expected to be maximum somewhere near the beginning of the reproductive period.</p>
-
-            <p>To define the reproductive value, we note first that the number of births from parents of age \( x \) is proportional to \( e^{-mx} l(x) b(x) dx \), as shown in the previous section. If we now think of this cohort of persons followed through the rest of their lifetimes, their total contribution is proportional to:</p>
+            <In>Fisher also asked a genetically relevant question: To what extent does an individual of age \( x \) contribute to the ancestry of future generations?
+                In order to answer this, he defines the quantity \( v(x) \), the reproductive value at age \( x \). Obviously, the reproductive value is 0 for an individual who is past the reproductive age. It is clearly lower at birth than a few years later, since a person of age 10, say, has a better chance of surviving to reproduce than a child at birth. Furthermore, reproduction would begin sooner and, in a growing population, this would increase the total contribution to future years by an earlier start. The value might be expected to be maximum somewhere near the beginning of the reproductive period. 
+                To define the reproductive value, we note first that the number of births from parents of age \( x \) is proportional to \( e^{-mx} l(x) b(x) dx \), as shown in the previous section. If we now think of this cohort of persons followed through the rest of their lifetimes, their total contribution is proportional to:</p>
 
             <p>
             \[
@@ -1063,10 +956,8 @@
             \]
             </p>
 
-            <p>If \( x = 0 \), the denominator is equal to 1. Likewise, if \( x = 0 \), the numerator is equal to 1. Therefore, the reproductive value at birth is 1, and \( v(x) \) is a measure of the reproductive value of an individual of age \( x \) relative to that of a newborn child.</p>
-
-            <p>Earlier, we discussed the situation as if the population were in age-distribution equilibrium. On the other hand, we can accept the definition as given and apply it to populations in general. We can then accept that irrespective of the age distribution, the total reproductive value of a population increases at a rate given by \( m \).</p>
-
+            <Earlier,>If \( x = 0 \), the denominator is equal to 1. Likewise, if \( x = 0 \), the numerator is equal to 1. Therefore, the reproductive value at birth is 1, and \( v(x) \) is a measure of the reproductive value of an individual of age \( x \) relative to that of a newborn child. 
+                Earlier, we discussed the situation as if the population were in age-distribution equilibrium. On the other hand, we can accept the definition as given and apply it to populations in general. We can then accept that irrespective of the age distribution, the total reproductive value of a population increases at a rate given by \( m \).</p>
             <p>
             \[
             e^{-mx} l(x) \cdot v(x) = \int_x^\infty e^{-my} l(y) b(y) \, dy
@@ -1097,9 +988,8 @@
             \]
             </p>
 
-            <p>The first term is the rate of <strong>change in reproductive value</strong> as an individual ages. The second is the rate of decrease due to mortality (**mortality rate**). The third is the rate of increase from new births (**birth rate**), which is simply the instantaneous birth rate since the value of each newborn, \( v(0) \), is 1. The left side thus gives the net change in reproductive value from aging, death, or reproduction.</p>
-
-            <p>The \( n(x) \) individuals of age \( x \) contribute \( m n(x) v(x) \) to the increase in total reproductive value. Thus, the rate of change in reproductive value across all ages is given by \( m \). Adding up all ages, we have:</p>
+            <The>The first term is the rate of <strong>change in reproductive value</strong> as an individual ages. The second is the rate of decrease due to mortality (**mortality rate**). The third is the rate of increase from new births (**birth rate**), which is simply the instantaneous birth rate since the value of each newborn, \( v(0) \), is 1. The left side thus gives the net change in reproductive value from aging, death, or reproduction. 
+                The \( n(x) \) individuals of age \( x \) contribute \( m n(x) v(x) \) to the increase in total reproductive value. Thus, the rate of change in reproductive value across all ages is given by \( m \). Adding up all ages, we have:</p>
 
             <p>
             \[
@@ -1115,41 +1005,39 @@
             \]
             </p>
 
-            <p>This is the total reproductive value of the population.</p>
-
-            <p><strong>This demonstrates Fisher's principle:</strong> The rate of increase in total reproductive value is equal to the Malthusian parameter times the total reproductive value, regardless of the age distribution. This means the equations become applicable to populations not in age equilibrium if each individual is weighted by the reproductive value appropriate to their age.</p>
+            <p>This is the total reproductive value of the population. <strong>This demonstrates Fisher's principle:</strong> The rate of increase in total reproductive value is equal to the Malthusian parameter times the total reproductive value, regardless of the age distribution. This means the equations become applicable to populations not in age equilibrium if each individual is weighted by the reproductive value appropriate to their age.</p>
 
             <div id="plot-reproductive-value" style="width:100%; max-width:900px; margin:auto; margin-top:50px;"></div>
 
             <script>
-            // Dados carregados do Python (inserir JSON gerado aqui)
-            const data = {
-                x_vals: [...],  // substituir por array de x_vals
-                v_vals: [...],  // substituir por array de v_vals
-                m: 0.0324       // exemplo: substituir pelo valor real de m
-            };
-
-            // Gráfico da função v(x)
-            Plotly.newPlot('plot-reproductive-value', [{
-                x: data.x_vals,
-                y: data.v_vals,
-                mode: 'lines',
-                name: `Reproductive Value v(x), m ≈ ${data.m.toFixed(4)}`,
-                line: { color: 'purple' }
-            }, {
-                x: [data.x_vals[data.v_vals.indexOf(Math.max(...data.v_vals))]],
-                y: [Math.max(...data.v_vals)],
-                mode: 'lines',
-                name: 'Maximum v(x)',
-                line: { dash: 'dash', color: 'gray' },
-            }], {
-                title: 'Fisher\'s Reproductive Value Curve',
+            fetch("../../../data/reproductive_value.json")
+            .then(response => response.json())
+            .then(data => {
+                const maxIndex = data.v_vals.indexOf(Math.max(...data.v_vals));
+                
+                Plotly.newPlot('plot-reproductive-value', [
+                {
+                    x: data.x_vals,
+                    y: data.v_vals,
+                    mode: 'lines',
+                    name: `Reproductive Value v(x), m ≈ ${data.m.toFixed(4)}`,
+                    line: { color: 'purple' }
+                },
+                {
+                    x: [data.x_vals[maxIndex]],
+                    y: [data.v_vals[maxIndex]],
+                    mode: 'markers',
+                    name: 'Maximum v(x)',
+                    marker: { color: 'gray', size: 8, symbol: 'x' }
+                }
+                ], {
+                title: "Fisher's Reproductive Value Curve",
                 xaxis: { title: 'Age (x)' },
                 yaxis: { title: 'Reproductive Value v(x)' }
-            });
+                });
+            })
+            .catch(error => console.error("Erro ao carregar dados:", error));
             </script>
-
-
             </section>
 
             <section id="PopRegulation">
@@ -1157,13 +1045,7 @@
 
             <p>
                 We have said nothing so far about population regulation. It is obvious that a population cannot grow exponentially forever. It must eventually reach a state where \( m \) becomes 0 or negative, or where in a discrete model \( w \) becomes 1 or less. The growth rate is eventually limited by all the factors that collectively make up the carrying capacity of the environment.
-            </p>
-
-            <p>
-                In population genetics we are mainly concerned with the changes in proportions of different types of individuals, rather than total numbers. We shall consider some examples of this under various types of population regulation. However, we shall ignore until later in the book the complications introduced by Mendelian inheritance.
-            </p>
-
-            <p>
+                In population genetics we are mainly concerned with the changes in proportions of different types of individuals, rather than total numbers. We shall consider some examples of this under various types of population regulation. However, we shall ignore until later in the book the complications introduced by Mendelian inheritance. 
                 We shall be dealing in this section with continuous models of the type introduced before. Alternatively, in principle we could deal with reproductive values rather than actual numbers by weighting each individual by the reproductive value appropriate to its age. By modifying previous growth equations, we have:
             </p>
 
@@ -1174,10 +1056,8 @@
             </p>
 
             <p>
-                The quantity \( r \) is the intrinsic rate of increase — the rate at which the population would grow if it had unlimited food supply and room for expansion. The function \( f(N) \) implies some change in the rate of increase with the size of the population. The regulation may be, for example, by limitation of food supply, by the space available, by the accumulation of toxic products, or by territorial behavior patterns.
-            </p>
-
-            <p>
+                The quantity \( r \) is the intrinsic rate of increase — the rate at which the population would grow if it had unlimited food supply and room for expansion. The function \( f(N) \) implies some change in the rate of increase with the size of the population. 
+                The regulation may be, for example, by limitation of food supply, by the space available, by the accumulation of toxic products, or by territorial behavior patterns. 
                 A particularly simple mode is provided by letting \( f(N) \) be a linear function of \( N \), say \( N/K \), where \( K \) is a constant sometimes called the carrying capacity of the environment. Such a population will grow approximately exponentially as long as \( N \ll K \), but as \( N \) approaches \( K \) the rate will decrease until size stability is reached at \( N = K \). If we replace \( N/K \) for \( f(N) \), then
             </p>
 
@@ -1188,10 +1068,7 @@
             </p>
 
             <p>
-                When \( N \ll K \), the growth is almost exponential, but as \( N \to K \), growth slows and \( dN/dt \to 0 \).
-            </p>
-
-            <p>
+                When \( N \ll K \), the growth is almost exponential, but as \( N \to K \), growth slows and \( dN/dt \to 0 \). 
                 The equation can also be rewritten as:
             </p>
 
@@ -1232,10 +1109,7 @@
             </p>
 
             <p>
-                Note that, whether there is regulation or not, the time required for a certain change is proportional to \( 1/r \).
-            </p>
-
-            <p>
+                Note that, whether there is regulation or not, the time required for a certain change is proportional to \( 1/r \). 
                 We can also write the equation in the inverse form, giving the number at time \( t \) as a function of \( t \) and the initial number \( N_0 \):
             </p>
 
@@ -1256,19 +1130,11 @@
             </p>
 
             <p>
-                This function can be graphically visualized and is called the "logistic" curve of population increase and has been widely used in ecology.
-            </p>
-
-            <p>
-                Of course it is merely the simplest of a number of equations that could be derived and many populations, natural and experimental, depart widely from the model.
-            </p>
-
-            <p>
+                This function can be graphically visualized and is called the "logistic" curve of population increase and has been widely used in ecology. 
+                Of course it is merely the simplest of a number of equations that could be derived and many populations, natural and experimental, depart widely from the model. 
                 As stated earlier, we are mainly concerned in population genetics with the proportion of different genes and genotypes rather than the total number. We shall see that many of the equations for the proportions of different types are the same, despite quite different mechanisms for regulation of the population number.
-            </p>
-
-            <p>
-                The intrinsic rate of increase \( r \) is closely related to the Malthusian parameter \( m \). \( m \) can also be seen as the realized growth rate. We shall use the latter for the actual rate of change in numbers of the population, or of a part of the population, and \( r \) for the value this would take in a situation where the growth rate is not regulated.
+                The intrinsic rate of increase \( r \) is closely related to the Malthusian parameter \( m \). \( m \) can also be seen as the realized growth rate. 
+                We shall use the latter for the actual rate of change in numbers of the population, or of a part of the population, and \( r \) for the value this would take in a situation where the growth rate is not regulated.
             </p>
 
             <div id="plot-pop-growth" style="width:100%;max-width:900px;margin:auto;"></div>
@@ -1409,10 +1275,7 @@
             </p>
 
             <p>
-                This form of the equation suggests the extension to more than two strains. When three or more strains are present, the same equation is correct for the rate of change of a particular strain, and \( \bar{r} \) is the weighted average of the rates of increase of all the strains.
-            </p>
-
-            <p>
+                This form of the equation suggests the extension to more than two strains. When three or more strains are present, the same equation is correct for the rate of change of a particular strain, and \( \bar{r} \) is the weighted average of the rates of increase of all the strains. 
                 In this model, the total population is increasing exponentially at any instant, although the rate of increase \( \bar{r} \) is changing continuously — unrealistic for any long period of time. We only discuss it here to make the point that the model can accurately describe the rate of change of the proportion of one type in a mixed population even when the numbers are changing according to quite a different rule.
             </p>
             
@@ -1420,15 +1283,483 @@
 
             <section id="LogisticRegulation">
             <h2>Logistic Regulation of Total Number</h2>
+            <h2>Logistic Regulation of Total Number</h2>
+
+            <p>A simple model for this situation is given by the equations:</p>
+
+            <p>
+            \[
+            \frac{dn_1}{dt} = n_1 \left(r_1 - \frac{\bar{r}N}{K} \right) \quad \text{and} \quad \frac{dn_2}{dt} = n_2 \left(r_2 - \frac{\bar{r}N}{K} \right)
+            \]
+            </p>
+
+            <p>The total population increases logistically until it reaches an equilibrium at \( N = K \), as can be seen by the following:</p>
+
+            <p>
+            \[
+            \frac{dN}{dt} = \frac{d(n_1 + n_2)}{dt} = r_1 n_1 + r_2 n_2 - (n_1 + n_2) \cdot \frac{\bar{r}N}{K}
+            \]
+            </p>
+
+            <p>But, since \( N = n_1 + n_2 \) and \( N\bar{r} = r_1 n_1 + r_2 n_2 \), then:</p>
+
+            <p>
+            \[
+            \frac{dN}{dt} = \bar{r} N \left(1 - \frac{N}{K} \right)
+            \]
+            </p>
+
+            <p>At the same time that \( N \) is changing according to this rule, we can see what is happening to the proportions of the two types by writing:</p>
+
+            <p>
+            \[
+            \frac{d \ln(p_1/p_2)}{dt} = \frac{1}{n_1} \frac{dn_1}{dt} - \frac{1}{n_2} \frac{dn_2}{dt} = r_1 - r_2
+            \]
+            </p>
+
+            <p>Or, viewing it a different way:</p>
+
+            <p>
+            \[
+            \frac{dp_1}{dt} = p_1 \cdot (r_1 - \bar{r})
+            \]
+            </p>
+
+            <p>Again, the proportion of strain 1 is changing logistically. Written in its integrated form, we have:</p>
+
+            <p>
+            \[
+            \ln \left( \frac{p}{1 - p} \right) = C + rt
+            \]
+            </p>
+
+            <p>Where \( r = r_1 - r_2 \) and \( C = \ln \left( \frac{p_0}{1 - p_0} \right) \), a constant determined by the initial composition. This form is also known as the <strong>log-ratio dynamics</strong> or <strong>replicator equation form</strong>. This suggests a convenient way of plotting data from selection experiments. By plotting \( \ln \left( \frac{p}{1 - p} \right) \) against time, one can easily see whether the trend is linear and thus whether the logistic equation is appropriate. 
+            Alternatively, if we wish to know how much time is needed to change the proportion from \( p_0 \) to \( p_t \), we can write the following:</p>
+
+            <p>
+            \[
+            t = \frac{1}{r} \cdot \ln \left( \frac{p_t(1 - p_0)}{(1 - p_t)p_0} \right)
+            \]
+            </p>
+
+            <p>Which gives the time as a function of the frequency of the type of interest. Note that the time required to accomplish a certain change in proportion is strictly proportional to the reciprocal of \( r \).</p>
+
+            <!-- Containers para os gráficos -->
+            <div id="logistic-population" style="width: 100%; max-width: 900px; margin: auto;"></div>
+            <div id="logistic-proportion" style="width: 100%; max-width: 900px; margin: auto; margin-top: 40px;"></div>
+
+            <script>
+            // Parâmetros
+            const growthR1 = 0.5;
+            const growthR2 = 0.3;
+            const capacityK = 1000;
+            const initN1 = 100;
+            const initN2 = 100;
+            const timeTotal = 100;
+            const deltaT = 0.1;
+            const stepsT = Math.floor(timeTotal / deltaT);
+
+            const popN1 = Array(stepsT).fill(0);
+            const popN2 = Array(stepsT).fill(0);
+            const totalPop = Array(stepsT).fill(0);
+            const propP1 = Array(stepsT).fill(0);
+            const logitP1 = Array(stepsT).fill(0);
+            const timeArr = Array.from({ length: stepsT }, (_, i) => i * deltaT);
+
+            // Condições iniciais
+            popN1[0] = initN1;
+            popN2[0] = initN2;
+            totalPop[0] = initN1 + initN2;
+            propP1[0] = initN1 / (initN1 + initN2);
+            logitP1[0] = Math.log(propP1[0] / (1 - propP1[0]));
+
+            // Loop de simulação
+            for (let t = 1; t < stepsT; t++) {
+                totalPop[t - 1] = popN1[t - 1] + popN2[t - 1];
+                const rMean = (growthR1 * popN1[t - 1] + growthR2 * popN2[t - 1]) / totalPop[t - 1];
+
+                const dn1 = popN1[t - 1] * (growthR1 - rMean * totalPop[t - 1] / capacityK) * deltaT;
+                const dn2 = popN2[t - 1] * (growthR2 - rMean * totalPop[t - 1] / capacityK) * deltaT;
+
+                popN1[t] = popN1[t - 1] + dn1;
+                popN2[t] = popN2[t - 1] + dn2;
+                totalPop[t] = popN1[t] + popN2[t];
+                propP1[t] = popN1[t] / totalPop[t];
+                logitP1[t] = Math.log(propP1[t] / (1 - propP1[t]));
+            }
+
+            // Gráfico 1: Populações
+            const traceN1 = {
+                x: timeArr,
+                y: popN1,
+                mode: 'lines',
+                name: 'n₁ (strain 1)',
+                line: { color: 'blue' }
+            };
+
+            const traceN2 = {
+                x: timeArr,
+                y: popN2,
+                mode: 'lines',
+                name: 'n₂ (strain 2)',
+                line: { color: 'orange' }
+            };
+
+            const traceN = {
+                x: timeArr,
+                y: totalPop,
+                mode: 'lines',
+                name: 'Total N',
+                line: { color: 'green', dash: 'dash' }
+            };
+
+            Plotly.newPlot('logistic-population', [traceN1, traceN2, traceN], {
+                title: 'Population Dynamics under Logistic Regulation',
+                xaxis: { title: 'Time' },
+                yaxis: { title: 'Population Size' },
+                legend: { orientation: 'h' }
+            });
+
+            // Gráfico 2: Proporção e Logit
+            const traceP = {
+                x: timeArr,
+                y: propP1,
+                mode: 'lines',
+                name: 'p (n₁ / N)',
+                line: { color: 'blue' }
+            };
+
+            const traceLogit = {
+                x: timeArr,
+                y: logitP1,
+                mode: 'lines',
+                name: 'log[p / (1 - p)]',
+                line: { color: 'red', dash: 'dot' }
+            };
+
+            Plotly.newPlot('logistic-proportion', [traceP, traceLogit], {
+                title: 'Proportion of Strain 1 and Logit Dynamics',
+                xaxis: { title: 'Time' },
+                yaxis: { title: 'Proportion / Logit' },
+                legend: { orientation: 'h' }
+            });
+            </script>           
             </section> 
 
             <section id="WeakControl">
             <h2>Weaker Population Control</h2>
+
+            <p>
+            The previous example assumed that the total population has an absolute upper limit, \( K \). We now consider a population that is limited, but the limit is proportional to \( r \), so that as one type replaces the other, the total population increases. A simple model is:
+            </p>
+
+            <p>
+            \[
+            \frac{dn_1}{dt} = n_1 (r_1 - cN) \quad \text{and} \quad \frac{dn_2}{dt} = n_2 (r_2 - cN)
+            \]
+            </p>
+
+            <p>
+            It is clear now that population is controlled by a <strong>linear increasing mortality factor</strong> \( cN \). So the carrying capacity becomes proportional to the current mean fitness \( \bar{r} \). The total number changes according to:
+            </p>
+
+            <p>
+            \[
+            \frac{dN}{dt} = N( \bar{r} - cN)
+            \]
+            </p>
+
+            <p>
+            The population reaches a limit when \( N = \bar{r}/c \); for this value, \( \frac{dN}{dt} = 0 \).
+            The same procedure as before leads to the equation for changes in proportion of type 1:
+            </p>
+
+            <p>
+            \[
+            \frac{dp_1}{dt} = p_1(r_1 - \bar{r})
+            \]
+            </p>
+
+            <p>
+            This situation is probably quite unusual in nature. The size of the population is usually determined mainly by factors other than the \( r \)'s. A replacement of the original strain by one with a higher \( r \) will cause only a slight increase in the final population number — if indeed there is any change at all. The changes in frequency are driven by deviation from the mean fitness:
+            </p>
+
+            <p>
+            \[
+            \frac{d}{dt} \ln \left( \frac{p}{1 - p} \right) = r_1 - r_2 \quad \Rightarrow \quad p(t) = \frac{1}{1 + \left( \frac{1 - p_0}{p_0} \right) e^{-rt}}
+            \]
+            </p>
+
+            <p>
+            The point of these three examples is to show that, despite great differences in the way in which the total population changes, the changes in proportion follow the same general rule given before.
+            </p>
+
+            <p>
+            The key insight here is that the <strong>relative fitness</strong> differences determine frequency changes, even when <strong>total population size</strong> is governed by different constraints.
+            </p>
+            <div id="wpc_plot_frequency" style="width:100%;max-width:900px;margin:auto;"></div>
+            <div id="wpc_plot_total_population" style="width:100%;max-width:900px;margin:auto;margin-top:30px;"></div>
+
+            <script>
+            (function() {
+                // Parâmetros do modelo
+                const wpc_r1 = 1.2;    // taxa de crescimento tipo 1
+                const wpc_r2 = 1.0;    // taxa de crescimento tipo 2
+                const wpc_c = 0.01;    // constante de regulação
+                const wpc_dt = 0.1;
+                const wpc_t_max = 100;
+                const wpc_steps = Math.floor(wpc_t_max / wpc_dt);
+
+                // Arrays de simulação
+                const wpc_time = [];
+                const wpc_n1 = [];
+                const wpc_n2 = [];
+                const wpc_N = [];
+                const wpc_p1 = [];
+
+                // Condições iniciais
+                let wpc_curr_n1 = 10;
+                let wpc_curr_n2 = 90;
+                let wpc_curr_N = wpc_curr_n1 + wpc_curr_n2;
+                let wpc_curr_p1 = wpc_curr_n1 / wpc_curr_N;
+
+                // Loop de simulação
+                for (let i = 0; i < wpc_steps; i++) {
+                    const wpc_t = i * wpc_dt;
+                    wpc_time.push(wpc_t);
+                    wpc_n1.push(wpc_curr_n1);
+                    wpc_n2.push(wpc_curr_n2);
+                    wpc_N.push(wpc_curr_N);
+                    wpc_p1.push(wpc_curr_p1);
+
+                    const wpc_rbar = (wpc_r1 * wpc_curr_n1 + wpc_r2 * wpc_curr_n2) / wpc_curr_N;
+                    const wpc_dn1 = wpc_curr_n1 * (wpc_r1 - wpc_c * wpc_curr_N) * wpc_dt;
+                    const wpc_dn2 = wpc_curr_n2 * (wpc_r2 - wpc_c * wpc_curr_N) * wpc_dt;
+
+                    wpc_curr_n1 += wpc_dn1;
+                    wpc_curr_n2 += wpc_dn2;
+                    wpc_curr_N = wpc_curr_n1 + wpc_curr_n2;
+                    wpc_curr_p1 = wpc_curr_n1 / wpc_curr_N;
+                }
+
+                // Gráfico 1: Frequência da cepa 1
+                Plotly.newPlot('wpc_plot_frequency', [{
+                    x: wpc_time,
+                    y: wpc_p1,
+                    mode: 'lines',
+                    name: 'Frequency of type 1 (p)',
+                    line: { color: 'blue' }
+                }], {
+                    title: 'Frequency of Type 1 Over Time',
+                    xaxis: { title: 'Time' },
+                    yaxis: { title: 'Frequency (p1)' }
+                });
+
+                // Gráfico 2: Tamanho da população total
+                Plotly.newPlot('wpc_plot_total_population', [{
+                    x: wpc_time,
+                    y: wpc_N,
+                    mode: 'lines',
+                    name: 'Total Population (N)',
+                    line: { color: 'green' }
+                }], {
+                    title: 'Total Population Size Over Time',
+                    xaxis: { title: 'Time' },
+                    yaxis: { title: 'Population Size' }
+                });
+            })();
+            </script>
             </section> 
 
             <section id="SpaceFoodUtilization">
             <h2>Regulation by Efficiency of Space or Food Utilization</h2>
-            </section> 
+            <section id="WeakerPopulationControl">
+            <h2>Weaker Population Control</h2>
+
+            <p>
+                The previous example assumed that the total population has an absolute upper limit, \( k \). We now consider a population that is limited, but the limit is proportional to \( r \) so that as one type replaces the other, the total population increases. A simple model is:
+            </p>
+
+            <p>
+                \[
+                \frac{dn_1}{dt} = n_1 (r_1 - cN) \quad \text{and} \quad \frac{dn_2}{dt} = n_2 (r_2 - cN)
+                \]
+            </p>
+
+            <p>
+                It is clear now that population is controlled by a <strong>linear increasing mortality factor</strong> \( cN \). So the carrying capacity becomes proportional to the current mean fitness \( \bar{r} \). The total number changes according to:
+            </p>
+
+            <p>
+                \[
+                \frac{dN}{dt} = N( \bar{r} - cN)
+                \]
+            </p>
+
+            <p>
+                The population reaches a limit when \( N = \bar{r}/c \); at this value \( \frac{dN}{dt} = 0 \).
+                The same procedure as before leads to the equation for changes in the proportion of type 1:
+            </p>
+
+            <p>
+                \[
+                \frac{dp_1}{dt} = p_1 (r_1 - \bar{r})
+                \]
+            </p>
+
+            <p>
+                This situation is probably quite unusual in nature. The size of the population is usually determined mainly by factors other than the \( r \)'s. A replacement of the original strain by one with a higher \( r \) will cause only a slight increase in the final population number—if there is any change at all. The changes in frequency are driven by deviation from the mean fitness:
+            </p>
+
+            <p>
+                \[
+                \frac{d}{dt} \ln \left( \frac{p}{1-p} \right) = r_1 - r_2 
+                \quad \Rightarrow \quad
+                p(t) = \frac{1}{1 + \left( \frac{1 - p_0}{p_0} \right) e^{-rt}}
+                \]
+            </p>
+
+            <p>
+                The point of these three examples is to show that, despite great differences in the way in which the total population changes, the changes in proportion follow the same general rule given before.
+            </p>
+
+            <p>
+                The key insight here is that the <strong>relative fitness</strong> differences determine frequency changes, even when the <strong>total population size</strong> is governed by different constraints.
+            </p>
+
+            <section id="RegulationByEfficiency">
+            <h2>Regulation by Efficiency of Space or Food Utilization</h2>
+
+            <p>
+                If populations are regulated by the available space, food, or some other limiting factor, the type that wins in the competition may not be the one with the higher intrinsic rate of increase, but rather the one that can maintain the largest numbers in this environment.
+            </p>
+
+            <p>
+                The two strains share space and resources where total population size is limited not by a hard ceiling, but by how each strain can utilize the environment.
+                A simple model illustrating this possibility is given by:
+            </p>
+
+            <p>
+                \[
+                \frac{dn_1}{dt} = r_1 n_1 \frac{K_1 - N}{K_1}
+                \quad \text{and} \quad
+                \frac{dn_2}{dt} = r_2 n_2 \frac{K_2 - N}{K_2}
+                \]
+            </p>
+
+            <p>
+                One interpretation of \( K_1 \) is that this is the maximum population size that strain 1 can maintain when it is the only species; \( K_2 \) has the same meaning for strain 2. Suppose that \( r_1 = r_2 \), but \( K_1 \neq K_2 \).
+            </p>
+
+            <p>
+                The change in total number is given by:
+            </p>
+
+            <p>
+                \[
+                \frac{dN}{dt} = rN \left[ 1 - \frac{n_1}{K_1} - \frac{n_2}{K_2} \right]
+                \]
+            </p>
+
+            <p>
+                where \( r = r_1 = r_2 \). The change in the proportion of type 1 is:
+            </p>
+
+            <p>
+                \[
+                \frac{dp_1}{dt} = R \cdot p_1 p_2 = R p_1 (1 - p_1)
+                \]
+                where
+                \[
+                R = Nr \left( \frac{K_1 - K_2}{K_1 K_2} \right)
+                \]
+            </p>
+
+            <p>
+                The presented equation is a general form of the logistic equation, but it is not the same since \( R \) is not a constant. Still, it can be considered of logistic form, showing frequency-dependent selection.
+                However, in many cases \( R \) changes slowly, and such an equation accurately describes the rate of change at any particular time. 
+                In an uncrowded environment, the success of a population is determined mainly by its intrinsic rate of increase, \( r \).
+                In a crowded environment, the carrying capacity \( K \) for the species may be more important.
+                MacArthur and Wilson (1967) refer to <em>r-selection</em> and <em>K-selection</em>. 
+                In an uncrowded environment (<em>r-selection</em>), types that harvest the most food — even if they are wasteful — have the largest rate of increase.
+                On the other hand, in a crowded environment (<em>K-selection</em>), there is great value on efficiency of utilization rather than simple productivity. 
+                These equations are widely applicable, even when populations may differ greatly in their states.
+                The total population may be growing, static, or decreasing, and the different genotypes may differ in intrinsic birth rates, death rates, or their responses to the environment — yet the equations for changes in proportions may be basically similar.
+                For these reasons, population genetics has usually ignored the total numbers and concentrated on the proportions.
+            </p>
+
+            <div id="comp-growth-population" style="width:100%; max-width:900px; margin:auto;"></div>
+            <div id="comp-growth-proportion" style="width:100%; max-width:900px; margin:auto; margin-top: 20px;"></div>
+
+            <script>
+            fetch('../../../data/competitive_growth.json')
+            .then(response => response.json())
+            .then(data => {
+                const t = data.t;
+                const n1 = data.n1;
+                const n2 = data.n2;
+                const N = data.N;
+                const p1 = data.p1;
+
+                // Gráfico 1 – Tamanhos populacionais
+                Plotly.newPlot('comp-growth-population', [
+                {
+                    x: t,
+                    y: n1,
+                    name: 'Strain 1 (n1)',
+                    mode: 'lines',
+                    line: { color: 'blue' }
+                },
+                {
+                    x: t,
+                    y: n2,
+                    name: 'Strain 2 (n2)',
+                    mode: 'lines',
+                    line: { color: 'orange' }
+                },
+                {
+                    x: t,
+                    y: N,
+                    name: 'Total Population (N)',
+                    mode: 'lines',
+                    line: { color: 'green', dash: 'dash' }
+                }
+                ], {
+                title: 'Population Dynamics',
+                xaxis: { title: 'Time' },
+                yaxis: { title: 'Population Size' }
+                });
+
+                // Gráfico 2 – Proporção
+                Plotly.newPlot('comp-growth-proportion', [
+                {
+                    x: t,
+                    y: p1,
+                    name: 'Proportion of Strain 1 (p1)',
+                    mode: 'lines',
+                    line: { color: 'purple' }
+                },
+                {
+                    x: [t[0], t[t.length - 1]],
+                    y: [0.5, 0.5],
+                    mode: 'lines',
+                    name: 'p = 0.5',
+                    line: { color: 'gray', dash: 'dot', width: 1 }
+                }
+                ], {
+                title: 'Change in Proportion of Strain 1',
+                xaxis: { title: 'Time' },
+                yaxis: { title: 'Proportion', range: [0, 1] }
+                });
+            })
+            .catch(error => {
+                console.error("Erro ao carregar os dados do JSON:", error);
+            });
+            </script>
+
+
+            </section>
+
 
             <!-- pagination -->
             <nav aria-label="...">
