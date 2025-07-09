@@ -42,7 +42,7 @@
             </div>
         </div>
         </nav>
-        
+
         <main class="d-flex">
         <!-- Sidebar que rola com o conteúdo -->
         <nav class="flex-shrink-0 p-3 text-bg-dark" style="width: 250px;">
@@ -112,8 +112,8 @@
                 \frac{\Delta N_t}{N_t} = s
                 \]</p>
 
-                <If>The proportion by which the population changes in one generation is given by \( s \). 
-                    If the population is composed of several kinds of individuals (many genotypes) with different fitnesses, then the whole population increases or decreases at the same rate as if all the individuals had the average fitness. 
+                <p>The proportion by which the population changes in one generation is given by \( s \).
+                    If the population is composed of several kinds of individuals (many genotypes) with different fitnesses, then the whole population increases or decreases at the same rate as if all the individuals had the average fitness.
                     Consider that \( n_1, n_2, n_3, \ldots, n_k \) is the number of each of the \( k \) types in the population in generation \( t-1 \). Then, let \( w_1, w_2, w_3, \ldots, w_k \) be their respective fitnesses, and assume \( n_1 + n_2 + \ldots + n_k = N \).</p>
 
                 <p>\[
@@ -136,9 +136,9 @@
                 N_t = \bar{w} \cdot N_{t-1}
                 \]</p>
 
-                <p>The implications are simple: as the fitnesses of the different types are inherited, those with greater fitness will be represented in greater proportion in the next generation. Hence, \( \bar{w} \) is expected to change as the most fit individuals increase in proportion. 
+                <p>The implications are simple: as the fitnesses of the different types are inherited, those with greater fitness will be represented in greater proportion in the next generation. Hence, \( \bar{w} \) is expected to change as the most fit individuals increase in proportion.
                 <strong>To summarize:</strong> with a discrete generation model and variable fitnesses, the weighted arithmetic mean is appropriate for comparing contemporaneous differences, while the geometric mean is appropriate for averaging across generations.</p>
-                
+
                 <h3>Discrete, Nonoverlapping Generations</h3>
 
                 <div class="plot-container">
@@ -214,6 +214,7 @@
                     yaxis: { title: 'Fitness' }
                 });
                 </script>
+            </section>
             <section id="Continouspop">
                 <h2>Model 2: Continuous Random Birth and Deaths</h2>
 
@@ -264,11 +265,11 @@
 
                 <p>
                 This can be measured in any convenient units such as hours, days, weeks, or years.
-                In any case, \( m \) is measured in the reciprocal of those same units (per hour, per day, etc.). 
+                In any case, \( m \) is measured in the reciprocal of those same units (per hour, per day, etc.).
                 In its strictest form, this model applies only to situations like bacterial growth in an unrestricted environment.
                 Each individual is equally likely to die or reproduce at any instant.
                 However, most populations do not grow or decline rapidly.
-                The age distribution is often near equilibrium, making the average birth and death rates nearly constant. 
+                The age distribution is often near equilibrium, making the average birth and death rates nearly constant.
                 We find that Equations 1.1 and 1.3 are correspondent in:
                 </p>
 
@@ -284,12 +285,12 @@
                 </p>
 
                 <p>
-                If the time unit is chosen so that \( m = \log_e w \), then continuous population changes, 
-                when counted at time intervals corresponding to these units, match the numbers in the discrete population. 
+                If the time unit is chosen so that \( m = \log_e w \), then continuous population changes,
+                when counted at time intervals corresponding to these units, match the numbers in the discrete population.
                 Measuring time in such units makes \( t \) effectively equivalent to the number of generations in a discrete model.
-                If \( w \) is nearly 1 (i.e., \( s \) is small), then \( \log_e(1 + s) \approx s \). 
+                If \( w \) is nearly 1 (i.e., \( s \) is small), then \( \log_e(1 + s) \approx s \).
                 Thus, for very slow changes, \( s \) and \( m \) are approximately equal.
-                Consider a discrete population that reproduces once each year, each parent giving rise to two progeny and dying immediately after. 
+                Consider a discrete population that reproduces once each year, each parent giving rise to two progeny and dying immediately after.
                 Thus, \( \bar{w} = 2 \), and the population doubles each year:
                 </p>
 
@@ -412,9 +413,9 @@
                     Plotly.newPlot('populationPlot', [trace1, trace2, trace3], layout);
                 </script>
             <p>
-            We shall call <span>\( w \)</span> the <strong>fitness</strong> or the <em>Wrightian fitness</em>, after Sewall Wright. 
-            R. A. Fisher designated <span>\( m \)</span> as the <em>Malthusian parameter</em>. 
-            Although used here as measures of the absolute rate of increase, <span>\( w \)</span> and <span>\( m \)</span> are also used 
+            We shall call <span>\( w \)</span> the <strong>fitness</strong> or the <em>Wrightian fitness</em>, after Sewall Wright.
+            R. A. Fisher designated <span>\( m \)</span> as the <em>Malthusian parameter</em>.
+            Although used here as measures of the absolute rate of increase, <span>\( w \)</span> and <span>\( m \)</span> are also used
             for the <em>relative rates</em> of different types. Notice that if there are no births, we can rewrite the equation simply as:
             </p>
 
@@ -503,10 +504,10 @@
             \]
         </p>
 
-        <If>Thus, in contrast to \( w \) in the discrete model, in the continuous model the appropriate average is the arithmetic mean of the \( m \)'s. This is reasonable, since if \( m = \log w \), then the arithmetic mean of \( m \) is the log of the geometric mean of \( w \). 
-            If fitness is heritable, then the average value of \( m \) will change from generation to generation as the fitter types make a disproportionate contribution to future generations. This is another way of stating that natural selection will generally lead to an increase in the average fitness. 
-            Intuitively, the amount by which the average fitness changes per unit time should relate to the variability in fitness among types. We'll show now that the rate of increase is given by the variance in fitness. 
-            Assume there are \( k \) types with frequencies \( n_1, n_2, \dots, n_k \) and fitnesses \( m_1, m_2, \dots, m_k \) (Malthusian parameters), perfectly heritable, with no interbreeding. The same formulation applies to asexual clones or haploid loci. 
+        <p>Thus, in contrast to \( w \) in the discrete model, in the continuous model the appropriate average is the arithmetic mean of the \( m \)'s. This is reasonable, since if \( m = \log w \), then the arithmetic mean of \( m \) is the log of the geometric mean of \( w \).
+            If fitness is heritable, then the average value of \( m \) will change from generation to generation as the fitter types make a disproportionate contribution to future generations. This is another way of stating that natural selection will generally lead to an increase in the average fitness.
+            Intuitively, the amount by which the average fitness changes per unit time should relate to the variability in fitness among types. We'll show now that the rate of increase is given by the variance in fitness.
+            Assume there are \( k \) types with frequencies \( n_1, n_2, \dots, n_k \) and fitnesses \( m_1, m_2, \dots, m_k \) (Malthusian parameters), perfectly heritable, with no interbreeding. The same formulation applies to asexual clones or haploid loci.
             We wish to compute how \( \bar{m} \) changes over time:</p>
 
         <p>
@@ -527,8 +528,8 @@
             \]
         </p>
 
-        <In>Where \( V_m \) is the variance of the Malthusian fitness values \( m_i \). Therefore, the rate of change of average fitness is equal to the variance in fitness at that time. 
-            In Mendelian populations with genetic mixing, the rate of change is determined by the heritable part of the variance — that is, the part associated with transmissible gene differences. 
+        <p>Where \( V_m \) is the variance of the Malthusian fitness values \( m_i \). Therefore, the rate of change of average fitness is equal to the variance in fitness at that time.
+            In Mendelian populations with genetic mixing, the rate of change is determined by the heritable part of the variance — that is, the part associated with transmissible gene differences.
             <strong>Conclusion:</strong> The rate of change of mean fitness is equal to the variance in fitness.</p>
 
         <div id="log-population" style="width: 100%; max-width: 900px; margin: auto;"></div>
@@ -602,11 +603,11 @@
                 xaxis: { title: 'Time' }
             });
         })();
-        </script> 
+        </script>
 
         <p>The total population grows exponentially but accelerated by increasing mean fitness. The mean fitness increases over time due to selection driven by heritable differences. Variance in fitness initially provides the 'fuel' for selection. Over the time, it typically declines as the fittest types dominate.</p>
-        </section>
 
+            </section>
             <section id="OverlappingDiscrete">
             <h2>Model 3: Overlapping Generations, Discrete Time Intervals</h2>
 
@@ -680,8 +681,8 @@
             </ul>
 
             <p>
-                Note that the population age distribution fluctuates for several generations and then reaches a stable proportion for each age class. At this point, the population is increasing at a constant rate of 0.45% per year. 
-                This example illustrates the general principle that any population with a fixed schedule of age-specific birth and death rates eventually reaches a stable age distribution. Once this stage is reached, the growth rate becomes constant, and the equations for both discrete and continuous growth discussed earlier become applicable. 
+                Note that the population age distribution fluctuates for several generations and then reaches a stable proportion for each age class. At this point, the population is increasing at a constant rate of 0.45% per year.
+                This example illustrates the general principle that any population with a fixed schedule of age-specific birth and death rates eventually reaches a stable age distribution. Once this stage is reached, the growth rate becomes constant, and the equations for both discrete and continuous growth discussed earlier become applicable.
                 The population growth ratio \( \frac{N_t}{N_{t-1}} \) converges to 1.0045 (that is, 0.45% growth per year), as expected.
             </p>
 
@@ -798,17 +799,17 @@
                 console.error("Erro ao carregar dados de população estruturada:", error);
             });
             </script>
-
+            </section>
             <section id="OverlapppingContinous">
                 <h2>Model 4: Overlapping Generations, Continuous Change</h2>
                 <p>
                 The methods of the previous section are specifically adapted to organisms such as annually reproducing plants, where reproduction is seasonal but individuals may live through several seasons.
-                In many other organisms, ranging from short-lived insects to humans, births and deaths occur continuously. 
-                When the population is large, individual events blend into a continuous process of population change. 
-                Mathematically, this is viewed as the limit of the previous discrete models as age intervals become infinitesimally small. 
+                In many other organisms, ranging from short-lived insects to humans, births and deaths occur continuously.
+                When the population is large, individual events blend into a continuous process of population change.
+                Mathematically, this is viewed as the limit of the previous discrete models as age intervals become infinitesimally small.
                 The foundational equations were developed by Lotka and Fisher, and we follow Fisher's approach using time in years.
-                Let \( l(x) \) be the probability of survival from birth to age \( x \), and let \( b(x)dx \) be the probability of reproducing in the age interval \( x \) to \( x + dx \). 
-                Then the probability of surviving to age \( x \) and reproducing in \( dx \) is \( l(x)b(x)dx \). 
+                Let \( l(x) \) be the probability of survival from birth to age \( x \), and let \( b(x)dx \) be the probability of reproducing in the age interval \( x \) to \( x + dx \).
+                Then the probability of surviving to age \( x \) and reproducing in \( dx \) is \( l(x)b(x)dx \).
                 The expected number of offspring during a lifetime is:
                 </p>
 
@@ -819,13 +820,13 @@
                 </p>
 
                 <p>
-                If we replace \( A \) with \( \infty \) (since \( b(x) = 0 \) for \( x > A \)), the integral remains valid. 
-                If the result is greater than 1, the population grows; if less than 1, it declines. 
+                If we replace \( A \) with \( \infty \) (since \( b(x) = 0 \) for \( x > A \)), the integral remains valid.
+                If the result is greater than 1, the population grows; if less than 1, it declines.
                 As shown earlier, a population with fixed age-specific rates will approach a stable age distribution, with constant growth rate.
                 In the continuous case, we represent this growth as \( e^m \), where \( m \) is the Malthusian parameter.
                 Individuals of age \( x \) at time \( t \) were born \( x \) years ago at time \( t - x \).
-                Let \( B(t)dt \) be the number of births at time \( t \). 
-                Then the birth rate at time \( t - x \) was \( B(t - x) \). 
+                Let \( B(t)dt \) be the number of births at time \( t \).
+                Then the birth rate at time \( t - x \) was \( B(t - x) \).
                 A fraction \( l(x) \) of those born then survive to age \( x \), and of those, a fraction \( b(x)dx \) will give birth now.
                 Thus, the current birth rate at time \( t \) is:
                 </p>
@@ -857,7 +858,7 @@
                 </p>
 
                 <p>
-                This equation can be solved for \( m \), given known \( l(x) \) and \( b(x) \). In practice, these are often based on discrete age classes. 
+                This equation can be solved for \( m \), given known \( l(x) \) and \( b(x) \). In practice, these are often based on discrete age classes.
                 Once age-distribution stability is achieved, the same growth expressions apply as before:
                 </p>
 
@@ -928,12 +929,12 @@
             });
 
             </script>
-
+            </section>
             <section id="FisherMeasure">
             <h2>Fisher's Measure of Reproductive Value</h2>
 
-            <In>Fisher also asked a genetically relevant question: To what extent does an individual of age \( x \) contribute to the ancestry of future generations?
-                In order to answer this, he defines the quantity \( v(x) \), the reproductive value at age \( x \). Obviously, the reproductive value is 0 for an individual who is past the reproductive age. It is clearly lower at birth than a few years later, since a person of age 10, say, has a better chance of surviving to reproduce than a child at birth. Furthermore, reproduction would begin sooner and, in a growing population, this would increase the total contribution to future years by an earlier start. The value might be expected to be maximum somewhere near the beginning of the reproductive period. 
+            <p>Fisher also asked a genetically relevant question: To what extent does an individual of age \( x \) contribute to the ancestry of future generations?
+                In order to answer this, he defines the quantity \( v(x) \), the reproductive value at age \( x \). Obviously, the reproductive value is 0 for an individual who is past the reproductive age. It is clearly lower at birth than a few years later, since a person of age 10, say, has a better chance of surviving to reproduce than a child at birth. Furthermore, reproduction would begin sooner and, in a growing population, this would increase the total contribution to future years by an earlier start. The value might be expected to be maximum somewhere near the beginning of the reproductive period.
                 To define the reproductive value, we note first that the number of births from parents of age \( x \) is proportional to \( e^{-mx} l(x) b(x) dx \), as shown in the previous section. If we now think of this cohort of persons followed through the rest of their lifetimes, their total contribution is proportional to:</p>
 
             <p>
@@ -950,7 +951,7 @@
             \]
             </p>
 
-            <Earlier,>If \( x = 0 \), the denominator is equal to 1. Likewise, if \( x = 0 \), the numerator is equal to 1. Therefore, the reproductive value at birth is 1, and \( v(x) \) is a measure of the reproductive value of an individual of age \( x \) relative to that of a newborn child. 
+            <p>If \( x = 0 \), the denominator is equal to 1. Likewise, if \( x = 0 \), the numerator is equal to 1. Therefore, the reproductive value at birth is 1, and \( v(x) \) is a measure of the reproductive value of an individual of age \( x \) relative to that of a newborn child.
                 Earlier, we discussed the situation as if the population were in age-distribution equilibrium. On the other hand, we can accept the definition as given and apply it to populations in general. We can then accept that irrespective of the age distribution, the total reproductive value of a population increases at a rate given by \( m \).</p>
             <p>
             \[
@@ -982,7 +983,7 @@
             \]
             </p>
 
-            <The>The first term is the rate of <strong>change in reproductive value</strong> as an individual ages. The second is the rate of decrease due to mortality (**mortality rate**). The third is the rate of increase from new births (**birth rate**), which is simply the instantaneous birth rate since the value of each newborn, \( v(0) \), is 1. The left side thus gives the net change in reproductive value from aging, death, or reproduction. 
+            <p>The first term is the rate of <strong>change in reproductive value</strong> as an individual ages. The second is the rate of decrease due to mortality (**mortality rate**). The third is the rate of increase from new births (**birth rate**), which is simply the instantaneous birth rate since the value of each newborn, \( v(0) \), is 1. The left side thus gives the net change in reproductive value from aging, death, or reproduction.
                 The \( n(x) \) individuals of age \( x \) contribute \( m n(x) v(x) \) to the increase in total reproductive value. Thus, the rate of change in reproductive value across all ages is given by \( m \). Adding up all ages, we have:</p>
 
             <p>
@@ -1008,7 +1009,7 @@
             .then(response => response.json())
             .then(data => {
                 const maxIndex = data.v_vals.indexOf(Math.max(...data.v_vals));
-                
+
                 Plotly.newPlot('plot-reproductive-value', [
                 {
                     x: data.x_vals,
@@ -1033,13 +1034,12 @@
             .catch(error => console.error("Erro ao carregar dados:", error));
             </script>
             </section>
-
             <section id="PopRegulation">
             <h2>Regulation of Population Number</h2>
 
             <p>
                 We have said nothing so far about population regulation. It is obvious that a population cannot grow exponentially forever. It must eventually reach a state where \( m \) becomes 0 or negative, or where in a discrete model \( w \) becomes 1 or less. The growth rate is eventually limited by all the factors that collectively make up the carrying capacity of the environment.
-                In population genetics we are mainly concerned with the changes in proportions of different types of individuals, rather than total numbers. We shall consider some examples of this under various types of population regulation. However, we shall ignore until later in the book the complications introduced by Mendelian inheritance. 
+                In population genetics we are mainly concerned with the changes in proportions of different types of individuals, rather than total numbers. We shall consider some examples of this under various types of population regulation. However, we shall ignore until later in the book the complications introduced by Mendelian inheritance.
                 We shall be dealing in this section with continuous models of the type introduced before. Alternatively, in principle we could deal with reproductive values rather than actual numbers by weighting each individual by the reproductive value appropriate to its age. By modifying previous growth equations, we have:
             </p>
 
@@ -1050,8 +1050,8 @@
             </p>
 
             <p>
-                The quantity \( r \) is the intrinsic rate of increase — the rate at which the population would grow if it had unlimited food supply and room for expansion. The function \( f(N) \) implies some change in the rate of increase with the size of the population. 
-                The regulation may be, for example, by limitation of food supply, by the space available, by the accumulation of toxic products, or by territorial behavior patterns. 
+                The quantity \( r \) is the intrinsic rate of increase — the rate at which the population would grow if it had unlimited food supply and room for expansion. The function \( f(N) \) implies some change in the rate of increase with the size of the population.
+                The regulation may be, for example, by limitation of food supply, by the space available, by the accumulation of toxic products, or by territorial behavior patterns.
                 A particularly simple mode is provided by letting \( f(N) \) be a linear function of \( N \), say \( N/K \), where \( K \) is a constant sometimes called the carrying capacity of the environment. Such a population will grow approximately exponentially as long as \( N \ll K \), but as \( N \) approaches \( K \) the rate will decrease until size stability is reached at \( N = K \). If we replace \( N/K \) for \( f(N) \), then
             </p>
 
@@ -1062,7 +1062,7 @@
             </p>
 
             <p>
-                When \( N \ll K \), the growth is almost exponential, but as \( N \to K \), growth slows and \( dN/dt \to 0 \). 
+                When \( N \ll K \), the growth is almost exponential, but as \( N \to K \), growth slows and \( dN/dt \to 0 \).
                 The equation can also be rewritten as:
             </p>
 
@@ -1103,7 +1103,7 @@
             </p>
 
             <p>
-                Note that, whether there is regulation or not, the time required for a certain change is proportional to \( 1/r \). 
+                Note that, whether there is regulation or not, the time required for a certain change is proportional to \( 1/r \).
                 We can also write the equation in the inverse form, giving the number at time \( t \) as a function of \( t \) and the initial number \( N_0 \):
             </p>
 
@@ -1124,10 +1124,10 @@
             </p>
 
             <p>
-                This function can be graphically visualized and is called the "logistic" curve of population increase and has been widely used in ecology. 
-                Of course it is merely the simplest of a number of equations that could be derived and many populations, natural and experimental, depart widely from the model. 
+                This function can be graphically visualized and is called the "logistic" curve of population increase and has been widely used in ecology.
+                Of course it is merely the simplest of a number of equations that could be derived and many populations, natural and experimental, depart widely from the model.
                 As stated earlier, we are mainly concerned in population genetics with the proportion of different genes and genotypes rather than the total number. We shall see that many of the equations for the proportions of different types are the same, despite quite different mechanisms for regulation of the population number.
-                The intrinsic rate of increase \( r \) is closely related to the Malthusian parameter \( m \). \( m \) can also be seen as the realized growth rate. 
+                The intrinsic rate of increase \( r \) is closely related to the Malthusian parameter \( m \). \( m \) can also be seen as the realized growth rate.
                 We shall use the latter for the actual rate of change in numbers of the population, or of a part of the population, and \( r \) for the value this would take in a situation where the growth rate is not regulated.
             </p>
 
@@ -1146,12 +1146,12 @@
             const c0Logistic = (kCapacity - n0Initial) / n0Initial;
 
             // Modelo logístico
-            const populationLogistic = timeRange.map(t => 
+            const populationLogistic = timeRange.map(t =>
                 kCapacity / (1 + c0Logistic * Math.exp(-rGrowth * t))
             );
 
             // Modelo exponencial (sem regulação)
-            const populationExponential = timeRange.map(t => 
+            const populationExponential = timeRange.map(t =>
                 n0Initial * Math.exp(rGrowth * t)
             );
 
@@ -1200,7 +1200,6 @@
             </script>
 
             </section>
-
             <section id="UnregulatedGrowth">
             <h2>Unregulated Growth</h2>
 
@@ -1269,12 +1268,11 @@
             </p>
 
             <p>
-                This form of the equation suggests the extension to more than two strains. When three or more strains are present, the same equation is correct for the rate of change of a particular strain, and \( \bar{r} \) is the weighted average of the rates of increase of all the strains. 
+                This form of the equation suggests the extension to more than two strains. When three or more strains are present, the same equation is correct for the rate of change of a particular strain, and \( \bar{r} \) is the weighted average of the rates of increase of all the strains.
                 In this model, the total population is increasing exponentially at any instant, although the rate of increase \( \bar{r} \) is changing continuously — unrealistic for any long period of time. We only discuss it here to make the point that the model can accurately describe the rate of change of the proportion of one type in a mixed population even when the numbers are changing according to quite a different rule.
             </p>
-            
-            </section> 
 
+            </section>
             <section id="LogisticRegulation">
             <h2>Logistic Regulation of Total Number</h2>
             <h2>Logistic Regulation of Total Number</h2>
@@ -1327,7 +1325,7 @@
             \]
             </p>
 
-            <p>Where \( r = r_1 - r_2 \) and \( C = \ln \left( \frac{p_0}{1 - p_0} \right) \), a constant determined by the initial composition. This form is also known as the <strong>log-ratio dynamics</strong> or <strong>replicator equation form</strong>. This suggests a convenient way of plotting data from selection experiments. By plotting \( \ln \left( \frac{p}{1 - p} \right) \) against time, one can easily see whether the trend is linear and thus whether the logistic equation is appropriate. 
+            <p>Where \( r = r_1 - r_2 \) and \( C = \ln \left( \frac{p_0}{1 - p_0} \right) \), a constant determined by the initial composition. This form is also known as the <strong>log-ratio dynamics</strong> or <strong>replicator equation form</strong>. This suggests a convenient way of plotting data from selection experiments. By plotting \( \ln \left( \frac{p}{1 - p} \right) \) against time, one can easily see whether the trend is linear and thus whether the logistic equation is appropriate.
             Alternatively, if we wish to know how much time is needed to change the proportion from \( p_0 \) to \( p_t \), we can write the following:</p>
 
             <p>
@@ -1437,9 +1435,8 @@
                 yaxis: { title: 'Proportion / Logit' },
                 legend: { orientation: 'h' }
             });
-            </script>           
-            </section> 
-
+            </script>
+            </section>
             <section id="WeakControl">
             <h2>Weaker Population Control</h2>
 
@@ -1563,10 +1560,10 @@
                 });
             })();
             </script>
-            </section> 
-
+            </section>
             <section id="SpaceFoodUtilization">
             <h2>Regulation by Efficiency of Space or Food Utilization</h2>
+            </section>
             <section id="WeakerPopulationControl">
             <h2>Weaker Population Control</h2>
 
@@ -1607,7 +1604,7 @@
 
             <p>
                 \[
-                \frac{d}{dt} \ln \left( \frac{p}{1-p} \right) = r_1 - r_2 
+                \frac{d}{dt} \ln \left( \frac{p}{1-p} \right) = r_1 - r_2
                 \quad \Rightarrow \quad
                 p(t) = \frac{1}{1 + \left( \frac{1 - p_0}{p_0} \right) e^{-rt}}
                 \]
@@ -1621,14 +1618,12 @@
                 The key insight here is that the <strong>relative fitness</strong> differences determine frequency changes, even when the <strong>total population size</strong> is governed by different constraints.
             </p>
 
+            </section>
             <section id="RegulationByEfficiency">
             <h2>Regulation by Efficiency of Space or Food Utilization</h2>
 
             <p>
                 If populations are regulated by the available space, food, or some other limiting factor, the type that wins in the competition may not be the one with the higher intrinsic rate of increase, but rather the one that can maintain the largest numbers in this environment.
-            </p>
-
-            <p>
                 The two strains share space and resources where total population size is limited not by a hard ceiling, but by how each strain can utilize the environment.
                 A simple model illustrating this possibility is given by:
             </p>
@@ -1671,12 +1666,12 @@
 
             <p>
                 The presented equation is a general form of the logistic equation, but it is not the same since \( R \) is not a constant. Still, it can be considered of logistic form, showing frequency-dependent selection.
-                However, in many cases \( R \) changes slowly, and such an equation accurately describes the rate of change at any particular time. 
+                However, in many cases \( R \) changes slowly, and such an equation accurately describes the rate of change at any particular time.
                 In an uncrowded environment, the success of a population is determined mainly by its intrinsic rate of increase, \( r \).
                 In a crowded environment, the carrying capacity \( K \) for the species may be more important.
-                MacArthur and Wilson (1967) refer to <em>r-selection</em> and <em>K-selection</em>. 
+                MacArthur and Wilson (1967) refer to <em>r-selection</em> and <em>K-selection</em>.
                 In an uncrowded environment (<em>r-selection</em>), types that harvest the most food — even if they are wasteful — have the largest rate of increase.
-                On the other hand, in a crowded environment (<em>K-selection</em>), there is great value on efficiency of utilization rather than simple productivity. 
+                On the other hand, in a crowded environment (<em>K-selection</em>), there is great value on efficiency of utilization rather than simple productivity.
                 These equations are widely applicable, even when populations may differ greatly in their states.
                 The total population may be growing, static, or decreasing, and the different genotypes may differ in intrinsic birth rates, death rates, or their responses to the environment — yet the equations for changes in proportions may be basically similar.
                 For these reasons, population genetics has usually ignored the total numbers and concentrated on the proportions.
@@ -1751,9 +1746,7 @@
             });
             </script>
 
-
             </section>
-
 
             <!-- pagination -->
             <nav aria-label="...">
@@ -1772,15 +1765,34 @@
                 </ul>
                 </nav>
                 <!-- bootstrap footer -->
-                <div class="container"> <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"> <p class="col-md-4 mb-0 text-body-secondary">© 2025 Company, Inc</p> <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none" aria-label="Bootstrap"> <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use xlink:href="#bootstrap"></use></svg> </a> <ul class="nav col-md-4 justify-content-end"> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li> </ul> </footer> </div>
-        </div>
+                <div class="container">
+                    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                        <p class="col-md-4 mb-0 text-body-secondary">© 2025 Company, Inc</p>
+                        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none" aria-label="Bootstrap">
+                            <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use xlink:href="#bootstrap"></use></svg>
+                        </a>
+                        <ul class="nav col-md-4 justify-content-end">
+                            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a>
+                        </li>
+                            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link px-2 text-body-secondary">Pricing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link px-2 text-body-secondary">FAQs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link px-2 text-body-secondary">About</a>
+                            </li>
+                        </ul>
+                    </footer>
+                </div>
         </main>
 
             <script src="../simulation/simulation1.js"></script>
             <script src="../../../js/utils/plotly_theme.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-
-
 
     </body>
 </html>
