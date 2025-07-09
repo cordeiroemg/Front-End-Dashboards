@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -168,7 +167,6 @@
 
                 <div id="plot1" style="width:100%;max-width:700px;margin:auto;"></div>
             </section>
-
             <section id="x-linked">
                 <h2>X-linked Loci</h2>
                 <p>For alleles on the \(X\) chromosome, the genotype frequencies in the male are the same as the gene frequencies, since the male is haploid for this chromosome. The female frequencies, on the other hand, are the same as for diploid autosomal loci, since there are two \(X\) chromosomes.</p>
@@ -221,7 +219,6 @@
                 <p>The expected numbers in the four classes are \(Nmp\), \(Nm(1 - p)\), \(N(1 - m)p^2\), and \(N(1 - m)(1 - p^2)\).</p>
 
             </section>
-            
             <section id="xlinked-calculator" class="calculator">
                 <h1>X-linked Trait Calculator</h1>
                 <label for="affected-males">Affected Males (A):</label>
@@ -236,7 +233,6 @@
 
                 <p id="result"></p>
             </section>
-
             <section id="Different-InitialF">
                 <h2>Different Initial Gene Frequencies in the Two Sexes</h2>
                 <p>Usually the gene frequencies are the same in the two sexes, but under some unusual circumstances they may be different. One possibility is in animal or plant breeding where the original hybrids are made up of males of one strain and females of another. Another is in a natural population where most of the migrants are of one sex. 
@@ -291,7 +287,6 @@
 
                 <div id="plot2" style="width:100%;max-width:700px;margin:auto;"></div>
             </section>
-
             <section id="two-loci">
                 <h2>Two Loci</h2>
                 <p>Previously we noted that Hardy-Weinberg relation was attained in a single generation, irrespective of the number of alleles. But it is possible for each of two loci to be in random-mating frequencies, yet for them not to be in equilibrium with each other. We shall see that, contrary to the situation with a single locus, the equilibrium relation between two or more loci is not attained immediately, but over a number of generations. We still assume that there is no selection. 
@@ -397,7 +392,6 @@
 
                 <div id="plotEquilibrium" style="width:100%;max-width:700px;margin:auto;"></div>
             </section>
-
             <section id="wahlund">
                 <h2>Subdivision of a Population: Wahlund's Principle</h2>
                 
@@ -452,7 +446,6 @@
                 </div>
                 <div id="proportionAA" style="width:100%;max-width:700px;margin:auto;"></div>
             </section>
-
             <section id="finite-pop">
                 <h2>Random-mating Proportion in a Finite Population</h2>
                     <p>The Hardy-Weinberg proportions are realized exactly only in an infinite population. For one thing, a finite population is subject to chance deviations from the expected proportions. There is also a systematic bias because of the discreteness of the possible numbers of different genotypes. The bias can become important if there are a number of individually very rare alleles. Consider a population of size \(N\). 
@@ -479,7 +472,8 @@
                     <span id="p-value">0.05</span>
                 </div>
                 <div id="plotFinitePopulation" style="width:100%;max-width:700px;margin:auto;"></div>
-            </section> 
+            </section>
+
             <!-- pagination -->
             <nav aria-label="...">
                 <ul class="pagination justify-content-center">
@@ -491,10 +485,35 @@
                     <li class="page-item"><a class="page-link" href="#">3</a></li>
                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
                 </ul>
-                </nav>
+            </nav>
                 <!-- bootstrap footer -->
-                <div class="container"> <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"> <p class="col-md-4 mb-0 text-body-secondary">© 2025 Company, Inc</p> <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none" aria-label="Bootstrap"> <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use xlink:href="#bootstrap"></use></svg> </a> <ul class="nav col-md-4 justify-content-end"> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li> </ul> </footer> </div>
-        </div>
+                <div class="container">
+                    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                        <p class="col-md-4 mb-0 text-body-secondary">© 2025 Company, Inc</p>
+                        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none" aria-label="Bootstrap">
+                            <svg class="bi me-2" width="40" height="32" aria-hidden="true"><use xlink:href="#bootstrap"></use>
+                            </svg>
+                        </a>
+                        <ul class="nav col-md-4 justify-content-end">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link px-2 text-body-secondary">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link px-2 text-body-secondary">Features</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link px-2 text-body-secondary">Pricing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link px-2 text-body-secondary">FAQs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link px-2 text-body-secondary">About</a>
+                            </li>
+                        </ul>
+                    </footer>
+                </div>
+            </div>
         </main>
 
             <script src="../simulation/simulation2.js"></script>
