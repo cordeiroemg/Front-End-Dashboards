@@ -66,8 +66,543 @@
 
             </section>
             <section id="Discretepop">
+                
+html
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbreeding</title>
+    <!-- Include MathJax -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+    <h2>3. DecreaseHet</h2>
+    <p>Inbreeding occurs when mates are more closely related than they would be if they had been chosen at random from the population. Related individuals have one or more ancestors in common, so the extent of inbreeding is related to the amount of ancestry that is shared by the parents of the inbred individuals. Alternatively stated, the degree of inbreeding of an individual is determined by the proportion of genes that his parents have in common. 
+        An immediate consequence of this sharing of parental genes is that the inbred individual will frequently inherit the same gene from each parent <strong>(identical by descent)</strong>. Thus inbreeding increases the amount of homozygosity. So one observable effect of inbreeding is that recessive genes, previously hidden by heterozygosity with dominant alleles, will be expressed. Since most such genes are harmful in one way or another, inbreeding usually leads to a decrease in size, fertility, vigor, yield, and fitness <strong>(inbreeding depression)</strong>. There are also likely to be loci segregating in a population where a heterozygote is fitter than either of the two corresponding homozygotes. In this case, too, inbreeding leads to decreased fitness. 
+        Another consequence of consanguineous mating within the population is greater genetic variability, since genes tend to be concentrated in the same individuals. Usually, because of the correlation between genotype and phenotype, this leads to an increase in phenotypic variability. 
+        Inbreeding may follow either of two patterns. There may be a certain amount of consanguineous mating within a population, with the consequences just mentioned. On the other hand, the inbreeding may be such as to break the population into subgroups. An extreme example is continued self-fertilization in which the population (if it is constant size and each parent contributes equally to the next generation) is divided into a set of subpopulations of one individual each. Likewise, a pattern of repeated sib mating could lead to a series of isolated populations of size 2. As a third example, there may be a natural population which is divided into isolated subpopulations, within each of which mating is random or nearly so. The effect will be that each subpopulation becomes more homozygous, and therefore the whole population does. The individual subpopulations become more uniform genetically; but, since they become homozygous for different genes, the population as a whole becomes more variable. Of course, there may be only partial isolation, with intermediate consequences. 
+        A point that at first seems paradoxical is that within a subpopulation there is an increase in homozygosity despite the fact that mating within this group is random. The reason is that there are random changes in the frequencies of the individual alleles and these, on average, lead to a decrease in heterozygosity. As an extreme example, self-fertilization can be regarded as random mating (i.e., random combination of gametes) within a population of one. The gene frequencies at different, previously heterozygous loci change from \(\frac{1}{2}\) to 0 or 1. 
+        Whether inbreeding leads to subdivision or not, it can be measured in the same way - by Wright's (1922) coefficient of inbreeding, \(f\), which measures the proportion by which the heterozygosity has been decreased or the probability of two alleles at a locus to be identical by descent. As we shall show later, other population properties can also be related to \(f\). However, before discussing \(f\), we shall illustrate with two simple examples the effect of continued inbreeding.</p>
+
+    <h2>3.1 Decrease in Heterozygosity with Inbreeding</h2>
+
+    <p>The qualitative effect of continued inbreeding can be seen by examining the most extreme form, self-fertilization. In a self-fertilization population, the progeny of homozygotes are like their parents, whereas the progeny of heterozygotes are \(\frac{1}{2}\) heterozygotes and \(\frac{1}{4}\) each of the two homozygous types. 
+        Thus, in each generation the proportion of the heterozygous loci is reduced by half and the homozygous types are correspondingly increased.</p>
+
+    \[
+    H_t = \frac{H_0}{2^t}
+    \]
+
+    <p>And the homozygosity increases as:</p>
+
+    \[
+    \begin{align}
+    \text{Proportion AA} &= D + \frac{H}{2} \\
+    \text{Proportion aa} &= R + \frac{H}{2}
+    \end{align}
+    \]
+
+    <p>The key point here is that while the genotype frequencies change, allele frequencies remain constant. Inbreeding restructures the gene pool, but does not shift it. 
+        This is illustrated:</p>
+
+    \[
+    \begin{array}{c c c c} \hline
+    \text{Generation} & AA & Aa & aa \\ \hline
+    0 & D & H & R \\
+    1 & D+\frac{H}{4} & \frac{H}{2} & R+\frac{H}{4} \\
+    2 & D+\frac{3H}{8} & \frac{H}{4} & R+\frac{3H}{8} \\
+    3 & D+\frac{7H}{16} & \frac{H}{8} & R+\frac{7H}{16} \\
+    4 & D+\frac{15H}{32} & \frac{H}{16} & R+\frac{15H}{32} \\
+    \text{Limit} & D+\frac{H}{2} & 0 & R+\frac{H}{2} \\ \hline
+    \end{array}
+    \]
+
+    <p>If \(H_0\) is the initial proportion of heterozygotes, the proportion after \(t\) generations of self-fertilization is \(\frac{H_0}{2^t}\). If the original population were panmictic, with \(AA, Aa\) and \(aa\) genotypes in the proportions \(p^2, 2pq\) and \(q^2\) \((p + q = 1)\), the individual line eventually becomes homozygous. The probability of being \(AA\) is \(D + \frac{H}{2} = p^2 + pq = p(p+q) = p\); likewise, the probability of being \(aa\) is \(q\). Thus, the population becomes broken into separate lines, each homozygous for one of the other of the genes in the ratio of their original frequencies in the population. Notice one other fact: There has been no change in the gene frequency. Inbreeding per se does not change the proportions of the various genes, only the way they are combined into homozygous and heterozygous genotypes. 
+        With less extreme forms of inbreeding, the results are similar, though the change in heterozygosity is less rapid. The results for continued brother-sister mating are shown below. Again there is a decrease in the proportion of heterozygotes, with the amount deducted being divided equally and added to the two homozygous types. 
+        These results may be obtained by writing out all the possible mating generation after generation, as was done by the early investigators (Fish 1914 and Jennings 1916). This and several other systems of recurrent inbreeding were worked out by these authors. The papers are now mainly of historical interest since more general methods are available.</p>
+
+    \[
+    \begin{array}{c|c|c|c|c} \hline
+    \text{Generation} & \text{Relative Heterozygosity} & \text{Decrease in Heterozygosity} & \text{Rates of Change In Heterozygosity} & \\
+    t & \frac{H_t}{H_0}=P & \frac{H_0-H_t}{H_0}=f & \frac{H_t}{H_{t-1}} & \frac{H_{t-1}-H_t}{H_{t-1}} \\ \hline
+    0 & 1 & 0 & 1 & 0 \\
+    1 & \frac{2}{2} & 0 & 1 & 0 \\
+    2 & \frac{3}{4} & \frac{1}{4} & \frac{3}{4}=0.750 & 0.250 \\
+    3 & \frac{5}{8} & \frac{3}{8} & \frac{5}{6}=0.833 & 0.167 \\
+    4 & \frac{8}{16} & \frac{8}{16} & \frac{8}{10}=0.800 & 0.200 \\
+    5 & \frac{13}{32} & \frac{19}{32} & \frac{13}{16}=0.812 & 0.188 \\
+    6 & \frac{21}{64} & \frac{43}{64} & \frac{21}{26}=0.808 & 0.192 \\
+    \text{Limit} & 0 & 1 & \lambda=0.809 & 0.191 \\ \hline
+    \end{array}
+    \]
+
+    <p>In this example, the heterozygosity follows a simple rule. The numerator in successive generations is given by the Fibonacci series in which each term is the sum of the two preceding terms, while the denominator doubles each generation. The reduction in heterozygosity, expressed as a fraction of the initial heterozygosity, is the same regardless of the initial gene frequencies and, as shall show later, the number of alleles. 
+        The relative heterozygosity, \(\frac{H_t}{H_0}\) has been called by Wright (1951) the <em>panmictic index</em> for which he used the letter \(P\). \(1 - P\) is the inbreeding coefficient, for which Wright has used the letter \(F\). We shall use the lower case \(f\) in order to reserve \(F\) for multiple-locus inbreeding effects. 
+        The last two columns give the rate of change in heterozygosity. Notice that the ratio \(\frac{H_t}{H_{t-1}}\) after a few oscillations rapidly approaches a constant value. The limiting value of the ratio of heterozygosity to that in the previous generation is usually designated by \(\lambda\). 
+        In summary, the conceptual synthesis can be seen as follows:</p>
+
+    \[
+    \begin{array}{|c|c|c|} \hline
+    \text{Feature} & \text{Selfing} & \text{Sib mating} \\ \hline
+    \text{Heterozygosity decline} & \text{Halves each generation} & \text{Declines ~20\%/generation} \\ \hline
+    \text{Genotype frequency change} & \text{fast} & \text{slower} \\ \hline
+    \text{Allele frequency change} & \text{None} & \text{None} \\ \hline
+    \text{Population structure effect} & \text{Becomes a set of fully homozygous lines} & \text{Subgroups drift toward homozygosity} \\ \hline
+    \end{array}
+    \]
+        <table id="heterozygosityTable">
+        <thead>
+            <tr>
+                <th>Generation</th>
+                <th>Relative Heterozygosity (H_t / H_0)</th>
+                <th>Decrease in Heterozygosity (f)</th>
+                <th>Rate of Change (H_t / H_{t-1})</th>
+                <th>Delta Rate (1 - H_t / H_{t-1})</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Number of generations
+        const generations = 10;
+
+        // Initialize arrays
+        const H_t = new Array(generations + 1).fill(0);
+        H_t[0] = 1.0;  // Initial heterozygosity H_0
+
+        // Fibonacci-based decrease in heterozygosity (brother-sister mating)
+        const fib = [1, 2];
+        for (let i = 2; i <= generations; i++) {
+            fib.push(fib[i - 1] + fib[i - 2]);
+        }
+
+        // Calculate H_t using Fibonacci numbers
+        for (let t = 1; t <= generations; t++) {
+            H_t[t] = fib[t] / Math.pow(2, t);
+        }
+
+        // Calculate relative heterozygosity P, decrease f, and rates of change
+        const P = H_t.map(ht => ht / H_t[0]);
+        const f = P.map(p => 1 - p);
+        const rate_change = H_t.slice(1).map((ht, i) => ht / H_t[i]);
+        const delta_rate = rate_change.map(rc => 1 - rc);
+
+        // Prepare the data for display
+        const tableBody = document.querySelector('#heterozygosityTable tbody');
+        for (let i = 0; i <= generations; i++) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${i}</td>
+                <td>${P[i].toFixed(4)}</td>
+                <td>${f[i].toFixed(4)}</td>
+                <td>${i === 0 ? 'N/A' : rate_change[i - 1].toFixed(4)}</td>
+                <td>${i === 0 ? 'N/A' : delta_rate[i - 1].toFixed(4)}</td>
+            `;
+            tableBody.appendChild(row);
+        }
+    </script>
+        <div id="plotRelativeHeterozygosity" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
+    <div id="plotDecreaseHeterozygosity" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
+    <div id="plotRateOfChange" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
+    <div id="plotDeltaRate" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
+
+    <script>
+        // Number of generations
+        const generations = 10;
+
+        // Initialize arrays
+        const H_t = new Array(generations + 1).fill(0);
+        H_t[0] = 1.0;  // Initial heterozygosity H_0
+
+        // Fibonacci-based decrease in heterozygosity (brother-sister mating)
+        const fib = [1, 2];
+        for (let i = 2; i <= generations; i++) {
+            fib.push(fib[i - 1] + fib[i - 2]);
+        }
+
+        // Calculate H_t using Fibonacci numbers
+        for (let t = 1; t <= generations; t++) {
+            H_t[t] = fib[t] / Math.pow(2, t);
+        }
+
+        // Calculate relative heterozygosity P, decrease f, and rates of change
+        const P = H_t.map(ht => ht / H_t[0]);
+        const f = P.map(p => 1 - p);
+        const rate_change = H_t.slice(1).map((ht, i) => ht / H_t[i]);
+        const delta_rate = rate_change.map(rc => 1 - rc);
+
+        // Plot Relative Heterozygosity
+        function plotRelativeHeterozygosity() {
+            const traceP = {
+                x: Array.from({length: generations + 1}, (v, k) => k),
+                y: P,
+                mode: 'lines+markers',
+                name: 'Relative Heterozygosity (P)',
+                marker: {symbol: 'circle'}
+            };
+
+            const layout = {
+                title: 'Relative Heterozygosity (P)',
+                xaxis: {title: 'Generation'},
+                yaxis: {title: 'Relative Heterozygosity (P)'},
+                margin: {t: 50, b: 50}
+            };
+
+            Plotly.newPlot('plotRelativeHeterozygosity', [traceP], layout);
+        }
+
+        // Plot Decrease in Heterozygosity
+        function plotDecreaseHeterozygosity() {
+            const traceF = {
+                x: Array.from({length: generations + 1}, (v, k) => k),
+                y: f,
+                mode: 'lines+markers',
+                name: 'Decrease in Heterozygosity (f)',
+                marker: {symbol: 'circle'}
+            };
+
+            const layout = {
+                title: 'Decrease in Heterozygosity (f)',
+                xaxis: {title: 'Generation'},
+                yaxis: {title: 'Decrease in Heterozygosity (f)'},
+                margin: {t: 50, b: 50}
+            };
+
+            Plotly.newPlot('plotDecreaseHeterozygosity', [traceF], layout);
+        }
+
+        // Plot Rate of Change
+        function plotRateOfChange() {
+            const traceRateChange = {
+                x: Array.from({length: generations + 1}, (v, k) => k),
+                y: [null, ...rate_change],
+                mode: 'lines+markers',
+                name: 'Rate of Change (H_t / H_{t-1})',
+                marker: {symbol: 'circle'}
+            };
+
+            const layout = {
+                title: 'Rate of Change (H_t / H_{t-1})',
+                xaxis: {title: 'Generation'},
+                yaxis: {title: 'Rate of Change (H_t / H_{t-1})'},
+                margin: {t: 50, b: 50}
+            };
+
+            Plotly.newPlot('plotRateOfChange', [traceRateChange], layout);
+        }
+
+        // Plot Delta Rate
+        function plotDeltaRate() {
+            const traceDeltaRate = {
+                x: Array.from({length: generations + 1}, (v, k) => k),
+                y: [null, ...delta_rate],
+                mode: 'lines+markers',
+                name: 'Delta Rate (1 - H_t / H_{t-1})',
+                marker: {symbol: 'circle'}
+            };
+
+            const layout = {
+                title: 'Delta Rate (1 - H_t / H_{t-1})',
+                xaxis: {title: 'Generation'},
+                yaxis: {title: 'Delta Rate (1 - H_t / H_{t-1})'},
+                margin: {t: 50, b: 50}
+            };
+
+            Plotly.newPlot('plotDeltaRate', [traceDeltaRate], layout);
+        }
+
+        // Initial plots
+        plotRelativeHeterozygosity();
+        plotDecreaseHeterozygosity();
+        plotRateOfChange();
+        plotDeltaRate();
+
             </section>
-            <section id="Continouspop">
+            <section id="WrightInbreeding">
+                <h2>3.2 Wright's Inbreeding Coefficient, \(f\)</h2>
+
+    <p>Wright's (1922) original derivation of the inbreeding coefficient, \(f\), was through correlation analysis. An alternative approach using only probability rules has been developed by Haldane and Moshinsky (1939), Cotterman (1940), and Malécot (1948). They distinguish between two ways in which an individual can be homozygous for a given locus. The two homologous genes may be:</p>
+    <ol>
+        <li>Alike in state, that is to say, indistinguishable by any effect they produce (or perhaps, when molecular genetics has become sufficiently precise, alike in their nucleotide sequence).</li>
+        <li>Identical by descent, in that both are derived from the same gene in a common ancestor.</li>
+    </ol>
+
+    <p>We follow the notation of Cotterman in designating an individual whose two homologous genes are identical by descent as <em>autozygous</em>. If the two alleles are of independent origin (as far as known from our pedigree information), the individual is <em>allozygous</em>. The effect of inbreeding is to increase that part of the homozygous without being autozygous, if the two homologous genes are alike in state but not identical by descent. Conversely, an autozygous individual can be heterozygous for this locus if one of the two alleles has mutated since their common origin, although this is negligibly rare if only a small number of generations is being considered. 
+                The inbreeding coefficient, \(f\), is defined as the probability that the individual is autozygous for the locus in question. Alternatively stated, it is the probability that a pair of alleles in the two gametes that unite to form the individual are identical by descent. 
+                An individual with inbreeding coefficient \(f\) has a probability \(f\) that the two genes at a particular locus are identical and a probability \(1-f\) that they are not identical, and therefore independent. If they are independent, the frequencies of the genotypes will be given by the binomial formula. If they are identical, the frequencies of the gene pairs will be simply the frequencies of the alleles in the population. Thus, for two alleles, \(A_1\) and \(A_2\), with frequencies \(p_1\) and \(p_2 \: (p_1 + p_2 = 1)\), the genotype frequencies are:</p>
+
+    \[
+    \begin{array}{cc} \hline
+    & \text{Allozygous} & \text{Autozygous} \\ \hline
+    \text{Homogygous, } A_1A_1: & p_1^2(1-f) & p_1 f \\
+    \text{Homogygous, } A_1A_2: & 2p_1p_2(1-f) &   \\
+    \text{Homogygous, } A_2A_2: & p_2^2(1-f) & p_2f   \\
+    \text{Total} & 1-f & f   \\ \hline
+    \end{array}
+    \]
+
+    <p>Notice that when \(f = 0\) these formulas reduce to the usual Hardy-Weinberg proportion. When \(f=1\) the population is completely homozygous. Thus \(f\) ranges from 0 in a randomly mating population to 1 with complete homozygosity. How to compute \(f\) from a pedigree will be shown later. 
+        Multiple alleles introduce no difficulty. The genotype frequencies are a natural extension of the results for two alleles. The frequencies are:</p>
+
+    \[
+    A_iA_i: p_i^2 (1-f) + p_i f
+    \]
+
+    <p>For homozygous genotypes, and:</p>
+
+    \[
+    A_iA_j: 2p_ip_j (1-f)
+    \]
+
+    <p>For heterozygous genotypes. The expected proportion of heterozygous genotypes with inbreeding coefficient \(f\), \(H_f\), is given by:</p>
+
+    \[
+    H_f = \sum_{i \ne j} p_i p_j (1-f) = H_0 (1-f)
+    \]
+
+    <p>Given that:</p>
+
+    \[
+    f = \frac{H_0 - H_f}{H_0}
+    \]
+
+    <p>Where \(H_0\) is a constant equal to the proportion of heterozygotes expected with random mating \((f=0)\). The summation is over all combinations of values of \(i\) and \(j\) except when these are equal. 
+        This proves the assertion made earlier that the inbreeding coefficient measures the fraction by which the heterozygosity has been reduced. We have written the formula as if, when \(f=0\), the population is in Hardy-Weinberg proportions. However, for any measured \(f\) (as determined, for example, from a pedigree), the heterozygosity, \(H\), is \(H_0(1-f)\), where \(H_0\) is whatever the heterozygosity would have been in the absence of the observed inbreeding. To be concrete, the inbreeding coefficient for the child of a cousin marriage is \(\frac{1}{16}\) (as we shall show later); therefore the child of such a marriage is \(\frac{15}{16}\) as heterozygous as if his parents had the same relationship as a random pair in this population. 
+        There is a simple relationship between the correlation coefficient, \(r\), and the inbreeding coefficient, \(f\). If we assign numerical values to each allele, then the inbreeding coefficient, \(f\), is the correlation between these values in a pair of uniting gametes. In fact, Wright's original derivation of the inbreeding coefficient was through correlation methods. 
+        The relationship between \(r\) and \(f\) can be shown in the following way. For convenience, we assign the value 1 to \(A_1\) and 0 to allele \(A_2\), though we would get the same result with any values. The calculations are shown below. 
+        Since the sum of the genotype frequencies is equal to 1, the weighted sum and the mean of any are the same. For example, the sum (and mean) of egg value, \(X\), is \([p_2^2(1-f)+p_2f](0)+[p_1p_2(1-f)](1)+ [p_1p_2(1-f)](0)+[p_1^2(1-f)+p_1f](1)\), which after some algebraic simplification reduces to \(p_1\). The other calculations are given in the table, using the standard formula for calculation of \(r\).</p>
+
+    \[
+    \begin{array}{c c c c c c c c} \hline
+    \text{Egg} & \text{Sperm} & \text{Frequency} & X & Y & X^2 & Y^2 & XY\\  \hline
+    A_1 & A_2 & p_2^2(1-f)+p_2f & 0 & 0 & 0 & 0 & 0 \\
+    A_1 & A_2 & p_1p_2(1-f)& 1 & 0 & 1 & 0 & 0\\
+    A_2 & A_1 & p_2p_1(1-f) & 0 & 1 & 0 & 1 & 0\\
+    A_1 & A_1 & p_1^2(1-f)+p_1f & 1 & 1 & 1 & 1 & 1\\  \hline
+    \text{Sum or mean} & 1 & p_1 & p_1 & p_1 & p_1 & p_1 & p_1^2(1-f)+p_1f\\  \hline
+    \end{array}
+    \]
+
+    \[
+    \bar X = p_1 p_2(1 - f) + p_1^2 (1 - f) + p_1 f = p_1
+    \]
+
+    <p>Likewise, \(\hat Y = \text{mean}(X^2) = \text{mean}(Y^2) = p_1\)</p>
+
+    \[
+    \begin{align}
+    r_{xy} &= \frac{\bar{XY}-\bar X \bar Y}{\sqrt{(\text{mean}(X^2)- \bar X^2)(\text{mean}(Y^2)- \bar Y^2)}} \\
+    r_{xy} &= \frac{p_1^2(1-f)+p_1f-p_1^2}{p_1 - p_1^2} = f
+    \end{align}
+    \]
+
+    <p>Demonstration without restriction as to number of alleles and letting the contribution of the alleles differ. Furthermore, if the genic values are summed over \(k\) loci the covariance will be:</p>
+
+    \[
+    f \sum_k \sum_i p_{ik} a_{ik}^2
+    \]
+
+    <p>Where \(p_{ik}\) and \(a_{ik}\) are the frequency and value of the \(i\)th allele at the \(k\)th locus. This is \(f\) times the variance. Hence \(f\) is the expected value of the correlation between the genetic values of two uniting gametes, regardless of the number of loci and number of alleles under consideration. 
+        The equivalence of \(r\) and \(f\) suggests an interpretation of the correlation coefficient. If a measurement can be thought of as being the sum of a number of elements, then the correlation coefficient is the measure of the fraction of these elements that are common to the two measurements, the other elements being chosen at random. This interpretation is useful in many branches of science. In quantitative genetics, the elements can obviously be interpreted as cumulative acting genes.</p>
+
+    \[
+    V_x = \sum_i p_i a_i^2
+    \]
+
+    <p>Since the variance of the egg value is the sum of the squares of the allele values, each weighted by its frequency. \(V_y\) is the same.</p>
+
+    \[
+    COV_{XY} = (1-f) \left[  \sum_i p_i^2 a_i^2 + \sum_{i \ne j }p_i p_j a_i a_j\right] + f \sum_i p_i a_i^2
+    \]
+
+    <p>But the quantity in brackets is equal to \(\left[\sum_i p_i a_i \right]^2\) which is equal to 0, because the sum of the deviations from the mean is 0. Therefore,</p>
+
+    \[
+    COV_{XY} = f \sum_i p_i a_i^2
+    \]
+
+    <p>The correlation coefficient, being the ratio of the covariance to the geometric mean of the two variances (which in this case are the same), is \(f\), as was to be shown:</p>
+
+    \[
+    r_{XY} = \frac{COV_{XY}}{V_x} = f
+    \]
+
+            <h1>Genotype Frequencies and Heterozygosity</h1>
+
+    <div id="plotGenotypeFrequencies" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
+    <div id="plotHeterozygosity" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
+
+    <script>
+        // Parameters
+        const p1 = 0.6;  // Frequency of allele A1
+        const p2 = 1 - p1;  // Frequency of allele A2
+        const f_values = Array.from({length: 100}, (v, k) => k / 100);  // Range of inbreeding coefficients
+
+        // Genotype frequencies under inbreeding
+        const AA = f_values.map(f => p1**2 * (1 - f) + p1 * f);
+        const Aa = f_values.map(f => 2 * p1 * p2 * (1 - f));
+        const aa = f_values.map(f => p2**2 * (1 - f) + p2 * f);
+
+        // Expected heterozygosity H_f = H0 * (1 - f)
+        const H0 = 2 * p1 * p2;
+        const H_f = f_values.map(f => H0 * (1 - f));
+
+        // Plot Genotype Frequencies
+        function plotGenotypeFrequencies() {
+            const traceAA = {
+                x: f_values,
+                y: AA,
+                mode: 'lines',
+                name: 'A1A1',
+                line: {color: 'blue'}
+            };
+
+            const traceAa = {
+                x: f_values,
+                y: Aa,
+                mode: 'lines',
+                name: 'A1A2',
+                line: {color: 'green'}
+            };
+
+            const traceaa = {
+                x: f_values,
+                y: aa,
+                mode: 'lines',
+                name: 'A2A2',
+                line: {color: 'red'}
+            };
+
+            const layout = {
+                title: 'Genotype Frequencies as a Function of Inbreeding Coefficient (f)',
+                xaxis: {title: 'Inbreeding Coefficient (f)'},
+                yaxis: {title: 'Genotype Frequency'},
+                margin: {t: 50, b: 50}
+            };
+
+            Plotly.newPlot('plotGenotypeFrequencies', [traceAA, traceAa, traceaa], layout);
+        }
+
+        // Plot Heterozygosity
+        function plotHeterozygosity() {
+            const traceH_f = {
+                x: f_values,
+                y: H_f,
+                mode: 'lines',
+                name: 'Heterozygosity (Hf)',
+                line: {color: 'purple'}
+            };
+
+            const traceH0 = {
+                x: [f_values[0], f_values[f_values.length - 1]],
+                y: [H0, H0],
+                mode: 'lines',
+                name: 'H0 (Random Mating)',
+                line: {color: 'gray', dash: 'dash'}
+            };
+
+            const layout = {
+                title: 'Expected Heterozygosity as a Function of Inbreeding Coefficient (f)',
+                xaxis: {title: 'Inbreeding Coefficient (f)'},
+                yaxis: {title: 'Heterozygosity'},
+                margin: {t: 50, b: 50}
+            };
+
+            Plotly.newPlot('plotHeterozygosity', [traceH_f, traceH0], layout);
+        }
+
+        // Initial plots
+        plotGenotypeFrequencies();
+        plotHeterozygosity();
+    </script>
+
+        <h1>Equivalence of Inbreeding Coefficient (f) and Correlation Coefficient (r)</h1>
+
+    <div id="plotCorrelation" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
+
+    <script>
+        // Allele frequencies
+        const p1 = 0.7;
+        const p2 = 1 - p1;
+
+        // Range of inbreeding coefficients
+        const f_values = Array.from({length: 100}, (v, k) => k / 100);
+        const r_values = [];
+
+        f_values.forEach(f => {
+            // Frequencies of gamete pairs
+            const freq_A1A1 = p1**2 * (1 - f) + p1 * f;
+            const freq_A1A2 = p1 * p2 * (1 - f);
+            const freq_A2A1 = p2 * p1 * (1 - f);
+            const freq_A2A2 = p2**2 * (1 - f) + p2 * f;
+
+            // Gamete values: A1 = 1, A2 = 0
+            // Egg = X, Sperm = Y
+            const data = [
+                [0, 0, freq_A2A2],  // A2A2
+                [1, 0, freq_A1A2],  // A1A2
+                [0, 1, freq_A2A1],  // A2A1
+                [1, 1, freq_A1A1]   // A1A1
+            ];
+
+            const X = data.map(d => d[0]);
+            const Y = data.map(d => d[1]);
+            const freq = data.map(d => d[2]);
+
+            const EX = X.reduce((sum, xi, i) => sum + xi * freq[i], 0);
+            const EY = Y.reduce((sum, yi, i) => sum + yi * freq[i], 0);
+            const EXY = X.reduce((sum, xi, i) => sum + xi * Y[i] * freq[i], 0);
+            const EX2 = X.reduce((sum, xi, i) => sum + xi**2 * freq[i], 0);
+            const EY2 = Y.reduce((sum, yi, i) => sum + yi**2 * freq[i], 0);
+
+            const var_X = EX2 - EX**2;
+            const var_Y = EY2 - EY**2;
+            const cov_XY = EXY - EX * EY;
+
+            const r = var_X * var_Y > 0 ? cov_XY / Math.sqrt(var_X * var_Y) : 0;
+            r_values.push(r);
+        });
+
+        // Plot Correlation
+        function plotCorrelation() {
+            const traceR = {
+                x: f_values,
+                y: r_values,
+                mode: 'lines',
+                name: 'Computed r (correlation)',
+                line: {color: 'blue'}
+            };
+
+            const traceIdentity = {
+                x: f_values,
+                y: f_values,
+                mode: 'lines',
+                name: 'Identity line (r = f)',
+                line: {color: 'black', dash: 'dash'}
+            };
+
+            const layout = {
+                title: 'Equivalence of Inbreeding Coefficient (f) and Correlation Coefficient (r)',
+                xaxis: {title: 'Inbreeding Coefficient (f)'},
+                yaxis: {title: 'Correlation Coefficient (r)'},
+                margin: {t: 50, b: 50}
+            };
+
+            Plotly.newPlot('plotCorrelation', [traceR, traceIdentity], layout);
+        }
+
+        // Initial plot
+        plotCorrelation();
+    </script>
+    
             </section>
             <section id="OverlappingDiscrete">
             </section>
