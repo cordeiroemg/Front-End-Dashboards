@@ -10,9 +10,46 @@
         <link rel="stylesheet" href="../../../components/shared/plot.css" />
         <link rel="stylesheet" href="../../../components/shared/slider.css" />
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            <style>
+                body {
+                font-family: Arial, sans-serif;
+                margin: 2rem;
+                max-width: 1000px;
+                }
+                textarea {
+                width: 100%;
+                height: 150px;
+                font-family: monospace;
+                }
+                button {
+                padding: 0.5rem 1rem;
+                margin-top: 1rem;
+                }
+                .output {
+                margin-top: 2rem;
+                }
+
+
+                body {
+                font-family: sans-serif;
+                }
+                .node circle {
+                fill: #69b3a2;
+                }
+                .node text {
+                font: 12px sans-serif;
+                }
+                .link {
+                fill: none;
+                stroke: #999;
+                stroke-width: 2px;
+                }
+            </style>
+
     </head>
     <script src="../../../popdynWebsite/js/controller.js"></script>
     <body>
@@ -62,7 +99,7 @@
             <nav class="flex-grow-1 p-4">
             <!-- Conteúdo Principal -->
             <section id="Inbreeding">
-                <h1>Models of Population Growth</h1>
+                <h1>Inbreeding</h1>
 
             </section>
             <section id="DecreaseHet">
@@ -279,11 +316,387 @@
             <div id="plotCorrelation" class="plot-container" style="width:100%;max-width:700px;margin:auto;"></div>
             </section>
             
-            <section id="OverlappingDiscrete">
+            <section id="CoefCoSanguinity">
+
+                
+            <h2>3.3 Coefficients of Consanguinity and Relationship</h2>
+
+            <p>
+                We have used the inbreeding coefficient of an individual \( I \), denoted \( f_I \),
+                to give the probability that two homologous genes in that individual are identical by descent.
+                Or, as just shown, this is the correlation between the genetic value of the two gametes
+                that united to produce the individual. Since inbreeding of the progeny depends on the
+                consanguinity of the parents, we can use the inbreeding coefficient as a measure of this.
+            </p>
+
+            <p>
+                We define the <em>coefficient of consanguinity</em>, \( f_{IJ} \), of two individuals \( I \) and \( J \)
+                as the probability that two homologous genes drawn at random, one from each of the two individuals,
+                will be identical. The answer to this is clearly the same as the inbreeding coefficient of a progeny
+                produced by these two individuals. Hence, the inbreeding coefficient of an individual is the same
+                as the coefficient of consanguinity of its parents (Malécot, 1948).
+            </p>
+
+            <p>
+                There is a bewildering plethora of alternative names for this coefficient. Malécot, who introduced the idea,
+                called it the <em>coefficient de parenté</em>. Falconer (1960) calls it the <em>coancestry</em>.
+                Kempthorne (1957) translated <em>parenté</em> into <em>parentage</em>.
+                Malécot himself has, on at least one occasion, translated it into <em>kinship</em>.
+            </p>
+
+            <p>
+                A different measure of relatedness, introduced much earlier and still widely used,
+                is Wright's (1922) <em>coefficient of relationship</em>, \( r_{IJ} \), defined as:
+            </p>
+
+            <p>
+                \[
+                r_{IJ} = \frac{2f_{IJ}}{\sqrt{(1+f_I)(1+f_J)}}
+                \]
+            </p>
+
+            <p>
+                For two individuals that are not inbred, the coefficient of relationship is exactly twice
+                the coefficient of consanguinity.
+            </p>
+
+            <p>
+                As we shall show later, the coefficient of relationship is the correlation between the genic,
+                or genetic, values of the two individuals. If the genes act without dominance or epistasis,
+                and there is no effect of the environment on the trait being measured, this is the expected correlation.
+                We shall also show later the effect of dominance on the correlation between relatives.
+            </p>
+            <h2>Pedigree Tree</h2>
+            <svg id="tree" width="800" height="400"></svg>
+
+            <script>
+            function buildTree(pedigree, nodeId) {
+                const node = { name: nodeId, children: [] };
+                const parents = pedigree[nodeId].parents;
+                if (parents) {
+                node.children = parents.map(p => buildTree(pedigree, p));
+                }
+                return node;
+            }
+
+            function drawTree(pedigree) {
+                const svg = d3.select("#tree");
+                svg.selectAll("*").remove(); // limpar árvore anterior
+
+                const width = +svg.attr("width");
+                const height = +svg.attr("height");
+
+                const rootId = Object.keys(pedigree).slice(-1)[0]; // último indivíduo como raiz
+                const rootData = buildTree(pedigree, rootId);
+                const root = d3.hierarchy(rootData);
+                const treeLayout = d3.tree().size([width - 100, height - 100]);
+                treeLayout(root);
+
+                svg.selectAll('line.link')
+                .data(root.links())
+                .join('line')
+                .attr('class', 'link')
+                .attr('stroke', '#999')
+                .attr('stroke-width', 2)
+                .attr('x1', d => d.source.x + 50)
+                .attr('y1', d => d.source.y + 50)
+                .attr('x2', d => d.target.x + 50)
+                .attr('y2', d => d.target.y + 50);
+
+                const node = svg.selectAll("g.node")
+                .data(root.descendants())
+                .join("g")
+                .attr("class", "node")
+                .attr("transform", d => `translate(${d.x + 50},${d.y + 50})`);
+
+                node.append("circle").attr("r", 20).attr("fill", "#69b3a2");
+                node.append("text").attr("dy", 5).attr("text-anchor", "middle").text(d => d.data.name);
+            }
+            </script>
+
+            <h3>Simulador de IBD e Relacionamento Genético</h3>
+
+            <label for="pedigreeInput"><strong>Insira o pedigree (formato JSON):</strong></label>
+            <textarea id="pedigreeInput">
+            {
+            "A": {"parents": null},
+            "B": {"parents": null},
+            "C": {"parents": ["A", "B"]},
+            "E": {"parents": null},
+            "D": {"parents": ["C", "E"]}
+            }
+            </textarea>
+
+            <label for="numLoci">Número de loci:</label>
+            <input type="number" id="numLoci" value="10000" min="10" step="10" />
+
+            <br>
+            <button onclick="runSimulation()">Simular</button>
+
+            <div class="output">
+                <h2>Resultados</h2>
+                <pre id="outputText"></pre>
+                <div id="plotContainer" style="height: 500px;"></div>
+            </div>
+
+            <script>
+                function runSimulation() {
+                const inputText = document.getElementById("pedigreeInput").value;
+                const numLoci = parseInt(document.getElementById("numLoci").value);
+                let pedigree;
+
+                try {
+                    pedigree = JSON.parse(inputText);
+                } catch (e) {
+                    alert("Erro no JSON do pedigree!");
+                    return;
+                }
+
+                const { fValues, fIJ, rIJ } = simulateIBD(pedigree, numLoci);
+
+                // Mostrar texto
+                const output = [];
+                output.push("Autozygosity f_I:");
+                for (const [k, v] of Object.entries(fValues)) {
+                    output.push(`${k}: ${v.toFixed(3)}`);
+                }
+
+                output.push("\nConsanguinity f_IJ:");
+                for (const [k, v] of Object.entries(fIJ)) {
+                    output.push(`${k}: ${v.toFixed(3)}`);
+                }
+
+                output.push("\nRelationship r_IJ:");
+                for (const [k, v] of Object.entries(rIJ)) {
+                    output.push(`${k}: ${v.toFixed(3)}`);
+                }
+
+                document.getElementById("outputText").textContent = output.join("\n");
+
+                // Gráfico de calor com Plotly
+                const ids = Object.keys(fValues);
+                const matrix = ids.map(i =>
+                    ids.map(j => {
+                    const key = i < j ? `${i},${j}` : `${j},${i}`;
+                    return i === j ? 1 : (rIJ[key] ?? 0);
+                    })
+                );
+
+                const heatmapData = {
+                    z: matrix,
+                    x: ids,
+                    y: ids,
+                    type: 'heatmap',
+                    colorscale: 'YlGnBu',
+                    zmin: 0,
+                    zmax: 1
+                };
+
+                Plotly.newPlot("plotContainer", [heatmapData], {
+                    title: "Coeficiente de Relacionamento (rᵢⱼ)",
+                    xaxis: { title: "Indivíduo J" },
+                    yaxis: { title: "Indivíduo I" }
+                });
+                drawTree(pedigree); // atualiza a árvore com o mesmo pedigree
+                }
+            </script>
             </section>
-            <section id="OverlapppingContinous">
+            <section id="Pedigree_F">
+                <h4>3.4 Computation of $f$ from pedigrees</h4>
+
+                <p>The procedure for computing the inbreeding or consanguinity coefficient from a pedigree follows directly from the definition of $f$. 
+                    In this pedigree individual $I$ is inbred because both his parents are descended from a single common ancestor, $A$. All unrelated ancestors, which are irrelevant to the inbreeding of $I$ are omitted from the pedigree. We ask for the probability that $I$ is autozygous; i.e., that homologous genes contributed to $I$ by gametes $b$ and $e$ are both descended from the same gene in ancestor $A$. We shall use the notation $Prob(c=b)$ to mean the probability that $c$ and $b$ carry identical genes for the locus under consideration. $Prob(b=c)=1/2$, since the gene in $b$ has an equal chance of having come from $C$ or from $B$'s other parent. Likewise, $Prob(c=a)=1/2$. The probability that $a$ and $a's$ carry identical genes may be obtained as follows: 
+                    Let the two alleles in $A$ be called $W$ and $Z$. Then there are four equally likely possibilities for gametes $a$ and $a$'s: (1) $W$ and $W$, (2) $Z$ and $Z$, (3) $W$ and $Z$, and (4) $Z$ and $W$. In the first two cases they are identical, so the probability is $1/2$ that $a$ and $a's$ get the same gene from $A$. However, there is an additional possibility if $A$ is inbreed, for in this case two alleles $W$ and $Z$ may both be descended from some more remote ancestor not shown in the figure. The probability that $A$ is autozygous, is, by definition, in inbreeding coefficient of $A$, $f_A$. 
+                    If $A$ is inbreed</p>
+
+                <p>
+                \[
+                Prob(a=a')=\frac{1}{2} + \frac{1}{2}f_A=\frac{1}{2}(1+f_A)
+                \]
+                </p>
+
+                <p>If $A$ is not inbreed</p>
+
+                <p>
+                \[
+                Prob(a=a')=\frac{1}{2}
+                \]
+                </p>
+
+                <p>Continuing around the path $BCADE$, $Prob(a'=d)=Prob(d=e)=1/2$. Summarizing, $b$ and $e$ will carry identical genes only if $b, c, a, a', d, and e$ do so. Therefore, since all these probabilities are independent</p>
+
+                <p>
+                \[
+                f_I = f_{BE}=Prob(b=e)=\frac{1}{2} \cdot \frac{1}{2} \cdot \frac{1}{2}(1+f_A) \cdot \frac{1}{2} \cdot \frac{1}{2}= \left(\frac{1}{2}\right)^5(1+f_A)
+                \]
+                </p>
+
+                <In>For b=c, c=a, a=a', a'=d, d=e, respectively. If $A$ is not inbred (and according to information given in this pedigree she is not) the inbreeding coefficient of I is simple (1/2)^5. Notice that whether B,C,D, E is inbred is irrelevant, since, for example, the probability that $c$ and $b$ are identical is independent of the gene contributed by $B$'s other parent. The general rule is that the contribution of a path of relationship through a common ancestor is $(1/2)^n (1+f_a)$ where $n$ is the number of individuals in the path from one parent to the ancestor and back through the other parent. 
+                    In more complicated pedigrees there may be multiple paths through an ancestor or more than one common ancestor. The contributions to the inbreeding coefficient of I from the various paths are as follows. The common ancestor in a path is underlined.</p>
+                <p>
+                \[
+                \begin{array}{|c|c|}
+                \hline
+                \text{Path} & \text{Contribution to f} \\
+                \hline
+                ABD\underline{E}GH & \left(\frac{1}{2}\right)^6 = \frac{1}{64} \\
+                ACD\underline{E}GH & \left(\frac{1}{2}\right)^6 = \frac{1}{64} \\
+                ABD\underline{F}H & \left(\frac{1}{2}\right)^5 = \frac{1}{32} \\
+                ACD\underline{F}H & \left(\frac{1}{2}\right)^5 = \frac{1}{32} \\
+                \hline
+                \end{array}
+                \]
+                </p>
+
+                <This>As we are considering only a single locus, the paths are all mutually exclusive; if $I$ is autozygous for a pair of genes inherited through one path it cannot at the same time be autozygous for a pair inherited through another. Therefore the total probability for autozygosity is the sum of the probabilities for the separate paths, in this case $3/32$. 
+                    This pedigree was not complicated by the common ancestor of any path being inbred. Individual $A$ is inbred, but this is irrelevant since $A$ is not a common ancestor. Only inbreeding of $E$ or $F$ would matter. This complication arises in the pedigree, where there are several inbred individuals in the pedigree and two of these, $B$ and $D$, are common ancestors of one or more paths. 
+                    We begin by noting the inbreeding coefficients of $D$ and $B$. The inbreeding coefficient of $D$, $f_D$, is $\left(\frac{1}{2}\right)^3(1+f_D)=\frac{9}{64}$. The components of $f_I$ through the various paths are:</p>
+                <p>
+                \[
+                \begin{array}{|c|c|c|}
+                \hline
+                \text{Path} & \text{Contribution to f} & \text{Value} \\
+                \hline
+                AEF & \left(\frac{1}{2}\right)^3 & 0.1250 \\
+                ABF & \left(\frac{1}{2}\right)^3(1+f_B) & 0.1426 \\
+                ABEF & \left(\frac{1}{2}\right)^4 & 0.0625 \\
+                AEBF & \left(\frac{1}{2}\right)^4 & 0.0625 \\
+                ABCDEF & \left(\frac{1}{2}\right)^6(1+f_D) & 0.0176 \\
+                AEDCBF & \left(\frac{1}{2}\right)^6(1+f_D) & 0.0176 \\
+                \hline
+                & f_I = f_{AF} & 0.4278 \\
+                \hline
+                \end{array}
+                \]
+                </p>
+
+                <To>Notice that the inbreeding of $B$ is taken into consideration in path $ABF$ where B is a common ancestor, but ignored in the other paths where $B$ is not the common ancestor. A path such as $ABCDEBF$ is not included because $B$ enters twice; the contribution to this path is included in the path $ABF$ by the term $(1+f_B)$. 
+                    To summarize: The inbreeding coefficient of an individual $I$, or the coefficient of consanguinity of his parents, $J$ and $K$, is the sum of a series of terms, one for each path leading from a parent to a common ancestor and back through the other parent. The general formula is</p>
+
+                <p>
+                \[
+                f_I = f_{JK} = \sum\left[\left(\frac{1}{2}\right)^n(1+f_A)\right]
+                \]
+                </p>
+
+                <A>Where the summation is over all possible paths, $n$ is the number of individuals in the path (counting $J$ and $K$ but not $I$) and $f_A$ is the inbreeding coefficient of the common ancestor at the apex of this path. 
+                    A path cannot pass through the same individual twice. No reversal of direction is permitted except at the common ancestor; always go against the arrows when going from one parent to the ancestor, and with them when coming back through the other. It is helpful in avoiding counting the same path twice to adopt the convention of starting all paths with the same parent (the male, say) and ending with the other. 
+                    In the earlier literature the procedure given for computing $f$ was to count the number of steps between individuals in a path rather than the number of individuals. The results are of course the same either way. We use it because it follows more naturally from our derivation than the earlier form, and because it is easily adapted to X-linked genes. 
+                    An X-chromosome gene that is in a gamete produced by a male must be the same as was in the egg from which this male came. Therefore the probability of identity by descent in these two gametes is $1$, rather than $1/2$ as it would be for a female or an autosomal locus. Hence each male in a path multiplies the probability of identity through this path by $1$ rather than $1/2$ as it would be for a female or an autosomal locus. Hence each male in a path multiplies the probability of identity through this path by $1$ rather than $1/2$, and the effect is as if the males were not counted at all. Furthermore, a male does not receive an X-chromosome from his father, so a path involving two successive males makes no contribution to the probability of identity of X-chromosomal loci. 
+                    Therefore the rule for obtaining the inbreeding coefficient for a sex-linked locus in females is: Proceed as usual except that only females in a path are counted and any path with two successive males is omitted entirely.</p>
             </section>
             <section id="FisherMeasure">
+
+                <h4>3.5 Phenotypic Effects of Consanguineous Matings</h4>
+
+                <The>In the previous section, the frequency of the recessive gene causing phenylketonuric feeble-mindedness was given as approximately $1/100$. Therefore with random mating the frequency of persons homozygous for the gene is the square of this or $1/10000$. We now inquire how much this is enhanced with consanguineous marriage. 
+                    The probability of an affected child is $p^2(1-f)+pf$ where $p$ is the frequency of the recessive allele and $f$ is the inbreeding coefficient of the child. If the parents are cousins, their coefficient of consanguinity of the inbreeding coefficient of their child is $1/16$. With $p=1/100$ and $f=1/16$, the expected frequency of homozygous recessives is $115/16000$ or approximately $7/10000$, a 7-fold increase compared with the risk when the parents are unrelated.</p>
+                <p>
+                \[
+                \begin{array}{c|cc|c} 
+                \hline
+                & \text{Frequency of affected when} & & \\
+                \text{Gene Frequency} & f=0 & f=1/16 & \text{Ratio} \\
+                \hline
+                0.1 & 0.01 & 0.016 & 1.6 \\
+                0.01 & 0.0001 & 0.00072 & 7.2 \\
+                0.005 & 0.000025 & 0.000335 & 13.4 \\
+                0.001 & 0.000001 & 0.000063 & 63 \\
+                \hline
+                \end{array}
+                \]
+                </p>
+
+                <p>What proportion of the persons affected with recessive traits come from consanguineous marriages? This proportion, $k$, may be obtained by dividing the number of affected from consanguineous marriages by the total number of affected. If $c$ is the proportion of consanguineous marriages in the population of size $N$, the number of affected from consanguineous marriages is $Nc[p^2(1-f)+pf]$, where $f$ is the coefficient of consanguinity of the parents and $p$ is the recessive gene frequency. The total number of affected in the population is $Nc[p^2(1-\bar{f})+p\bar{f}]$, where $\bar{f}$ is the mean inbreeding coefficient in the population. Therefore</p>
+
+                <p>
+                \[
+                K = \frac{c[p^2(1-f)+pf]}{c[p^2(1-\bar{f})+p\bar{f}]} = \frac{c[p+(1-p)f]}{p-p\bar{f}+\bar{f}}
+                \]
+                </p>
+
+                <p>or, since $p\bar{f}$ is usually very small</p>
+
+                <p>
+                \[
+                K = \frac{c[p+(1-p)f]}{p+\bar{f}}
+                \]
+                </p>
+
+                <p>approximately.</p>
+
+                <p>The most common consanguineous marriage is between first cousins. For $f=1/16$</p>
+
+                <p>
+                \[
+                K = \frac{c(1+15p)}{16[p+\bar{f}(1-p)]}
+                \]
+                </p>
+
+                <p>or approximately</p>
+
+                <p>
+                \[
+                \frac{c(1+15p)}{16(p+\bar{f})}
+                \]
+                </p>
+
+                <p>This shows that, even though consanguineous marriages are very rare, a substantial fraction of diseases caused by recessive genes comes from such marriages if $p \le 0.1$. Consanguinity of the parents is one of the strongest kinds of evidence of recessive inheritance. 
+                    On the other hand, if the recessive gene is common, the increased incidence with consanguinity is very slight. Cystic fibrosis of the pancreas appears to be due to a simple recessive factor, yet there is no appreciable rise in incidence from consanguineous marriages, because the allele frequency is so high. The parental-consanguinity rate is much higher for recessive traits where the gene frequency is low.
+                    Most recessive genes are carried concealed in the heterozygous condition. We can get some idea of the total number of such genes carried by normal persons through a study of consanguineous marriages. A study by Jan A. Book showed that about 16% of the children of first cousin marriages in Sweden had a genetic disease, and if diseases of more doubtful etiology were included the number rose to 28%. The corresponding figures for the control population with unrelated parents were 4% and 6%. Thus cousin marriage, by these data, entails an increased risk of 12% to 22% of having a child with a detectable genetic defect. Since the child of a cousin marriage has an inbreeding coefficient of $1/16$, we reason that a completely homozygous individual would have 16 times as many diseases, or approximately 2 to 3.5. This is the number of recessive factors per gamete (since a homozygous individual may be regarded as a doubled gamete), so the number per zygote is between 4 and 7. These figures are based on rather limited data, but they furnish a rough idea of the magnitude. The conclusion is that the average human carries hidden the equivalent of some half a dozen deleterious recessive genes that, if made homozygous, would cause a detectable disease.
+                    We can also estimate the amount of genetic weakness that is carried hidden in a heterozygous individual, but which would be expressed as invariability if he were made homozygous. Sutter and Tabar (1958 and earlier) found from a demographic study in two rural provinces in France that children of cousin marriages died before adulthood about 25% of the time, whereas the death rate from unrelated parents was about 12%. Thus, in this environment, cousin marriage increased the risk of death by about 0.13. Making the same calculations above (i.e., multiplying by 16 x 2) we estimate that the average individual in this population carries 32 x 0.13 or about 4 hidden "lethal equivalents." We say "lethal equivalents" because one cannot distinguish between 4 full lethal genes and 8 genes with 50% probability of causing death, or any system where the product of the number of genes and the average effect is 4. 
+                    The data on human inbreeding effects have not been very reproducible. The large body of data from Japan shows significant heterogeneity effects from city to city. There is danger of confounding inbreeding effects with the effects of social concomitants of consanguineous marriages. For all these reasons, we cannot place too much reliance on the numerical values of the previous paragraph. 
+                    It is also to be expected that what is lethal in one environment may be detrimental in a better one. In much of the world, there has been a substantial rise in the standard of living and a decrease in the death rate. This means that the number of lethal equivalents is decreasing. 
+                    In Drosophila, where the measures are precise and reproducible, there are about two lethal equivalents per fly. About $2/3$ of the viability depression from inbreeding is attributable to monogenic lethals; the rest is the cumulative effect of a much larger number of genes with individually small effects.</p>
+
+                    <div id="chart"></div>
+
+<script>
+    // Parameters
+    let p_values = [];
+    for (let i = Math.log10(0.0001); i <= Math.log10(0.1); i += (Math.log10(0.1) - Math.log10(0.0001)) / 100) {
+        p_values.push(Math.pow(10, i));
+    }
+    let c = 0.01;  // proportion of consanguineous marriages
+    let f = 1/16;  // inbreeding coefficient for first cousin marriage
+    let f_bar_values = [0.0001, 0.001, 0.005, 0.01];  // average population inbreeding coefficients
+
+    // Function to compute K for each combination of p and f_bar
+    function compute_K(p, c, f, f_bar) {
+        let numerator = c * (p + (1 - p) * f);
+        let denominator = p + f_bar;
+        return numerator / denominator;
+    }
+
+    // Data preparation
+    let data = [];
+    f_bar_values.forEach(f_bar => {
+        let K_values = p_values.map(p => compute_K(p, c, f, f_bar));
+        data.push({
+            x: p_values,
+            y: K_values,
+            type: 'scatter',
+            mode: 'lines',
+            name: `f_bar = ${f_bar}`,
+            line: { width: 2 }
+        });
+    });
+
+    // Plot
+    let layout = {
+        title: 'Proportion of Affected Individuals from Consanguineous Marriages',
+        xaxis: {
+            type: 'log',
+            title: 'Recessive Allele Frequency (p)'
+        },
+        yaxis: {
+            title: 'Proportion K of Affected from Consanguineous Marriages'
+        },
+        showlegend: true
+    };
+
+    Plotly.newPlot('chart', data, layout);
+</script>
             </section>
             <section id="PopRegulation">
             <section id="UnregulatedGrowth">
@@ -344,6 +757,7 @@
 
             <script src="../simulation/simulation3.js"></script>
             <script src="../../../js/utils/plotly_theme.js"></script>
+            <script src="../../../js/simulate_ibd.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 
     </body>
