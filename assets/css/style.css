@@ -3,3 +3,22 @@
     margin : 0;
     padding: auto;
 }
+
+
+#nav-bar
+{
+    position: sticky;
+    top: 10;
+    z-index: 10;
+}
+
+.nav-bar
+{
+    background-image: linear-gradient(to right, );
+    padding: 0 !important;
+}
+
+.navbar-brand img {
+    height: 70px; /* Ajuste a altura */
+    width: auto; /* Ajuste a largura automaticamente, mantendo a proporção */
+}
