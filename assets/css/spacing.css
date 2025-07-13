@@ -1,0 +1,85 @@
+/* Espaçamento entre carrossel e seção de marketing */
+#myCarousel {
+    margin-bottom: 3rem; /* ↓ Reduzido de 5rem para 3rem — padrão comum entre blocos */
+}
+
+/* Marketing container com espaçamento interno */
+.container.marketing {
+    margin-top: 3rem;      /* ↑ Aumentado para manter ritmo visual equilibrado */
+    margin-bottom: 3rem;   /* ↓ Reduzido de 4rem para simetria */
+}
+
+/* Espaçamento entre colunas das três seções iniciais */
+.container.marketing .row > div {
+    margin-bottom: 2rem; /* ↓ Padrão do Bootstrap para grid vertical spacing */
+}
+
+/* Espaço ao redor de todas as seções .container */
+section.container {
+    margin-top: 4rem;     /* ↓ Leve redução para maior compacidade */
+    margin-bottom: 4rem;
+}
+
+/* Espaço entre títulos e parágrafos */
+.container h2,
+section h2 {
+    margin-bottom: 1.5rem; /* ↑ Leve aumento melhora hierarquia visual */
+}
+
+/* Featurettes (blocos com imagem e texto) */
+.featurette {
+    margin-top: 3rem;      /* ↓ Reduzido para se adequar ao fluxo moderno */
+    margin-bottom: 3rem;
+    align-items: center;
+}
+
+/* Divisores entre featurettes */
+hr.featurette-divider {
+    margin: 3rem 0; /* ↓ Mais alinhado com spacing médio entre seções */
+}
+
+/* Espaço entre parágrafos */
+p {
+    margin-bottom: 1rem;  /* ↓ Leve ajuste para legibilidade compacta */
+    line-height: 1.6;
+}
+
+/* Footer com margem e padding */
+footer.container {
+    margin-top: 4rem;       /* ↓ Reduzido para se adequar ao final da página */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Títulos de featurettes */
+.featurette-heading {
+    font-size: 2rem;
+    margin-bottom: 1.25rem; /* ↑ Leve aumento para separação visual */
+}
+
+/* Ajustes em telas pequenas (responsivo) */
+@media (max-width: 768px) {
+    #myCarousel {
+        margin-bottom: 2rem; /* ↓ Compacto para telas menores */
+    }
+
+    .container.marketing {
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    section.container {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .featurette {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    hr.featurette-divider {
+        margin: 2rem 0;
+    }
+}
