@@ -22,3 +22,14 @@
     height: 70px; /* Ajuste a altura */
     width: auto; /* Ajuste a largura automaticamente, mantendo a proporção */
 }
+
+.carousel-img {
+    object-fit: cover;
+    height: 65vh;
+}
+
+@media (max-width: 768px) {
+    .carousel-img {
+        height: 100vh;
+    }
+}
