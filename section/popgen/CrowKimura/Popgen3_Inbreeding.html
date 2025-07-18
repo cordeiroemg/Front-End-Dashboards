@@ -698,7 +698,200 @@
     Plotly.newPlot('chart', data, layout);
 </script>
             </section>
-            <section id="PopRegulation">
+            <section id="InbreedingQuantitative">
+
+                <h4>3.6 The Effect of Inbreeding on Quantitative Characters</h4>
+                <p>We consider first a theoretical model that is applicable to any measurable trait, such as height, weight, yield, survival, or fertility. 
+                    For initial simplicity, a single locus with only two alleles is assumed. The model is summarized as follows:</p>
+
+                <div>
+                \[
+                \begin{array}{cc} \hline
+                \text{Genotype} & A_1A_1 & A_1A_2 & A_2A_2 \\
+                \text{Frequency} & p_1^2(1-f)+p_1f & 2p_1p_2(1-f) & p_2^2(1-f)+p_2f  \\
+                \text{Phenotype} & Y-A & Y+D & Y+A   \\\hline
+                \end{array}
+                \]
+                </div>
+                
+                <p>In this model \( Y \) is the residual phenotype when A locus is not considered. Genotype \( A_2A_2 \) adds an amount \( A \) to the phenotype, and \( A_1A_1 \) subtracts an equal amount. (We could just as well assume that both genotypes add to the residual, or that both subtract; this model is chosen arbitrarily and for algebraic simplicity. The same result would be obtained in any case.) 
+                    If there were no dominance, the phenotype \( A_1A_2 \) would be \( Y \). Under this circumstance, the amount by which the phenotype is changed by substituting an \( A_2 \) for an \( A_1 \) is always \( A \), which we can call the additive effect of the \( A \) locus. \( D \) is a measure of dominance. When \( D=0 \), there is no dominance; when \( D=A \), \( A_2 \) is completely dominant; when \( D=-A \), \( A_2 \) is completely recessive, or \( A_1 \) dominant; when \( D>A \), there is overdominance, the heterozygote having a higher phenotypic value than either homozygote. 
+                    We now obtain an expression for the mean phenotype \( \bar{Y} \). This will be given by summing the products of each phenotype and its frequency. (Since the frequencies add up to one, the sum is the same as the mean.)</p>
+                
+                <div>
+                \[
+                \bar{Y} = (Y-A)[p_1^2(1-f)+p_1f] + (Y+D)2p_1p_2(1-f) + (Y+A)[p_2^2(1-f)+p_2f]
+                \]
+                </div>
+                
+                <p>Which leads after some algebraic rearrangement to</p>
+                
+                <div>
+                \[
+                \begin{align}
+                &\bar{Y} = Y + A(p_2 - p_1) + 2p_1p_2 \cdot D - 2p_1p_2 \cdot Df \\
+                &\bar{Y} = G - Hf
+                \end{align}
+                \]
+                </div>
+                
+                <p>When \( G = Y + A(p_2 - p_1) + 2 p_1 p_2 D \) and \( H = 2p_1 p_2 D \). \( G \) is the average phenotype with random mating and \( G-H \) is the average with complete homozygosity. Notice that \( H \) is positive if \( D \) is positive. 
+                    This equation brings out two important facts about the phenotypic consequences of inbreeding. The first is that in the absence of dominance \( (D=0) \), there is no mean change with inbreeding. This means that whatever the level of dominance, as measured by \( D \), the change with inbreeding is proportional to the inbreeding coefficient. As long as \( D \) is positive (i.e., the heterozygote has a larger phenotype than the mean of the two homozygotes), inbreeding will produce a decline. 
+                    There are two possible causes of the inbreeding decline that is so universally observed: (1) Favorable genes tend to be dominant or partially dominant \( (0 < A < D) \), and (2) the heterozygote has a higher phenotype than either homozygote, \( (0 < A < D) \). Notice that the observation of a linear decline in a quantitative trait cannot discriminate between these possibilities, for it would be expected with either type of gene action, or any mixture of the two. To discriminate between them will require other kinds of evidence. 
+                    The extension to more than two alleles is straightforward and will be given here. We shall consider the extension to more than one locus. Consider a model with two loci, each with two alleles. We shall let \( A \) stand for the additive effect of the \( A \) locus and \( B \) for that of the \( B \) locus. If there is no interaction between loci \( A \) and \( B \), the model is as follows:</p>
+                
+                <div>
+                \[
+                \begin{array}{cc|ccc} \hline
+                \text{Genotype} & & A_1A_1 & A_1A_2 & A_2A_2 \\ \hline
+                & \text{Frequency} & p_1^2(1-f)+p_1f & 2p_1p_2(1-f) & p_2^2(1-f)+p_2f\\ \hline
+                B_1B_1 & r_1^2(1-f)+r_1f & Y-A-B     & Y+D_A-B    & Y+A-B\\
+                B_1B_2 & 2r_1r_2(1-f)    & Y-A+ D_B  & Y+D_A+D_B  & Y+A+D_B\\
+                B_2B_2 & r_2^2(1-f)+r_2f & Y-A+ B    & Y+D_A+B    & Y+A+B  \\ \hline
+                \end{array}
+                \]
+                </div>
+                
+                <p>If the \( A \) and \( B \) loci are independent and in gametic phase equilibrium, the frequency of any of the nine classes in the table is given by the product of the frequencies at the borders. We get the mean phenotype as before, by multiplying each phenotype value within the table by its frequency and summing the nine products. After simplification this leads to</p>
+                
+                <div>
+                \[
+                \bar{Y} = Y+A(p_2 - p_1) + 2p_1p_2D_A + B(r_2 - r_1) + 2 r_1 r_2 D_B - 2(p_1 p_2 D_A + r_1 r_2 D_B)f
+                \]
+                </div>
+                
+                <p>As before, there is a linear relation to the inbreeding coefficient (unless \( D_A = D_B = 0 \)), as might be expected from knowledge that this is true for either locus by itself. 
+                    We now complicate the model by assuming an interaction between the two loci. In population genetics, the word <em>epistasis</em> is given a meaning broader than its classical meaning so as to include all levels of nonadditive effects between loci. Any circumstance where a substitution at the \( A \) locus has a different effect depending on the genotype at the \( B \) locus is an example of epistasis. A simple way to construct such a model is to add interaction terms to each value already given so that the phenotypes are now:</p>
+                
+                <div>
+                \[
+                \begin{array}{cccc} \hline
+                \text{Genotype} & A_1A_1 & A_1A_2 & A_2A_2 \\ \hline
+                B_1B_1 & Y-A-B+I     & Y+D_A-B-L    & Y+A-B-I\\
+                B_1B_2 & Y-A+ D_B -K & Y+D_A+D_B+J  & Y+A+D_B+K\\
+                B_2B_2 & Y-A+ B-I    & Y+D_A+B+L    & Y+A+B+I  \\ \hline
+                \end{array}
+                \]
+                </div>
+                
+                <p>Notice that there are nine parameters, \( Y, A, B, D_A, D_B, I, J, K, L \) which correspond to the nine phenotypes so there is a complete specification of the phenotypes when the parameters are given, and vice versa.</p>
+                
+                <div>
+                \[
+                \bar{Y} = \sum (\text{frequency} \times \text{phenotype})
+                \]
+                </div>
+                
+                <p>The formula for \( \bar{Y} \) may be written as</p>
+                
+                <div>
+                \[
+                \bar{Y} = G - Hf + Mf^2
+                \]
+                </div>
+                
+                <p>Where</p>
+                
+                <div>
+                \[
+                G = Y + A(p_2 - p_1) + B(r_2 - r_1) + 2 D_A \cdot p_1 p_2 + 2 D_B \cdot r_1 r_2 + I(r_1 - r_2)(p_1 - p_2) + 2K \cdot r_1 r_2 (p_2 - p_1) + 2L \cdot p_1 p_2(r_2 - r_1) + 4 J \cdot p_1 p_2 \cdot r_1 r_2
+                \]
+                </div>
+                
+                <div>
+                \[
+                M = 4J \cdot p_1 p_2 \cdot r_1 r_2  
+                \]
+                </div>
+                
+                <div>
+                \[
+                H = 2[p_1 p_2 D_A + r_1 r_2 D_B + p_1 p_2 (r_2 - r_1)L + r_1 r_2 (p_2 - p_1)K + 4 p_1 p_2 r_1 r_2 J]  
+                \]
+                </div>
+                
+                <p>In this model, \( A \) and \( B \) represent the additive effects of the two loci, and \( D_A \) and \( D_B \) the dominance effects, as before. \( I \) is the effect of pure epistasis without dominance; in other words, the interaction of the additive effect of \( A \) with the additive effect of \( B \). \( K \) is a measure of interaction and dominance; it is the effect of the \( A \) locus on the dominance of the \( B \) locus. Likewise, \( L \) is the effect of the \( B \) locus on the dominance of the \( A \) locus. Another way of saying this is that this is the interaction of the additive effect of the \( B \) locus with the dominance effect of the \( A \). Finally, \( J \) is the epistatic effect of the two dominance; it is the interaction of dominance at the \( A \) locus with dominance at the \( B \) locus. 
+                    From the equation, we can see that if all the terms involving dominance effects \( D_A, D_B, J, K, L \) are zero, there is no inbreeding effect since the coefficients of \( f \) and \( f^2 \) are \( 0 \). Thus epistasis alone, without dominance, does not produce an inbreeding decline. 
+                    If \( J=0 \), the inbreeding change is linear in \( f \). In order for the coefficient of \( f^2 \) to be other than \( 0 \), there must be interaction between the two dominance effects. 
+                    If \( A, B, D_A, D_B, K, L \) are all positive, then the genes with subscript 2 are associated with increased performance (or yield, or fitness, or whatever is being measured). This also generally means that the alleles with subscript 2 will be more frequent than those with subscript 1. Then if \( J \) is positive there will be <em>diminishing</em> epistasis during inbreeding. By this, we mean that the curve is concave upward and that homozygosity for two loci reduces performance by less than the sum of the individual effects. 
+                    Conversely, if \( J \) is negative (assuming \( H>0 \)), the epistasis is <em>reinforcing</em>. That is, the deleterious effect of two loci is more than cumulative. This is sometimes called synergistic.</p>
+
+                    <canvas id="performanceChart" width="800" height="400"></canvas>
+                    <script>
+                        // Define the range of inbreeding coefficients (f)
+                        const f = Array.from({length: 100}, (_, i) => i / 99);
+                
+                        // Parameters for the model
+                        const G = 10;  // baseline performance
+                        const H = 2;   // inbreeding depression coefficient (linear term)
+                        const M_diminishing = 1;   // diminishing epistasis (positive J -> concave upward)
+                        const M_none = 0;          // no epistasis
+                        const M_reinforcing = -1;  // reinforcing epistasis (negative J -> concave downward)
+                
+                        // Performance under different epistasis scenarios
+                        const performance_none = f.map(x => G - H * x);
+                        const performance_diminishing = f.map(x => G - H * x + M_diminishing * x * x);
+                        const performance_reinforcing = f.map(x => G - H * x + M_reinforcing * x * x);
+                
+                        // Plotting
+                        const ctx = document.getElementById('performanceChart').getContext('2d');
+                        const performanceChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: f,
+                                datasets: [
+                                    {
+                                        label: 'No Epistasis (Linear Decline)',
+                                        data: performance_none,
+                                        borderColor: 'blue',
+                                        borderWidth: 2,
+                                        fill: false
+                                    },
+                                    {
+                                        label: 'Diminishing Epistasis (Concave Up)',
+                                        data: performance_diminishing,
+                                        borderColor: 'orange',
+                                        borderWidth: 2,
+                                        borderDash: [5, 5],
+                                        fill: false
+                                    },
+                                    {
+                                        label: 'Reinforcing Epistasis (Concave Down)',
+                                        data: performance_reinforcing,
+                                        borderColor: 'red',
+                                        borderWidth: 2,
+                                        borderDash: [10, 5],
+                                        fill: false
+                                    }
+                                ]
+                            },
+                            options: {
+                                scales: {
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: 'Inbreeding Coefficient (f)'
+                                        }
+                                    },
+                                    y: {
+                                        title: {
+                                            display: true,
+                                            text: 'Performance (or Trait Value)'
+                                        }
+                                    }
+                                },
+                                plugins: {
+                                    legend: {
+                                        display: true
+                                    },
+                                    tooltip: {
+                                        enabled: true
+                                    }
+                                }
+                            }
+                        });
+                    </script>
+                        
             <section id="UnregulatedGrowth">
             </section>
             <section id="LogisticRegulation">
