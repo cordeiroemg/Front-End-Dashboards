@@ -1,16 +1,16 @@
 .slider-container {
-    margin: 2rem 0;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+	margin: 2rem 0;
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .slider-container label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
+	font-weight: bold;
+	display: block;
+	margin-bottom: 5px;
 }
 
-.slider-container input[type="range"] {
-    width: 100%;
+.slider-container input[type='range'] {
+	width: 100%;
 }
