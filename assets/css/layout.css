@@ -72,3 +72,9 @@ section {
 		padding: 0.75rem;
 	}
 }
+
+.nav-link:hover {
+	background-color: rgba(255, 255, 255, 0.1); /* Light highlight */
+	color: #ffc107 !important; /* Optional: change text color on hover */
+	transition: background-color 0.2s ease, color 0.2s ease;
+}

@@ -10,6 +10,10 @@
 		<link rel="stylesheet" href="../../../components/shared/calculator.css" />
 		<link rel="stylesheet" href="../../../components/shared/plot.css" />
 		<link rel="stylesheet" href="../../../components/shared/slider.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+		/>
 		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
@@ -64,7 +68,16 @@
 
 		<main class="d-flex">
 			<!-- Sidebar que rola com o conteúdo -->
-			<nav class="flex-shrink-0 p-3 text-bg-dark" style="width: 250px">
+			<nav
+				class="flex-shrink-0 p-3 text-bg-dark"
+				style="
+					width: 250px;
+					position: sticky;
+					top: 0;
+					height: 100vh;
+					overflow-y: auto;
+				"
+			>
 				<h4 class="text-white">Content Table</h4>
 				<hr />
 				<ul class="nav nav-pills flex-column">
@@ -114,10 +127,10 @@
 			<nav class="flex-grow-1 p-4">
 				<!-- Conteúdo Principal -->
 				<section id="gene-genotype">
-					<h1>Models of Population Growth</h1>
+					<h1 class="py-5">Models of Population Growth</h1>
 				</section>
 				<section id="Discretepop">
-					<h2>Model 1: Discrete, nonoverlapping generations</h2>
+					<h2 class="py-5">Model 1: Discrete, nonoverlapping generations</h2>
 
 					<p>
 						This model is the simplest description of population growth. The
@@ -200,22 +213,25 @@
 						are inherited, those with greater fitness will be represented in
 						greater proportion in the next generation. Hence, \( \bar{w} \) is
 						expected to change as the most fit individuals increase in
-						proportion. <strong>To summarize:</strong> with a discrete
-						generation model and variable fitnesses, the weighted arithmetic
-						mean is appropriate for comparing contemporaneous differences, while
-						the geometric mean is appropriate for averaging across generations.
+						proportion.
 					</p>
-
-					<h3>Discrete, Nonoverlapping Generations</h3>
 
 					<div class="plot-container">
 						<div id="plot-population" class="plot"></div>
 						<div id="plot-genotypes" class="plot"></div>
 						<div id="plot-fitness" class="plot"></div>
 					</div>
+
+					<p>
+						<strong>key evolutionary insight:</strong> genotypes with higher
+						fitness increase in frequency over time, naturally shifting the
+						population toward higher overall fitness and exemplifying the
+						process of natural selection in its most distilled mathematical
+						form.
+					</p>
 				</section>
 				<section id="Continouspop">
-					<h2>Model 2: Continuous Random Birth and Deaths</h2>
+					<h2 class="py-5">Model 2: Continuous Random Birth and Deaths</h2>
 
 					<p>
 						In this model, we regard the population number \( N_t \) at time \(
@@ -226,23 +242,50 @@
 					</p>
 
 					<p>
-						\[ \begin{align} \Delta N_t &= (b - d) \cdot N_t \cdot \Delta t \\
-						\Delta N_t &= m \cdot N_t \cdot \Delta t \end{align} \]
+						\[ \begin{align} \Delta N_t &= (b - d) \cdot N_t \cdot \Delta t
+						\end{align} \]
 					</p>
 
+					<p>Let \( m = b - d \), then:</p>
+
 					<p>
-						Where \( m = b - d \), and as \( \Delta t \rightarrow 0 \), we get:
+						\[ \begin{align} \Delta N_t &= m \cdot N_t \cdot \Delta t
+						\end{align} \]
 					</p>
+					<p>As \( \Delta t \rightarrow 0 \), we get:</p>
 
 					<p>\[ \frac{dN_t}{dt} = m \cdot N_t \]</p>
 
-					<p>In integrated form:</p>
+					<p>To solve the differential equation:</p>
 
-					<p>\[ mt = \log_e N_t - \log_e N_0 \]</p>
+					<p>\[ \frac{dN_t}{dt} = m \cdot N_t \]</p>
 
-					<p>or</p>
+					<p>We separate the variables:</p>
 
-					<p>\[ N_t = N_0 \cdot e^{mt} \]</p>
+					<p>\[ \frac{1}{N_t} \, dN_t = m \, dt \]</p>
+
+					<p>Integrating both sides:</p>
+
+					<p>\[ \int \frac{1}{N_t} \, dN_t = \int m \, dt \]</p>
+
+					<p>This gives:</p>
+
+					<p>\[ \log_e N_t = m t + C \]</p>
+
+					<p>Exponentiating both sides to solve for \( N_t \):</p>
+
+					<p>\[ N_t = e^{m t + C} = e^C \cdot e^{m t} \]</p>
+
+					<p>Let \( e^C = N_0 \) (the initial population), then:</p>
+
+					<p>\[ N_t = N_0 \cdot e^{m t} \]</p>
+
+					<p>Alternatively, we can isolate \( m t \):</p>
+
+					<p>
+						\[ \log_e N_t - \log_e N_0 = m t \Rightarrow m t = \log_e \left(
+						\frac{N_t}{N_0} \right) \]
+					</p>
 
 					<p>
 						This can be measured in any convenient units such as hours, days,
@@ -256,10 +299,36 @@
 						constant. We find that Equations 1.1 and 1.3 are correspondent in:
 					</p>
 
+					<p>We start with the discrete-time growth model:</p>
+
+					<p>\[ N_t = w \cdot N_{t-1} \]</p>
+
+					<p>If we iterate this relation starting from \( N_0 \), we get:</p>
+
+					<p>\[ N_t = N_0 \cdot w^t \]</p>
+
+					<p>Now, consider the continuous-time growth model:</p>
+
+					<p>\[ N_t = N_0 \cdot e^{m t} \]</p>
+
 					<p>
-						\[ \begin{align} N_t &= w \cdot N_{t-1} \\ w \cdot N_0 &= N_0 \cdot
-						e^{m} \\ w &= e^{mt} \\ m &= \log_e w \end{align} \]
+						To relate both models, we set their right-hand sides equal when \( t
+						= 1 \):
 					</p>
+
+					<p>\[ w \cdot N_0 = N_0 \cdot e^{m} \]</p>
+
+					<p>Divide both sides by \( N_0 \):</p>
+
+					<p>\[ w = e^m \]</p>
+
+					<p>Solve for \( m \) by taking the natural logarithm:</p>
+
+					<p>\[ m = \log_e w \]</p>
+
+					<p>Generalizing for any \( t \):</p>
+
+					<p>\[ w^t = e^{m t} \quad \text{or} \quad w = e^{m} \]</p>
 
 					<p>
 						If the time unit is chosen so that \( m = \log_e w \), then
@@ -310,16 +379,33 @@
 
 					<ul>
 						<li>
-							<strong>Population 1:</strong> \( w = 1 + s \), so \( N_t = N_0
-							\cdot w^t \)
+							<strong>Population 1 (Discrete-time model):</strong> Growth occurs
+							in discrete generations. The fitness is defined as \( w = 1 + s
+							\), where \( s \) is the per-generation growth rate. The
+							population size over time follows a geometric progression:<br />
+							\[ N_t = N_0 \cdot w^t = N_0 \cdot (1 + s)^t \]
 						</li>
 						<li>
-							<strong>Population 2:</strong> \( m = \log_e w = \log_e(1 + s) \),
-							so \( N_t = N_0 \cdot e^{mt} \)
+							<strong
+								>Population 2 (Continuous-time model, exact
+								equivalence):</strong
+							>
+							Growth is continuous, and the Malthusian parameter is defined as
+							\( m = \log_e w = \log_e(1 + s) \). The population grows
+							exponentially over time according to:<br />
+							\[ N_t = N_0 \cdot e^{m t} \] This model matches Population 1
+							exactly when time is measured in continuous units and \( m =
+							\log_e w \).
 						</li>
 						<li>
-							<strong>Population 3:</strong> \( m = s \), so \( N_t = N_0 \cdot
-							e^{mt} \)
+							<strong
+								>Population 3 (Continuous-time model, approximation):</strong
+							>
+							For small values of \( s \), the approximation \( \log_e(1 + s)
+							\approx s \) holds. Thus, we set \( m = s \), and the population
+							grows approximately as:<br />
+							\[ N_t = N_0 \cdot e^{s t} \] This model simplifies analysis when
+							growth is slow and \( s \) is near zero.
 						</li>
 					</ul>
 
@@ -439,9 +525,19 @@
 						initially provides the 'fuel' for selection. Over the time, it
 						typically declines as the fittest types dominate.
 					</p>
+					<p>
+						<strong>key evolutionary insight:</strong> natural selection
+						increases mean fitness proportionally to its variance, which
+						gradually decreases as fitter genotypes become predominant. The
+						model elegantly ties together exponential population dynamics,
+						natural selection, and the statistical underpinnings of evolutionary
+						change
+					</p>
 				</section>
 				<section id="OverlappingDiscrete">
-					<h2>Model 3: Overlapping Generations, Discrete Time Intervals</h2>
+					<h2 class="py-5">
+						Model 3: Overlapping Generations, Discrete Time Intervals
+					</h2>
 
 					<p>
 						We now consider a more complicated model. Time is divided into
@@ -475,25 +571,56 @@
 						\), and so on.
 					</p>
 
+					<ul>
+						<li>\( n_{00} b_0 \): births from individuals aged 0</li>
+						<li>\( n_{10} b_1 \): births from individuals aged 1</li>
+						<li>\( n_{20} b_2 \): births from individuals aged 2</li>
+						<li>\( n_{30} b_3 \): births from individuals aged 3</li>
+						<li>\( n_{40} b_4 \): births from individuals aged 4</li>
+					</ul>
+
+					<!-- Leslie Matrix with MathJax formatting -->
+
+					<p>Let the population vector at time \( t \) be:</p>
+
 					<p>
-						\[ \begin{align} n_{01} &= n_{00} b_0 + n_{10} b_1 + n_{20} b_2 +
-						n_{30} b_3 + n_{40} b_4 \\ n_{11} &= n_{00} p_0 \\ n_{21} &= n_{10}
-						p_1 \\ n_{31} &= n_{20} p_2 \\ n_{41} &= n_{30} p_3 \\ n_{51} &= 0
-						\end{align} \]
+						\[ \mathbf{n}_t = \begin{bmatrix} n_{0t} \\ n_{1t} \\ n_{2t} \\
+						n_{3t} \\ n_{4t} \end{bmatrix} \]
+					</p>
+
+					<p>The Leslie matrix \( \mathbf{L} \) is:</p>
+
+					<p>
+						\[ \mathbf{L} = \begin{bmatrix} b_0 & b_1 & b_2 & b_3 & b_4 \\ p_0 &
+						0 & 0 & 0 & 0 \\ 0 & p_1 & 0 & 0 & 0 \\ 0 & 0 & p_2 & 0 & 0 \\ 0 & 0
+						& 0 & p_3 & 0 \end{bmatrix} \]
 					</p>
 
 					<p>
-						From these equations, the composition of the population a year later
-						can be worked out:
+						The population at time \( t+1 \) is given by matrix multiplication:
+					</p>
+
+					<p>\[ \mathbf{n}_{t+1} = \mathbf{L} \cdot \mathbf{n}_t \]</p>
+
+					<p>
+						For example, to compute \( \mathbf{n}_2 \) from \( \mathbf{n}_1 \):
 					</p>
 
 					<p>
-						\[ \begin{align} n_{02} &= n_{01} b_0 + n_{11} b_1 + n_{21} b_2 +
+						\[ \begin{bmatrix} n_{02} \\ n_{12} \\ n_{22} \\ n_{32} \\ n_{42}
+						\end{bmatrix} = \begin{bmatrix} b_0 & b_1 & b_2 & b_3 & b_4 \\ p_0 &
+						0 & 0 & 0 & 0 \\ 0 & p_1 & 0 & 0 & 0 \\ 0 & 0 & p_2 & 0 & 0 \\ 0 & 0
+						& 0 & p_3 & 0 \end{bmatrix} \cdot \begin{bmatrix} n_{01} \\ n_{11}
+						\\ n_{21} \\ n_{31} \\ n_{41} \end{bmatrix} \]
+					</p>
+
+					<p>Which gives:</p>
+
+					<p>
+						\[ \begin{aligned} n_{02} &= n_{01} b_0 + n_{11} b_1 + n_{21} b_2 +
 						n_{31} b_3 + n_{41} b_4 \\ n_{12} &= n_{01} p_0 \\ n_{22} &= n_{11}
-						p_1 \\ n_{32} &= n_{21} p_2 \\ n_{42} &= n_{31} p_3 \end{align} \]
+						p_1 \\ n_{32} &= n_{21} p_2 \\ n_{42} &= n_{31} p_3 \end{aligned} \]
 					</p>
-
-					<p>And so on for later years.</p>
 
 					<p>
 						The following table gives data on the composition of a population in
@@ -501,23 +628,58 @@
 						individuals of age 0. The survival probabilities are:
 					</p>
 
-					<ul>
-						<li>\( p_0 = 0.8 \)</li>
-						<li>\( p_1 = 0.9 \)</li>
-						<li>\( p_2 = 0.9 \)</li>
-						<li>\( p_3 = 0.7 \)</li>
-						<li>\( p_4 = 0 \)</li>
-					</ul>
-
-					<p>The birth rates are:</p>
-
-					<ul>
-						<li>\( b_0 = 0 \)</li>
-						<li>\( b_1 = 0.3 \)</li>
-						<li>\( b_2 = 0.5 \)</li>
-						<li>\( b_3 = 0.5 \)</li>
-						<li>\( b_4 = 0.2 \)</li>
-					</ul>
+					<div style="display: flex; justify-content: center; margin-top: 20px">
+						<table
+							style="
+								border-collapse: collapse;
+								text-align: center;
+								font-family: Arial, sans-serif;
+								min-width: 400px;
+								box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+							"
+						>
+							<thead style="background-color: #f2f2f2">
+								<tr>
+									<th style="padding: 10px; border: 1px solid #ccc">
+										Age Class (i)
+									</th>
+									<th style="padding: 10px; border: 1px solid #ccc">
+										Survival Probability \( p_i \)
+									</th>
+									<th style="padding: 10px; border: 1px solid #ccc">
+										Birth Rate \( b_i \)
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="padding: 10px; border: 1px solid #ccc">0</td>
+									<td style="padding: 10px; border: 1px solid #ccc">0.8</td>
+									<td style="padding: 10px; border: 1px solid #ccc">0.0</td>
+								</tr>
+								<tr>
+									<td style="padding: 10px; border: 1px solid #ccc">1</td>
+									<td style="padding: 10px; border: 1px solid #ccc">0.9</td>
+									<td style="padding: 10px; border: 1px solid #ccc">0.3</td>
+								</tr>
+								<tr>
+									<td style="padding: 10px; border: 1px solid #ccc">2</td>
+									<td style="padding: 10px; border: 1px solid #ccc">0.9</td>
+									<td style="padding: 10px; border: 1px solid #ccc">0.5</td>
+								</tr>
+								<tr>
+									<td style="padding: 10px; border: 1px solid #ccc">3</td>
+									<td style="padding: 10px; border: 1px solid #ccc">0.7</td>
+									<td style="padding: 10px; border: 1px solid #ccc">0.5</td>
+								</tr>
+								<tr>
+									<td style="padding: 10px; border: 1px solid #ccc">4</td>
+									<td style="padding: 10px; border: 1px solid #ccc">0.0</td>
+									<td style="padding: 10px; border: 1px solid #ccc">0.2</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 
 					<p>
 						Note that the population age distribution fluctuates for several
@@ -550,9 +712,19 @@
 						id="plot-growth-rate"
 						style="width: 100%; max-width: 900px; margin: auto"
 					></div>
+					<p>
+						<strong>key evolutionary insight:</strong>Natural selection acts
+						through differential survival and reproduction across age classes,
+						and, after a brief period of stabilization, the long-term growth and
+						genetic composition of the population are governed by the
+						contributions of each age class to future generations — weighted by
+						their survival and fertility.
+					</p>
 				</section>
 				<section id="OverlapppingContinous">
-					<h2>Model 4: Overlapping Generations, Continuous Change</h2>
+					<h2 class="py-5">
+						Model 4: Overlapping Generations, Continuous Change
+					</h2>
 					<p>
 						The methods of the previous section are specifically adapted to
 						organisms such as annually reproducing plants, where reproduction is
@@ -628,8 +800,7 @@
 					></div>
 				</section>
 				<section id="FisherMeasure">
-					<h2>Fisher's Measure of Reproductive Value</h2>
-
+					<h2 class="py-5">Fisher's Measure of Reproductive Value</h2>
 					<p>
 						Fisher also asked a genetically relevant question: To what extent
 						does an individual of age \( x \) contribute to the ancestry of
@@ -758,7 +929,7 @@
 					></div>
 				</section>
 				<section id="PopRegulation">
-					<h2>Regulation of Population Number</h2>
+					<h2 class="py-5">Regulation of Population Number</h2>
 
 					<p>
 						We have said nothing so far about population regulation. It is
@@ -870,7 +1041,7 @@
 					style="width: 100%; max-width: 900px; margin: auto"
 				></div>
 				<section id="UnregulatedGrowth">
-					<h2>Unregulated Growth</h2>
+					<h2 class="py-5">Unregulated Growth</h2>
 
 					<p>
 						Consider two strains, 1 and 2, with numbers \( n_1 \) and \( n_2 \)
@@ -943,8 +1114,7 @@
 					</p>
 				</section>
 				<section id="LogisticRegulation">
-					<h2>Logistic Regulation of Total Number</h2>
-					<h2>Logistic Regulation of Total Number</h2>
+					<h2 class="py-5">Logistic Regulation of Total Number</h2>
 
 					<p>A simple model for this situation is given by the equations:</p>
 
@@ -1033,7 +1203,7 @@
 					></div>
 				</section>
 				<section id="WeakControl">
-					<h2>Weaker Population Control</h2>
+					<h2 class="py-5">Weaker Population Control</h2>
 
 					<p>
 						The previous example assumed that the total population has an
@@ -1110,7 +1280,7 @@
 					<h2>Regulation by Efficiency of Space or Food Utilization</h2>
 				</section>
 				<section id="WeakerPopulationControl">
-					<h2>Weaker Population Control</h2>
+					<h2 class="py-5">Weaker Population Control</h2>
 
 					<p>
 						The previous example assumed that the total population has an
@@ -1171,7 +1341,9 @@
 					</p>
 				</section>
 				<section id="RegulationByEfficiency">
-					<h2>Regulation by Efficiency of Space or Food Utilization</h2>
+					<h2 class="py-5">
+						Regulation by Efficiency of Space or Food Utilization
+					</h2>
 
 					<p>
 						If populations are regulated by the available space, food, or some
@@ -1253,6 +1425,85 @@
 					></div>
 				</section>
 
+				<!-- Divider line from above section -->
+				<hr class="my-5" />
+
+				<!-- Reference and Jupyter Notebooks -->
+				<div class="container my-5">
+					<div class="row">
+						<div class="col-12 mb-4">
+							<h2 class="text-body-emphasis">Additional Resources</h2>
+							<p>Read more about the discussed topics at the cited material.</p>
+							<ul class="list-unstyled ps-0">
+								<li>
+									<a
+										class="bi bi-arrow-right me-2"
+										href="/docs/5.3/getting-started/introduction"
+									>
+										<svg
+											class="bi me-2"
+											width="16"
+											height="16"
+											aria-hidden="true"
+										>
+											<use xlink:href="#arrow-right"></use>
+										</svg>
+										Bibliography
+									</a>
+								</li>
+								<li>
+									<a
+										class="bi bi-arrow-right me-2"
+										href="/docs/5.3/getting-started/webpack"
+									>
+										<svg
+											class="bi me-2"
+											width="16"
+											height="16"
+											aria-hidden="true"
+										>
+											<use xlink:href="#arrow-right-circle"></use>
+										</svg>
+										Explore the simulations in Python Notebooks
+									</a>
+								</li>
+								<li>
+									<a
+										class="bi bi-arrow-right me-2"
+										href="/docs/5.3/getting-started/parcel"
+									>
+										<svg
+											class="bi me-2"
+											width="16"
+											height="16"
+											aria-hidden="true"
+										>
+											<use xlink:href="#arrow-right-circle"></use>
+										</svg>
+										Related work
+									</a>
+								</li>
+								<li>
+									<a
+										class="bi bi-arrow-right me-2"
+										href="/docs/5.3/getting-started/vite"
+									>
+										<svg
+											class="bi me-2"
+											width="16"
+											height="16"
+											aria-hidden="true"
+										>
+											<use xlink:href="#arrow-right-circle"></use>
+										</svg>
+										How that would relate to pest dynamics?
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
 				<!-- pagination -->
 				<nav aria-label="...">
 					<ul class="pagination justify-content-center">
@@ -1275,6 +1526,7 @@
 						</li>
 					</ul>
 				</nav>
+
 				<!-- bootstrap footer -->
 				<div class="container">
 					<footer
