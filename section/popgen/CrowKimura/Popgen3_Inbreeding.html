@@ -135,10 +135,9 @@
 			<nav class="flex-grow-1 p-4">
 				<!-- Conteúdo Principal -->
 				<section id="Inbreeding">
-					<h2>Inbreeding</h2>
+					<h1 class="my-5">3. Inbreeding</h1>
 				</section>
 				<section id="DecreaseHet">
-					<h2 class="my-5">3. Decrease Heterozygosity</h2>
 					<p>
 						Inbreeding occurs when mates are more closely related than they
 						would be if they had been chosen at random from the population.
@@ -255,15 +254,41 @@
 						reserve \(F\) for multilocus cases. The ratio
 						\(\frac{H_t}{H_{t-1}}\) quickly approaches a limit \(\lambda\).
 					</p>
-
-					\[ \begin{array}{|c|c|c|} \hline \text{Feature} &amp; \text{Selfing}
-					&amp; \text{Sib mating} \\ \hline \text{Heterozygosity decline} &amp;
-					\text{Halves each generation} &amp; \text{Declines ~20\%/generation}
-					\\ \hline \text{Genotype frequency change} &amp; \text{fast} &amp;
-					\text{slower} \\ \hline \text{Allele frequency change} &amp;
-					\text{None} &amp; \text{None} \\ \hline \text{Population structure
-					effect} &amp; \text{Becomes a set of fully homozygous lines} &amp;
-					\text{Subgroups drift toward homozygosity} \\ \hline \end{array} \]
+					<div class="table-responsive">
+						<table
+							class="table table-bordered table-sm text-center align-middle"
+						>
+							<thead class="table-light">
+								<tr>
+									<th>Feature</th>
+									<th>Selfing</th>
+									<th>Sib mating</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Heterozygosity decline</td>
+									<td>Halves each generation</td>
+									<td>Declines ~20%/generation</td>
+								</tr>
+								<tr>
+									<td>Genotype frequency change</td>
+									<td>Fast</td>
+									<td>Slower</td>
+								</tr>
+								<tr>
+									<td>Allele frequency change</td>
+									<td>None</td>
+									<td>None</td>
+								</tr>
+								<tr>
+									<td>Population structure effect</td>
+									<td>Becomes a set of fully homozygous lines</td>
+									<td>Subgroups drift toward homozygosity</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 					<table id="heterozygosityTable">
 						<thead>
 							<tr>
@@ -843,57 +868,6 @@
 						individually small effects.
 					</p>
 					<div id="chart"></div>
-					<script>
-						// Parameters
-						let p_values = []
-						for (
-							let i = Math.log10(0.0001);
-							i <= Math.log10(0.1);
-							i += (Math.log10(0.1) - Math.log10(0.0001)) / 100
-						) {
-							p_values.push(Math.pow(10, i))
-						}
-						let c = 0.01 // proportion of consanguineous marriages
-						let f_par = 1 / 16 // inbreeding coefficient for first cousin marriage
-						let f_bar_values = [0.0001, 0.001, 0.005, 0.01] // average population inbreeding coefficients
-
-						// Function to compute K for each combination of p and f_bar
-						function compute_K(p, c, f_par, f_bar) {
-							let numerator = c * (p + (1 - p) * f_par)
-							let denominator = p + f_bar
-							return numerator / denominator
-						}
-
-						// Data preparation
-						let data = []
-						f_bar_values.forEach((f_bar) => {
-							let K_values = p_values.map((p) => compute_K(p, c, f, f_bar))
-							data.push({
-								x: p_values,
-								y: K_values,
-								type: 'scatter',
-								mode: 'lines',
-								name: `f_bar = ${f_bar}`,
-								line: { width: 2 },
-							})
-						})
-
-						// Plot
-						let layout = {
-							title:
-								'Proportion of Affected Individuals from Consanguineous Marriages',
-							xaxis: {
-								type: 'log',
-								title: 'Recessive Allele Frequency (p)',
-							},
-							yaxis: {
-								title: 'Proportion K of Affected from Consanguineous Marriages',
-							},
-							showlegend: true,
-						}
-
-						Plotly.newPlot('chart', data, layout)
-					</script>
 				</section>
 				<section id="InbreedingQuantitative">
 					<h4>3.6 The Effect of Inbreeding on Quantitative Characters</h4>
@@ -1020,15 +994,16 @@
 					<div>\[ \bar{Y} = G - Hf + Mf^2 \]</div>
 					<p>Where</p>
 					<div>
-						\[ G = Y + A(p_2 - p_1) + B(r_2 - r_1) + 2 D_A \cdot p_1 p_2 + 2 D_B
-						\cdot r_1 r_2 + I(r_1 - r_2)(p_1 - p_2) + 2K \cdot r_1 r_2 (p_2 -
-						p_1) + 2L \cdot p_1 p_2(r_2 - r_1) + 4 J \cdot p_1 p_2 \cdot r_1 r_2
-						\]
+						\[ \begin{align} G =\ & Y + A(p_2 - p_1) + B(r_2 - r_1) + 2 D_A
+						\cdot p_1 p_2 + 2 D_B \cdot r_1 r_2 \\ & + I(r_1 - r_2)(p_1 - p_2) +
+						2K \cdot r_1 r_2 (p_2 - p_1) \\ & + 2L \cdot p_1 p_2(r_2 - r_1) + 4
+						J \cdot p_1 p_2 \cdot r_1 r_2 \end{align} \]
 					</div>
 					<div>\[ M = 4J \cdot p_1 p_2 \cdot r_1 r_2 \]</div>
 					<div>
-						\[ H = 2[p_1 p_2 D_A + r_1 r_2 D_B + p_1 p_2 (r_2 - r_1)L + r_1 r_2
-						(p_2 - p_1)K + 4 p_1 p_2 r_1 r_2 J] \]
+						\[ \begin{align} H =\ & 2\big[ p_1 p_2 D_A + r_1 r_2 D_B \\ & + p_1
+						p_2 (r_2 - r_1)L + r_1 r_2 (p_2 - p_1)K \\ & + 4 p_1 p_2 r_1 r_2 J
+						\big] \end{align} \]
 					</div>
 					<p>
 						In this model, \( A \) and \( B \) represent the additive effects of
@@ -1063,94 +1038,11 @@
 						is, the deleterious effect of two loci is more than cumulative. This
 						is sometimes called synergistic.
 					</p>
-					<canvas height="400" id="performanceChart" width="800"></canvas>
-					<script>
-						// Define the range of inbreeding coefficients (f)
-						const f = Array.from({ length: 100 }, (_, i) => i / 99)
-
-						// Parameters for the model
-						const G = 10 // baseline performance
-						const H = 2 // inbreeding depression coefficient (linear term)
-						const M_diminishing = 1 // diminishing epistasis (positive J -> concave upward)
-						const M_none = 0 // no epistasis
-						const M_reinforcing = -1 // reinforcing epistasis (negative J -> concave downward)
-
-						// Performance under different epistasis scenarios
-						const performance_none = f.map((x) => G - H * x)
-						const performance_diminishing = f.map(
-							(x) => G - H * x + M_diminishing * x * x
-						)
-						const performance_reinforcing = f.map(
-							(x) => G - H * x + M_reinforcing * x * x
-						)
-
-						// Plotting
-						const ctx = document
-							.getElementById('performanceChart')
-							.getContext('2d')
-						const performanceChart = new Chart(ctx, {
-							type: 'line',
-							data: {
-								labels: f,
-								datasets: [
-									{
-										label: 'No Epistasis (Linear Decline)',
-										data: performance_none,
-										borderColor: 'blue',
-										borderWidth: 2,
-										fill: false,
-									},
-									{
-										label: 'Diminishing Epistasis (Concave Up)',
-										data: performance_diminishing,
-										borderColor: 'orange',
-										borderWidth: 2,
-										borderDash: [5, 5],
-										fill: false,
-									},
-									{
-										label: 'Reinforcing Epistasis (Concave Down)',
-										data: performance_reinforcing,
-										borderColor: 'red',
-										borderWidth: 2,
-										borderDash: [10, 5],
-										fill: false,
-									},
-								],
-							},
-							options: {
-								scales: {
-									x: {
-										title: {
-											display: true,
-											text: 'Inbreeding Coefficient (f)',
-										},
-									},
-									y: {
-										title: {
-											display: true,
-											text: 'Performance (or Trait Value)',
-										},
-									},
-								},
-								plugins: {
-									legend: {
-										display: true,
-									},
-									tooltip: {
-										enabled: true,
-									},
-								},
-							},
-						})
-					</script>
+					<div
+						id="performanceChart"
+						style="width: 100%; max-width: 700px; margin: auto"
+					></div>
 				</section>
-				<section id="UnregulatedGrowth"></section>
-				<section id="LogisticRegulation"></section>
-				<section id="WeakControl"></section>
-				<section id="SpaceFoodUtilization"></section>
-				<section id="WeakerPopulationControl"></section>
-				<section id="RegulationByEfficiency"></section>
 				<!-- Divider line from above section -->
 				<hr class="my-5" />
 				<!-- Reference and Jupyter Notebooks -->
@@ -1232,17 +1124,24 @@
 				<nav aria-label="...">
 					<ul class="pagination justify-content-center">
 						<li class="page-item">
-							<a class="page-link" href="#">Previous</a>
-						</li>
-						<li class="page-item active">
-							<a aria-current="page" class="page-link" href="#">1</a>
+							<a class="page-link" href="../CrowKimura/Popgen2_RandPop.html"
+								>Previous</a
+							>
 						</li>
 						<li class="page-item">
-							<a class="page-link" href="../CrowKimura/Popgen2_RandPop.html"
+							<a
+								aria-current="page"
+								class="page-link"
+								href="../CrowKimura/Popgen2_RandPop.html"
 								>2</a
 							>
 						</li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item active">
+							<a class="page-link" href="../CrowKimura/Popgen3_Inbreeding.html"
+								>3</a
+							>
+						</li>
+						<li class="page-item"><a class="page-link" href="#">4</a></li>
 						<li class="page-item">
 							<a class="page-link" href="../CrowKimura/Popgen2_RandPop.html"
 								>Next</a
@@ -1299,5 +1198,15 @@
 			integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
 			crossorigin="anonymous"
 		></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				simulateFibonacciHeterozygosity()
+				simulateInbreedingGenotypes()
+				simulateGameteCorrelation()
+				runKPlot()
+				runEpistasisChart()
+			})
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	</body>
 </html>
