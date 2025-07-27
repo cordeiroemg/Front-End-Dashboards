@@ -6,7 +6,7 @@ genpop-site/
 │   │   ├── CrowKimura
 │   │   │	 ├──Popgen1_PopGrow.html
 │   │   │	 ├──Popgen2_RandPop.html
-│   │   │	 ├──Popgen3.html
+│   │   │	 ├──Popgen3_Inbreeding.html
 │   │   │	 ├──Popgen4.html
 │   │   │	 ├──Popgen5.html
 │   │   │	 ├──Popgen6.html

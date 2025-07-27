@@ -1,14 +1,11 @@
-/* Reset e tipografia base */
+/* ===== main.css - Reset e Tipografia Base ===== */
+html,
 body {
 	font-family: 'Inter', sans-serif;
 	margin: 0;
 	padding: 0 1rem;
-	line-height: 1.6;
-}
-
-html,
-body {
 	height: 100%;
+	line-height: 1.6;
 }
 
 p,
@@ -31,14 +28,17 @@ h3 {
 	font-size: 1.25rem;
 	font-weight: 500;
 }
+
 p {
 	text-align: justify;
 	margin-bottom: 2.5rem;
 }
+
 ul,
 ol {
 	margin-bottom: 1.5rem;
 }
+
 .content p,
 .content ul,
 .content ol,
@@ -52,40 +52,167 @@ input:focus {
 	box-shadow: 0 0 0 2px rgba(44, 62, 80, 0.1);
 }
 
+/* ===== layout.css - Estrutura e Layout ===== */
+body {
+	display: flex;
+	flex-direction: column;
+}
+
+main.d-flex {
+	display: flex;
+	flex: 1;
+	min-height: 100vh;
+	overflow: auto;
+	flex-direction: row;
+}
+
+main {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 1rem;
+	box-sizing: border-box;
+	flex: 1;
+}
+
+section {
+	margin-bottom: 3rem;
+}
+
+.sidebar {
+	flex-shrink: 0;
+	width: 250px;
+	background-color: #212529;
+	color: white;
+	padding: 1rem;
+}
+
+.sidebar .nav-link {
+	color: white;
+}
+
+.sidebar .nav-link.active {
+	background-color: #0d6efd;
+}
+
+.nav-link:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+	color: #ffc107 !important;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ===== theme.css - Estilo e Cores ===== */
+nav a {
+	color: #2c3e50;
+	text-decoration: none;
+	font-weight: 500;
+	padding: 0.5rem;
+	transition: color 0.2s ease;
+}
+
+nav a:hover {
+	color: #1abc9c;
+}
+
+.calculator button {
+	background-color: #2c3e50;
+	color: white;
+	font-weight: 600;
+	transition: background-color 0.3s ease;
+	padding: 10px;
+	font-size: 1rem;
+}
+
+.calculator button:hover {
+	background-color: #34495e;
+}
+
+.pagination .page-link {
+	background-color: #f8f9fa;
+	color: #212529;
+	border: 1px solid #dee2e6;
+	border-radius: 0.375rem;
+	margin: 0 2px;
+}
+
+.pagination .page-link:hover {
+	background-color: #e2e6ea;
+	color: #212529;
+}
+
+.pagination .page-item.active .page-link {
+	background-color: #424344;
+	border-color: #1d2024;
+	color: white;
+}
+
+/* Tabs */
+.sticky-tabs {
+	position: sticky;
+	top: 0;
+	z-index: 1020;
+	background-color: #fff;
+}
+
+.nav-tabs {
+	border-bottom: 1px solid #dee2e6;
+}
+
+.nav-tabs .nav-link {
+	color: #495057;
+	background-color: #f8f9fa;
+	border: 1px solid transparent;
+	border-bottom: none;
+}
+
+.nav-tabs .nav-link.active {
+	color: #fff;
+	background-color: #2c3e50;
+	border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.nav-tabs .nav-link:hover {
+	background-color: #e9ecef;
+	border-color: #dee2e6 #dee2e6 #f8f9fa;
+}
+
+/* ===== Responsividade ===== */
 @media (max-width: 768px) {
 	body {
 		padding: 0 0.5rem;
+		font-size: 0.95rem;
+		line-height: 1.5;
 	}
 
 	h1 {
-		font-size: 1.6rem;
+		font-size: 1.5rem;
 	}
 
 	h2 {
-		font-size: 1.3rem;
+		font-size: 1.25rem;
 	}
 
 	p {
 		font-size: 0.95rem;
 	}
 
-	main {
-		width: 100%;
-		max-width: 1200px; /* ou 100% se quiser ocupar tudo */
-		margin: 0 auto;
-		padding: 1rem;
-		box-sizing: border-box;
-		flex: 1;
+	main.d-flex {
+		flex-direction: column;
 	}
 
 	.sidebar {
+		position: static;
 		width: 100%;
-		padding: 1rem;
-		position: relative;
+		height: auto;
+		flex-shrink: 0;
+		padding: 1rem 0;
+		z-index: auto;
 	}
 
-	main.d-flex {
-		flex-direction: column;
+	main {
+		order: 2;
+		padding: 1rem 0;
+		width: 100%;
 	}
 
 	.calculator,
@@ -93,14 +220,20 @@ input:focus {
 		margin: 1rem auto;
 		padding: 1rem;
 		width: 100%;
+		font-size: 0.95rem;
+	}
+
+	input[type='number'],
+	input[type='range'] {
+		font-size: 1rem;
 	}
 
 	table {
-		font-size: 0.9rem;
+		font-size: 0.85rem;
 	}
 
 	th,
 	td {
-		padding: 0.5rem;
+		padding: 0.75rem;
 	}
 }

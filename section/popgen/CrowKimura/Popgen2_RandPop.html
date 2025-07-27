@@ -1,14 +1,20 @@
 <!DOCTYPE html>
+
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Randomly Mating Populations</title>
+		<title>Randomly Mating Population</title>
 		<link rel="stylesheet" href="../../../assets/css/main.css" />
+		<link rel="stylesheet" href="../../../assets/css/layout.css" />
 		<link rel="stylesheet" href="../../../assets/css/theme.css" />
 		<link rel="stylesheet" href="../../../components/shared/calculator.css" />
 		<link rel="stylesheet" href="../../../components/shared/plot.css" />
 		<link rel="stylesheet" href="../../../components/shared/slider.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+		/>
 		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
@@ -24,8 +30,8 @@
 			type="text/javascript"
 			src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 		></script>
+		<script src="../../../popdynWebsite/js/controller.js"></script>
 	</head>
-	<script src="../../../popdynWebsite/js/controller.js"></script>
 	<body>
 		<!-- Boostrapnav bar -->
 		<nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -62,8 +68,8 @@
 		</nav>
 
 		<main class="d-flex">
-			<!-- Sidebar que rola com o conteúdo -->
-			<nav class="flex-shrink-0 p-3 text-bg-dark" style="width: 250px">
+			<!-- Sidebar responsiva -->
+			<nav class="sidebar text-bg-dark p-3">
 				<h4 class="text-white">Content Table</h4>
 				<hr />
 				<ul class="nav nav-pills flex-column">
@@ -110,10 +116,10 @@
 					</li>
 				</ul>
 			</nav>
-			<div class="flex-grow-1 p-4">
+			<nav class="flex-grow-1 p-4">
 				<!-- Conteúdo Principal -->
 				<section id="gene-genotype">
-					<h1>Random population mating</h1>
+					<h1 class="my-5">Random population mating</h1>
 					<p>
 						We are now ready to consider populations with Mendelian inheritance
 						and begin by inquiring into the frequencies of the different
@@ -130,7 +136,7 @@
 						consideration.
 					</p>
 
-					<h2>Gene Frequency and Genotype Frequency</h2>
+					<h2 class="py-5">Gene Frequency and Genotype Frequency</h2>
 
 					<p>
 						The number of genotypes in a population greatly exceeds the number
@@ -194,7 +200,7 @@
 					</p>
 				</section>
 				<section id="hardy-weinberg">
-					<h2>The Hardy-Weinberg Principle</h2>
+					<h2 class="py-5">The Hardy-Weinberg Principle</h2>
 
 					<p>
 						With random mating, the relation between gene frequency and genotype
@@ -308,7 +314,7 @@
 					></div>
 				</section>
 				<section id="x-linked">
-					<h2>X-linked Loci</h2>
+					<h2 class="py-5">X-linked Loci</h2>
 					<p>
 						For alleles on the \(X\) chromosome, the genotype frequencies in the
 						male are the same as the gene frequencies, since the male is haploid
@@ -414,7 +420,9 @@
 					<p id="result"></p>
 				</section>
 				<section id="Different-InitialF">
-					<h2>Different Initial Gene Frequencies in the Two Sexes</h2>
+					<h2 class="py-5">
+						Different Initial Gene Frequencies in the Two Sexes
+					</h2>
 					<p>
 						Usually the gene frequencies are the same in the two sexes, but
 						under some unusual circumstances they may be different. One
@@ -511,7 +519,7 @@
 					></div>
 				</section>
 				<section id="two-loci">
-					<h2>Two Loci</h2>
+					<h2 class="py-5">Two Loci</h2>
 					<p>
 						Previously we noted that Hardy-Weinberg relation was attained in a
 						single generation, irrespective of the number of alleles. But it is
@@ -679,7 +687,7 @@
 					></div>
 				</section>
 				<section id="wahlund">
-					<h2>Subdivision of a Population: Wahlund's Principle</h2>
+					<h2 class="py-5">Subdivision of a Population: Wahlund's Principle</h2>
 
 					<p>
 						In nature or in domestic animals and plants, the population is often
@@ -785,7 +793,7 @@
 					></div>
 				</section>
 				<section id="finite-pop">
-					<h2>Random-mating Proportion in a Finite Population</h2>
+					<h2 class="py-5">Random-mating Proportion in a Finite Population</h2>
 					<p>
 						The Hardy-Weinberg proportions are realized exactly only in an
 						infinite population. For one thing, a finite population is subject
@@ -850,20 +858,108 @@
 					></div>
 				</section>
 
+				<!-- Divider line from above section -->
+				<hr class="my-5" />
+
+				<!-- Reference and Jupyter Notebooks -->
+				<div class="container my-5">
+					<div class="row">
+						<div class="col-12 mb-4">
+							<h2 class="text-body-emphasis">Additional Resources</h2>
+							<p>Read more about the discussed topics at the cited material.</p>
+							<ul class="list-unstyled ps-0">
+								<li>
+									<a
+										class="bi bi-arrow-right me-2"
+										href="/docs/5.3/getting-started/introduction"
+									>
+										<svg
+											class="bi me-2"
+											width="16"
+											height="16"
+											aria-hidden="true"
+										>
+											<use xlink:href="#arrow-right"></use>
+										</svg>
+										Bibliography
+									</a>
+								</li>
+								<li>
+									<a
+										class="bi bi-arrow-right me-2"
+										href="/docs/5.3/getting-started/webpack"
+									>
+										<svg
+											class="bi me-2"
+											width="16"
+											height="16"
+											aria-hidden="true"
+										>
+											<use xlink:href="#arrow-right-circle"></use>
+										</svg>
+										Explore the simulations in Python Notebooks
+									</a>
+								</li>
+								<li>
+									<a
+										class="bi bi-arrow-right me-2"
+										href="/docs/5.3/getting-started/parcel"
+									>
+										<svg
+											class="bi me-2"
+											width="16"
+											height="16"
+											aria-hidden="true"
+										>
+											<use xlink:href="#arrow-right-circle"></use>
+										</svg>
+										Related work
+									</a>
+								</li>
+								<li>
+									<a
+										class="bi bi-arrow-right me-2"
+										href="/docs/5.3/getting-started/vite"
+									>
+										<svg
+											class="bi me-2"
+											width="16"
+											height="16"
+											aria-hidden="true"
+										>
+											<use xlink:href="#arrow-right-circle"></use>
+										</svg>
+										How that would relate to pest dynamics?
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
 				<!-- pagination -->
 				<nav aria-label="...">
 					<ul class="pagination justify-content-center">
 						<li class="page-item">
 							<a href="#" class="page-link">Previous</a>
 						</li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
 						<li class="page-item active">
-							<a class="page-link" href="#" aria-current="page">2</a>
+							<a class="page-link" href="#" aria-current="page">1</a>
+						</li>
+						<li class="page-item">
+							<a class="page-link" href="../CrowKimura/Popgen2_RandPop.html"
+								>2</a
+							>
 						</li>
 						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">Next</a></li>
+						<li class="page-item">
+							<a href="../CrowKimura/Popgen2_RandPop.html" class="page-link"
+								>Next</a
+							>
+						</li>
 					</ul>
 				</nav>
+
 				<!-- bootstrap footer -->
 				<div class="container">
 					<footer
@@ -902,9 +998,8 @@
 						</ul>
 					</footer>
 				</div>
-			</div>
+			</nav>
 		</main>
-
 		<script src="../simulation/simulation2.js"></script>
 		<script src="./calculator_xlinked.js"></script>
 		<script src="../../../js/utils/plotly_theme.js"></script>
