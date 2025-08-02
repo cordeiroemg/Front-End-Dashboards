@@ -1757,6 +1757,466 @@
 						style="width: 100%; height: 500px"
 					></div>
 				</section>
+				<section id="InbreedingVariance">
+					<h3>Effect of Inbreeding on the Variance</h3>
+
+					<p>
+						In previous section, we considered the effect of inbreeding on
+						quantitative traits, especially as the mean is affected. In addition
+						to its effect on the population mean, inbreeding also has an effect
+						on the variance. Consider again the single-locus model. It is
+						convenient to let \( Y = 0 \), as this does not change the
+						conclusion and saves some troublesome algebra. To assess the total
+						effect we consider first a single locus.
+					</p>
+
+					<table class="table table-bordered table-sm w-auto">
+						<thead class="table-light">
+							<tr>
+								<th>Genotype</th>
+								<th>A₁A₁</th>
+								<th>A₁A₂</th>
+								<th>A₂A₂</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Frequency</td>
+								<td>\( p_1^2(1-f) + p_1f \)</td>
+								<td>\( 2p_1p_2(1-f) \)</td>
+								<td>\( p_2^2(1-f)+ p_2f \)</td>
+							</tr>
+							<tr>
+								<td>Contribution to total phenotype</td>
+								<td>\( -A \)</td>
+								<td>\( D \)</td>
+								<td>\( A \)</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<p>We write the mean as a function of \( f \):</p>
+
+					<p>
+						\[ \bar{Y}_f = (1-f)(p_2^2A + 2p_1p_2 D - p_1^2A) + f(p_2A - p_1A)
+						\]<br />
+						\[ \bar{Y}_f = (1-f)\bar{Y}_0 + f\bar{Y}_1 \]
+					</p>
+
+					<p>
+						Where \( \bar{Y}_0 \) is the mean with random mating \( (f = 0) \),
+						and \( \bar{Y}_1 \) with complete homozygosity \( (f = 1) \).
+					</p>
+
+					<p>This can be written as:</p>
+
+					<p>\[ \bar{Y} = \bar{Y}_0 + (\bar{Y}_1 - \bar{Y}_0)f \]</p>
+
+					<p>
+						Illustrating that the phenotype is a linear function of \( f \). We
+						now write the expression for the contribution of this locus to the
+						total population variance:
+					</p>
+
+					<p>
+						\[ V_f = (1-f)(p_1^2A^2 + 2p_1p_2D^2 - p_2^2A^2) + f(p_1A^2 +
+						p_2A^2) - \bar{Y}^2 \]<br />
+						\[ V_f = (1-f)(V_0 + \bar{Y}_0^2) + f(V_1 + \bar{Y}_1^2) -
+						[(1-f)\bar{Y}_0 + f\bar{Y}_1]^2 \]<br />
+						\[ V_f = (1-f)V_0 + fV_1 + f(1-f)(\bar{Y}_0 - \bar{Y}_1)^2 \]
+					</p>
+
+					<p>
+						This shows that, unlike the mean, the variance is not a linear
+						function of \( f \), but quadratic.
+					</p>
+
+					<h5>No dominance case:</h5>
+					<p>If \( D = 0 \):</p>
+
+					<p>
+						\[ \bar{Y}_0 = \bar{Y}_1 = A(p_2 - p_1) \]<br />
+						\[ V_0 = 2p_1p_2A^2,\quad V_1 = 4p_1p_2A^2 = 2V_0 \]
+					</p>
+
+					<p>Then:</p>
+
+					<p>\[ V_f = (1-f)V_0 + fV_1 = V_0(1+f) \]</p>
+
+					<p>
+						This shows a linear increase in variance when there is no dominance.
+						If the population is subdivided into inbred strains, the
+						within-group variance decreases and the between-group variance
+						increases.
+					</p>
+
+					<p>
+						However, with dominance, the equations become more complex. A
+						special case is when there are rare recessive alleles. In this case,
+						variance may initially increase due to the unmasking of recessive
+						alleles during inbreeding before eventually declining as
+						homozygosity becomes prevalent.
+					</p>
+					<div
+						id="inbreedingVarianceChartSim3"
+						style="width: 100%; max-width: 800px; height: 500px; margin: auto"
+					></div>
+					<div
+						id="inbreedingDominanceVarianceChartSim3"
+						style="width: 100%; max-width: 900px; height: 500px"
+					></div>
+				</section>
+				<section id="InbreedingFinetPopulation">
+					<h3>The Inbreeding Effect of a Finite Population</h3>
+
+					<p>
+						As was mentioned in the introduction to this chapter, there is a
+						decrease of heterozygosity in a finite population even if there is
+						random mating within the group. Each generation may be regarded as
+						being made up of \(2N\) gametes drawn from the previous generation
+						and which combine to make the \(N\) individuals of this generation.
+						The gene frequency will therefore change somewhat, the amount
+						depending on the smallness of the population. The change will have a
+						variance of \( \frac{p(1-p)}{2N} \), where \(p\) is the frequency of
+						the gene under consideration in the parents.
+					</p>
+
+					<p>
+						It might not seem obvious that random changes in gene frequency,
+						which can be in either direction, will on the average cause a net
+						decrease in heterozygosity and increase in homozygosity. One way to
+						visualize this is to regard each of the \(2N\) genes at a locus in
+						the \(N\) parents as individually labeled. The effect of random
+						processes in drawing (with replacement) from these is that some will
+						be omitted entirely while others will be drawn more than once. Thus
+						there will be a certain amount of identity next generation. If the
+						process continues long enough, all the genes will be descended from
+						a single individual gene and complete autozygosity will be attained.
+					</p>
+
+					<p>
+						The distribution of the probability of various gene frequencies
+						during this process is a difficult problem. On the other hand, the
+						average change in heterozygosity is uniform and easily derived. It
+						can be expressed as a function of the inbreeding coefficient.
+					</p>
+
+					<p>
+						Consider first a population with completely random mating, including
+						self-fertilization. As before, we consider a single locus. Imagine
+						that the progeny are produced by drawing random pairs of gametes
+						from an infinite pool to which each parent had contributed equally
+						(or, if the pool is finite, the drawing is with replacement). Two
+						gametes then have a chance \( \frac{1}{2N} \) of carrying identical
+						genes, since the \(N\) diploid parents have \(2N\) genes at this
+						locus. Two gametes have a chance of \( 1 - \frac{1}{2N} \) of
+						carrying different parental genes.
+					</p>
+
+					<p>
+						In the first case, the probability of the genes being identical is
+						of course 1. In the second case, the probability of their being
+						identical is \( f_{t-1} \), the inbreeding coefficient of an average
+						individual in the previous generation. This is because two alleles
+						were drawn at random from the parent generation, and since the
+						parents were the result of random mating, the probability of any two
+						alleles being identical is the same as that for two in the same
+						zygote; the latter is, by definition, \( f_{t-1} \).
+					</p>
+
+					<p>Therefore:</p>
+					<p>
+						\[ f_t = \frac{1}{2N} + \left( 1 - \frac{1}{2N} \right) f_{t-1} \]
+					</p>
+
+					<p>
+						Recalling that \( H_t \), the heterozygosity at time \(t\), is \(
+						H_0(1 - f_t) \), we obtain by substitution:
+					</p>
+
+					<p>\[ H_t = \left( 1 - \frac{1}{2N} \right)^t H_0 \]</p>
+
+					<p>
+						The result is very simple: despite the complexities in the changes
+						in gene frequencies, the average heterozygosity decreases by a
+						fraction \( \frac{1}{2N} \) each generation.
+					</p>
+
+					<p>
+						As stated earlier, this formula assumes completely random mating
+						(i.e., random combination of gametes) including the possibility of
+						self-fertilization. Note that when \(N = 1\), the results agree with
+						those for self-fertilization.
+					</p>
+					<div
+						id="driftHeterozygosityPlot"
+						style="width: 100%; height: 500px"
+					></div>
+				</section>
+				<section id="HierachicalStructure">
+					<h3>Hierarchical Structure of Populations</h3>
+
+					<p>
+						At the beginning of this chapter we emphasized that inbreeding can
+						occur under two quite different circumstances. In both cases there
+						is a decrease in heterozygosity measured by \( f \), but some of the
+						consequences are quite different.
+					</p>
+
+					<p>
+						In the first case we can have a large population within which
+						isolated consanguineous mating occur. The inbreeding coefficient
+						measures the average decrease in heterozygosity and the shown
+						equations give the expected genotypic frequencies for given gene
+						frequencies. As soon as random mating occurs the inbreeding
+						coefficient returns to zero. An example is the case of partial
+						self-fertilization; as soon as self-fertilization is prevented, the
+						original heterozygosity is restored.
+					</p>
+
+					<p>
+						On the other hand, there may be inbreeding because of restriction of
+						population number, even though mating is at random within the
+						population. The average heterozygosity within the population is
+						reduced and the individuals become more closely related, both
+						measured by \( f \) (i.e., \( f_I \) and \( f_{IJ} \)). But the
+						increased homozygosity within the population is not due to departure
+						from Hardy-Weinberg ratios, but to changes in the gene frequencies.
+						The change is such as to make the value of \( 2p_1p_2 \) (or \( \sum
+						p_ip_j \) in case of multiple alleles) decrease in proportion to \(
+						f \). The formulae hold only in the sense of giving the genotype
+						frequencies averaged over a whole series of such populations.
+					</p>
+
+					<p>
+						In this situation the loss of heterozygosity within the population
+						is permanent and could be restored only by crossing with other
+						populations. Repeated self-fertilization and sib mating constitute
+						extreme cases of small populations.
+					</p>
+
+					<p>
+						There are circumstances in which the two effects are combined. For
+						example, we might inquire about the inbreeding coefficient of an
+						animal whose parents were sibs in an isolated population of
+						effective size \( N \). His homozygosity will be greater than if his
+						parents were sibs in a large population. We now derive a procedure
+						to handle this situation. The conclusions were first reached by
+						Wright (1943, 1951) by a different method.
+					</p>
+
+					<p>
+						Let \( S \) be a subpopulation derived by isolating a finite number
+						of individuals from a large total population \( T \). For example,
+						\( S \) could be a breed or a strain isolated from a foundation
+						stock \( T \). Or, \( S \) could be one of a series of
+						geographically isolated subpopulations of a large population \( T
+						\). Let \( I \) be an individual within subpopulation \( S \).
+					</p>
+
+					<p>
+						We now define \( f_{IS} \) as the probability that two homologous
+						genes in \( I \) are derived from the same gene in a common ancestor
+						within the subpopulation. Let \( f_{ST} \) be the probability that
+						two homologous genes, chosen at random from the subpopulation, are
+						both descended from a gene in the subpopulation. We let \( f_{IT} \)
+						be the overall probability of identity in individual \( I \).
+					</p>
+
+					<p>
+						The probability of nonidentity is then the product of two terms: \(
+						(1 - f_{IS}) \), the probability that the two genes do not both come
+						from a gene in a known common ancestor in the population, and \( (1
+						- f_{ST}) \), the probability that if the two genes are randomly
+						chosen from within the population they will not be identical because
+						of some remote relationship. Therefore,
+					</p>
+
+					<p>\[ 1 - f_{IT} = (1 - f_{IS})(1 - f_{ST}) \]</p>
+					<p>or</p>
+					<p>\[ f_{IT} = f_{ST} + (1 - f_{ST})f_{IS} \]</p>
+
+					<p>
+						For example, what is the inbreeding coefficient of a child whose
+						parents were cousins on an island whose population is descended from
+						a shipwreck 10 generations ago? Assume for simplicity that there
+						were 50 survivors, equally divided between the two sexes, and that
+						the population has remained of this size and sex distribution since
+						that time.
+					</p>
+
+					<p>\[ 1 - f_{ST} = \left(1 - \frac{1}{100}\right)^{10} = 0.9045 \]</p>
+					<p>\[ 1 - f_{IS} = 1 - \frac{1}{16} = 0.9375 \]</p>
+
+					<p>
+						\[ \begin{aligned} 1 - f_{IT} &= (1 - f_{IS})(1 - f_{ST}) \\ &=
+						(0.9045)(0.9375) = 0.848 \\ f_{IT} &= 0.152 \end{aligned} \]
+					</p>
+
+					<p>
+						Compared with \( 0.0625 \) from cousin marriage in an infinite
+						population.
+					</p>
+
+					<p>
+						Students of animal breeding will enjoy Wright's application of these
+						methods to the history of Shorthorn cattle. He showed that there was
+						a substantial increase in the inbreeding coefficient \( f_{IT} \) of
+						British Shorthorns, almost entirely due to \( f_{ST} \) and hardly
+						at all because of consanguineous mating within the breed \( (f_{IS})
+						\).
+					</p>
+
+					<p>
+						Similar analyses are possible in human isolates if accurate pedigree
+						records are available. If they are not, it is sometimes possible to
+						get reasonably satisfactory information from marriage records. Since
+						a person's name is inherited as if it were linked to the father's \(
+						Y \) chromosome, marriages between persons of the same surname
+						(isonymous) can be used as indications of consanguinity. Using this
+						procedure on the Hutterite population, Crow and Mange (1965) were
+						able to show that \( f_{ST} \) in this population is quite
+						appreciable, 4%, but that \( f_{IS} \) is not significantly
+						different from 0. In other words, the increased homozygosity is due
+						almost entirely to the small effective size of the population and
+						not at all to nonrandom marriage within the isolate.
+					</p>
+
+					<p>\[ 1 - f_{IS} = \frac{H_0(1 - f_{IT})}{H_0(1 - f_{ST})} \]</p>
+
+					<p>
+						Which shows that \( 1 - f_{IS} \) is a measure of the heterozygosity
+						of an individual in the subpopulation relative to that of an
+						individual derived from random mating in the same subpopulation.
+					</p>
+
+					<p>
+						As was mentioned earlier, the inbreeding coefficient can be
+						described in terms of correlation as well as in terms of gene
+						identity. In fact, Wright's original definition and derivation was
+						through correlation analysis. One advantage of the correlation
+						interpretation, as opposed to the probabilistic, is that the
+						negative values have a meaning. This is especially useful in this
+						section. \( F_{IS} \) is the correlation between homologous genes in
+						an individual relative to genes chosen at random from his
+						subpopulation. \( F_{IT} \) is the correlation between homologous
+						genes in an individual relative to the whole population. \( F_{ST}
+						\) is the correlation between randomly chosen genes in the
+						subpopulation relative to the total population.
+					</p>
+
+					<p>
+						\( F_{ST} \) is necessarily positive, but the others need not be.
+						For example, if there is specific avoidance mating between related
+						individuals within the subpopulation, \( F_{IS} \) may be negative.
+					</p>
+
+					<p>
+						Wright defined \( f_{ST} \) as the correlation between two random
+						gametes from the same subpopulation and derived the relation
+					</p>
+
+					<p>\[ f_{ST} = \frac{V_p}{\bar{p}(1 - \bar{p})} \]</p>
+
+					<p>
+						Where \( \bar{p} \) and \( V_p \) are the mean and variance of the
+						gene \( A \) among the subpopulations. We can derive this as
+						follows:
+					</p>
+
+					<p>
+						Consider a pair of alleles, \( A \) and \( A' \), and let \( p \) be
+						the frequency of \( A \). Then the frequency of a heterozygote in
+						the subgroup with frequency \( p \) is \( 2p(1 - p)(1 - f_{IS}) \).
+						Thus the frequency of heterozygotes in the total population is
+					</p>
+
+					<p>\[ H = E\{2p(1 - p)(1 - f_{IS})\} \]</p>
+
+					<p>
+						Where \( E\{\} \) designates taking the expectation or average over
+						all subpopulations. If the variation of gene frequencies among
+						subgroups is independent of \( f_{IS} \), then
+					</p>
+
+					<p>\[ H = 2(1 - f_{IS})E\{p(1 - p)\} \]</p>
+
+					<p>But</p>
+					<p>
+						\[ \begin{aligned} E\{p(1 - p)\} &= E\{p - p^2\} \\ &= \bar{p} -
+						\bar{p}^2 - V_p \end{aligned} \]
+					</p>
+
+					<p>Thus</p>
+					<p>\[ H = 2(1 - f_{IS})E\{p(1 - p)\} \]</p>
+
+					<p>On the other hand, from the definition of \( f_{IT} \)</p>
+
+					<p>\[ H = 2(1 - f_{IT})\bar{p}(1 - \bar{p}) \]</p>
+
+					<p>Equating these two expressions gives</p>
+
+					<p>
+						\[ (1 - f_{IT}) = (1 - f_{IS}) \left( 1 - \frac{V_p}{\bar{p}(1 -
+						\bar{p})} \right) \]
+					</p>
+
+					<p>
+						Notice that if there is no inbreeding in the subpopulation \(
+						(f_{IS} = 0) \), then
+					</p>
+
+					<p>\[ H = 2\bar{p}(1 - \bar{p}) - 2V_p \]</p>
+
+					<p>
+						This, although expressed in terms of heterozygotes rather than
+						homozygotes, is the same as we described as Wahlund's principle. Nei
+						(1965) extended this procedure to cover the case of multiple alleles
+						and has shown that
+					</p>
+
+					<p>\[ f_{ST} = \frac{-\text{Cov}_{ij}}{\bar{p}_i\bar{p}_j} \]</p>
+
+					<p>
+						Where \( \bar{p}_i \) and \( \bar{p}_j \) are the mean frequencies
+						of the alleles \( A_i \) and \( A_j \) and \( \text{Cov}_{ij} \) is
+						the covariance of their frequencies.
+					</p>
+
+					<p>
+						Nei and Imaizumi (1966) applied these formulae to study the
+						differentiation of \( ABO \) blood group gene frequencies among the
+						prefectures of Japan. They obtained 6 values of \( f_{ST} \) that
+						were in close agreement, suggesting that the local differentiation
+						of gene frequencies was mainly random.
+					</p>
+
+					<p>
+						Extending to include subdivisions of a subdivision in a hierarchy.
+						For example,
+					</p>
+
+					<p>\[ 1 - f_{IT} = (1 - f_{IR})(1 - f_{RS})(1 - f_{ST}) \]</p>
+
+					<p>
+						Where \( R \) is a subpopulation of \( S \) which is a subpopulation
+						of \( T \). Then \( f_{RS} \) is the probability that two randomly
+						chosen homologous genes in \( R \) are identical because of common
+						ancestry within \( R \) and \( f_{ST} \) is the probability that two
+						randomly chosen genes in \( S \) are identical because of common
+						ancestry within \( S \).
+					</p>
+
+					<div style="display: flex; gap: 20px">
+						<div id="alleleFreqChart" style="width: 50%; height: 500px"></div>
+						<div id="fstChart" style="width: 50%; height: 500px"></div>
+					</div>
+					<div style="margin-top: 10px">
+						<button onclick="startDriftAnimation()">▶️ Start</button>
+						<button onclick="pauseDriftAnimation()">⏸ Pause</button>
+						<button onclick="resetDriftAnimation()">🔄 Reset</button>
+					</div>
+				</section>
 				<!-- Divider line from above section -->
 				<hr class="my-5" />
 				<!-- Reference and Jupyter Notebooks -->
@@ -1907,6 +2367,7 @@
 		<script src="../../../js/simulate_ibd.js"></script>
 		<script src="../../../js/utils/plotly_theme.js"></script>
 		<script src="../../../js/treebuilder.js"></script>
+		<script src="../../../js/runDriftAndFstSimulationAnimated.js"></script>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
@@ -1920,13 +2381,16 @@
 				runKPlot()
 				runEpistasisChart()
 				plotHeterozygosityDecline('heterozygosityChart')
-				// Novo gráfico usando Plotly
 				plotModelsPlotly('inbreedingPlotlyChart')
 				plotPartialSelfing('partialSelfingChart')
 				plotBackcrossingConversion('backcrossChart')
 				plotGenomeReplacementAndLinkage('replacementChart')
 				plotLinkageDurationWithR015('linkageChart')
 				simulateInbreedingDoubleHomozygosity()
+				plotInbreedingMeanVarianceSim3()
+				renderInbreedingDominanceVarianceChartSim3()
+				plotHeterozygosityDrift()
+				setupDriftSimData()
 			})
 		</script>
 
