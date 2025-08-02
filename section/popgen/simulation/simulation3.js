@@ -326,3 +326,472 @@ function runEpistasisChart() {
 
 	Plotly.newPlot(container, data, layout, { responsive: true })
 }
+
+/* =======================================================
+   SET 6: C (Plotly Version)
+======================================================= */
+
+// simulation3.js
+
+// Gera 100 valores igualmente espaçados entre 0 e 1
+function linspace(start, stop, num) {
+	const arr = []
+	const step = (stop - start) / (num - 1)
+	for (let i = 0; i < num; i++) {
+		arr.push(start + step * i)
+	}
+	return arr
+}
+
+// Calcula todos os modelos com base nos coeficientes de endogamia
+function simulateModels() {
+	const inbreedingCoefficients = linspace(0, 1, 100)
+	const models = {
+		'Model 1 & 2: No dominance, no inbreeding effect':
+			inbreedingCoefficients.map(() => 10.0),
+		'Model 3 & 4: Dominance only (linear)': inbreedingCoefficients.map(
+			(x) => 10 - 2 * x
+		),
+		'Model 5: Reinforcing epistasis': inbreedingCoefficients.map(
+			(x) => 10 - 0.007 * x - 0.032 * x ** 2
+		),
+		'Model 6: Diminishing epistasis': inbreedingCoefficients.map(
+			(x) => 10 - 0.356 * x + 0.032 * x ** 2
+		),
+		'Model 7 & 8: Epistasis without nonlinearity': inbreedingCoefficients.map(
+			(x) => 10 - 2 * x
+		),
+		'Model 9: Strong reinforcing epistasis': inbreedingCoefficients.map(
+			(x) => 10 - 0.5 * x - 0.5 * x ** 2
+		),
+	}
+
+	return { inbreedingCoefficients, models }
+}
+
+// Plota os modelos com Plotly.js
+function plotModelsPlotly(divId) {
+	const { inbreedingCoefficients, models } = simulateModels()
+
+	const colors = [
+		'#1f77b4',
+		'#ff7f0e',
+		'#2ca02c',
+		'#d62728',
+		'#9467bd',
+		'#8c564b',
+		'#e377c2',
+		'#7f7f7f',
+		'#bcbd22',
+	]
+
+	const dashes = [
+		'dash',
+		'solid',
+		'dot',
+		'dashdot',
+		'solid',
+		'dash',
+		'dot',
+		'solid',
+		'dot',
+	]
+
+	const traces = Object.keys(models).map((label, i) => ({
+		x: inbreedingCoefficients,
+		y: models[label],
+		mode: 'lines',
+		name: label,
+		line: {
+			color: colors[i % colors.length],
+			dash: dashes[i % dashes.length],
+			width: 2,
+		},
+	}))
+
+	const layout = {
+		title: 'Effects of Inbreeding on Phenotype Under Different Genetic Models',
+		xaxis: {
+			title: 'Inbreeding Coefficient (f)',
+			range: [0, 1],
+		},
+		yaxis: {
+			title: 'Performance / Trait Value (Ȳ)',
+		},
+		legend: {
+			orientation: 'h',
+			x: 0,
+			y: -0.2,
+		},
+		margin: { t: 60 },
+	}
+
+	Plotly.newPlot(divId, traces, layout, { responsive: true })
+}
+
+/* =======================================================
+   SET 7: C (Plotly Version)
+======================================================= */
+
+// Gera uma sequência de inteiros de start a end, inclusive
+function range(start, end) {
+	return Array.from({ length: end - start + 1 }, (_, i) => start + i)
+}
+
+// Calcula heterozigosidade sob autofecundação
+function computeSelfFertilization(generations, H0 = 1.0) {
+	return generations.map((t) => H0 * Math.pow(0.5, t))
+}
+
+// Calcula heterozigosidade sob cruzamento entre irmãos
+function computeSibMating(generations, H0 = 1.0) {
+	const H = new Array(generations.length).fill(0)
+	H[0] = H0
+	H[1] = H0 / 2
+	for (let t = 2; t < generations.length; t++) {
+		H[t] = 0.5 * H[t - 1] + 0.25 * H[t - 2]
+	}
+	return H
+}
+
+// Função para plotar os dois modelos usando Plotly
+function plotHeterozygosityDecline(divId) {
+	const generations = range(0, 20)
+	const H_self = computeSelfFertilization(generations)
+	const H_sib = computeSibMating(generations)
+
+	const traceSelf = {
+		x: generations,
+		y: H_self,
+		type: 'scatter',
+		mode: 'lines+markers',
+		name: 'Self-fertilization',
+		marker: { symbol: 'circle', size: 6 },
+		line: { color: '#1f77b4' },
+	}
+
+	const traceSib = {
+		x: generations,
+		y: H_sib,
+		type: 'scatter',
+		mode: 'lines+markers',
+		name: 'Sib-mating',
+		marker: { symbol: 'square', size: 6 },
+		line: { color: '#ff7f0e' },
+	}
+
+	const layout = {
+		title: 'Decline in Heterozygosity under Different Inbreeding Systems',
+		xaxis: {
+			title: 'Generation',
+			dtick: 1,
+		},
+		yaxis: {
+			title: 'Heterozygosity (( H_t ))',
+			range: [0, 1],
+		},
+		legend: { x: 0.05, y: 1.0 },
+		margin: { t: 60 },
+	}
+
+	Plotly.newPlot(divId, [traceSelf, traceSib], layout, { responsive: true })
+}
+
+/* =======================================================
+   SET 8: C (Plotly Version)
+======================================================= */
+
+// Gera uma sequência de inteiros de start a end (inclusive)
+function range(start, end) {
+	return Array.from({ length: end - start + 1 }, (_, i) => start + i)
+}
+
+// Calcula heterozigosidade com autofecundação parcial para diferentes valores de S
+function computePartialSelfFertilization(S_values, generations = 50, H0 = 1.0) {
+	const heterozygosities = {}
+	const equilibriumLines = {}
+
+	S_values.forEach((S) => {
+		const H = [H0]
+		const equilibrium = ((2 * (1 - S)) / (2 - S)) * H0
+
+		for (let t = 1; t <= generations; t++) {
+			const H_t = (S / 2) * H[t - 1] + (1 - S) * H0
+			H.push(H_t)
+		}
+
+		heterozygosities[S] = H
+		equilibriumLines[S] = equilibrium
+	})
+
+	return { heterozygosities, equilibriumLines }
+}
+
+// Plota os resultados com Plotly.js
+function plotPartialSelfing(divId) {
+	const S_values = [1.0, 0.5, 0.1]
+	const generations = 50
+	const H0 = 1.0
+	const x = range(0, generations)
+	const { heterozygosities, equilibriumLines } =
+		computePartialSelfFertilization(S_values, generations, H0)
+
+	const traces = []
+
+	S_values.forEach((S) => {
+		traces.push({
+			x,
+			y: heterozygosities[S],
+			mode: 'lines',
+			name: `S = ${S}`,
+			line: { width: 2 },
+		})
+
+		traces.push({
+			x,
+			y: Array(x.length).fill(equilibriumLines[S]),
+			mode: 'lines',
+			name: `Equilibrium for S = ${S}`,
+			line: {
+				dash: 'dash',
+				color: 'gray',
+				width: 1,
+			},
+			showlegend: S === 0.1, // mostrar só uma linha de equilíbrio com legenda
+		})
+	})
+
+	const layout = {
+		title: 'Decline in Heterozygosity with Partial Self-Fertilization',
+		xaxis: {
+			title: 'Generation',
+			dtick: 5,
+		},
+		yaxis: {
+			title: {
+				text: 'Heterozygosity (H)',
+			},
+			range: [0, 1],
+		},
+		legend: {
+			x: 0.05,
+			y: 1.0,
+		},
+		margin: { t: 60 },
+	}
+
+	Plotly.newPlot(divId, traces, layout, { responsive: true })
+}
+
+/* =======================================================
+   SET 9: C (Plotly Version)
+======================================================= */
+
+// Função principal: plota a conversão genômica e o tamanho da região intacta
+function plotBackcrossingConversion(divId) {
+	const generations = range(1, 20)
+	const recurrentFraction = generations.map((t) => 1 - Math.pow(0.5, t))
+	const intactInterval = generations.map((t) => 100 / t)
+
+	const trace1 = {
+		x: generations,
+		y: recurrentFraction,
+		name: 'Recurrent Genome Fraction',
+		mode: 'lines+markers',
+		marker: { symbol: 'circle', color: 'blue' },
+		line: { color: 'blue' },
+		yaxis: 'y1',
+		hovertemplate: 'Generation %{x}<br>Recurrent: %{y:.2f}<extra></extra>',
+	}
+
+	const trace2 = {
+		x: generations,
+		y: intactInterval,
+		name: 'Intact Region Size',
+		mode: 'lines+markers',
+		marker: { symbol: 'square', color: 'red' },
+		line: { dash: 'dash', color: 'red' },
+		yaxis: 'y2',
+		hovertemplate: 'Generation %{x}<br>Region Size: %{y:.2f} mu<extra></extra>',
+	}
+
+	const layout = {
+		title:
+			'Repeated Backcrossing: Genome Conversion and Linked Segment Retention',
+		xaxis: {
+			title: 'Backcross Generations (t)',
+			dtick: 1,
+		},
+		yaxis: {
+			title: 'Proportion from Recurrent Parent (1 - 0.5^t)',
+			range: [0, 1.05],
+			titlefont: { color: 'blue' },
+			tickfont: { color: 'blue' },
+		},
+		yaxis2: {
+			title: 'Mean Size of Intact Region (map units)',
+			overlaying: 'y',
+			side: 'right',
+			titlefont: { color: 'red' },
+			tickfont: { color: 'red' },
+			range: [0, Math.max(...intactInterval) + 5],
+		},
+		legend: {
+			x: 0.5,
+			y: -0.2,
+			xanchor: 'center',
+			orientation: 'h',
+		},
+		margin: { t: 60 },
+	}
+
+	Plotly.newPlot(divId, [trace1, trace2], layout, { responsive: true })
+}
+
+/* =======================================================
+   SET 10: C (Plotly Version)
+======================================================= */
+
+// Gera uma sequência de inteiros de start a end (inclusive)
+function range(start, end) {
+	return Array.from({ length: end - start + 1 }, (_, i) => start + i)
+}
+
+// Calcula o tempo médio até recombinação
+function averageGenerationsUntilRecombination(r) {
+	return 1 / r
+}
+
+// Plota o gráfico de substituição genômica e tamanho da região ligada
+function plotGenomeReplacementAndLinkage(divId) {
+	const generations = range(1, 30) // 1 to 30
+	const recurrentProp = generations.map((t) => 1 - Math.pow(0.5, t))
+	const segmentSize = generations.map((t) => 100 / t)
+
+	const trace1 = {
+		x: generations,
+		y: recurrentProp,
+		name: 'Recurrent Genome Proportion',
+		mode: 'lines',
+		line: { color: 'blue', width: 2 },
+	}
+
+	const trace2 = {
+		x: generations,
+		y: segmentSize,
+		name: 'Mean Linked Segment Size (map units)',
+		mode: 'lines',
+		line: { color: 'red', dash: 'dash' },
+	}
+
+	const layout = {
+		title: 'Genome Replacement and Linkage Decay During Backcrossing',
+		xaxis: {
+			title: 'Generation',
+		},
+		yaxis: {
+			title: 'Proportion / Segment Size',
+			range: [0, 1.05 * Math.max(...segmentSize)],
+		},
+		legend: {
+			x: 0.5,
+			y: 1.1,
+			xanchor: 'center',
+			orientation: 'h',
+		},
+		margin: { t: 60 },
+	}
+
+	Plotly.newPlot(divId, [trace1, trace2], layout, { responsive: true })
+}
+
+// Plota o gráfico de barras para número médio de gerações com ligação
+function plotLinkageDurationWithR015(divId) {
+	const r_values = [0.01, 0.05, 0.1, 0.15, 0.2]
+	const x_labels = r_values.map((r) => r.toFixed(2)) // ['0.01', '0.05', ..., '0.15', '0.20']
+	const durations = r_values.map((r) => 1 / r) // [100, 20, 10, 6.67, 5]
+
+	const trace = {
+		x: x_labels,
+		y: durations,
+		type: 'bar',
+		marker: {
+			color: 'green',
+		},
+		hovertemplate: 'r = %{x}<br>Avg Gens Linked: %{y:.2f}<extra></extra>',
+	}
+
+	const layout = {
+		title: 'Duration of Linkage to Introgressed Gene (Including r = 0.15)',
+		xaxis: {
+			title: 'Recombination Rate (r)',
+			type: 'category', // evita valores interpolados como 0.13, 0.17 etc.
+		},
+		yaxis: {
+			title: 'Avg Generations Linked',
+			rangemode: 'tozero',
+		},
+		margin: { t: 60 },
+	}
+
+	Plotly.newPlot(divId, [trace], layout, { responsive: true })
+}
+
+/* =======================================================
+   SET 11: C (Plotly Version)
+======================================================= */
+
+function simulateInbreedingDoubleHomozygosity() {
+	const f_vals = Array.from({ length: 100 }, (_, i) => (i * 0.25) / 99)
+
+	// Parâmetros fixos
+	const p = 0.1,
+		q = 1 - p
+	const r = 0.1,
+		s = 1 - r
+	const phi = 0.01
+	const V_f = 0.01
+
+	// Cálculo das curvas
+	const P_basic = f_vals.map((f) => (p ** 2 + f * p * q) * (r ** 2 + f * r * s))
+	const P_extended = P_basic.map((val, i) => val + (phi + V_f) * p * q * r * s)
+
+	const trace_basic = {
+		x: f_vals,
+		y: P_basic,
+		mode: 'lines',
+		name: 'P_basic (no linkage, uniform inbreeding)',
+		line: { color: 'blue' },
+	}
+
+	const trace_extended = {
+		x: f_vals,
+		y: P_extended,
+		mode: 'lines',
+		name: 'P_extended (linkage + inbreeding variance)',
+		line: { color: 'orange', dash: 'dash' },
+	}
+
+	const layout = {
+		title: 'Effect of Linkage and Inbreeding Variance on Double Homozygosity',
+		xaxis: {
+			title: 'Inbreeding coefficient (f)',
+			range: [0, 0.25],
+		},
+		yaxis: {
+			title: 'P(AABB)',
+		},
+		legend: {
+			x: 0.01,
+			y: 0.99,
+			bgcolor: 'rgba(255,255,255,0.5)',
+		},
+		margin: { t: 50, b: 50, l: 70, r: 30 },
+	}
+
+	Plotly.newPlot(
+		'inbreedingDoubleHomozygosity',
+		[trace_basic, trace_extended],
+		layout
+	)
+}

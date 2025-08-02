@@ -504,7 +504,6 @@
 
 					\[ r_{XY} = \frac{COV_{XY}}{V_x} = f \]
 
-					<h3>Genotype Frequencies and Heterozygosity</h3>
 					<div
 						id="plotGenotypeFrequencies"
 						style="width: 100%; max-width: 700px; margin: auto"
@@ -513,10 +512,10 @@
 						id="plotHeterozygosity"
 						style="width: 100%; max-width: 700px; margin: auto"
 					></div>
-					<h3>
-						Equivalence of Inbreeding Coefficient (f) and Correlation
-						Coefficient (r)
-					</h3>
+					<p>
+						In the following plot we can observe the equivalence of Inbreeding
+						Coefficient (f) and Correlation Coefficient (r).
+					</p>
 					<div
 						id="plotCorrelation"
 						style="width: 100%; max-width: 700px; margin: auto"
@@ -613,7 +612,7 @@
 					</div>
 				</section>
 				<section id="Pedigree_F">
-					<h4>3.4 Computation of $f$ from pedigrees</h4>
+					<h4>3.4 Computation of \ f \ from pedigrees</h4>
 					<p>
 						The procedure for computing the inbreeding or consanguinity
 						coefficient from a pedigree follows directly from the definition of
@@ -1043,6 +1042,721 @@
 						style="width: 100%; max-width: 700px; margin: auto"
 					></div>
 				</section>
+				<section id="InbreedingEffects">
+					<h4>3.7 Some Examples of Inbreeding Effects</h4>
+
+					<p>
+						The following examples illustrate numerical examples and show how
+						specific levels of dominance and epistasis may be constructed by
+						choosing appropriate values for the parameters. In these examples,
+						the gene frequencies are all \( \frac{1}{2} \). The values are
+						contrived so that fully homozygous individuals (\( f=1 \)) have an
+						average phenotype of 10.
+					</p>
+
+					<p>
+						Models 1 and 2 show that, whether or not there is epistasis, there
+						is no inbreeding effect without dominance; the phenotype is 10,
+						independent of \( f \). Models 3 and 4 show that the rate of decline
+						with inbreeding by itself cannot distinguish among different levels
+						of dominance. Model 5 is an extreme form of reinforcing epistasis;
+						model 6 is an extreme form of diminishing epistasis. Models 6 and 9
+						show that quite different systems of gene action can give the same
+						quadratic equation.
+					</p>
+
+					<p>
+						Models 7 and 8 show that epistasis, though a necessary condition for
+						a nonlinear inbreeding effect, is not sufficient. In both, there is
+						epistasis, yet the equations are the same; moreover, they are the
+						same as models 3 and 4. Only when \( J \neq 0 \) is there a
+						nonlinear effect, as models 5, 6, and 9 show. The examples below
+						assume equal frequency for two alleles at each locus. Usually, this
+						is not the case. Let us assume that the higher phenotypic value is
+						desirable, which means that for most models \( A_2 \) and \( B_2 \)
+						will tend to be more frequent than their alleles. Consider, as an
+						example, that \( p_1 = r_1 = 0.1 \). Then the equations of models 5
+						and 6 become:
+					</p>
+
+					<ul>
+						<li>
+							Model 5, complementary recessive genes: \( \bar{Y} = G - 0.007f -
+							0.032f^2 \)
+						</li>
+						<li>
+							Model 6, complementary dominant genes: \( \bar{Y} = G - 0.356f +
+							0.032f^2 \)
+						</li>
+					</ul>
+
+					<p>
+						Model 5 shows that with a trait depending on simultaneous
+						homozygosity for two rare recessives, there will be very little
+						inbreeding effect when \( f \) is small—because the coefficient of
+						\( f \) is small and \( f^2 \), to be appreciable, requires a larger
+						coefficient to become important. Thus, for detrimental traits
+						depending on multiple homozygosities, inbreeding effects tend to be
+						nonlinear: very little effect of slight inbreeding, but with an
+						accelerating effect at very high levels.
+					</p>
+
+					<p>
+						With model 6, on the other hand, the quadratic term never becomes
+						important and the linear term dominates for all values of \( f \).
+						Thus, for rare genes with duplicate effects, the inbreeding effect
+						is linear for all practical purposes. When the trait considered is
+						survival, it is often natural to measure epistasis as deviations
+						from independence rather than from additivity. Survival
+						probabilities are multiplicative if the genes act independently. It
+						is often advantageous to transform to logs, or to measure fitness in
+						Malthusian parameters.
+					</p>
+
+					<p>
+						<strong>We summarize this section by three conclusions:</strong>
+					</p>
+
+					<ol>
+						<li>
+							If there is no dominance, there is no mean change in phenotype
+							with inbreeding regardless of the amount of epistasis (models 1
+							and 2). If \( D_A, D_B, J \), and \( L \) are 0, then \( \bar{Y}
+							\) is not a function of \( f \).
+						</li>
+						<li>
+							If there is dominance, but no epistasis, the effect of inbreeding
+							on the phenotype is linear in \( f \). Usually, inbreeding leads
+							to a change in quantitative measures, and if there is no
+							epistasis, this change is proportional to \( f \) (models 3 and
+							4). If \( I=J=K=L=0 \), the term in \( f^2 \) drops out.
+						</li>
+						<li>
+							If there is both dominance and epistasis, the inbreeding effect
+							may be quadratic in \( f \) (or higher order if more than two loci
+							are involved). With reinforcing epistasis, the inbreeding effect
+							is greater than if the loci were additive; with diminishing
+							epistasis, the effect is less (models 5 and 6). However, the
+							change in average phenotype with inbreeding is not necessarily
+							quadratic (models 7 and 8); as long as \( J=0 \), the inbreeding
+							effect is linear.
+						</li>
+					</ol>
+
+					<p>
+						Reliable data on the results of inbreeding uncomplicated by the
+						effects of selection are rare. There is also difficulty in choosing
+						an appropriate scale of measurement if the linearity of the
+						inbreeding effect is to be tested. Some of the best data come from
+						maize. The yield was measured for inbred lines, crosses, and
+						randomly mated progeny from a field of crosses.
+					</p>
+
+					<div style="overflow-x: auto; max-width: 100%">
+						<table
+							border="1"
+							cellspacing="0"
+							cellpadding="8"
+							style="
+								border-collapse: collapse;
+								min-width: 600px;
+								font-family: Arial, sans-serif;
+								font-size: 14px;
+								text-align: center;
+							"
+						>
+							<thead style="background-color: #f2f2f2">
+								<tr style="background-color: #e0e0e0">
+									<th style="padding: 10px; font-weight: bold"></th>
+									<th style="padding: 10px; font-weight: bold">
+										Hybrid average<br />f = 0 (G)
+									</th>
+									<th style="padding: 10px; font-weight: bold">
+										Hybrid average<br />f = 1 (G - H)
+									</th>
+									<th style="padding: 10px; font-weight: bold">f</th>
+									<th style="padding: 10px; font-weight: bold">
+										Expected Yield<br />(G - Hf)
+									</th>
+									<th style="padding: 10px; font-weight: bold">
+										Observed Yield
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr style="background-color: #ffffff">
+									<td style="padding: 8px; text-align: left">
+										10 two-way hybrids
+									</td>
+									<td>62.8</td>
+									<td>23.7</td>
+									<td>0.500</td>
+									<td>43.3</td>
+									<td>44.2</td>
+								</tr>
+								<tr style="background-color: #f9f9f9">
+									<td style="padding: 8px; text-align: left">
+										4 three-way hybrids
+									</td>
+									<td>64.2</td>
+									<td>23.8</td>
+									<td>0.375</td>
+									<td>49.1</td>
+									<td>49.3</td>
+								</tr>
+								<tr style="background-color: #ffffff">
+									<td style="padding: 8px; text-align: left">
+										10 four-way hybrids
+									</td>
+									<td>64.1</td>
+									<td>25.0</td>
+									<td>0.250</td>
+									<td>54.3</td>
+									<td>54.0</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<p>
+						Three kinds of crosses were tested: two-way, three-way, and four-way
+						(or double-cross) hybrids. Let \( A, B, C, D \) stand for four lines
+						that have been self-fertilized long enough to be regarded as
+						completely homozygous.
+					</p>
+					<ul>
+						<li>
+							Two-way crosses: first generation hybrids between two lines, e.g.,
+							\( A \times B \).
+						</li>
+						<li>
+							Three-way crosses: between a hybrid and a different line, e.g., \(
+							(A \times B) \times C \).
+						</li>
+						<li>
+							Four-way crosses: between two hybrids, e.g., \( (A \times B)
+							\times (C \times D) \).
+						</li>
+					</ul>
+
+					<p>
+						In a field of two-way hybrids allowed to pollinate at random, the
+						probability that two alleles have come from the same parental inbred
+						line is \( \frac{1}{2} \). Assuming the parent line to be
+						autozygous, two alleles from the same line are identical; hence, the
+						progeny from random pollination have an inbreeding coefficient of \(
+						\frac{1}{2} \). For a four-way cross, the probability is \(
+						\frac{1}{4} \). For the three-way cross, the probability of two
+						alleles both coming from \( C \) is \( \frac{1}{4} \), from \( A \)
+						is \( \frac{1}{16} \), and from \( B \) is \( \frac{1}{16} \); \( f
+						\) is the sum or \( \frac{3}{8} \). The data show close agreement
+						with expected values. Since the inbreeding effect is so nearly
+						linear with the inbreeding coefficient, this implies that epistasis
+						is not very important in corn yield. Either the genes at different
+						loci act additively on yield, or opposite interactive effects cancel
+						each other.
+					</p>
+					<div id="inbreedingPlotlyChart"></div>
+				</section>
+				<section id="RegularSystems">
+					<h4>3.8 Regular Systems of Inbreeding</h4>
+
+					<p>
+						The described methods can be used to derive recurrence relations for
+						\( f \) in successive generations with regular systems of
+						inbreeding.
+					</p>
+
+					<h5>1. Self-fertilization</h5>
+
+					<p>\[ f_t = \frac{1}{2}(1 + f_{t-1}) \]</p>
+
+					<p>
+						Where \( f_t \) is the inbreeding coefficient in generation \( t \)
+						and \( f_{t-1} \) is the coefficient one generation earlier. To
+						obtain the change in heterozygosity, we use the relation \( f_t =
+						\frac{H_0 - H_t}{H_0} \), where \( H_t \) and \( H_0 \) are the
+						proportions of heterozygosity in generation \( t \) and initially
+						(\( t = 0 \)). This leads to:
+					</p>
+
+					<p>\[ H_t = \frac{1}{2} H_{t-1} \]</p>
+					<p>\[ H_t = \left( \frac{1}{2} \right)^2 H_{t-2} \]</p>
+					<p>\[ H_t = \left( \frac{1}{2} \right)^t H_0 \]</p>
+
+					<p>
+						This confirms the result stated previously: with self-fertilization,
+						the amount of heterozygosity is reduced by one-half each generation.
+						After 10 generations, only \( \frac{1}{1024} \) of the loci that
+						were previously heterozygous remain heterozygous.
+					</p>
+
+					<h5>2. Sib Mating</h5>
+
+					<p>
+						The inbreeding coefficient \( f_I \) is the probability that two
+						homologous genes in an individual \( I \) are identical by descent.
+						The coefficient of consanguinity \( f_{IJ} \) is the probability
+						that two homologous genes, one from individual \( I \) and one from
+						individual \( J \), are identical.
+					</p>
+
+					<p>
+						Let \( f_t \) be the inbreeding coefficient in generation \( t \)
+						and \( g_t \) the coefficient of consanguinity between siblings.
+						Then:
+					</p>
+
+					<p>\[ f_t = g_{t-1} \]</p>
+					<p>\[ g_t = \frac{1}{4}(1 + f_{t-1}) + \frac{1}{2} g_{t-1} \]</p>
+
+					<p>Eliminating \( g \), we get:</p>
+
+					<p>\[ f_t = \frac{1}{4}(1 + 2f_{t-1} + f_{t-2}) \]</p>
+
+					<p>
+						Letting \( f_t = \frac{H_0 - H_t}{H_0} \), we derive a recurrence
+						for heterozygosity:
+					</p>
+
+					<p>\[ H_t = \frac{1}{2} H_{t-1} + \frac{1}{4} H_{t-2} \]</p>
+
+					<p>
+						If \( H_0 = H_1 = \frac{1}{2} \), we get the sequence: \(
+						\frac{3}{8}, \frac{5}{16}, \frac{8}{32}, \frac{13}{64}, \ldots \)
+					</p>
+
+					<p>
+						To generalize, let \( f_t = 1 - h_t \) and \( g_t = 1 - k_t \),
+						then:
+					</p>
+
+					<p>\[ h_t = k_{t-1} \]</p>
+					<p>\[ k_t = \frac{1}{4} h_{t-1} + \frac{1}{2} k_{t-1} \]</p>
+
+					<p>In matrix form:</p>
+
+					<p>
+						\[ \begin{pmatrix} h_t \\ k_t \end{pmatrix} = \begin{pmatrix} 0 & 1
+						\\ \frac{1}{4} & \frac{1}{2} \end{pmatrix} \begin{pmatrix} h_{t-1}
+						\\ k_{t-1} \end{pmatrix} \]
+					</p>
+
+					<p>
+						\[ \begin{pmatrix} h_t \\ k_t \end{pmatrix} = \left( \begin{pmatrix}
+						0 & 1 \\ \frac{1}{4} & \frac{1}{2} \end{pmatrix} \right)^t
+						\begin{pmatrix} h_0 \\ k_0 \end{pmatrix} \]
+					</p>
+
+					<p>
+						To solve directly, we compute the characteristic equation of the
+						matrix:
+					</p>
+
+					<p>
+						\[ \left| \begin{array}{cc} -\lambda & 1 \\ \frac{1}{4} &
+						\frac{1}{2} - \lambda \end{array} \right| = 0 \Rightarrow \lambda^2
+						- \frac{1}{2} \lambda - \frac{1}{4} = 0 \]
+					</p>
+
+					<p>The largest (and only positive) root is:</p>
+
+					<p>\[ \lambda = \frac{1 + \sqrt{5}}{4} \approx 0.809 \]</p>
+
+					<p>As \( t \) grows, we have:</p>
+
+					<p>\[ H_t \approx \lambda H_{t-1} \]</p>
+
+					<p>That is, the heterozygosity decreases approximately as:</p>
+
+					<p>\[ H_t = 0.809 H_{t-1} \]</p>
+
+					<p>Assuming a constant rate of decrease, we get:</p>
+
+					<p>\[ \frac{H_t}{H_{t-1}} = \frac{H_{t-1}}{H_{t-2}} = \lambda \]</p>
+
+					<p>To compare two mating systems, equating their decay over time:</p>
+
+					<p>
+						\[ \lambda_1^{t_1} = \lambda_2^{t_2} \Rightarrow \frac{t_1}{t_2} =
+						\frac{\log \lambda_1}{\log \lambda_2} \]
+					</p>
+
+					<p>
+						Example: For self-fertilization \( \lambda = 0.5 \), sib mating \(
+						\lambda = 0.809 \):
+					</p>
+
+					<p>
+						\[ \frac{t_1}{t_2} = \frac{\log 0.5}{\log 0.809} =
+						\frac{-0.3010}{-0.0921} \approx 3.27 \]
+					</p>
+
+					<p>
+						So, asymptotically, one generation of self-fertilization equals
+						about 3.27 generations of sib mating.
+					</p>
+
+					<p>
+						This method of comparing mating systems was introduced by Fisher
+						(1949). Other properties of mating systems can also be analyzed,
+						though it quickly becomes complex unless matrix methods (Haldane
+						1937a; Fisher 1949) are applied.
+					</p>
+					<div id="heterozygosityChart"></div>
+				</section>
+				<section id="PartialSelffertilization">
+					<h4>4. Partial Self-fertilization</h4>
+
+					<p>
+						All the examples discussed thus far lead eventually to complete
+						homozygosity. This is not always the case, and we shall now consider
+						one such example. This is a simple, yet important, case where a
+						certain fraction of individuals in each generation are
+						self-fertilized and the remainder are mated at random — a situation
+						common in several plant species.
+					</p>
+
+					<p>
+						Let \( S \) be the fraction of the population produced by
+						self-fertilization; then \( 1 - S \) is the fraction produced by
+						random mating.
+					</p>
+
+					<p>The recurrence for inbreeding becomes:</p>
+
+					<p>\[ f_t = S \left[ \frac{1 + f_{t-1}}{2} \right] + (1 - S)(0) \]</p>
+					<p>\[ f_t = \frac{S}{2}(1 + f_{t-1}) \]</p>
+
+					<p>
+						This assumes that the plants undergoing self-fertilization each
+						generation are a random sample of the population — for example,
+						there's no tendency for the progeny of self-fertilized plants to
+						also be self-fertilized.
+					</p>
+
+					<p>Substituting \( f_t = \frac{H_0 - H_t}{H_0} \), we get:</p>
+
+					<p>\[ f_t = H_0(1 - S) + \frac{S}{2} H_{t-1} \]</p>
+
+					<p>
+						Subtracting \( \frac{2(1 - S)}{2 - S} H_0 \) from both sides and
+						simplifying:
+					</p>
+
+					<p>
+						\[ H_t - \frac{2(1 - S)}{2 - S} H_0 = \frac{S}{2} \left[ H_{t-1} -
+						\frac{2(1 - S)}{2 - S} H_0 \right] \]
+					</p>
+					<p>
+						\[ H_t - \frac{2(1 - S)}{2 - S} H_0 = \left( \frac{S}{2} \right)^2
+						\left[ H_{t-2} - \frac{2(1 - S)}{2 - S} H_0 \right] \]
+					</p>
+					<p>
+						\[ H_t - \frac{2(1 - S)}{2 - S} H_0 = \left( \frac{S}{2} \right)^t
+						\left[ H_0 - \frac{2(1 - S)}{2 - S} H_0 \right] \]
+					</p>
+
+					<p>
+						Since \( \left( \frac{S}{2} \right)^t \to 0 \) as \( t \to \infty
+						\), the heterozygosity approaches a limit where it is a fraction \(
+						\frac{2(1 - S)}{2 - S} \) of its original value.
+					</p>
+
+					<p>
+						The rate of approach is such that the departure from equilibrium
+						decreases by a factor of \( 1 - \frac{S}{2} \) each generation.
+						Notice that when \( S = 1 \), we recover the classical formula for
+						complete self-fertilization.
+					</p>
+
+					<p>
+						This situation is striking in that unless \( S \) is large, there is
+						almost no cumulative effect. Most of the change occurs in the first
+						generation. For example, with 10% self-fertilization, heterozygosity
+						is reduced by 5% in the first generation, but even at equilibrium
+						the reduction is only 5.3%!
+					</p>
+
+					<p>
+						Heterozygosity decreases each generation but stabilizes at
+						equilibrium:
+					</p>
+
+					<p>\[ \lim_{t \to \infty} H_t = \frac{2(1 - S)}{2 - S} H_0 \]</p>
+					<div id="partialSelfingChart"></div>
+				</section>
+				<section id="RepeatedBackcrossing">
+					<h4>Repeated Backcrossing to the Same Strain</h4>
+
+					<p>
+						Frequently a plant breeder may wish to introduce one or more
+						dominant genes from an extraneous source into a standard variety.
+						For example, they may have a highly desirable variety except for its
+						susceptibility to a disease. The resistant gene may exist in another
+						strain that is less desirable in other respects. The breeder can
+						introduce this gene by crossing the two strains and then repeatedly
+						backcrossing resistant plants to the susceptible strain. In this
+						way, the resistant gene is inserted into a genetic background that
+						becomes more like the susceptible strain with each backcross. As
+						another example, a mouse breeder may wish to introgress a new
+						histocompatibility gene into a standard inbred strain.
+					</p>
+
+					<p>
+						In recurrent backcrossing, the number of loci containing genes from
+						both strains is reduced by half each generation. Thus, after \( t \)
+						generations, a fraction equal to \( 1 - 0.5^t \) of the genome is
+						derived from the recurrent parental strain. After seven generations,
+						less than 1% of the loci contain a gene from the other parental
+						strain. If the recurrent parental strain is homozygous,
+						heterozygosity reduces by half each generation, as in
+						self-fertilization.
+					</p>
+
+					<p>
+						However, genes that are linked to the resistance or
+						histocompatibility gene will tend to remain heterozygous. The
+						question of how large a linked region remains after several
+						generations of backcrossing was investigated by Haldane (1936) and
+						Fisher (1949).
+					</p>
+
+					<p>
+						Consider a chromosome segment on one side of the selected factor
+						with length \( 100x \) map units. If there is no interference, the
+						probability of no crossover in one generation is \( e^{-x} \). The
+						probability of no crossover in \( t \) generations is \( e^{-tx} \).
+						The chance of a crossover occurring in a small interval \( x \) to
+						\( x + dx \) is \( dx \), assuming \( dx \) is small enough to
+						ignore multiple crossovers. Therefore, the probability of a
+						crossover in the interval \( dx \) sometime during \( t \)
+						generations, but not earlier, is \( e^{-tx} t \cdot dx \). The
+						expected value of the intact interval \( x \) is:
+					</p>
+
+					<p>\[ \bar{x} = \int_0^{\infty} e^{-tx} dx = \frac{1}{t} \]</p>
+
+					<p>or \( \frac{100}{t} \) map units.</p>
+
+					<p>
+						For example, after 20 generations, the average segment remaining
+						intact would be 5 units on each side of the selected locus, or 10
+						units total. The derivation assumes no interference, but
+						interference has little effect over short regions.
+					</p>
+
+					<p>
+						A closely related question is: what is the mean number of backcross
+						generations that a gene will remain linked to the selected locus,
+						when the recombination probability is \( r \)? The probability that
+						the genes remain linked for \( t \) generations and recombine in the
+						next is \( (1 - r)^t r \). Then the expected number of generations
+						until recombination is:
+					</p>
+
+					<p>
+						\[ \bar{t} = r + 2(1 - r)r + 3(1 - r)^2 r + 4(1 - r)^3 r + \ldots \]
+					</p>
+
+					<p>Letting \( y = 1 - r \), we write:</p>
+
+					<p>\[ \bar{t} = r (1 + 2y + 3y^2 + 4y^3 + \ldots) \]</p>
+
+					<p>
+						The expression in parentheses is the derivative of the geometric
+						series: \[ 1 + y + y^2 + y^3 + \ldots = \frac{1}{1 - y} \]
+					</p>
+
+					<p>Taking the derivative:</p>
+
+					<p>
+						\[ \bar{t} = r \cdot \frac{d}{dy} \left( \frac{1}{1 - y} \right) = r
+						\cdot \frac{1}{(1 - y)^2} \]
+					</p>
+
+					<p>Since \( y = 1 - r \), we substitute back:</p>
+
+					<p>\[ \bar{t} = \frac{1}{r} \]</p>
+
+					<p>
+						The values of \( x \) and \( r \) are not necessarily the same, but
+						become increasingly similar as \( x \) becomes small enough that
+						multiple crossovers are negligible.
+					</p>
+					<div id="backcrossChart"></div>
+					<div id="replacementChart"></div>
+					<div id="linkageChart"></div>
+				</section>
+				<section id="Inbreeding2loci">
+					<h4>Inbreeding with Two Loci</h4>
+
+					<p>
+						The idea of the inbreeding coefficient can be extended to cover
+						multiple loci. The principal item of interest is that inbreeding may
+						cause the association of two or more recessive traits. This can
+						happen in either of two ways: (1) with unlinked loci but nonuniform
+						inbreeding, and (2) with uniform inbreeding and linkage — and, of
+						course, because of both linkage and nonuniform inbreeding. Our
+						treatment follows very closely the method of Haldane (1949). We
+						consider first unlinked loci in linkage equilibrium.
+					</p>
+
+					<p>
+						Let \( p_i \) be the frequency of allele \( A_i \) and \( r_k \)
+						that of the independent allele \( B_k \). The frequency of \( A_i
+						A_i \) homozygotes is \( p_i^2(1-f) + p_i f = p_i^2 + p_i(1-p_i)f \)
+						with a similar formula for \( B_k B_k \), \( r_k^2 + r_k(1-r_k)f \).
+					</p>
+
+					<p>
+						Since the loci are in linkage equilibrium the frequency of \( A_i
+						A_i B_k B_k \) is the product:
+					</p>
+
+					<p>
+						\[ (p^2 + pqf)(r^2 + rsf) = p^2r^2+(pqr^2 + p^2rs)f + pqrsf^2 \]
+					</p>
+
+					<p>
+						In a population with different values of \( f \) from individual to
+						individual the frequency of the double homozygote is:
+					</p>
+
+					<p>\[ p^2 r^2 + (pqr^2 + p^2rs) \bar{f} + pq rs \bar{f^2} \]</p>
+
+					<p>Using the variance identity:</p>
+
+					<p>\[ \bar{f^2} = \bar{f}^2 + V_f \]</p>
+
+					<p>Hence:</p>
+
+					<p>
+						\[ P(AABB) = (p^2 + pq \bar{f})(r^2 + r s \bar{f}) + pqrs V_f \]
+					</p>
+
+					<p>
+						Suppose that in the human population two recessive genes each have a
+						frequency of 0.1, and that 1% of the marriages are between cousins
+						while the rest are random. Then \( \bar{f} = \frac{1}{1600} \), \(
+						V_f = \frac{1}{25600} - \left(\frac{1}{1600}\right)^2 = 3.87 \cdot
+						10^{-5} \).
+					</p>
+
+					<p>
+						To consider the second case, extend the inbreeding coefficient \( f
+						\) to two loci. Let \( F \) be the probability that both loci carry
+						identical alleles.
+					</p>
+
+					<p>The probability of homozygosity across gamete types is:</p>
+
+					<p>
+						\[ \begin{aligned} &P(AABB) = prF + pr^2(f - F) + p^2 r(f - F) +
+						p^2r^2(1 -2f + F) \\ &P(AABB) = (p^2 + fpq)(r^2 + frs) + \phi pq rs
+						\end{aligned} \]
+					</p>
+
+					<p>Where \( \phi = F - f^2 \).</p>
+
+					<p>
+						Comparing \( \phi \) with \( V_f \), the effects are approximately
+						additive:
+					</p>
+
+					<p>
+						\[ P(AABB) = (p^2 + \bar{f}pq)(r^2 + \bar{f} rs) + (\phi + V_f) pq
+						\cdot rs \]
+					</p>
+
+					<p>
+						Computing \( F \) from a pedigree requires special methods. For
+						example:
+					</p>
+
+					<ul>
+						<li>
+							\( F = \frac{1}{2}(c^2 + d^2) \), \( f = \frac{1}{2} \), \( \phi =
+							\frac{1}{4}(c - d)^2 \) for identical parents
+						</li>
+						<li>
+							\( F = \frac{1}{4}(c^2 + d^2)d \), \( f = \frac{1}{4} \), \( \phi
+							= \frac{1}{16}(d - c)(3d^2 + c^2) \) for parent-offspring
+						</li>
+						<li>
+							\( F = \frac{1}{8}(c^2 + d^2)d^2 \), \( f = \frac{1}{8} \), \(
+							\phi = \frac{1}{64}(8d^2 + 8c^2d^2 - 1) \) for half-sibs
+						</li>
+					</ul>
+
+					<p>Summary Table:</p>
+
+					<table border="1" cellspacing="0" cellpadding="5">
+						<thead>
+							<tr>
+								<th>Relationship of parents</th>
+								<th>F</th>
+								<th>f</th>
+								<th>\( \phi = F - f^2 \)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Identical</td>
+								<td>\( \frac{1}{2}(c²+d²) \)</td>
+								<td>\( \frac{1}{2} \)</td>
+								<td>\( \frac{1}{4}(c-d)^2 \)</td>
+							</tr>
+							<tr>
+								<td>Parent-offspring</td>
+								<td>\( \frac{1}{4}(c²+d²)d \)</td>
+								<td>\( \frac{1}{4} \)</td>
+								<td>\( \frac{1}{16}(d - c)(3d^2 + c^2) \)</td>
+							</tr>
+							<tr>
+								<td>Full sibs</td>
+								<td>\( \frac{1}{8}(2d^4+ 2c^2d^2 + c^2) \)</td>
+								<td>\( \frac{1}{4} \)</td>
+								<td>\( \frac{1}{16}(4d^4 + 4c^2d^2 + 2c^2 - 1) \)</td>
+							</tr>
+							<tr>
+								<td>Half sibs</td>
+								<td>\( \frac{1}{2}(c²+d²)d^2 \)</td>
+								<td>\( \frac{1}{8} \)</td>
+								<td>\( \frac{1}{64}(8c^2d^2 + 8d^4 - 1) \)</td>
+							</tr>
+							<tr>
+								<td>Uncle-niece</td>
+								<td>\( \frac{1}{16}(2d^4+ 2d^2c^2+ c^2)d \)</td>
+								<td>\( \frac{1}{8} \)</td>
+								<td>\( \frac{1}{64}(8d^5 + 8c^2d^3 + 4c^2d - 1) \)</td>
+							</tr>
+							<tr>
+								<td>First cousins</td>
+								<td>\( \frac{1}{32}(2d^4 + 2c^2d^2 + c^2)d^2 \)</td>
+								<td>\( \frac{1}{16} \)</td>
+								<td>\( \frac{1}{256}(16d^6 + 16c^2d^4 + 8c^2d^2 -1) \)</td>
+							</tr>
+							<tr>
+								<td>Double half-cousins</td>
+								<td>\( \frac{1}{128}(8d^6+ 8c^2d^4 + c^2) \)</td>
+								<td>\( \frac{1}{16} \)</td>
+								<td>\( \frac{1}{256}(16d^6+ 16c^2d^4 + 2c^2 - 1) \)</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<p>
+						For example, assuming \( p = r = 0.01 \), frequency of \( AA \) or
+						\( BB \) in cousin progeny is 0.00072 compared with 0.00010 in
+						random mating. With 10% recombination frequency, \( P(AABB) = 5.2
+						\cdot 10^{-7} + \phi pqrs = 34.6 \cdot 10^{-7} \).
+					</p>
+					<div
+						id="inbreedingDoubleHomozygosity"
+						style="width: 100%; height: 500px"
+					></div>
+				</section>
 				<!-- Divider line from above section -->
 				<hr class="my-5" />
 				<!-- Reference and Jupyter Notebooks -->
@@ -1205,8 +1919,17 @@
 				simulateGameteCorrelation()
 				runKPlot()
 				runEpistasisChart()
+				plotHeterozygosityDecline('heterozygosityChart')
+				// Novo gráfico usando Plotly
+				plotModelsPlotly('inbreedingPlotlyChart')
+				plotPartialSelfing('partialSelfingChart')
+				plotBackcrossingConversion('backcrossChart')
+				plotGenomeReplacementAndLinkage('replacementChart')
+				plotLinkageDurationWithR015('linkageChart')
+				simulateInbreedingDoubleHomozygosity()
 			})
 		</script>
+
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	</body>
 </html>
