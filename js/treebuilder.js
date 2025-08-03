@@ -1,4 +1,27 @@
 // pedigree_tree.js
+function validatePedigree(pedigree) {
+	for (const [id, entry] of Object.entries(pedigree)) {
+		if (!entry.hasOwnProperty('parents')) {
+			throw new Error(`Missing "parents" field for "${id}".`)
+		}
+		if (
+			entry.parents !== null &&
+			(!Array.isArray(entry.parents) ||
+				!entry.parents.every((p) => typeof p === 'string'))
+		) {
+			throw new Error(
+				`"parents" of "${id}" must be null or an array of strings.`
+			)
+		}
+		for (const p of entry.parents || []) {
+			if (!pedigree.hasOwnProperty(p)) {
+				throw new Error(
+					`Parent "${p}" for "${id}" is not defined in the pedigree.`
+				)
+			}
+		}
+	}
+}
 
 function buildTree(pedigree, nodeId) {
 	const node = { name: nodeId, children: [] }
@@ -56,39 +79,36 @@ function runSimulation() {
 
 	try {
 		pedigree = JSON.parse(inputText)
+		validatePedigree(pedigree) // Validate structure here
 	} catch (e) {
-		alert('Erro no JSON do pedigree!')
+		alert('Invalid pedigree input:\n' + e.message)
 		return
 	}
 
+	// Continue only if validation passed
 	const { fValues, fIJ, rIJ } = simulateIBD(pedigree, numLoci)
 
 	const outputLines = []
-
-	// Cabeçalho
 	outputLines.push(
 		`ID`.padEnd(10) + 'f_I'.padEnd(12) + 'f_IJ'.padEnd(12) + 'r_IJ'
 	)
 
-	// Obter todos os IDs únicos
 	const allIds = new Set([
 		...Object.keys(fValues),
 		...Object.keys(fIJ),
 		...Object.keys(rIJ),
 	])
 
-	// Adicionar linhas formatadas
 	for (const id of allIds) {
 		const fi = fValues[id]?.toFixed(3) ?? '-'
 		const fij = fIJ[id]?.toFixed(3) ?? '-'
 		const rij = rIJ[id]?.toFixed(3) ?? '-'
-
 		outputLines.push(id.padEnd(10) + fi.padEnd(12) + fij.padEnd(12) + rij)
 	}
 
 	document.getElementById('outputText').textContent = outputLines.join('\n')
 
-	// Plot heatmap using Plotly
+	// Plot heatmap
 	const ids = Object.keys(fValues)
 	const matrix = ids.map((i) =>
 		ids.map((j) => {
@@ -113,5 +133,7 @@ function runSimulation() {
 		yaxis: { title: 'Indivíduo I' },
 	})
 
-	drawTree(pedigree) // update tree with same pedigree
+	// Show and update the pedigree tree
+	document.getElementById('tree').style.display = 'block'
+	drawTree(pedigree)
 }
