@@ -1,0 +1,32 @@
+<h2 class="my-5">Pedigree Tree</h2>
+<svg height="400" id="tree" width="800"></svg>
+<h3>IBD simulator and genetic relationship</h3>
+<label for="pedigreeInput"
+	><strong>Insert your pedigree (JSON format):</strong></label
+>
+<div class="simulation-container">
+	<h2>Pedigree Simulation</h2>
+	<div class="form-section">
+		<label for="pedigreeInput"><strong>Pedigree JSON:</strong></label>
+		<textarea cols="60" id="pedigreeInput" rows="12">
+					{
+					"A": {"parents": null},
+					"B": {"parents": null},
+					"C": {"parents": ["A", "B"]},
+					"E": {"parents": null},
+					"D": {"parents": ["C", "E"]}
+					}
+						</textarea
+		>
+		<div class="input-group">
+			<label for="numLoci">Number of loci:</label>
+			<input id="numLoci" min="10" step="10" type="number" value="10000" />
+		</div>
+		<button class="simulate-button" onclick="runSimulation()">Simulate</button>
+	</div>
+	<div class="output-section">
+		<h2 class="my-5">Results</h2>
+		<pre class="output-text" id="outputText"></pre>
+		<div class="heatmap" id="plotContainer"></div>
+	</div>
+</div>

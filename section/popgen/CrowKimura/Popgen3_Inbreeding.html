@@ -209,16 +209,77 @@
 						frequencies remain constant. Inbreeding restructures but does not
 						shift the gene pool:
 					</p>
-					<p style="text-align: center">
-						\[ \begin{array}{c c c c} \hline \text{Generation} &amp; AA &amp; Aa
-						&amp; aa \\ \hline 0 &amp; D &amp; H &amp; R \\ 1 &amp;
-						D+\frac{H}{4} &amp; \frac{H}{2} &amp; R+\frac{H}{4} \\ 2 &amp;
-						D+\frac{3H}{8} &amp; \frac{H}{4} &amp; R+\frac{3H}{8} \\ 3 &amp;
-						D+\frac{7H}{16} &amp; \frac{H}{8} &amp; R+\frac{7H}{16} \\ 4 &amp;
-						D+\frac{15H}{32} &amp; \frac{H}{16} &amp; R+\frac{15H}{32} \\
-						\text{Limit} &amp; D+\frac{H}{2} &amp; 0 &amp; R+\frac{H}{2} \\
-						\hline \end{array} \]
-					</p>
+					<div
+						style="
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							padding: 60px 20px; /* top/bottom = 60px, left/right = 20px */
+						"
+					>
+						<div style="overflow-x: auto; max-width: 100%">
+							<table
+								border="1"
+								cellspacing="0"
+								cellpadding="8"
+								style="
+									border-collapse: collapse;
+									min-width: 600px;
+									font-family: Arial, sans-serif;
+									font-size: 14px;
+									text-align: center;
+								"
+							>
+								<thead>
+									<tr style="background-color: #e0e0e0">
+										<th style="padding: 10px; font-weight: bold">Generation</th>
+										<th style="padding: 10px; font-weight: bold">AA</th>
+										<th style="padding: 10px; font-weight: bold">Aa</th>
+										<th style="padding: 10px; font-weight: bold">aa</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">0</td>
+										<td>D</td>
+										<td>H</td>
+										<td>R</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">1</td>
+										<td>\( D+\frac{H}{4} \)</td>
+										<td>\( \frac{H}{2} \)</td>
+										<td>\( R+\frac{H}{4} \)</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">2</td>
+										<td>\( D+\frac{3H}{8} \)</td>
+										<td>\( \frac{H}{4} \)</td>
+										<td>\( R+\frac{3H}{8} \)</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">3</td>
+										<td>\( D+\frac{7H}{16} \)</td>
+										<td>\( \frac{H}{8} \)</td>
+										<td>\( R+\frac{7H}{16} \)</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">4</td>
+										<td>\( D+\frac{15H}{32} \)</td>
+										<td>\( \frac{H}{16} \)</td>
+										<td>\( R+\frac{15H}{32} \)</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">Limit</td>
+										<td>\( D+\frac{H}{2} \)</td>
+										<td>0</td>
+										<td>\( R+\frac{H}{2} \)</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
 					<p>
 						If \(H_0\) is the initial heterozygosity, then after \(t\)
 						generations:
@@ -232,20 +293,107 @@
 						forms of inbreeding show similar, slower patterns.
 					</p>
 					<p>For continued brother-sister mating:</p>
-					<p style="text-align: center">
-						\[ \begin{array}{c|c|c|c|c} \hline \text{Generation} &amp;
-						\text{Relative Heterozygosity} &amp; \text{Decrease in
-						Heterozygosity} &amp; \text{Rate}~\frac{H_t}{H_{t-1}} &amp;
-						\frac{H_{t-1}-H_t}{H_{t-1}} \\ \hline 0 &amp; 1 &amp; 0 &amp; 1
-						&amp; 0 \\ 1 &amp; \frac{2}{2} &amp; 0 &amp; 1 &amp; 0 \\ 2 &amp;
-						\frac{3}{4} &amp; \frac{1}{4} &amp; 0.750 &amp; 0.250 \\ 3 &amp;
-						\frac{5}{8} &amp; \frac{3}{8} &amp; 0.833 &amp; 0.167 \\ 4 &amp;
-						\frac{8}{16} &amp; \frac{8}{16} &amp; 0.800 &amp; 0.200 \\ 5 &amp;
-						\frac{13}{32} &amp; \frac{19}{32} &amp; 0.812 &amp; 0.188 \\ 6 &amp;
-						\frac{21}{64} &amp; \frac{43}{64} &amp; 0.808 &amp; 0.192 \\
-						\text{Limit} &amp; 0 &amp; 1 &amp; \lambda=0.809 &amp; 0.191 \\
-						\hline \end{array} \]
-					</p>
+					<div
+						style="
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							padding: 60px 20px;
+						"
+					>
+						<div style="overflow-x: auto; max-width: 100%">
+							<table
+								border="1"
+								cellspacing="0"
+								cellpadding="8"
+								style="
+									border-collapse: collapse;
+									min-width: 600px;
+									font-family: Arial, sans-serif;
+									font-size: 14px;
+									text-align: center;
+								"
+							>
+								<thead>
+									<tr style="background-color: #e0e0e0">
+										<th style="padding: 10px; font-weight: bold">Generation</th>
+										<th style="padding: 10px; font-weight: bold">
+											Relative<br />Heterozygosity
+										</th>
+										<th style="padding: 10px; font-weight: bold">
+											Decrease in<br />Heterozygosity
+										</th>
+										<th style="padding: 10px; font-weight: bold">
+											Rate<br />\( \frac{H_t}{H_{t-1}} \)
+										</th>
+										<th style="padding: 10px; font-weight: bold">
+											\( \frac{H_{t-1}-H_t}{H_{t-1}} \)
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">0</td>
+										<td>1</td>
+										<td>0</td>
+										<td>1</td>
+										<td>0</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">1</td>
+										<td>\( \frac{2}{2} \)</td>
+										<td>0</td>
+										<td>1</td>
+										<td>0</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">2</td>
+										<td>\( \frac{3}{4} \)</td>
+										<td>\( \frac{1}{4} \)</td>
+										<td>0.750</td>
+										<td>0.250</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">3</td>
+										<td>\( \frac{5}{8} \)</td>
+										<td>\( \frac{3}{8} \)</td>
+										<td>0.833</td>
+										<td>0.167</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">4</td>
+										<td>\( \frac{8}{16} \)</td>
+										<td>\( \frac{8}{16} \)</td>
+										<td>0.800</td>
+										<td>0.200</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">5</td>
+										<td>\( \frac{13}{32} \)</td>
+										<td>\( \frac{19}{32} \)</td>
+										<td>0.812</td>
+										<td>0.188</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">6</td>
+										<td>\( \frac{21}{64} \)</td>
+										<td>\( \frac{43}{64} \)</td>
+										<td>0.808</td>
+										<td>0.192</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">Limit</td>
+										<td>0</td>
+										<td>1</td>
+										<td>\( \lambda = 0.809 \)</td>
+										<td>0.191</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
 					<p>
 						The heterozygosity follows a Fibonacci pattern in the numerator with
 						denominator doubling each generation. Wright (1951) called
@@ -254,55 +402,69 @@
 						reserve \(F\) for multilocus cases. The ratio
 						\(\frac{H_t}{H_{t-1}}\) quickly approaches a limit \(\lambda\).
 					</p>
-					<div class="table-responsive">
-						<table
-							class="table table-bordered table-sm text-center align-middle"
-						>
-							<thead class="table-light">
-								<tr>
-									<th>Feature</th>
-									<th>Selfing</th>
-									<th>Sib mating</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Heterozygosity decline</td>
-									<td>Halves each generation</td>
-									<td>Declines ~20%/generation</td>
-								</tr>
-								<tr>
-									<td>Genotype frequency change</td>
-									<td>Fast</td>
-									<td>Slower</td>
-								</tr>
-								<tr>
-									<td>Allele frequency change</td>
-									<td>None</td>
-									<td>None</td>
-								</tr>
-								<tr>
-									<td>Population structure effect</td>
-									<td>Becomes a set of fully homozygous lines</td>
-									<td>Subgroups drift toward homozygosity</td>
-								</tr>
-							</tbody>
-						</table>
+					<div
+						style="
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							padding: 60px 20px;
+						"
+					>
+						<div style="overflow-x: auto; max-width: 100%">
+							<table
+								border="1"
+								cellspacing="0"
+								cellpadding="8"
+								style="
+									border-collapse: collapse;
+									min-width: 600px;
+									font-family: Arial, sans-serif;
+									font-size: 14px;
+									text-align: center;
+								"
+							>
+								<thead>
+									<tr style="background-color: #e0e0e0">
+										<th style="padding: 10px; font-weight: bold">Feature</th>
+										<th style="padding: 10px; font-weight: bold">Selfing</th>
+										<th style="padding: 10px; font-weight: bold">Sib mating</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: right">
+											Heterozygosity decline
+										</td>
+										<td>Halves each generation</td>
+										<td>Declines ~20%/generation</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: right">
+											Genotype frequency change
+										</td>
+										<td>Fast</td>
+										<td>Slower</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: right">
+											Allele frequency change
+										</td>
+										<td>None</td>
+										<td>None</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: right">
+											Population structure effect
+										</td>
+										<td>Becomes a set of fully homozygous lines</td>
+										<td>Subgroups drift toward homozygosity</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
-					<table id="heterozygosityTable">
-						<thead>
-							<tr>
-								<th>Generation</th>
-								<th>Relative Heterozygosity (H_t / H_0)</th>
-								<th>Decrease in Heterozygosity (f)</th>
-								<th>Rate of Change (H_t / H_{t-1})</th>
-								<th>Delta Rate (1 - H_t / H_{t-1})</th>
-							</tr>
-						</thead>
-						<tbody>
-							<!-- Data will be inserted here -->
-						</tbody>
-					</table>
+
 					<div
 						id="plotRelativeHeterozygosity"
 						style="width: 100%; max-width: 700px; margin: auto"
@@ -368,11 +530,66 @@
 						frequencies are:
 					</p>
 
-					\[ \begin{array}{cc} \hline &amp; \text{Allozygous} &amp;
-					\text{Autozygous} \\ \hline \text{Homogygous, } A_1A_1: &amp;
-					p_1^2(1-f) &amp; p_1 f \\ \text{Homogygous, } A_1A_2: &amp;
-					2p_1p_2(1-f) &amp; \\ \text{Homogygous, } A_2A_2: &amp; p_2^2(1-f)
-					&amp; p_2f \\ \text{Total} &amp; 1-f &amp; f \\ \hline \end{array} \]
+					<div
+						style="
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							padding: 60px 20px;
+						"
+					>
+						<div style="overflow-x: auto; max-width: 100%">
+							<table
+								border="1"
+								cellspacing="0"
+								cellpadding="8"
+								style="
+									border-collapse: collapse;
+									min-width: 600px;
+									font-family: Arial, sans-serif;
+									font-size: 14px;
+									text-align: center;
+								"
+							>
+								<thead>
+									<tr style="background-color: #e0e0e0">
+										<th style="padding: 10px; font-weight: bold"></th>
+										<th style="padding: 10px; font-weight: bold">Allozygous</th>
+										<th style="padding: 10px; font-weight: bold">Autozygous</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">
+											Homogygous, \( A_1A_1 \)
+										</td>
+										<td>\( p_1^2(1 - f) \)</td>
+										<td>\( p_1 f \)</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">
+											Homogygous, \( A_1A_2 \)
+										</td>
+										<td>\( 2p_1p_2(1 - f) \)</td>
+										<td></td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">
+											Homogygous, \( A_2A_2 \)
+										</td>
+										<td>\( p_2^2(1 - f) \)</td>
+										<td>\( p_2 f \)</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">Total</td>
+										<td>\( 1 - f \)</td>
+										<td>\( f \)</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
 
 					<p>
 						Notice that when \(f = 0\) these formulas reduce to the usual
@@ -434,16 +651,100 @@
 						in the table, using the standard formula for calculation of \(r\).
 					</p>
 
-					\[ \begin{array}{c c c c c c c c} \hline \text{Egg} &amp; \text{Sperm}
-					&amp; \text{Frequency} &amp; X &amp; Y &amp; X^2 &amp; Y^2 &amp; XY\\
-					\hline A_1 &amp; A_2 &amp; p_2^2(1-f)+p_2f &amp; 0 &amp; 0 &amp; 0
-					&amp; 0 &amp; 0 \\ A_1 &amp; A_2 &amp; p_1p_2(1-f)&amp; 1 &amp; 0
-					&amp; 1 &amp; 0 &amp; 0\\ A_2 &amp; A_1 &amp; p_2p_1(1-f) &amp; 0
-					&amp; 1 &amp; 0 &amp; 1 &amp; 0\\ A_1 &amp; A_1 &amp; p_1^2(1-f)+p_1f
-					&amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1\\ \hline \text{Sum or mean}
-					&amp; 1 &amp; p_1 &amp; p_1 &amp; p_1 &amp; p_1 &amp; p_1 &amp;
-					p_1^2(1-f)+p_1f\\ \hline \end{array} \] \[ \bar X = p_1 p_2(1 - f) +
-					p_1^2 (1 - f) + p_1 f = p_1 \]
+					<div
+						style="
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							padding: 60px 20px;
+						"
+					>
+						<div style="overflow-x: auto; max-width: 100%">
+							<table
+								border="1"
+								cellspacing="0"
+								cellpadding="8"
+								style="
+									border-collapse: collapse;
+									min-width: 600px;
+									font-family: Arial, sans-serif;
+									font-size: 14px;
+									text-align: center;
+								"
+							>
+								<thead>
+									<tr style="background-color: #e0e0e0">
+										<th style="padding: 10px; font-weight: bold">Egg</th>
+										<th style="padding: 10px; font-weight: bold">Sperm</th>
+										<th style="padding: 10px; font-weight: bold">Frequency</th>
+										<th style="padding: 10px; font-weight: bold">X</th>
+										<th style="padding: 10px; font-weight: bold">Y</th>
+										<th style="padding: 10px; font-weight: bold">X²</th>
+										<th style="padding: 10px; font-weight: bold">Y²</th>
+										<th style="padding: 10px; font-weight: bold">XY</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">\( A_1 \)</td>
+										<td>\( A_2 \)</td>
+										<td>\( p_2^2(1 - f) + p_2f \)</td>
+										<td>0</td>
+										<td>0</td>
+										<td>0</td>
+										<td>0</td>
+										<td>0</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">\( A_1 \)</td>
+										<td>\( A_2 \)</td>
+										<td>\( p_1p_2(1 - f) \)</td>
+										<td>1</td>
+										<td>0</td>
+										<td>1</td>
+										<td>0</td>
+										<td>0</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">\( A_2 \)</td>
+										<td>\( A_1 \)</td>
+										<td>\( p_2p_1(1 - f) \)</td>
+										<td>0</td>
+										<td>1</td>
+										<td>0</td>
+										<td>1</td>
+										<td>0</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">\( A_1 \)</td>
+										<td>\( A_1 \)</td>
+										<td>\( p_1^2(1 - f) + p_1f \)</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+										<td>1</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">
+											Sum or mean
+										</td>
+										<td>1</td>
+										<td>\( p_1 \)</td>
+										<td>\( p_1 \)</td>
+										<td>\( p_1 \)</td>
+										<td>\( p_1 \)</td>
+										<td>\( p_1 \)</td>
+										<td>\( p_1^2(1 - f) + p_1f \)</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<p style="text-align: center">
+						\[ \bar X = p_1 p_2(1 - f) + p_1^2 (1 - f) + p_1 f = p_1 \]
+					</p>
 
 					<p>
 						Likewise, \(\hat Y = \text{mean}(X^2) = \text{mean}(Y^2) = p_1\)
@@ -570,248 +871,413 @@
 						this is the expected correlation. We shall also show later the
 						effect of dominance on the correlation between relatives.
 					</p>
-					<h2 class="my-5">Pedigree Tree</h2>
-					<svg height="400" id="tree" width="800"></svg>
-					<h3>IBD simulator and genetic relationship</h3>
-					<label for="pedigreeInput"
-						><strong>Insert your pedigree (JSON format):</strong></label
+					<div
+						style="text-align: center; margin-top: 50px; margin-bottom: 50px"
 					>
-					<div class="simulation-container">
-						<h2>Pedigree Simulation</h2>
-						<div class="form-section">
-							<label for="pedigreeInput"><strong>Pedigree JSON:</strong></label>
-							<textarea cols="60" id="pedigreeInput" rows="12">
-					{
-					"A": {"parents": null},
-					"B": {"parents": null},
-					"C": {"parents": ["A", "B"]},
-					"E": {"parents": null},
-					"D": {"parents": ["C", "E"]}
-					}
-						</textarea
-							>
-							<div class="input-group">
-								<label for="numLoci">Number of loci:</label>
-								<input
-									id="numLoci"
-									min="10"
-									step="10"
-									type="number"
-									value="10000"
-								/>
-							</div>
-							<button class="simulate-button" onclick="runSimulation()">
-								Simulate
+						<a href="../../../components/simtools/IBD_simulation.html">
+							<button type="button" class="btn btn-secondary btn-lg px-5 py-10">
+								Check IBD simulation
 							</button>
-						</div>
-						<div class="output-section">
-							<h2 class="my-5">Results</h2>
-							<pre class="output-text" id="outputText"></pre>
-							<div class="heatmap" id="plotContainer"></div>
-						</div>
+						</a>
 					</div>
 				</section>
 				<section id="Pedigree_F">
-					<h4>3.4 Computation of \ f \ from pedigrees</h4>
+					<h4 class="py-5">3.4 Computation of \( f \) from pedigrees</h4>
+
 					<p>
 						The procedure for computing the inbreeding or consanguinity
 						coefficient from a pedigree follows directly from the definition of
-						$f$. In this pedigree individual $I$ is inbred because both his
-						parents are descended from a single common ancestor, $A$. All
-						unrelated ancestors, which are irrelevant to the inbreeding of $I$
-						are omitted from the pedigree. We ask for the probability that $I$
-						is autozygous; i.e., that homologous genes contributed to $I$ by
-						gametes $b$ and $e$ are both descended from the same gene in
-						ancestor $A$. We shall use the notation $Prob(c=b)$ to mean the
-						probability that $c$ and $b$ carry identical genes for the locus
-						under consideration. $Prob(b=c)=1/2$, since the gene in $b$ has an
-						equal chance of having come from $C$ or from $B$'s other parent.
-						Likewise, $Prob(c=a)=1/2$. The probability that $a$ and $a's$ carry
-						identical genes may be obtained as follows: Let the two alleles in
-						$A$ be called $W$ and $Z$. Then there are four equally likely
-						possibilities for gametes $a$ and $a$'s: (1) $W$ and $W$, (2) $Z$
-						and $Z$, (3) $W$ and $Z$, and (4) $Z$ and $W$. In the first two
-						cases they are identical, so the probability is $1/2$ that $a$ and
-						$a's$ get the same gene from $A$. However, there is an additional
-						possibility if $A$ is inbreed, for in this case two alleles $W$ and
-						$Z$ may both be descended from some more remote ancestor not shown
-						in the figure. The probability that $A$ is autozygous, is, by
-						definition, in inbreeding coefficient of $A$, $f_A$. If $A$ is
-						inbreed
+						\( f \). In this pedigree individual \( I \) is inbred because both
+						his parents are descended from a single common ancestor, \( A \).
+						All unrelated ancestors, which are irrelevant to the inbreeding of
+						\( I \) are omitted from the pedigree. We ask for the probability
+						that \( I \) is autozygous; i.e., that homologous genes contributed
+						to \( I \) by gametes \( b \) and \( e \) are both descended from
+						the same gene in ancestor \( A \). We shall use the notation \(
+						Prob(c = b) \) to mean the probability that \( c \) and \( b \)
+						carry identical genes for the locus under consideration. \( Prob(b =
+						c) = 1/2 \), since the gene in \( b \) has an equal chance of having
+						come from \( C \) or from \( B \)'s other parent. Likewise, \(
+						Prob(c = a) = 1/2 \). The probability that \( a \) and \( a' \)
+						carry identical genes may be obtained as follows: Let the two
+						alleles in \( A \) be called \( W \) and \( Z \). Then there are
+						four equally likely possibilities for gametes \( a \) and \( a' \):
+						(1) \( W \) and \( W \), (2) \( Z \) and \( Z \), (3) \( W \) and \(
+						Z \), and (4) \( Z \) and \( W \). In the first two cases they are
+						identical, so the probability is \( 1/2 \) that \( a \) and \( a' \)
+						get the same gene from \( A \). However, there is an additional
+						possibility if \( A \) is inbred, for in this case two alleles \( W
+						\) and \( Z \) may both be descended from some more remote ancestor
+						not shown in the figure. The probability that \( A \) is autozygous
+						is, by definition, the inbreeding coefficient of \( A \), \( f_A \).
+						If \( A \) is inbred
 					</p>
+
 					<p>
-						\[ Prob(a=a')=\frac{1}{2} + \frac{1}{2}f_A=\frac{1}{2}(1+f_A) \]
+						\[ Prob(a = a') = \frac{1}{2} + \frac{1}{2}f_A = \frac{1}{2}(1 +
+						f_A) \]
 					</p>
-					<p>If $A$ is not inbreed</p>
-					<p>\[ Prob(a=a')=\frac{1}{2} \]</p>
+
+					<p>If \( A \) is not inbred</p>
+
+					<p>\[ Prob(a = a') = \frac{1}{2} \]</p>
+
 					<p>
-						Continuing around the path $BCADE$, $Prob(a'=d)=Prob(d=e)=1/2$.
-						Summarizing, $b$ and $e$ will carry identical genes only if $b, c,
-						a, a', d, and e$ do so. Therefore, since all these probabilities are
-						independent
+						Continuing around the path \( BCADE \), \( Prob(a' = d) = Prob(d =
+						e) = 1/2 \). Summarizing, \( b \) and \( e \) will carry identical
+						genes only if \( b, c, a, a', d, \) and \( e \) do so. Therefore,
+						since all these probabilities are independent
 					</p>
+
 					<p>
-						\[ f_I = f_{BE}=Prob(b=e)=\frac{1}{2} \cdot \frac{1}{2} \cdot
-						\frac{1}{2}(1+f_A) \cdot \frac{1}{2} \cdot \frac{1}{2}=
-						\left(\frac{1}{2}\right)^5(1+f_A) \]
+						\[ f_I = f_{BE} = Prob(b = e) = \frac{1}{2} \cdot \frac{1}{2} \cdot
+						\frac{1}{2}(1 + f_A) \cdot \frac{1}{2} \cdot \frac{1}{2} =
+						\left(\frac{1}{2}\right)^5 (1 + f_A) \]
 					</p>
+
 					<p>
-						For b=c, c=a, a=a', a'=d, d=e, respectively. If $A$ is not inbred
-						(and according to information given in this pedigree she is not) the
-						inbreeding coefficient of I is simple (1/2)^5. Notice that whether
-						B,C,D, E is inbred is irrelevant, since, for example, the
-						probability that $c$ and $b$ are identical is independent of the
-						gene contributed by $B$'s other parent. The general rule is that the
-						contribution of a path of relationship through a common ancestor is
-						$(1/2)^n (1+f_a)$ where $n$ is the number of individuals in the path
-						from one parent to the ancestor and back through the other parent.
-						In more complicated pedigrees there may be multiple paths through an
+						For \( b = c, c = a, a = a', a' = d, d = e \), respectively. If \( A
+						\) is not inbred (and according to information given in this
+						pedigree she is not) the inbreeding coefficient of \( I \) is simply
+						\( (1/2)^5 \). Notice that whether \( B, C, D, E \) are inbred is
+						irrelevant, since, for example, the probability that \( c \) and \(
+						b \) are identical is independent of the gene contributed by \( B
+						\)'s other parent. The general rule is that the contribution of a
+						path of relationship through a common ancestor is \( (1/2)^n (1 +
+						f_a) \) where \( n \) is the number of individuals in the path from
+						one parent to the ancestor and back through the other parent. In
+						more complicated pedigrees there may be multiple paths through an
 						ancestor or more than one common ancestor. The contributions to the
-						inbreeding coefficient of I from the various paths are as follows.
-						The common ancestor in a path is underlined.
+						inbreeding coefficient of \( I \) from the various paths are as
+						follows. The common ancestor in a path is underlined.
 					</p>
-					<p>
-						\[ \begin{array}{|c|c|} \hline \text{Path} &amp; \text{Contribution
-						to f} \\ \hline ABD\underline{E}GH &amp; \left(\frac{1}{2}\right)^6
-						= \frac{1}{64} \\ ACD\underline{E}GH &amp;
-						\left(\frac{1}{2}\right)^6 = \frac{1}{64} \\ ABD\underline{F}H &amp;
-						\left(\frac{1}{2}\right)^5 = \frac{1}{32} \\ ACD\underline{F}H &amp;
-						\left(\frac{1}{2}\right)^5 = \frac{1}{32} \\ \hline \end{array} \]
-					</p>
+
+					<p></p>
+					<div
+						style="
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							padding: 60px 20px;
+						"
+					>
+						<div style="overflow-x: auto; max-width: 100%">
+							<table
+								border="1"
+								cellspacing="0"
+								cellpadding="8"
+								style="
+									border-collapse: collapse;
+									min-width: 600px;
+									font-family: Arial, sans-serif;
+									font-size: 14px;
+									text-align: center;
+								"
+							>
+								<thead>
+									<tr style="background-color: #e0e0e0">
+										<th style="padding: 10px; font-weight: bold">Path</th>
+										<th style="padding: 10px; font-weight: bold">
+											Contribution to <i>f</i>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">
+											ABD<u>E</u>GH
+										</td>
+										<td>\( \left(\frac{1}{2}\right)^6 = \frac{1}{64} \)</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">
+											ACD<u>E</u>GH
+										</td>
+										<td>\( \left(\frac{1}{2}\right)^6 = \frac{1}{64} \)</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">
+											ABD<u>F</u>H
+										</td>
+										<td>\( \left(\frac{1}{2}\right)^5 = \frac{1}{32} \)</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">
+											ACD<u>F</u>H
+										</td>
+										<td>\( \left(\frac{1}{2}\right)^5 = \frac{1}{32} \)</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
 					<p>
 						As we are considering only a single locus, the paths are all
-						mutually exclusive; if $I$ is autozygous for a pair of genes
+						mutually exclusive; if \( I \) is autozygous for a pair of genes
 						inherited through one path it cannot at the same time be autozygous
 						for a pair inherited through another. Therefore the total
 						probability for autozygosity is the sum of the probabilities for the
-						separate paths, in this case $3/32$. This pedigree was not
+						separate paths, in this case \( 3/32 \). This pedigree was not
 						complicated by the common ancestor of any path being inbred.
-						Individual $A$ is inbred, but this is irrelevant since $A$ is not a
-						common ancestor. Only inbreeding of $E$ or $F$ would matter. This
-						complication arises in the pedigree, where there are several inbred
-						individuals in the pedigree and two of these, $B$ and $D$, are
-						common ancestors of one or more paths. We begin by noting the
-						inbreeding coefficients of $D$ and $B$. The inbreeding coefficient
-						of $D$, $f_D$, is $\left(\frac{1}{2}\right)^3(1+f_D)=\frac{9}{64}$.
-						The components of $f_I$ through the various paths are:
+						Individual \( A \) is inbred, but this is irrelevant since \( A \)
+						is not a common ancestor. Only inbreeding of \( E \) or \( F \)
+						would matter. This complication arises in the pedigree, where there
+						are several inbred individuals in the pedigree and two of these, \(
+						B \) and \( D \), are common ancestors of one or more paths. We
+						begin by noting the inbreeding coefficients of \( D \) and \( B \).
+						The inbreeding coefficient of \( D \), \( f_D \), is \(
+						\left(\frac{1}{2}\right)^3(1 + f_D) = \frac{9}{64} \). The
+						components of \( f_I \) through the various paths are:
 					</p>
+
+					<div
+						style="
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							padding: 60px 20px;
+						"
+					>
+						<div style="overflow-x: auto; max-width: 100%">
+							<table
+								border="1"
+								cellspacing="0"
+								cellpadding="8"
+								style="
+									border-collapse: collapse;
+									min-width: 600px;
+									font-family: Arial, sans-serif;
+									font-size: 14px;
+									text-align: center;
+								"
+							>
+								<thead>
+									<tr style="background-color: #e0e0e0">
+										<th style="padding: 10px; font-weight: bold">Path</th>
+										<th style="padding: 10px; font-weight: bold">
+											Contribution to <i>f</i>
+										</th>
+										<th style="padding: 10px; font-weight: bold">Value</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">AEF</td>
+										<td>\( \left(\frac{1}{2}\right)^3 \)</td>
+										<td>0.1250</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">ABF</td>
+										<td>\( \left(\frac{1}{2}\right)^3(1 + f_B) \)</td>
+										<td>0.1426</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">ABEF</td>
+										<td>\( \left(\frac{1}{2}\right)^4 \)</td>
+										<td>0.0625</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">AEBF</td>
+										<td>\( \left(\frac{1}{2}\right)^4 \)</td>
+										<td>0.0625</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">ABCDEF</td>
+										<td>\( \left(\frac{1}{2}\right)^6(1 + f_D) \)</td>
+										<td>0.0176</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">AEDCBF</td>
+										<td>\( \left(\frac{1}{2}\right)^6(1 + f_D) \)</td>
+										<td>0.0176</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center"></td>
+										<td><b>\( f_I = f_{AF} \)</b></td>
+										<td><b>0.4278</b></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
 					<p>
-						\[ \begin{array}{|c|c|c|} \hline \text{Path} &amp;
-						\text{Contribution to f} &amp; \text{Value} \\ \hline AEF &amp;
-						\left(\frac{1}{2}\right)^3 &amp; 0.1250 \\ ABF &amp;
-						\left(\frac{1}{2}\right)^3(1+f_B) &amp; 0.1426 \\ ABEF &amp;
-						\left(\frac{1}{2}\right)^4 &amp; 0.0625 \\ AEBF &amp;
-						\left(\frac{1}{2}\right)^4 &amp; 0.0625 \\ ABCDEF &amp;
-						\left(\frac{1}{2}\right)^6(1+f_D) &amp; 0.0176 \\ AEDCBF &amp;
-						\left(\frac{1}{2}\right)^6(1+f_D) &amp; 0.0176 \\ \hline &amp; f_I =
-						f_{AF} &amp; 0.4278 \\ \hline \end{array} \]
+						Notice that the inbreeding of \( B \) is taken into consideration in
+						path \( ABF \) where \( B \) is a common ancestor, but ignored in
+						the other paths where \( B \) is not the common ancestor. A path
+						such as \( ABCDEBF \) is not included because \( B \) enters twice;
+						the contribution to this path is included in the path \( ABF \) by
+						the term \( (1 + f_B) \). To summarize: The inbreeding coefficient
+						of an individual \( I \), or the coefficient of consanguinity of his
+						parents, \( J \) and \( K \), is the sum of a series of terms, one
+						for each path leading from a parent to a common ancestor and back
+						through the other parent. The general formula is
 					</p>
+
 					<p>
-						Notice that the inbreeding of $B$ is taken into consideration in
-						path $ABF$ where B is a common ancestor, but ignored in the other
-						paths where $B$ is not the common ancestor. A path such as $ABCDEBF$
-						is not included because $B$ enters twice; the contribution to this
-						path is included in the path $ABF$ by the term $(1+f_B)$. To
-						summarize: The inbreeding coefficient of an individual $I$, or the
-						coefficient of consanguinity of his parents, $J$ and $K$, is the sum
-						of a series of terms, one for each path leading from a parent to a
-						common ancestor and back through the other parent. The general
-						formula is
+						\[ f_I = f_{JK} = \sum \left[ \left( \frac{1}{2} \right)^n (1 + f_A)
+						\right] \]
 					</p>
+
 					<p>
-						\[ f_I = f_{JK} = \sum\left[\left(\frac{1}{2}\right)^n(1+f_A)\right]
-						\]
-					</p>
-					<p>
-						Where the summation is over all possible paths, $n$ is the number of
-						individuals in the path (counting $J$ and $K$ but not $I$) and $f_A$
-						is the inbreeding coefficient of the common ancestor at the apex of
-						this path. A path cannot pass through the same individual twice. No
-						reversal of direction is permitted except at the common ancestor;
-						always go against the arrows when going from one parent to the
-						ancestor, and with them when coming back through the other. It is
-						helpful in avoiding counting the same path twice to adopt the
-						convention of starting all paths with the same parent (the male,
-						say) and ending with the other. In the earlier literature the
-						procedure given for computing $f$ was to count the number of steps
-						between individuals in a path rather than the number of individuals.
-						The results are of course the same either way. We use it because it
-						follows more naturally from our derivation than the earlier form,
-						and because it is easily adapted to X-linked genes. An X-chromosome
-						gene that is in a gamete produced by a male must be the same as was
-						in the egg from which this male came. Therefore the probability of
-						identity by descent in these two gametes is $1$, rather than $1/2$
-						as it would be for a female or an autosomal locus. Hence each male
-						in a path multiplies the probability of identity through this path
-						by $1$ rather than $1/2$ as it would be for a female or an autosomal
-						locus. Hence each male in a path multiplies the probability of
-						identity through this path by $1$ rather than $1/2$, and the effect
-						is as if the males were not counted at all. Furthermore, a male does
-						not receive an X-chromosome from his father, so a path involving two
-						successive males makes no contribution to the probability of
-						identity of X-chromosomal loci. Therefore the rule for obtaining the
-						inbreeding coefficient for a sex-linked locus in females is: Proceed
-						as usual except that only females in a path are counted and any path
-						with two successive males is omitted entirely.
+						Where the summation is over all possible paths, \( n \) is the
+						number of individuals in the path (counting \( J \) and \( K \) but
+						not \( I \)) and \( f_A \) is the inbreeding coefficient of the
+						common ancestor at the apex of this path. A path cannot pass through
+						the same individual twice. No reversal of direction is permitted
+						except at the common ancestor; always go against the arrows when
+						going from one parent to the ancestor, and with them when coming
+						back through the other. It is helpful in avoiding counting the same
+						path twice to adopt the convention of starting all paths with the
+						same parent (the male, say) and ending with the other. In the
+						earlier literature the procedure given for computing \( f \) was to
+						count the number of steps between individuals in a path rather than
+						the number of individuals. The results are of course the same either
+						way. We use it because it follows more naturally from our derivation
+						than the earlier form, and because it is easily adapted to X-linked
+						genes. An X-chromosome gene that is in a gamete produced by a male
+						must be the same as was in the egg from which this male came.
+						Therefore the probability of identity by descent in these two
+						gametes is 1, rather than \( 1/2 \) as it would be for a female or
+						an autosomal locus. Hence each male in a path multiplies the
+						probability of identity through this path by 1 rather than \( 1/2
+						\), and the effect is as if the males were not counted at all.
+						Furthermore, a male does not receive an X-chromosome from his
+						father, so a path involving two successive males makes no
+						contribution to the probability of identity of X-chromosomal loci.
+						Therefore the rule for obtaining the inbreeding coefficient for a
+						sex-linked locus in females is: Proceed as usual except that only
+						females in a path are counted and any path with two successive males
+						is omitted entirely.
 					</p>
 				</section>
 				<section id="FisherMeasure">
-					<h4>3.5 Phenotypic Effects of Consanguineous Matings</h4>
+					<h4 class="py-5">3.5 Phenotypic Effects of Consanguineous Matings</h4>
 					<p>
 						In the previous section, the frequency of the recessive gene causing
-						phenylketonuric feeble-mindedness was given as approximately
-						$1/100$. Therefore with random mating the frequency of persons
-						homozygous for the gene is the square of this or $1/10000$. We now
-						inquire how much this is enhanced with consanguineous marriage. The
-						probability of an affected child is $p^2(1-f)+pf$ where $p$ is the
-						frequency of the recessive allele and $f$ is the inbreeding
-						coefficient of the child. If the parents are cousins, their
-						coefficient of consanguinity of the inbreeding coefficient of their
-						child is $1/16$. With $p=1/100$ and $f=1/16$, the expected frequency
-						of homozygous recessives is $115/16000$ or approximately $7/10000$,
-						a 7-fold increase compared with the risk when the parents are
-						unrelated.
+						phenylketonuric feeble-mindedness was given as approximately \(
+						1/100 \). Therefore with random mating the frequency of persons
+						homozygous for the gene is the square of this or \( 1/10000 \). We
+						now inquire how much this is enhanced with consanguineous marriage.
+						The probability of an affected child is \( p^2(1-f)+pf \) where \( p
+						\) is the frequency of the recessive allele and \( f \) is the
+						inbreeding coefficient of the child. If the parents are cousins,
+						their coefficient of consanguinity of the inbreeding coefficient of
+						their child is \( 1/16 \). With \( p=1/100 \) and \( f=1/16 \), the
+						expected frequency of homozygous recessives is \( 115/16000 \) or
+						approximately \( 7/10000 \), a 7-fold increase compared with the
+						risk when the parents are unrelated.
 					</p>
-					<p>
-						\[ \begin{array}{c|cc|c} \hline &amp; \text{Frequency of affected
-						when} &amp; &amp; \\ \text{Gene Frequency} &amp; f=0 &amp; f=1/16
-						&amp; \text{Ratio} \\ \hline 0.1 &amp; 0.01 &amp; 0.016 &amp; 1.6 \\
-						0.01 &amp; 0.0001 &amp; 0.00072 &amp; 7.2 \\ 0.005 &amp; 0.000025
-						&amp; 0.000335 &amp; 13.4 \\ 0.001 &amp; 0.000001 &amp; 0.000063
-						&amp; 63 \\ \hline \end{array} \]
-					</p>
+					<div
+						style="
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							padding: 60px 20px;
+						"
+					>
+						<div style="overflow-x: auto; max-width: 100%">
+							<table
+								border="1"
+								cellspacing="0"
+								cellpadding="8"
+								style="
+									border-collapse: collapse;
+									min-width: 600px;
+									font-family: Arial, sans-serif;
+									font-size: 14px;
+									text-align: center;
+								"
+							>
+								<thead>
+									<tr style="background-color: #e0e0e0">
+										<th style="padding: 10px; font-weight: bold">
+											Gene<br />Frequency
+										</th>
+										<th style="padding: 10px; font-weight: bold">
+											Frequency of affected<br />when <i>f = 0</i>
+										</th>
+										<th style="padding: 10px; font-weight: bold">
+											Frequency of affected<br />when <i>f = 1/16</i>
+										</th>
+										<th style="padding: 10px; font-weight: bold">Ratio</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">0.1</td>
+										<td>0.01</td>
+										<td>0.016</td>
+										<td>1.6</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">0.01</td>
+										<td>0.0001</td>
+										<td>0.00072</td>
+										<td>7.2</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">0.005</td>
+										<td>0.000025</td>
+										<td>0.000335</td>
+										<td>13.4</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">0.001</td>
+										<td>0.000001</td>
+										<td>0.000063</td>
+										<td>63</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
 					<p>
 						What proportion of the persons affected with recessive traits come
-						from consanguineous marriages? This proportion, $k$, may be obtained
-						by dividing the number of affected from consanguineous marriages by
-						the total number of affected. If $c$ is the proportion of
-						consanguineous marriages in the population of size $N$, the number
-						of affected from consanguineous marriages is $Nc[p^2(1-f)+pf]$,
-						where $f$ is the coefficient of consanguinity of the parents and $p$
-						is the recessive gene frequency. The total number of affected in the
-						population is $Nc[p^2(1-\bar{f})+p\bar{f}]$, where $\bar{f}$ is the
-						mean inbreeding coefficient in the population. Therefore
+						from consanguineous marriages? This proportion, \( k \), may be
+						obtained by dividing the number of affected from consanguineous
+						marriages by the total number of affected. If \( c \) is the
+						proportion of consanguineous marriages in the population of size \(
+						N \), the number of affected from consanguineous marriages is \(
+						Nc[p^2(1-f)+pf] \), where \( f \) is the coefficient of
+						consanguinity of the parents and \( p \) is the recessive gene
+						frequency. The total number of affected in the population is \(
+						Nc[p^2(1-\bar{f})+p\bar{f}] \), where \( \bar{f} \) is the mean
+						inbreeding coefficient in the population. Therefore
 					</p>
+
 					<p>
 						\[ K = \frac{c[p^2(1-f)+pf]}{c[p^2(1-\bar{f})+p\bar{f}]} =
 						\frac{c[p+(1-p)f]}{p-p\bar{f}+\bar{f}} \]
 					</p>
-					<p>or, since $p\bar{f}$ is usually very small</p>
+
+					<p>or, since \( p\bar{f} \) is usually very small</p>
+
 					<p>\[ K = \frac{c[p+(1-p)f]}{p+\bar{f}} \]</p>
+
 					<p>approximately.</p>
 					<p>
 						The most common consanguineous marriage is between first cousins.
-						For $f=1/16$
+						For \( f=1/16 \)
 					</p>
+
 					<p>\[ K = \frac{c(1+15p)}{16[p+\bar{f}(1-p)]} \]</p>
+
 					<p>or approximately</p>
+
 					<p>\[ \frac{c(1+15p)}{16(p+\bar{f})} \]</p>
+
 					<p>
 						This shows that, even though consanguineous marriages are very rare,
 						a substantial fraction of diseases caused by recessive genes comes
-						from such marriages if $p \le 0.1$. Consanguinity of the parents is
-						one of the strongest kinds of evidence of recessive inheritance. On
-						the other hand, if the recessive gene is common, the increased
+						from such marriages if \( p \le 0.1 \). Consanguinity of the parents
+						is one of the strongest kinds of evidence of recessive inheritance.
+						On the other hand, if the recessive gene is common, the increased
 						incidence with consanguinity is very slight. Cystic fibrosis of the
 						pancreas appears to be due to a simple recessive factor, yet there
 						is no appreciable rise in incidence from consanguineous marriages,
@@ -827,61 +1293,112 @@
 						with unrelated parents were 4% and 6%. Thus cousin marriage, by
 						these data, entails an increased risk of 12% to 22% of having a
 						child with a detectable genetic defect. Since the child of a cousin
-						marriage has an inbreeding coefficient of $1/16$, we reason that a
-						completely homozygous individual would have 16 times as many
-						diseases, or approximately 2 to 3.5. This is the number of recessive
-						factors per gamete (since a homozygous individual may be regarded as
-						a doubled gamete), so the number per zygote is between 4 and 7.
-						These figures are based on rather limited data, but they furnish a
-						rough idea of the magnitude. The conclusion is that the average
-						human carries hidden the equivalent of some half a dozen deleterious
-						recessive genes that, if made homozygous, would cause a detectable
-						disease. We can also estimate the amount of genetic weakness that is
-						carried hidden in a heterozygous individual, but which would be
-						expressed as invariability if he were made homozygous. Sutter and
-						Tabar (1958 and earlier) found from a demographic study in two rural
-						provinces in France that children of cousin marriages died before
-						adulthood about 25% of the time, whereas the death rate from
-						unrelated parents was about 12%. Thus, in this environment, cousin
-						marriage increased the risk of death by about 0.13. Making the same
-						calculations above (i.e., multiplying by 16 x 2) we estimate that
-						the average individual in this population carries 32 x 0.13 or about
-						4 hidden "lethal equivalents." We say "lethal equivalents" because
-						one cannot distinguish between 4 full lethal genes and 8 genes with
-						50% probability of causing death, or any system where the product of
-						the number of genes and the average effect is 4. The data on human
+						marriage has an inbreeding coefficient of \( 1/16 \), we reason that
+						a completely homozygous individual would have 16 times as many
+						diseases, or approximately 2 to 3.5.
+					</p>
+
+					<p>
+						This is the number of recessive factors per gamete (since a
+						homozygous individual may be regarded as a doubled gamete), so the
+						number per zygote is between 4 and 7. These figures are based on
+						rather limited data, but they furnish a rough idea of the magnitude.
+						The conclusion is that the average human carries hidden the
+						equivalent of some half a dozen deleterious recessive genes that, if
+						made homozygous, would cause a detectable disease. We can also
+						estimate the amount of genetic weakness that is carried hidden in a
+						heterozygous individual, but which would be expressed as
+						invariability if he were made homozygous. Sutter and Tabar (1958 and
+						earlier) found from a demographic study in two rural provinces in
+						France that children of cousin marriages died before adulthood about
+						25% of the time, whereas the death rate from unrelated parents was
+						about 12%. Thus, in this environment, cousin marriage increased the
+						risk of death by about 0.13. Making the same calculations above
+						(i.e., multiplying by 16 × 2) we estimate that the average
+						individual in this population carries 32 × 0.13 or about 4 hidden
+						"lethal equivalents." We say "lethal equivalents" because one cannot
+						distinguish between 4 full lethal genes and 8 genes with 50%
+						probability of causing death, or any system where the product of the
+						number of genes and the average effect is 4. The data on human
 						inbreeding effects have not been very reproducible. The large body
 						of data from Japan shows significant heterogeneity effects from city
 						to city. There is danger of confounding inbreeding effects with the
-						effects of social concomitants of consanguineous marriages. For all
-						these reasons, we cannot place too much reliance on the numerical
-						values of the previous paragraph. It is also to be expected that
-						what is lethal in one environment may be detrimental in a better
-						one. In much of the world, there has been a substantial rise in the
-						standard of living and a decrease in the death rate. This means that
-						the number of lethal equivalents is decreasing. In Drosophila, where
-						the measures are precise and reproducible, there are about two
-						lethal equivalents per fly. About $2/3$ of the viability depression
-						from inbreeding is attributable to monogenic lethals; the rest is
-						the cumulative effect of a much larger number of genes with
-						individually small effects.
+						effects of social concomitants of consanguineous marriages.
+					</p>
+
+					<p>
+						For all these reasons, we cannot place too much reliance on the
+						numerical values of the previous paragraph. It is also to be
+						expected that what is lethal in one environment may be detrimental
+						in a better one. In much of the world, there has been a substantial
+						rise in the standard of living and a decrease in the death rate.
+						This means that the number of lethal equivalents is decreasing. In
+						<em>Drosophila</em>, where the measures are precise and
+						reproducible, there are about two lethal equivalents per fly. About
+						\( 2/3 \) of the viability depression from inbreeding is
+						attributable to monogenic lethals; the rest is the cumulative effect
+						of a much larger number of genes with individually small effects.
 					</p>
 					<div id="chart"></div>
 				</section>
 				<section id="InbreedingQuantitative">
-					<h4>3.6 The Effect of Inbreeding on Quantitative Characters</h4>
+					<h4 class="py-5">
+						3.6 The Effect of Inbreeding on Quantitative Characters
+					</h4>
 					<p>
 						We consider first a theoretical model that is applicable to any
 						measurable trait, such as height, weight, yield, survival, or
 						fertility. For initial simplicity, a single locus with only two
 						alleles is assumed. The model is summarized as follows:
 					</p>
-					<div>
-						\[ \begin{array}{cc} \hline \text{Genotype} &amp; A_1A_1 &amp;
-						A_1A_2 &amp; A_2A_2 \\ \text{Frequency} &amp; p_1^2(1-f)+p_1f &amp;
-						2p_1p_2(1-f) &amp; p_2^2(1-f)+p_2f \\ \text{Phenotype} &amp; Y-A
-						&amp; Y+D &amp; Y+A \\\hline \end{array} \]
+					<div
+						style="
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							padding: 60px 20px;
+						"
+					>
+						<div style="overflow-x: auto; max-width: 100%">
+							<table
+								border="1"
+								cellspacing="0"
+								cellpadding="8"
+								style="
+									border-collapse: collapse;
+									min-width: 600px;
+									font-family: Arial, sans-serif;
+									font-size: 14px;
+									text-align: center;
+								"
+							>
+								<thead>
+									<tr style="background-color: #e0e0e0">
+										<th style="padding: 10px; font-weight: bold">Genotype</th>
+										<th style="padding: 10px; font-weight: bold">A₁A₁</th>
+										<th style="padding: 10px; font-weight: bold">A₁A₂</th>
+										<th style="padding: 10px; font-weight: bold">A₂A₂</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">Frequency</td>
+										<td>p₁²(1 − f) + p₁f</td>
+										<td>2p₁p₂(1 − f)</td>
+										<td>p₂²(1 − f) + p₂f</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">Phenotype</td>
+										<td>Y − A</td>
+										<td>Y + D</td>
+										<td>Y + A</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
+
 					<p>
 						In this model \( Y \) is the residual phenotype when A locus is not
 						considered. Genotype \( A_2A_2 \) adds an amount \( A \) to the
@@ -939,15 +1456,75 @@
 						locus. If there is no interaction between loci \( A \) and \( B \),
 						the model is as follows:
 					</p>
-					<div>
-						\[ \begin{array}{cc|ccc} \hline \text{Genotype} &amp; &amp; A_1A_1
-						&amp; A_1A_2 &amp; A_2A_2 \\ \hline &amp; \text{Frequency} &amp;
-						p_1^2(1-f)+p_1f &amp; 2p_1p_2(1-f) &amp; p_2^2(1-f)+p_2f\\ \hline
-						B_1B_1 &amp; r_1^2(1-f)+r_1f &amp; Y-A-B &amp; Y+D_A-B &amp; Y+A-B\\
-						B_1B_2 &amp; 2r_1r_2(1-f) &amp; Y-A+ D_B &amp; Y+D_A+D_B &amp;
-						Y+A+D_B\\ B_2B_2 &amp; r_2^2(1-f)+r_2f &amp; Y-A+ B &amp; Y+D_A+B
-						&amp; Y+A+B \\ \hline \end{array} \]
+					<div
+						style="
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							padding: 60px 20px;
+						"
+					>
+						<div style="overflow-x: auto; max-width: 100%">
+							<table
+								border="1"
+								cellspacing="0"
+								cellpadding="8"
+								style="
+									border-collapse: collapse;
+									min-width: 600px;
+									font-family: Arial, sans-serif;
+									font-size: 14px;
+									text-align: center;
+								"
+							>
+								<thead>
+									<tr style="background-color: #e0e0e0">
+										<th style="padding: 10px; font-weight: bold">Genotype</th>
+										<th style="padding: 10px; font-weight: bold"></th>
+										<th style="padding: 10px; font-weight: bold">A₁A₁</th>
+										<th style="padding: 10px; font-weight: bold">A₁A₂</th>
+										<th style="padding: 10px; font-weight: bold">A₂A₂</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center"></td>
+										<td style="padding: 8px; text-align: center">Frequency</td>
+										<td>p₁²(1−f) + p₁f</td>
+										<td>2p₁p₂(1−f)</td>
+										<td>p₂²(1−f) + p₂f</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">B₁B₁</td>
+										<td style="padding: 8px; text-align: center">
+											r₁²(1−f) + r₁f
+										</td>
+										<td>Y − A − B</td>
+										<td>Y + Dₐ − B</td>
+										<td>Y + A − B</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">B₁B₂</td>
+										<td style="padding: 8px; text-align: center">2r₁r₂(1−f)</td>
+										<td>Y − A + Dᵦ</td>
+										<td>Y + Dₐ + Dᵦ</td>
+										<td>Y + A + Dᵦ</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">B₂B₂</td>
+										<td style="padding: 8px; text-align: center">
+											r₂²(1−f) + r₂f
+										</td>
+										<td>Y − A + B</td>
+										<td>Y + Dₐ + B</td>
+										<td>Y + A + B</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
+
 					<p>
 						If the \( A \) and \( B \) loci are independent and in gametic phase
 						equilibrium, the frequency of any of the nine classes in the table
@@ -973,13 +1550,60 @@
 						simple way to construct such a model is to add interaction terms to
 						each value already given so that the phenotypes are now:
 					</p>
-					<div>
-						\[ \begin{array}{cccc} \hline \text{Genotype} &amp; A_1A_1 &amp;
-						A_1A_2 &amp; A_2A_2 \\ \hline B_1B_1 &amp; Y-A-B+I &amp; Y+D_A-B-L
-						&amp; Y+A-B-I\\ B_1B_2 &amp; Y-A+ D_B -K &amp; Y+D_A+D_B+J &amp;
-						Y+A+D_B+K\\ B_2B_2 &amp; Y-A+ B-I &amp; Y+D_A+B+L &amp; Y+A+B+I \\
-						\hline \end{array} \]
+					<div
+						style="
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							padding: 60px 20px;
+						"
+					>
+						<div style="overflow-x: auto; max-width: 100%">
+							<table
+								border="1"
+								cellspacing="0"
+								cellpadding="8"
+								style="
+									border-collapse: collapse;
+									min-width: 600px;
+									font-family: Arial, sans-serif;
+									font-size: 14px;
+									text-align: center;
+								"
+							>
+								<thead>
+									<tr style="background-color: #e0e0e0">
+										<th style="padding: 10px; font-weight: bold">Genotype</th>
+										<th style="padding: 10px; font-weight: bold">A₁A₁</th>
+										<th style="padding: 10px; font-weight: bold">A₁A₂</th>
+										<th style="padding: 10px; font-weight: bold">A₂A₂</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">B₁B₁</td>
+										<td>Y − A − B + I</td>
+										<td>Y + Dₐ − B − L</td>
+										<td>Y + A − B − I</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">B₁B₂</td>
+										<td>Y − A + Dᵦ − K</td>
+										<td>Y + Dₐ + Dᵦ + J</td>
+										<td>Y + A + Dᵦ + K</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">B₂B₂</td>
+										<td>Y − A + B − I</td>
+										<td>Y + Dₐ + B + L</td>
+										<td>Y + A + B + I</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
+
 					<p>
 						Notice that there are nine parameters, \( Y, A, B, D_A, D_B, I, J,
 						K, L \) which correspond to the nine phenotypes so there is a
@@ -1043,7 +1667,7 @@
 					></div>
 				</section>
 				<section id="InbreedingEffects">
-					<h4>3.7 Some Examples of Inbreeding Effects</h4>
+					<h4 class="py-5">3.7 Some Examples of Inbreeding Effects</h4>
 
 					<p>
 						The following examples illustrate numerical examples and show how
@@ -1114,7 +1738,7 @@
 					</p>
 
 					<p>
-						<strong>We summarize this section by three conclusions:</strong>
+						<strong>We can summarize this section by three conclusions:</strong>
 					</p>
 
 					<ol>
@@ -1152,70 +1776,80 @@
 						randomly mated progeny from a field of crosses.
 					</p>
 
-					<div style="overflow-x: auto; max-width: 100%">
-						<table
-							border="1"
-							cellspacing="0"
-							cellpadding="8"
-							style="
-								border-collapse: collapse;
-								min-width: 600px;
-								font-family: Arial, sans-serif;
-								font-size: 14px;
-								text-align: center;
-							"
-						>
-							<thead style="background-color: #f2f2f2">
-								<tr style="background-color: #e0e0e0">
-									<th style="padding: 10px; font-weight: bold"></th>
-									<th style="padding: 10px; font-weight: bold">
-										Hybrid average<br />f = 0 (G)
-									</th>
-									<th style="padding: 10px; font-weight: bold">
-										Hybrid average<br />f = 1 (G - H)
-									</th>
-									<th style="padding: 10px; font-weight: bold">f</th>
-									<th style="padding: 10px; font-weight: bold">
-										Expected Yield<br />(G - Hf)
-									</th>
-									<th style="padding: 10px; font-weight: bold">
-										Observed Yield
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr style="background-color: #ffffff">
-									<td style="padding: 8px; text-align: left">
-										10 two-way hybrids
-									</td>
-									<td>62.8</td>
-									<td>23.7</td>
-									<td>0.500</td>
-									<td>43.3</td>
-									<td>44.2</td>
-								</tr>
-								<tr style="background-color: #f9f9f9">
-									<td style="padding: 8px; text-align: left">
-										4 three-way hybrids
-									</td>
-									<td>64.2</td>
-									<td>23.8</td>
-									<td>0.375</td>
-									<td>49.1</td>
-									<td>49.3</td>
-								</tr>
-								<tr style="background-color: #ffffff">
-									<td style="padding: 8px; text-align: left">
-										10 four-way hybrids
-									</td>
-									<td>64.1</td>
-									<td>25.0</td>
-									<td>0.250</td>
-									<td>54.3</td>
-									<td>54.0</td>
-								</tr>
-							</tbody>
-						</table>
+					<div
+						style="
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							padding: 60px 20px;
+						"
+					>
+						<div style="overflow-x: auto; max-width: 100%">
+							<table
+								border="1"
+								cellspacing="0"
+								cellpadding="8"
+								style="
+									border-collapse: collapse;
+									min-width: 600px;
+									font-family: Arial, sans-serif;
+									font-size: 14px;
+									text-align: center;
+								"
+							>
+								<thead>
+									<tr style="background-color: #e0e0e0">
+										<th style="padding: 10px; font-weight: bold"></th>
+										<th style="padding: 10px; font-weight: bold">
+											Hybrid average<br />f = 0 (G)
+										</th>
+										<th style="padding: 10px; font-weight: bold">
+											Hybrid average<br />f = 1 (G − H)
+										</th>
+										<th style="padding: 10px; font-weight: bold">f</th>
+										<th style="padding: 10px; font-weight: bold">
+											Expected Yield<br />(G − Hf)
+										</th>
+										<th style="padding: 10px; font-weight: bold">
+											Observed Yield
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">
+											10 two-way hybrids
+										</td>
+										<td>62.8</td>
+										<td>23.7</td>
+										<td>0.500</td>
+										<td>43.3</td>
+										<td>44.2</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">
+											4 three-way hybrids
+										</td>
+										<td>64.2</td>
+										<td>23.8</td>
+										<td>0.375</td>
+										<td>49.1</td>
+										<td>49.3</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">
+											10 four-way hybrids
+										</td>
+										<td>64.1</td>
+										<td>25.0</td>
+										<td>0.250</td>
+										<td>54.3</td>
+										<td>54.0</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 
 					<p>
@@ -1259,7 +1893,7 @@
 					<div id="inbreedingPlotlyChart"></div>
 				</section>
 				<section id="RegularSystems">
-					<h4>3.8 Regular Systems of Inbreeding</h4>
+					<h4 class="py-5">3.8 Regular Systems of Inbreeding</h4>
 
 					<p>
 						The described methods can be used to derive recurrence relations for
@@ -1406,7 +2040,7 @@
 					<div id="heterozygosityChart"></div>
 				</section>
 				<section id="PartialSelffertilization">
-					<h4>4. Partial Self-fertilization</h4>
+					<h4 class="py-5">4. Partial Self-fertilization</h4>
 
 					<p>
 						All the examples discussed thus far lead eventually to complete
@@ -1487,7 +2121,7 @@
 					<div id="partialSelfingChart"></div>
 				</section>
 				<section id="RepeatedBackcrossing">
-					<h4>Repeated Backcrossing to the Same Strain</h4>
+					<h4 class="py-5">Repeated Backcrossing to the Same Strain</h4>
 
 					<p>
 						Frequently a plant breeder may wish to introduce one or more
@@ -1589,7 +2223,7 @@
 					<div id="linkageChart"></div>
 				</section>
 				<section id="Inbreeding2loci">
-					<h4>Inbreeding with Two Loci</h4>
+					<h4 class="py-5">Inbreeding with Two Loci</h4>
 
 					<p>
 						The idea of the inbreeding coefficient can be extended to cover
@@ -1691,60 +2325,95 @@
 
 					<p>Summary Table:</p>
 
-					<table border="1" cellspacing="0" cellpadding="5">
-						<thead>
-							<tr>
-								<th>Relationship of parents</th>
-								<th>F</th>
-								<th>f</th>
-								<th>\( \phi = F - f^2 \)</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Identical</td>
-								<td>\( \frac{1}{2}(c²+d²) \)</td>
-								<td>\( \frac{1}{2} \)</td>
-								<td>\( \frac{1}{4}(c-d)^2 \)</td>
-							</tr>
-							<tr>
-								<td>Parent-offspring</td>
-								<td>\( \frac{1}{4}(c²+d²)d \)</td>
-								<td>\( \frac{1}{4} \)</td>
-								<td>\( \frac{1}{16}(d - c)(3d^2 + c^2) \)</td>
-							</tr>
-							<tr>
-								<td>Full sibs</td>
-								<td>\( \frac{1}{8}(2d^4+ 2c^2d^2 + c^2) \)</td>
-								<td>\( \frac{1}{4} \)</td>
-								<td>\( \frac{1}{16}(4d^4 + 4c^2d^2 + 2c^2 - 1) \)</td>
-							</tr>
-							<tr>
-								<td>Half sibs</td>
-								<td>\( \frac{1}{2}(c²+d²)d^2 \)</td>
-								<td>\( \frac{1}{8} \)</td>
-								<td>\( \frac{1}{64}(8c^2d^2 + 8d^4 - 1) \)</td>
-							</tr>
-							<tr>
-								<td>Uncle-niece</td>
-								<td>\( \frac{1}{16}(2d^4+ 2d^2c^2+ c^2)d \)</td>
-								<td>\( \frac{1}{8} \)</td>
-								<td>\( \frac{1}{64}(8d^5 + 8c^2d^3 + 4c^2d - 1) \)</td>
-							</tr>
-							<tr>
-								<td>First cousins</td>
-								<td>\( \frac{1}{32}(2d^4 + 2c^2d^2 + c^2)d^2 \)</td>
-								<td>\( \frac{1}{16} \)</td>
-								<td>\( \frac{1}{256}(16d^6 + 16c^2d^4 + 8c^2d^2 -1) \)</td>
-							</tr>
-							<tr>
-								<td>Double half-cousins</td>
-								<td>\( \frac{1}{128}(8d^6+ 8c^2d^4 + c^2) \)</td>
-								<td>\( \frac{1}{16} \)</td>
-								<td>\( \frac{1}{256}(16d^6+ 16c^2d^4 + 2c^2 - 1) \)</td>
-							</tr>
-						</tbody>
-					</table>
+					<div
+						style="
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							padding: 60px 20px;
+						"
+					>
+						<div style="overflow-x: auto; max-width: 100%">
+							<table
+								border="1"
+								cellspacing="0"
+								cellpadding="8"
+								style="
+									border-collapse: collapse;
+									min-width: 600px;
+									font-family: Arial, sans-serif;
+									font-size: 14px;
+									text-align: center;
+								"
+							>
+								<thead>
+									<tr style="background-color: #e0e0e0">
+										<th style="padding: 10px; font-weight: bold">
+											Relationship of parents
+										</th>
+										<th style="padding: 10px; font-weight: bold">F</th>
+										<th style="padding: 10px; font-weight: bold">f</th>
+										<th style="padding: 10px; font-weight: bold">
+											\( \phi = F - f^2 \)
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">Identical</td>
+										<td>\( \frac{1}{2}(c²+d²) \)</td>
+										<td>\( \frac{1}{2} \)</td>
+										<td>\( \frac{1}{4}(c-d)^2 \)</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">
+											Parent-offspring
+										</td>
+										<td>\( \frac{1}{4}(c²+d²)d \)</td>
+										<td>\( \frac{1}{4} \)</td>
+										<td>\( \frac{1}{16}(d - c)(3d^2 + c^2) \)</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">Full sibs</td>
+										<td>\( \frac{1}{8}(2d^4+ 2c^2d^2 + c^2) \)</td>
+										<td>\( \frac{1}{4} \)</td>
+										<td>\( \frac{1}{16}(4d^4 + 4c^2d^2 + 2c^2 - 1) \)</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">Half sibs</td>
+										<td>\( \frac{1}{2}(c²+d²)d^2 \)</td>
+										<td>\( \frac{1}{8} \)</td>
+										<td>\( \frac{1}{64}(8c^2d^2 + 8d^4 - 1) \)</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">
+											Uncle-niece
+										</td>
+										<td>\( \frac{1}{16}(2d^4+ 2d^2c^2+ c^2)d \)</td>
+										<td>\( \frac{1}{8} \)</td>
+										<td>\( \frac{1}{64}(8d^5 + 8c^2d^3 + 4c^2d - 1) \)</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">
+											First cousins
+										</td>
+										<td>\( \frac{1}{32}(2d^4 + 2c^2d^2 + c^2)d^2 \)</td>
+										<td>\( \frac{1}{16} \)</td>
+										<td>\( \frac{1}{256}(16d^6 + 16c^2d^4 + 8c^2d^2 -1) \)</td>
+									</tr>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">
+											Double half-cousins
+										</td>
+										<td>\( \frac{1}{128}(8d^6+ 8c^2d^4 + c^2) \)</td>
+										<td>\( \frac{1}{16} \)</td>
+										<td>\( \frac{1}{256}(16d^6+ 16c^2d^4 + 2c^2 - 1) \)</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
 
 					<p>
 						For example, assuming \( p = r = 0.01 \), frequency of \( AA \) or
@@ -1758,7 +2427,7 @@
 					></div>
 				</section>
 				<section id="InbreedingVariance">
-					<h3>Effect of Inbreeding on the Variance</h3>
+					<h3 class="py-5">Effect of Inbreeding on the Variance</h3>
 
 					<p>
 						In previous section, we considered the effect of inbreeding on
@@ -1770,30 +2439,55 @@
 						effect we consider first a single locus.
 					</p>
 
-					<table class="table table-bordered table-sm w-auto">
-						<thead class="table-light">
-							<tr>
-								<th>Genotype</th>
-								<th>A₁A₁</th>
-								<th>A₁A₂</th>
-								<th>A₂A₂</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Frequency</td>
-								<td>\( p_1^2(1-f) + p_1f \)</td>
-								<td>\( 2p_1p_2(1-f) \)</td>
-								<td>\( p_2^2(1-f)+ p_2f \)</td>
-							</tr>
-							<tr>
-								<td>Contribution to total phenotype</td>
-								<td>\( -A \)</td>
-								<td>\( D \)</td>
-								<td>\( A \)</td>
-							</tr>
-						</tbody>
-					</table>
+					<div
+						style="
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex-direction: column;
+							padding: 60px 20px;
+						"
+					>
+						<div style="overflow-x: auto; max-width: 100%">
+							<table
+								border="1"
+								cellspacing="0"
+								cellpadding="8"
+								style="
+									border-collapse: collapse;
+									min-width: 600px;
+									font-family: Arial, sans-serif;
+									font-size: 14px;
+									text-align: center;
+								"
+							>
+								<thead>
+									<tr style="background-color: #e0e0e0">
+										<th style="padding: 10px; font-weight: bold">Genotype</th>
+										<th style="padding: 10px; font-weight: bold">A₁A₁</th>
+										<th style="padding: 10px; font-weight: bold">A₁A₂</th>
+										<th style="padding: 10px; font-weight: bold">A₂A₂</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr style="background-color: #ffffff">
+										<td style="padding: 8px; text-align: center">Frequency</td>
+										<td>\( p_1^2(1-f) + p_1f \)</td>
+										<td>\( 2p_1p_2(1-f) \)</td>
+										<td>\( p_2^2(1-f)+ p_2f \)</td>
+									</tr>
+									<tr style="background-color: #f9f9f9">
+										<td style="padding: 8px; text-align: center">
+											Contribution to total phenotype
+										</td>
+										<td>\( -A \)</td>
+										<td>\( D \)</td>
+										<td>\( A \)</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
 
 					<p>We write the mean as a function of \( f \):</p>
 
@@ -1867,7 +2561,7 @@
 					></div>
 				</section>
 				<section id="InbreedingFinetPopulation">
-					<h3>The Inbreeding Effect of a Finite Population</h3>
+					<h3 class="py-5">The Inbreeding Effect of a Finite Population</h3>
 
 					<p>
 						As was mentioned in the introduction to this chapter, there is a
@@ -1954,7 +2648,7 @@
 					></div>
 				</section>
 				<section id="HierachicalStructure">
-					<h3>Hierarchical Structure of Populations</h3>
+					<h3 class="py-5">Hierarchical Structure of Populations</h3>
 
 					<p>
 						At the beginning of this chapter we emphasized that inbreeding can
@@ -2198,7 +2892,7 @@
 
 					<p>\[ 1 - f_{IT} = (1 - f_{IR})(1 - f_{RS})(1 - f_{ST}) \]</p>
 
-					<p>
+					<p style="margin-bottom: 40px">
 						Where \( R \) is a subpopulation of \( S \) which is a subpopulation
 						of \( T \). Then \( f_{RS} \) is the probability that two randomly
 						chosen homologous genes in \( R \) are identical because of common
@@ -2207,15 +2901,189 @@
 						ancestry within \( S \).
 					</p>
 
-					<div style="display: flex; gap: 20px">
-						<div id="alleleFreqChart" style="width: 50%; height: 500px"></div>
-						<div id="fstChart" style="width: 50%; height: 500px"></div>
+					<div
+						style="text-align: center; margin-top: 50px; margin-bottom: 50px"
+					>
+						<a href="../../../components/simtools/GeneticDrift_FST.html">
+							<button type="button" class="btn btn-secondary btn-lg px-5 py-10">
+								Check \( F_{ST} \) simulation
+							</button>
+						</a>
 					</div>
-					<div style="margin-top: 10px">
-						<button onclick="startDriftAnimation()">▶️ Start</button>
-						<button onclick="pauseDriftAnimation()">⏸ Pause</button>
-						<button onclick="resetDriftAnimation()">🔄 Reset</button>
-					</div>
+
+					<p>
+						In previous equation we introduced the concept of effective
+						population number by noting that, if the number of males and females
+						differ, we can replace \( N \) in the formulae by \( N_e \), the
+						effective number, where
+					</p>
+
+					<p>\[ \frac{1}{N_e} = \frac{1}{4N_m} + \frac{1}{4N_f} \]</p>
+
+					<p>or</p>
+
+					<p>\[ N_e = \frac{4N_m N_f}{N_m + N_f} \]</p>
+
+					<p>
+						Notice that the value of \( N_e \) is influenced much more by the
+						smaller than by the larger of \( N_m \) and \( N_f \). For example,
+						if \( N_m = 1 \) and \( N_f = 100 \), \( N_e \) is about 4; so, in
+						highly polygynous species the number of males is much more important
+						than the number of females in determining the amount of random drift
+						in the population. \( N_e \) is proportional to the harmonic mean of
+						\( N_m \) and \( N_f \), and the harmonic mean is more strongly
+						influenced by the smaller values.
+					</p>
+
+					<p>
+						We can also use the concept of effective population number when the
+						true size varies with time. We note that the heterozygosity after \(
+						t \) generations when \( N \) varies from generation to generation,
+						is
+					</p>
+
+					<p>
+						\[ \frac{H_t}{H_0} = \left( 1- \frac{1}{2N_0}\right)\left( 1-
+						\frac{1}{2N_1}\right)\left( 1- \frac{1}{2N_2}\right) \text{...}
+						\left( 1- \frac{1}{2N_{t-1}}\right) \]
+					</p>
+
+					<p>
+						\[ \frac{H_t}{H_0} = \prod_{i=0}^{t-1} \left( 1-
+						\frac{1}{2N_i}\right) \]
+					</p>
+
+					<p>
+						We then ask: what population of constant size would have the same
+						decrease in heterozygosity over the time period involved? We call
+						this number the effective population number. To find this, we write
+					</p>
+
+					<p>
+						\[ \frac{H_t}{H_0} = \left( 1- \frac{1}{2N_e}\right)^t =
+						\prod_{i=0}^{t-1} \left( 1- \frac{1}{2N_i}\right) \]
+					</p>
+
+					<p>Which can be solved for \( N_e \)</p>
+
+					<p>
+						Notice that if the \( N_i \)'s are fairly large and \( t \) is
+						small, this equation is roughly
+					</p>
+
+					<p>\[ 1 - \frac{t}{2N_e} = 1 - \sum \frac{1}{2N_i} \]</p>
+
+					<p>or</p>
+
+					<p>\[ \frac{1}{2N_e} = \frac{1}{t} \sum \frac{1}{2N_i} \]</p>
+
+					<p>
+						So, if population size fluctuates, the effective population number
+						is roughly the harmonic mean of the various values.
+					</p>
+
+					<p>
+						In chapter 2 we showed that with varying population growth rates at
+						different times the arithmetic mean is appropriate as a summarizing
+						value if fitness is measured by the Malthusian parameter, \( m \),
+						and the geometric mean is used if fitness is measured by \( w \).
+						Here we find that still a third average, the harmonic mean, serves
+						best as a single representative value.
+					</p>
+
+					<p>
+						Finally, if the individuals in the population do not have the same
+						expected number of progeny, the effective number will be less than
+						the census number. If the number size is constant
+					</p>
+
+					<p>\[ N_e = \frac{4N - 2}{\sigma_k^2 + 2} \]</p>
+
+					<p>
+						where \( \sigma_k^2 \) is the variance in the number of progeny per
+						parent. This is derived along with more general formulae. This
+						formula assumes complete random mating, including the possibility of
+						self-fertilization. Notice that when the number of progeny per
+						parent has binomial distribution with mean 2 (the mean must be 2 in
+						a sexual population that is neither increasing nor decreasing) this
+						is equivalent to drawing a sample of \( 2N \) gametes randomly from
+						the \( N \) parents. The binomial variance is
+					</p>
+
+					<p>
+						\[ \sigma_k^2 = 2N \left( \frac{1}{N}\right)\left( 1-
+						\frac{1}{N}\right) = \left( \frac{2(N-1)}{N} \right) \]
+					</p>
+
+					<p>
+						Substituting in the previous equation, we have \( N_e = N \) as it
+						should. In this 'ideal' population the actual and effective numbers
+						are the same. Notice that the ideal model when \( N_e = N \) does
+						not imply a constant number of progeny per parent, but a randomly
+						varying number. If the number has greater than binomial variance the
+						effective number is smaller than the census number; if the variance
+						is less than binomial, the effective number is larger. An extreme
+						case is that where each parent is constrained to have the same
+						number of progeny, as in my livestock or laboratory animal breeding
+						system. If \( \sigma_k^2 = 0 \) then \( N_e = 2N -1 \), almost twice
+						the census number. So, with random mating and binomial progeny
+						distribution, about half the reduction in heterozygosity is due to
+						consanguinity among mates; the other half is caused by variable
+						numbers of progeny.
+					</p>
+
+					<p>
+						In most populations in nature the effective number is less than the
+						census number. For a discussion of laboratory and census data on
+						this question, see Crow and Morton (1955).
+					</p>
+
+					<p>
+						The concept of effective population number and the formulae in this
+						section are all due to Sewall Wright (1931).
+					</p>
+
+					<div id="sim3_sexRatioPlot" style="width: 100%; height: 400px"></div>
+					<p>
+						This graph shows how the effective population size (<em
+							>N<sub>e</sub></em
+						>) changes as the number of males varies while the number of females
+						is fixed at 100. When the number of males is low,
+						<em>N<sub>e</sub></em> drops sharply — even if the total population
+						size is large. The effective size is maximized when the sex ratio is
+						balanced (Nm = Nf), emphasizing that skewed sex ratios reduce the
+						genetic diversity of a population over time.
+					</p>
+					<div
+						id="sim3_heterozygosityPlot"
+						style="width: 100%; height: 400px"
+					></div>
+					<p>
+						In this simulation, population sizes fluctuate randomly across
+						generations, affecting how quickly heterozygosity (genetic
+						diversity) is lost. The curve shows a steady decline in
+						heterozygosity over time, even though the average population size
+						might appear sufficient. This demonstrates that population
+						bottlenecks and fluctuations accelerate genetic drift — a key reason
+						why <em>N<sub>e</sub></em> is often lower than census size.
+					</p>
+					<div id="sim3_variancePlot" style="width: 100%; height: 400px"></div>
+					<p>
+						The third graph explores how variation in the number of offspring
+						per individual affects <em>N<sub>e</sub></em
+						>. When progeny variance increases (i.e., some individuals have many
+						offspring while others have few or none), the effective population
+						size decreases. This highlights how unequal reproductive success —
+						common in nature — leads to faster genetic drift and reduced
+						diversity, even in large populations.
+					</p>
+
+					<p style="margin-top: 30px; font-weight: bold">
+						<em>Take-home message:</em> The effective population size is often
+						much smaller than the census population due to imbalanced sex
+						ratios, population size fluctuations, and unequal reproduction — all
+						of which accelerate the loss of genetic variation.
+					</p>
 				</section>
 				<!-- Divider line from above section -->
 				<hr class="my-5" />
@@ -2367,6 +3235,10 @@
 		<script src="../../../js/simulate_ibd.js"></script>
 		<script src="../../../js/utils/plotly_theme.js"></script>
 		<script src="../../../js/treebuilder.js"></script>
+		<!-- Plotly.js (essencial para desenhar os gráficos) -->
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+		<!-- Seu script -->
 		<script src="../../../js/runDriftAndFstSimulationAnimated.js"></script>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
@@ -2390,7 +3262,10 @@
 				plotInbreedingMeanVarianceSim3()
 				renderInbreedingDominanceVarianceChartSim3()
 				plotHeterozygosityDrift()
-				setupDriftSimData()
+				renderHeterozygosityDecayPlot()
+				sim3_plotSexRatioEffect()
+				sim3_plotHeterozygosityFluctuation()
+				sim3_plotProgenyVarianceEffect()
 			})
 		</script>
 

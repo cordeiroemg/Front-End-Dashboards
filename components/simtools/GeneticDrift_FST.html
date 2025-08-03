@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Genetic Drift and FST Simulation</title>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<link href="../../../assets/css/main.css" rel="stylesheet" />
+		<link href="../../../assets/css/layout.css" rel="stylesheet" />
+		<link href="../../../assets/css/theme.css" rel="stylesheet" />
+		<link href="../../../components/shared/plot.css" rel="stylesheet" />
+		<link href="../../../components/shared/slider.css" rel="stylesheet" />
+		<script src="../../../popdynWebsite/js/controller.js"></script>
+		<link href="../../../components/shared/slider.css" rel="stylesheet" />
+		<script src="https://d3js.org/d3.v7.min.js"></script>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			crossorigin="anonymous"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+			integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<h1>Genetic Drift and FST Simulation</h1>
+
+		<!-- Plot containers -->
+		<h3 style="text-align: center">Allelic frequency vs Generations</h3>
+		<div id="alleleFreqChart" style="width: 100%; height: 400px"></div>
+		<h3 style="text-align: center">Fst vs Generations</h3>
+		<div
+			id="fstChart"
+			style="width: 100%; height: 400px; margin-top: 20px"
+		></div>
+
+		<!-- Controls -->
+		<div style="margin-top: 10px">
+			<button onclick="startDriftAnimation()">▶️ Start</button>
+			<button onclick="pauseDriftAnimation()">⏸ Pause</button>
+			<button onclick="resetDriftAnimation()">🔄 Reset</button>
+		</div>
+		<div style="text-align: center; margin-top: 20px">
+			<a
+				href="../../section/popgen/CrowKimura/Popgen3_Inbreeding.html"
+				class="btn btn-primary"
+				tabindex="-1"
+				role="button"
+				aria-disabled="true"
+				>Inbreeding</a
+			>
+			<a
+				href="#"
+				class="btn btn-secondary"
+				tabindex="-1"
+				role="button"
+				aria-disabled="true"
+				>Home</a
+			>
+		</div>
+		<!-- Simulation script -->
+		<script>
+			let driftSim = {
+				alleleFreqs: [],
+				fSt: [],
+				gen: 0,
+				numGenerations: 100,
+				numSubpops: 10,
+				Ne: 50,
+				intervalId: null,
+				running: false,
+				tracesAllele: [],
+				traceFst: null,
+			}
+
+			function binomialSample(n, p) {
+				let count = 0
+				for (let i = 0; i < n; i++) {
+					if (Math.random() < p) count++
+				}
+				return count
+			}
+
+			function setupDriftSimData() {
+				const { numGenerations, numSubpops, Ne } = driftSim
+				const initialP = 0.5
+
+				driftSim.alleleFreqs = Array.from({ length: numGenerations }, () =>
+					Array(numSubpops).fill(0)
+				)
+				driftSim.alleleFreqs[0] = Array(numSubpops).fill(initialP)
+
+				for (let gen = 1; gen < numGenerations; gen++) {
+					for (let pop = 0; pop < numSubpops; pop++) {
+						const p = driftSim.alleleFreqs[gen - 1][pop]
+						const countA = binomialSample(2 * Ne, p)
+						const freq = countA / (2 * Ne)
+						driftSim.alleleFreqs[gen][pop] = freq
+					}
+				}
+
+				const meanFreqs = driftSim.alleleFreqs.map(
+					(gen) => gen.reduce((a, b) => a + b, 0) / numSubpops
+				)
+				const varFreqs = driftSim.alleleFreqs.map((gen, i) => {
+					const mean = meanFreqs[i]
+					const sqDiff = gen.map((p) => (p - mean) ** 2)
+					return sqDiff.reduce((a, b) => a + b, 0) / numSubpops
+				})
+				driftSim.fSt = meanFreqs.map((mean, i) =>
+					mean * (1 - mean) !== 0 ? varFreqs[i] / (mean * (1 - mean)) : 0
+				)
+
+				driftSim.gen = 0
+				driftSim.running = false
+
+				driftSim.tracesAllele = []
+				for (let i = 0; i < numSubpops; i++) {
+					driftSim.tracesAllele.push({
+						x: [],
+						y: [],
+						mode: 'lines',
+						name: `Population ${i + 1}`,
+						line: { width: 1 },
+					})
+				}
+
+				driftSim.traceFst = {
+					x: [],
+					y: [],
+					mode: 'lines',
+					name: 'FST',
+					line: { width: 2, color: 'black' },
+				}
+
+				Plotly.newPlot('alleleFreqChart', driftSim.tracesAllele, {
+					title: 'Allele Frequency Drift Across Subpopulations',
+					xaxis: { title: 'Generation' },
+					yaxis: { title: 'Allele Frequency', range: [0, 1] },
+					margin: { t: 40 },
+				})
+
+				Plotly.newPlot('fstChart', [driftSim.traceFst], {
+					title: 'FST Over Generations',
+					xaxis: { title: 'Generation' },
+					yaxis: { title: 'FST (Fixation Index)', range: [0, 1] },
+					margin: { t: 40 },
+				})
+			}
+
+			function startDriftAnimation() {
+				if (driftSim.running) return
+				driftSim.running = true
+
+				driftSim.intervalId = setInterval(() => {
+					const gen = driftSim.gen
+					if (gen >= driftSim.numGenerations) {
+						pauseDriftAnimation()
+						return
+					}
+
+					driftSim.tracesAllele.forEach((trace, i) => {
+						trace.x.push(gen)
+						trace.y.push(driftSim.alleleFreqs[gen][i])
+					})
+
+					driftSim.traceFst.x.push(gen)
+					driftSim.traceFst.y.push(driftSim.fSt[gen])
+
+					Plotly.newPlot('alleleFreqChart', driftSim.tracesAllele)
+					Plotly.newPlot('fstChart', [driftSim.traceFst])
+
+					driftSim.gen++
+				}, 200)
+			}
+
+			function pauseDriftAnimation() {
+				if (driftSim.intervalId) {
+					clearInterval(driftSim.intervalId)
+					driftSim.intervalId = null
+					driftSim.running = false
+				}
+			}
+
+			function resetDriftAnimation() {
+				pauseDriftAnimation()
+				setupDriftSimData()
+			}
+
+			document.addEventListener('DOMContentLoaded', () => {
+				setupDriftSimData()
+			})
+		</script>
+	</body>
+</html>

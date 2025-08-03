@@ -740,39 +740,46 @@ function plotLinkageDurationWithR015(divId) {
 /* =======================================================
    SET 11: C (Plotly Version)
 ======================================================= */
-
 function simulateInbreedingDoubleHomozygosity() {
-	const f_vals = Array.from({ length: 100 }, (_, i) => (i * 0.25) / 99)
+	const set11_fVals = Array.from({ length: 100 }, (_, i) => (i * 0.25) / 99)
 
-	// Parâmetros fixos
-	const p = 0.1,
-		q = 1 - p
-	const r = 0.1,
-		s = 1 - r
-	const phi = 0.01
-	const V_f = 0.01
+	// Fixed parameters
+	const set11_p = 0.1,
+		set11_q = 1 - set11_p
+	const set11_r = 0.1,
+		set11_s = 1 - set11_r
+	const set11_phi = 0.01
+	const set11_Vf = 0.01
 
-	// Cálculo das curvas
-	const P_basic = f_vals.map((f) => (p ** 2 + f * p * q) * (r ** 2 + f * r * s))
-	const P_extended = P_basic.map((val, i) => val + (phi + V_f) * p * q * r * s)
+	// Curve calculations
+	const set11_Pbasic = set11_fVals.map(
+		(f) =>
+			(set11_p ** 2 + f * set11_p * set11_q) *
+			(set11_r ** 2 + f * set11_r * set11_s)
+	)
 
-	const trace_basic = {
-		x: f_vals,
-		y: P_basic,
+	const set11_Pextended = set11_Pbasic.map(
+		(val) =>
+			val + (set11_phi + set11_Vf) * set11_p * set11_q * set11_r * set11_s
+	)
+
+	const set11_traceBasic = {
+		x: set11_fVals,
+		y: set11_Pbasic,
 		mode: 'lines',
 		name: 'P_basic (no linkage, uniform inbreeding)',
 		line: { color: 'blue' },
 	}
 
-	const trace_extended = {
-		x: f_vals,
-		y: P_extended,
+	const set11_traceExtended = {
+		x: set11_fVals,
+		y: set11_Pextended,
 		mode: 'lines',
 		name: 'P_extended (linkage + inbreeding variance)',
 		line: { color: 'orange', dash: 'dash' },
 	}
 
-	const layout = {
+	const set11_layout = {
 		title: 'Effect of Linkage and Inbreeding Variance on Double Homozygosity',
 		xaxis: {
 			title: 'Inbreeding coefficient (f)',
@@ -791,8 +798,8 @@ function simulateInbreedingDoubleHomozygosity() {
 
 	Plotly.newPlot(
 		'inbreedingDoubleHomozygosity',
-		[trace_basic, trace_extended],
-		layout
+		[set11_traceBasic, set11_traceExtended],
+		set11_layout
 	)
 }
 
@@ -1052,4 +1059,108 @@ function plotHeterozygosityDrift() {
 	}
 
 	Plotly.newPlot('driftHeterozygosityPlot', traceData, layout)
+}
+
+/* =======================================================
+   SET 14: C (Plotly Version)
+======================================================= */
+
+function sim3_plotSexRatioEffect() {
+	const set14_totalFemales = 100
+	const set14_maleCounts = Array.from({ length: 100 }, (_, i) => i + 1)
+	const set14_effectiveSizes = set14_maleCounts.map(
+		(set14_Nm) =>
+			(4 * set14_Nm * set14_totalFemales) / (set14_Nm + set14_totalFemales)
+	)
+
+	const set14_traceEffective = {
+		x: set14_maleCounts,
+		y: set14_effectiveSizes,
+		mode: 'lines',
+		name: 'Effective Ne',
+		line: { width: 2 },
+	}
+
+	const set14_traceIdeal = {
+		x: [1, 100],
+		y: [100, 100],
+		mode: 'lines',
+		name: 'Ideal Ne (Nm = Nf = 100)',
+		line: { dash: 'dash', color: 'gray' },
+	}
+
+	const set14_layoutSex = {
+		xaxis: { title: 'Number of Males (Nm)' },
+		yaxis: { title: 'Effective Population Size (Ne)' },
+		title: 'Effect of Sex Ratio on Ne',
+		margin: { t: 50 },
+	}
+
+	Plotly.newPlot(
+		'sim3_sexRatioPlot',
+		[set14_traceEffective, set14_traceIdeal],
+		set14_layoutSex
+	)
+}
+
+function sim3_plotHeterozygosityFluctuation() {
+	const set14_numGenerations = 20
+	const set14_initialH = 0.5
+	const set14_randomSizes = Array.from(
+		{ length: set14_numGenerations },
+		() => Math.floor(Math.random() * (200 - 30 + 1)) + 30
+	)
+
+	const set14_heterozygosities = [set14_initialH]
+	for (let set14_i = 1; set14_i < set14_numGenerations; set14_i++) {
+		const set14_prevH = set14_heterozygosities[set14_i - 1]
+		const set14_prevSize = set14_randomSizes[set14_i - 1]
+		set14_heterozygosities.push(set14_prevH * (1 - 1 / (2 * set14_prevSize)))
+	}
+
+	const set14_traceH = {
+		x: Array.from({ length: set14_numGenerations }, (_, i) => i),
+		y: set14_heterozygosities,
+		mode: 'lines+markers',
+		name: 'Heterozygosity',
+		marker: { symbol: 'circle', size: 6 },
+		line: { width: 2 },
+	}
+
+	const set14_layoutFluct = {
+		title: 'Heterozygosity Decay with Fluctuating Population Sizes',
+		xaxis: { title: 'Generation' },
+		yaxis: { title: 'Heterozygosity (H)' },
+		margin: { t: 60 },
+	}
+
+	Plotly.newPlot('sim3_heterozygosityPlot', [set14_traceH], set14_layoutFluct)
+}
+
+function sim3_plotProgenyVarianceEffect() {
+	const set14_constantN = 100
+	const set14_sigma2Range = Array.from(
+		{ length: 100 },
+		(_, i) => 0.1 + ((10 - 0.1) * i) / 99
+	)
+	const set14_effectiveSizesVar = set14_sigma2Range.map(
+		(set14_sigma2) => (4 * set14_constantN - 2) / (set14_sigma2 + 2)
+	)
+
+	const set14_traceVar = {
+		x: set14_sigma2Range,
+		y: set14_effectiveSizesVar,
+		mode: 'lines',
+		name: 'Effective Ne',
+		line: { width: 2 },
+	}
+
+	const set14_layoutVar = {
+		title: 'Effect of Progeny Variance on Ne',
+		xaxis: { title: 'Variance in Progeny Number (σ²)' },
+		yaxis: { title: 'Effective Population Size (Ne)' },
+		margin: { t: 60 },
+	}
+
+	Plotly.newPlot('sim3_variancePlot', [set14_traceVar], set14_layoutVar)
 }
